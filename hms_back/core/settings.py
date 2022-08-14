@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hms2',
+        'NAME': 'hms',
         'USER': 'admin',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
