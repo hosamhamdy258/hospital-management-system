@@ -1,11 +1,12 @@
 import 'react-multi-carousel/lib/styles.css'
 
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
 
 import Carousel from 'react-multi-carousel';
-import Deptsbackg from '../assets/img/color-sharp.png'
+import Deptsbackg from '../../assets/img/color-sharp.png'
 import React from 'react'
-import {doctorNames} from '../myData'
+import {doctorNames} from '../../myData'
 
 const Doctors = () => {
     const responsive = {
@@ -37,11 +38,12 @@ const Doctors = () => {
                     <h2>Meet Our Doctors</h2>
                     <Carousel responsive={responsive} infinite={true} className='doctors-slider'>
                     {doctorNames.map((val) => (
-                       <Card className='item' style={{ width: '16rem' , height:'18.5rem' }}>
+                       <Card className='item' style={{ width: '16rem' , height:'19rem' }}>
                        <Card.Img variant="top" src={val.img} />
                        <Card.Body>
                          <Card.Title>{val.title}</Card.Title>
-                         <Button variant="primary">Go somewhere</Button>
+                         <NavLink to={`/doctor/${val.id}`} className="btn btn-main-2 btn-round-full btn-primary">Make an Appointment</NavLink>
+
                        </Card.Body>
                      </Card>      
               ))}

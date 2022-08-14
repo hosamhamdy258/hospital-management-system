@@ -1,10 +1,10 @@
 import { Button, Card, Col, Container, Row, Tab } from 'react-bootstrap';
 
 import DepartmentCard from './DepartmentCard';
-import {Depts} from '../myData'
+import {Depts} from '../../myData'
 import Nav from 'react-bootstrap/Nav'
 import React from 'react'
-import colorSh2 from '../assets/img/color-sharp2.png'
+import colorSh2 from '../../assets/img/color-sharp2.png'
 
 const Departments = () => {
     const firstSlicedArray = Depts.slice(0, 3);
