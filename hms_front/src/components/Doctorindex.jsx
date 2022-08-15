@@ -13,7 +13,7 @@ const Doctorindex = () => {
           {/* <!-- Sidebar - Brand --> */}
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="Doctorshome.html"
+            href="/doctor"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -26,7 +26,7 @@ const Doctorindex = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="Doctorshome.html">
+            <a className="nav-link" href="/doctor">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -36,12 +36,12 @@ const Doctorindex = () => {
           <hr className="sidebar-divider d-none d-md-block" />
 
           {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          <div className="text-center d-none d-md-inline">
+          {/* <div className="text-center d-none d-md-inline">
             <button
               className="rounded-circle border-0"
               id="sidebarToggle"
             ></button>
-          </div>
+          </div> */}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -50,8 +50,8 @@ const Doctorindex = () => {
           {/* <!-- Main Content --> */}
           <div id="content">
             {/* <!-- Topbar --> */}
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-              {/* <!-- Sidebar Toggle (Topbar) --> */}
+            {/* <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!-- Sidebar Toggle (Topbar) -->
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3"
@@ -59,7 +59,7 @@ const Doctorindex = () => {
                 <i className="fa fa-bars"></i>
               </button>
 
-              {/* <!-- Topbar Search --> */}
+              <!-- Topbar Search -->
               <div className="text-center">
                 <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                   <div className="input-group">
@@ -78,9 +78,9 @@ const Doctorindex = () => {
                   </div>
                 </form>
               </div>
-              {/* <!-- Topbar Navbar --> */}
+              <!-- Topbar Navbar -->
               <ul className="navbar-nav ml-auto">
-                {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                 <li className="nav-item dropdown no-arrow d-sm-none">
                   <a
                     className="nav-link dropdown-toggle"
@@ -94,7 +94,7 @@ const Doctorindex = () => {
                     <i className="fas fa-search fa-fw"></i>
                   </a>
 
-                  {/* <!-- Nav Item - User Information --> */}
+                  <!-- Nav Item - User Information -->
                 </li>
 
                 <li className="nav-item dropdown no-arrow">
@@ -115,7 +115,7 @@ const Doctorindex = () => {
                       src="img/undraw_profile.svg"
                     />
                   </a>
-                  {/* <!-- Dropdown - User Information --> */}
+                  <!-- Dropdown - User Information -->
                   <div
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
@@ -145,14 +145,14 @@ const Doctorindex = () => {
                   </div>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
             <div className="container-fluid">
               {/* <!-- Page Heading --> */}
               <div className="align-items-center mb-4">
-                <h1 className="h1 mb-2 text-gray-800">Dashboard</h1>
+                <h1 className="h1 mb-4 text-gray-800">Dashboard</h1>
                 <h3 className="h3 mb-2 text-gray-800 text-center">
                   Todays appointements
                 </h3>
@@ -174,7 +174,7 @@ const Doctorindex = () => {
                       <td>33</td>
                       <td>
                         <a
-                          href="generatingreport.html"
+                          href="/doctorreport"
                           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         >
                           <i className="fas fa-download fa-sm text-white-50"></i>{" "}
@@ -189,7 +189,7 @@ const Doctorindex = () => {
                       <td>33</td>
                       <td>
                         <a
-                          href="generatingreport.html"
+                          href="/doctorreport"
                           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         >
                           <i className="fas fa-download fa-sm text-white-50"></i>{" "}
@@ -204,7 +204,7 @@ const Doctorindex = () => {
                       <td>33</td>
                       <td>
                         <a
-                          href="generatingreport.html"
+                          href="/doctorreport"
                           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         >
                           <i className="fas fa-download fa-sm text-white-50"></i>{" "}
@@ -222,13 +222,13 @@ const Doctorindex = () => {
       {/* <!-- End of Main Content --> */}
 
       {/* <!-- Footer --> */}
-      <footer className="sticky-footer bg-white">
+      {/* <footer className="sticky-footer bg-white">
         <div className="container my-auto">
           <div className="copyright text-center my-auto">
             <span>Copyright &copy; HMS 2022</span>
           </div>
         </div>
-      </footer>
+      </footer> */}
       {/* <!-- End of Footer --> */}
       {/* <!-- End of Content Wrapper --> */}
       {/* <!-- End of Page Wrapper --> */}

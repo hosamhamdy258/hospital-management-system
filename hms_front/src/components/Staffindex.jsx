@@ -13,7 +13,7 @@ const Staffindex = () => {
           {/* <!-- Sidebar - Brand --> */}
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="index.html"
+            href="/staff"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -26,7 +26,7 @@ const Staffindex = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="staffhome.html">
+            <a className="nav-link" href="/staff">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -39,7 +39,7 @@ const Staffindex = () => {
 
           {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item">
-            <a className="nav-link" href="staffhistory.html">
+            <a className="nav-link" href="/staffhistory">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Patients History</span>
             </a>
@@ -48,12 +48,12 @@ const Staffindex = () => {
           <hr className="sidebar-divider d-none d-md-block" />
 
           {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          <div className="text-center d-none d-md-inline">
+          {/* <div className="text-center d-none d-md-inline">
             <button
               className="rounded-circle border-0"
               id="sidebarToggle"
             ></button>
-          </div>
+          </div> */}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -62,8 +62,8 @@ const Staffindex = () => {
           {/* <!-- Main Content --> */}
           <div id="content">
             {/* <!-- Topbar --> */}
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-              {/* <!-- Sidebar Toggle (Topbar) --> */}
+            {/* <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!-- Sidebar Toggle (Topbar) -->
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3"
@@ -71,7 +71,7 @@ const Staffindex = () => {
                 <i className="fa fa-bars"></i>
               </button>
 
-              {/* <!-- Topbar Search --> */}
+              <!-- Topbar Search -->
               <div className="text-center">
                 <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                   <div className="input-group">
@@ -90,9 +90,9 @@ const Staffindex = () => {
                   </div>
                 </form>
               </div>
-              {/* <!-- Topbar Navbar --> */}
+              <!-- Topbar Navbar -->
               <ul className="navbar-nav ml-auto">
-                {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                 <li className="nav-item dropdown no-arrow d-sm-none">
                   <a
                     className="nav-link dropdown-toggle"
@@ -106,7 +106,7 @@ const Staffindex = () => {
                     <i className="fas fa-search fa-fw"></i>
                   </a>
 
-                  {/* <!-- Nav Item - User Information --> */}
+                  <!-- Nav Item - User Information -->
                 </li>
 
                 <li className="nav-item dropdown no-arrow">
@@ -127,7 +127,7 @@ const Staffindex = () => {
                       src="img/undraw_profile.svg"
                     />
                   </a>
-                  {/* <!-- Dropdown - User Information --> */}
+                  <!-- Dropdown - User Information -->
                   <div
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
@@ -145,13 +145,13 @@ const Staffindex = () => {
                   </div>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
             <div className="container-fluid">
               {/* <!-- Page Heading --> */}
-              <div className="d-sm-flex align-items-center justify-content-between mb-4">
+              <div className="d-sm-flex align-items-center justify-content-center mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
               </div>
 
@@ -250,15 +250,12 @@ const Staffindex = () => {
                     </div>
                     <hr />
                     <div className="col-12 mt-3 text-center">
-                      <button
-                        type="submit"
-                        className="btn btn-primary float-end"
-                      >
+                      <button type="submit" className="btn btn-primary mx-4">
                         Book Appointment
                       </button>
                       <button
                         type="button"
-                        className="btn btn-outline-secondary float-end me-2"
+                        className="btn btn-outline-secondary me-2"
                       >
                         Cancel
                       </button>
@@ -276,13 +273,13 @@ const Staffindex = () => {
       {/* <!-- End of Main Content --> */}
 
       {/* <!-- Footer --> */}
-      <footer className="sticky-footer bg-white">
+      {/* <footer className="sticky-footer bg-white">
         <div className="container my-auto">
           <div className="copyright text-center my-auto">
             <span>Copyright &copy; HMS 2022</span>
           </div>
         </div>
-      </footer>
+      </footer> */}
       {/* <!-- End of Footer --> */}
       {/* <!-- End of Content Wrapper --> */}
       {/* <!-- End of Page Wrapper --> */}

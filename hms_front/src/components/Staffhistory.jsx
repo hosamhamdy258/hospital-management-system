@@ -13,7 +13,7 @@ const Staffhistory = () => {
           {/* <!-- Sidebar - Brand --> */}
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="staffhome.html"
+            href="/staff"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -26,7 +26,7 @@ const Staffhistory = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <a className="nav-link" href="staffhome.html">
+            <a className="nav-link" href="/staff">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -39,7 +39,7 @@ const Staffhistory = () => {
 
           {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="staffhistory.html">
+            <a className="nav-link" href="/staffhistory">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>patient history</span>
             </a>
@@ -48,12 +48,12 @@ const Staffhistory = () => {
           <hr className="sidebar-divider d-none d-md-block" />
 
           {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          <div className="text-center d-none d-md-inline">
+          {/* <div className="text-center d-none d-md-inline">
             <button
               className="rounded-circle border-0"
               id="sidebarToggle"
             ></button>
-          </div>
+          </div> */}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -62,8 +62,8 @@ const Staffhistory = () => {
           {/* <!-- Main Content --> */}
           <div id="content">
             {/* <!-- Topbar --> */}
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-              {/* <!-- Sidebar Toggle (Topbar) --> */}
+            {/* <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!-- Sidebar Toggle (Topbar) -->
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3"
@@ -71,7 +71,7 @@ const Staffhistory = () => {
                 <i className="fa fa-bars"></i>
               </button>
 
-              {/* <!-- Topbar Search --> */}
+              <!-- Topbar Search -->
               <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div className="input-group">
                   <input
@@ -89,9 +89,9 @@ const Staffhistory = () => {
                 </div>
               </form>
 
-              {/* <!-- Topbar Navbar --> */}
+              <!-- Topbar Navbar -->
               <ul className="navbar-nav ml-auto">
-                {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                 <li className="nav-item dropdown no-arrow d-sm-none">
                   <a
                     className="nav-link dropdown-toggle"
@@ -107,7 +107,7 @@ const Staffhistory = () => {
                 </li>
                 <div className="topbar-divider d-none d-sm-block"></div>
 
-                {/* <!-- Nav Item - User Information --> */}
+                <!-- Nav Item - User Information -->
                 <li className="nav-item dropdown no-arrow">
                   <a
                     className="nav-link dropdown-toggle"
@@ -126,7 +126,7 @@ const Staffhistory = () => {
                       src="img/undraw_profile.svg"
                     />
                   </a>
-                  {/* <!-- Dropdown - User Information --> */}
+                  <!-- Dropdown - User Information -->
                   <div
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
@@ -156,7 +156,7 @@ const Staffhistory = () => {
                   </div>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
@@ -243,13 +243,13 @@ const Staffhistory = () => {
           </div>
         </div>
       </div>
-      <footer className="sticky-footer bg-white">
+      {/* <footer className="sticky-footer bg-white">
         <div className="container my-auto">
           <div className="copyright text-center my-auto">
             <span>Copyright &copy; HMS 2022</span>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </body>
   );
 };

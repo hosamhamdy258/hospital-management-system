@@ -13,7 +13,7 @@ const Doctorreport = () => {
           {/* <!-- Sidebar - Brand --> */}
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="Doctorshome.html"
+            href="/doctor"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -26,7 +26,7 @@ const Doctorreport = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="Doctorshome.html">
+            <a className="nav-link" href="/doctor">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -36,12 +36,12 @@ const Doctorreport = () => {
           <hr className="sidebar-divider" />
 
           {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          <div className="text-center d-none d-md-inline">
+          {/* <div className="text-center d-none d-md-inline">
             <button
               className="rounded-circle border-0"
               id="sidebarToggle"
             ></button>
-          </div>
+          </div> */}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -50,8 +50,8 @@ const Doctorreport = () => {
           {/* <!-- Main Content --> */}
           <div id="content">
             {/* <!-- Topbar --> */}
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-              {/* <!-- Sidebar Toggle (Topbar) --> */}
+            {/* <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!-- Sidebar Toggle (Topbar) -->
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3"
@@ -59,7 +59,7 @@ const Doctorreport = () => {
                 <i className="fa fa-bars"></i>
               </button>
 
-              {/* <!-- Topbar Search --> */}
+              <!-- Topbar Search -->
               <div className="text-center">
                 <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                   <div className="input-group">
@@ -78,9 +78,9 @@ const Doctorreport = () => {
                   </div>
                 </form>
               </div>
-              {/* <!-- Topbar Navbar --> */}
+              <!-- Topbar Navbar -->
               <ul className="navbar-nav ml-auto">
-                {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                 <li className="nav-item dropdown no-arrow d-sm-none">
                   <a
                     className="nav-link dropdown-toggle"
@@ -94,7 +94,7 @@ const Doctorreport = () => {
                     <i className="fas fa-search fa-fw"></i>
                   </a>
 
-                  {/* <!-- Nav Item - User Information --> */}
+                  <!-- Nav Item - User Information -->
                 </li>
 
                 <li className="nav-item dropdown no-arrow">
@@ -115,7 +115,7 @@ const Doctorreport = () => {
                       src="img/undraw_profile.svg"
                     />
                   </a>
-                  {/* <!-- Dropdown - User Information --> */}
+                  <!-- Dropdown - User Information -->
                   <div
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
@@ -145,7 +145,7 @@ const Doctorreport = () => {
                   </div>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
@@ -187,16 +187,16 @@ const Doctorreport = () => {
                             placeholder="recommended Medications"
                           ></textarea>
                         </div>
-                        <div className="col-12 mt-5">
+                        <div className="col-12 mt-5 text-center justify-content-center">
                           <button
                             type="submit"
-                            className="btn btn-primary float-end"
+                            className="btn btn-primary mx-4"
                           >
                             Submit report
                           </button>
                           <button
                             type="button"
-                            className="btn btn-outline-secondary float-end me-2"
+                            className="btn btn-outline-secondary me-2"
                           >
                             Cancel
                           </button>
@@ -216,13 +216,13 @@ const Doctorreport = () => {
       {/* <!-- End of Main Content --> */}
 
       {/* <!-- Footer --> */}
-      <footer className="sticky-footer bg-white">
+      {/* <footer className="sticky-footer bg-white">
         <div className="container my-auto">
           <div className="copyright text-center my-auto">
             <span>Copyright &copy; HMS 2022</span>
           </div>
         </div>
-      </footer>
+      </footer> */}
       {/* <!-- End of Footer --> */}
       {/* <!-- End of Content Wrapper --> */}
       {/* // <!-- End of Page Wrapper --> */}

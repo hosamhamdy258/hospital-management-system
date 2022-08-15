@@ -11,7 +11,7 @@ const Patienthistory = () => {
           {/* <!-- Sidebar - Brand --> */}
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="index.html"
+            href="/patient"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -24,7 +24,7 @@ const Patienthistory = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <a className="nav-link" href="index.html">
+            <a className="nav-link" href="/patient">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -33,53 +33,9 @@ const Patienthistory = () => {
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider" />
 
-          {/* <!-- Heading --> */}
-
-          {/* <!-- Nav Item - Pages Collapse Menu --> */}
-          <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePages"
-              aria-expanded="true"
-              aria-controls="collapsePages"
-            >
-              <i className="fas fa-fw fa-folder"></i>
-              <span>Pages</span>
-            </a>
-            <div
-              id="collapsePages"
-              className="collapse"
-              aria-labelledby="headingPages"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <h6 className="collapse-header">Login Screens:</h6>
-                <a className="collapse-item" href="login.html">
-                  Login
-                </a>
-                <a className="collapse-item" href="register.html">
-                  Register
-                </a>
-                <a className="collapse-item" href="forgot-password.html">
-                  Forgot Password
-                </a>
-                <div className="collapse-divider"></div>
-                <h6 className="collapse-header">Other Pages:</h6>
-                <a className="collapse-item" href="404.html">
-                  404 Page
-                </a>
-                <a className="collapse-item" href="blank.html">
-                  Blank Page
-                </a>
-              </div>
-            </div>
-          </li>
-
           {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="patienthistory.html">
+            <a className="nav-link" href="/patienthistory">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>History</span>
             </a>
@@ -87,7 +43,7 @@ const Patienthistory = () => {
 
           {/* <!-- Nav Item - Tables --> */}
           <li className="nav-item">
-            <a className="nav-link" href="tables.html">
+            <a className="nav-link" href="/checkout">
               <i className="fas fa-fw fa-table"></i>
               <span>CheckOut</span>
             </a>
@@ -97,12 +53,13 @@ const Patienthistory = () => {
           <hr className="sidebar-divider d-none d-md-block" />
 
           {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          <div className="text-center d-none d-md-inline">
+          {/* button */}
+          {/* <div className="text-center d-none d-md-inline">
             <button
               className="rounded-circle border-0"
               id="sidebarToggle"
             ></button>
-          </div>
+          </div> */}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -111,8 +68,7 @@ const Patienthistory = () => {
           {/* <!-- Main Content --> */}
           <div id="content">
             {/* <!-- Topbar --> */}
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-              {/* <!-- Sidebar Toggle (Topbar) --> */}
+            {/* <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3"
@@ -120,7 +76,6 @@ const Patienthistory = () => {
                 <i className="fa fa-bars"></i>
               </button>
 
-              {/* <!-- Topbar Search --> */}
               <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div className="input-group">
                   <input
@@ -138,9 +93,7 @@ const Patienthistory = () => {
                 </div>
               </form>
 
-              {/* <!-- Topbar Navbar --> */}
               <ul className="navbar-nav ml-auto">
-                {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
                 <li className="nav-item dropdown no-arrow d-sm-none">
                   <a
                     className="nav-link dropdown-toggle"
@@ -156,7 +109,6 @@ const Patienthistory = () => {
                 </li>
                 <div className="topbar-divider d-none d-sm-block"></div>
 
-                {/* <!-- Nav Item - User Information --> */}
                 <li className="nav-item dropdown no-arrow">
                   <a
                     className="nav-link dropdown-toggle"
@@ -175,7 +127,6 @@ const Patienthistory = () => {
                       src="img/undraw_profile.svg"
                     />
                   </a>
-                  {/* <!-- Dropdown - User Information --> */}
                   <div
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
@@ -205,11 +156,11 @@ const Patienthistory = () => {
                   </div>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
-            <div className="container-fluid">
+            <div className="container-fluid p-3">
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Reports Hitory</h1>
 
@@ -272,61 +223,17 @@ const Patienthistory = () => {
                 </tbody>
               </table>
             </div>
-
-            {/* <!-- Logout Modal--> */}
-            <div
-              className="modal fade"
-              id="logoutModal"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                      Ready to Leave?
-                    </h5>
-                    <button
-                      className="close"
-                      type="button"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div className="modal-body">
-                    Select "Logout" below if you are ready to end your current
-                    session.
-                  </div>
-                  <div className="modal-footer">
-                    <button
-                      className="btn btn-secondary"
-                      type="button"
-                      data-dismiss="modal"
-                    >
-                      Cancel
-                    </button>
-                    <a className="btn btn-primary" href="login.html">
-                      Logout
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-
-      <footer classNameName="sticky-footer bg-white">
+      {/* footer */}
+      {/* <footer classNameName="sticky-footer bg-white">
         <div classNameName="container my-auto">
           <div classNameName="copyright text-center my-auto">
             <span>Copyright &copy; HMS 2022</span>
           </div>
         </div>
-      </footer>
+      </footer> */}
 
       <a classNameName="scroll-to-top rounded" href="#page-top">
         <i classNameName="fas fa-angle-up"></i>

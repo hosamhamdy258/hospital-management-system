@@ -2,13 +2,14 @@ const Patientindex = () => {
   return (
     <body id="page-top">
       <div id="wrapper">
+        {/* sidebar */}
         <ul
           className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="index.html"
+            href="/patient"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -19,7 +20,7 @@ const Patientindex = () => {
           <hr className="sidebar-divider my-0" />
 
           <li className="nav-item active">
-            <a className="nav-link" href="index.html">
+            <a className="nav-link" href="/patient">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -28,73 +29,26 @@ const Patientindex = () => {
           <hr className="sidebar-divider" />
 
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePages"
-              aria-expanded="true"
-              aria-controls="collapsePages"
-            >
-              <i className="fas fa-fw fa-folder"></i>
-              <span>Pages</span>
-            </a>
-            <div
-              id="collapsePages"
-              className="collapse"
-              aria-labelledby="headingPages"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <h6 className="collapse-header">Login Screens:</h6>
-                <a className="collapse-item" href="login.html">
-                  Login
-                </a>
-                <a className="collapse-item" href="register.html">
-                  Register
-                </a>
-                <a className="collapse-item" href="forgot-password.html">
-                  Forgot Password
-                </a>
-                <div className="collapse-divider"></div>
-                <h6 className="collapse-header">Other Pages:</h6>
-                <a className="collapse-item" href="404.html">
-                  404 Page
-                </a>
-                <a className="collapse-item" href="blank.html">
-                  Blank Page
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" href="patienthistory.html">
+            <a className="nav-link" href="/patienthistory">
               <i className="fas fa-fw fa-chart-area"></i>
               <span>History</span>
             </a>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="tables.html">
+            <a className="nav-link" href="/checkout">
               <i className="fas fa-fw fa-table"></i>
               <span>CheckOut</span>
             </a>
           </li>
 
           <hr className="sidebar-divider d-none d-md-block" />
-
-          <div className="text-center d-none d-md-inline">
-            <button
-              className="rounded-circle border-0"
-              id="sidebarToggle"
-            ></button>
-          </div>
         </ul>
-
+        {/* end of side bar */}
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            {/* top bar  */}
+            {/* <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
               <button
                 id="sidebarToggleTop"
                 className="btn btn-link d-md-none rounded-circle mr-3"
@@ -182,18 +136,19 @@ const Patientindex = () => {
                   </div>
                 </li>
               </ul>
-            </nav>
-
+            </nav> */}
+            {/* Body  */}
             <div className="container-fluid">
-              <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                <a
+              <div className="d-sm-flex align-items-center justify-content-center mb-4 p-3">
+                <h1 className="h3  text-gray-800">Dashboard</h1>
+                {/* Button */}
+                {/* <a
                   href="#"
                   className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                 >
                   <i className="fas fa-download fa-sm text-white-50"></i>{" "}
                   Generate Report
-                </a>
+                </a> */}
               </div>
 
               <div className="row mb-4 justify-content-center">
@@ -262,8 +217,8 @@ const Patientindex = () => {
                   </form>
                 </div>
               </div>
-
-              <div className="row mb-4 justify-content-center">
+              {/* to show last report */}
+              {/* <div className="row mb-4 justify-content-center">
                 <div className="card shadow col-lg-8 col-md-6  border p-4 shadow bg-light">
                   <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h4 className="m-0 font-weight-bold text-primary">
@@ -307,19 +262,19 @@ const Patientindex = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
-
-      <footer className="sticky-footer bg-white">
+      {/* footer */}
+      {/* <footer className="sticky-footer bg-white">
         <div className="container my-auto">
           <div className="copyright text-center my-auto">
             <span>Copyright &copy; HMS 2022</span>
           </div>
         </div>
-      </footer>
+      </footer> */}
 
       <a className="scroll-to-top rounded" href="#page-top">
         <i className="fas fa-angle-up"></i>
