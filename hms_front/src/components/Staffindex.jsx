@@ -1,8 +1,15 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Staffindex = () => {
   return (
     <body id="page-top">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
@@ -11,25 +18,25 @@ const Staffindex = () => {
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
-          <a
+          <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="/staff"
+            to={"/staff"}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Staff Panel</div>
-          </a>
+          </Link>
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="/staff">
+            <Link className="nav-link" to={"/staff"}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
 
           {/* <!-- Divider --> */}
@@ -39,11 +46,20 @@ const Staffindex = () => {
 
           {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item">
-            <a className="nav-link" href="/staffhistory">
+            <Link className="nav-link" to={"/staffhistory"}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>Patients History</span>
-            </a>
+            </Link>
           </li>
+
+          {/* <!-- Nav Item - edit --> */}
+          <li className="nav-item">
+            <Link className="nav-link" to={"/staffedit"}>
+              <i className="fas fa-fw fa-edit"></i>
+              <span>Edit patients appointments</span>
+            </Link>
+          </li>
+
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
 

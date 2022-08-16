@@ -18,6 +18,10 @@ import Doctorindex from "./components/Doctorindex";
 import Doctorreport from "./components/Doctorreport";
 import Staffindex from "./components/Staffindex";
 import Staffhistory from "./components/Staffhistory";
+import Profile from "./components/Profile";
+import Patientedit from "./components/Patientedit";
+import Staffedit from "./components/Staffedit";
+
 //done
 import Reserve from "./components/reserve";
 import { getDoctors } from "./store/Doctors";
@@ -56,6 +60,9 @@ function App() {
         <Route path="/doctorreport" element={<Doctorreport />} />
         <Route path="/staff" element={<Staffindex />} />
         <Route path="/staffhistory" element={<Staffhistory />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/patientedit" element={<Patientedit />} />
+        <Route path="/staffedit" element={<Staffedit />} />
       </Routes>
       <BottomFooter />
       <Routes></Routes>
