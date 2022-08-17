@@ -45,10 +45,14 @@ class DoctorSerializer(serializers.ModelSerializer):
     #     many=True, allow_null=True)
     # full_name = serializers.Field(source='full_name')
     # age = serializers.Field(source='age')
+    department = serializers.SlugRelatedField(
+        slug_field='name',
+        queryset=Department.objects.all()
+        )
 
     class Meta:
         model = Doctor
-        fields = ['id', 'full_name', 'address', 'birth_date', 'gender', 'age']
+        fields = ['id', 'full_name', 'address', 'birth_date', 'gender','department', 'age']
 
 
 class PatientSerializerReserve(serializers.ModelSerializer):
