@@ -755,7 +755,14 @@ vertical-align: middle;
 
 
 /* All Departments Styling */
-
+.row .card{
+  background-color: #f0f2f4;
+  position: relative;
+}
+.row .card-body{
+  height:12rem;
+  background-color: #fff !important;
+}
 .tabulation .nav-pills {
   width: 100%; }
   .tabulation .nav-pills .nav-item .nav-link {
@@ -909,6 +916,9 @@ a {
   color: #fff !important;
 }
 /* Single Department Page Styling */
+.singleDepImg{
+  width:50% !important;
+}
 .sidebar-widget.schedule-widget {
 	background: #f4f9fc;
 	padding: 25px;
@@ -990,3 +1000,4 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
   color: #fff;
   border-color: #e12454;
 }
+

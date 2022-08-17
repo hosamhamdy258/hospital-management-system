@@ -26,7 +26,7 @@ week_days = (
 class Department(models.Model): 
     name = models.CharField(max_length=255, unique=True)
     desc= models.TextField()
-    img=models.ImageField(default='')
+    img=models.ImageField(upload_to='images')
     startDay = models.CharField(max_length=10, choices=week_days, default='monday')
     endDay = models.CharField(max_length=10, choices=week_days, default='friday')
     startTime_Schedule=models.TimeField(default=datetime.now, blank=True)
@@ -73,7 +73,7 @@ class Doctor(models.Model):
 
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, default='', blank=True)
-    img=models.ImageField()
+    img=models.ImageField(upload_to='images')
     last_name = models.CharField(max_length=255)
     id_number = models.CharField(max_length=14, unique=True)
     address = models.TextField(max_length=255)

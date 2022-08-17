@@ -25,7 +25,7 @@ const DepartmentPage = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="department-img">
-                <img src="https://demo.themefisher.com/novena/images/service/bg-1.jpg" alt="" className="img-fluid" />
+                <img src={myDep.img} alt="" className="img-fluid singleDepImg" />
               </div>
             </div>
           </div>

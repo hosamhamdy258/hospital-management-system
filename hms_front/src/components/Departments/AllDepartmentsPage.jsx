@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import PageHead from '../PagesHeading/PageHead'
 import { getDepartments } from '../../store/Departments';
@@ -26,23 +28,36 @@ const AllDepartmentsPage = () => {
             </div>
           </div>
           <div className="row">
-          {state.departments.map((item) => (
+            {state.departments.map((item) => (
 
-            <div className="col-lg-4 col-md-6">
+              <div className="col-lg-4 col-md-6">
+                <Card >
+                  <Card.Img variant="top" src={item.img} />
+                  <Card.Body>
+                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Text>
+                    {item.desc.split('.')[0].replace(/[^a-zA-Z0-9]/g, '')}
+                    </Card.Text>
 
-                <div className="department-block mb-5">
-                  <img src="https://demo.themefisher.com/novena/images/service/service-1.jpg" alt="department_img" className='img-fluid w-100' />
+                    <Link className="dep_link" to={`/hDepts/${item.id}`} d_id={item.id}><span className="dept-readmore">read more<i className="fa fa-arrow-right px-2" aria-hidden="true"></i>
+                    </span>
+                    </Link>
+                    <br />
+                  </Card.Body>
+                </Card>
+                {/* <div className="department-block mb-5">
+                  <img src={item.img} alt="department_img" className='img-fluid w-100' />
                   <div className="content">
                     <h4 className='mt-4 mb-2 title-color'>{item.name}</h4>
-                    <p className='mb-4'>{item.desc.split('.')[0]}</p>
+                    <p className='mb-4'>{item.desc.split('.')[0].replace(/[^a-zA-Z0-9]/g, '')}</p>
                     <Link to={`/hDepts/${item.id}`} d_id={item.id}><span className="dept-readmore">read more<i className="fa fa-arrow-right px-2" aria-hidden="true"></i>
                     </span>
                     </Link>
                     <br />
                   </div>
-                </div>
-            </div>
-              ))}
+                </div> */}
+              </div>
+            ))}
 
           </div>
           {/* <div className="row tabulation mt-4">

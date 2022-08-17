@@ -41,11 +41,11 @@ const onUpdateActiveLink=(value)=>{
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link className={activeLink ==='home' ? 'active navbar-link' :'navbar-link'} href="/" onClick={()=>onUpdateActiveLink('home')}>Home</Nav.Link>
-                        <Nav.Link className={activeLink ==='doctors' ? 'active navbar-link' :'navbar-link'} href="/doctors" onClick={()=>onUpdateActiveLink('doctors')}>Doctors</Nav.Link>
+                        <Nav.Link className={activeLink ==='doctors' ? 'active navbar-link' :'navbar-link'} href="doctors" onClick={()=>onUpdateActiveLink('doctors')}>Doctors</Nav.Link>
 
-                        <Nav.Link className={activeLink ==='hDepts' ? 'active navbar-link' :'navbar-link'} href="/hDepts" onClick={()=>onUpdateActiveLink('hDepts')}>Departments</Nav.Link>
-                        <Nav.Link className={activeLink ==='about' ? 'active navbar-link' :'navbar-link'} href="/about" onClick={()=>onUpdateActiveLink('about')}>About US</Nav.Link>
-                        <Nav.Link className={activeLink ==='contact' ? 'active navbar-link' :'navbar-link'} href="/contact" onClick={()=>onUpdateActiveLink('contact')}>Contact Us</Nav.Link>
+                        <Nav.Link className={activeLink ==='hDepts' ? 'active navbar-link' :'navbar-link'} href="hDepts" onClick={()=>onUpdateActiveLink('hDepts')}>Departments</Nav.Link>
+                        <Nav.Link className={activeLink ==='about' ? 'active navbar-link' :'navbar-link'} href="about" onClick={()=>onUpdateActiveLink('about')}>About US</Nav.Link>
+                        <Nav.Link className={activeLink ==='contact' ? 'active navbar-link' :'navbar-link'} href="contact" onClick={()=>onUpdateActiveLink('contact')}>Contact Us</Nav.Link>
                     </Nav>
                     <span className="navbar-text">
                         <div className="social-icon">
