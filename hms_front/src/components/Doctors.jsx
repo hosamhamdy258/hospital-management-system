@@ -14,7 +14,7 @@ export default function Doctors() {
     <div>
       Doctors
       {state.doctors.map(function (item) {
-        return <li key={item.id}>{item.name}</li>;
+        return <li key={item.id}>{item.full_name}</li>;
       })}
     </div>
   );
