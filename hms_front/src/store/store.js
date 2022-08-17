@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import departmentsSlice from "./Departments";
 import doctorsSlice from "./Doctors";
 import patientsSlice from "./patient";
 import reservationSlice from "./reserve";
@@ -10,6 +11,7 @@ const store = configureStore({
     authSlice,
     patientsSlice,
     reservationSlice,
+    departmentsSlice,
   },
 
   middleware: (getDefaultMiddleware) =>

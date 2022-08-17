@@ -19,6 +19,8 @@ from .views import *
 # app_name = 'hms/'
 urlpatterns = [
     path('department/', DepartmentSerializerList.as_view(), name='department'),
+    path('department/<int:pk>', DepartmentSerializerDetails.as_view(), name='department'),
+
     path('patient/', PatientSerializerList.as_view(), name='patient'),
     path('doctor/', DoctorSerializerList.as_view(), name='doctor'),
     path('office/', OfficeAdminSerializerList.as_view(), name='office'),

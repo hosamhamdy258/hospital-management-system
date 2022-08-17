@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from email.policy import default
 from logging import disable
 from django.db import models
@@ -6,11 +7,30 @@ from datetime import date, datetime
 from time import gmtime, strftime
 from django.db import models
 from django.utils import timezone
+import weekday_field
+
+
+
 # Create your models here.
 
+week_days = (
+    ('monday','Monday'),
+    ('tuesday', 'Tuesday'),
+    ('wednesday','Wednesday'),
+    ('thursday','Thursday'),
+    ('friday','Friday'),
+    ('saturday','Saturday'),
+    ('sunday','Sunday'),
+)
 
-class Department(models.Model):
+class Department(models.Model): 
     name = models.CharField(max_length=255, unique=True)
+    desc= models.TextField()
+    img=models.ImageField(default='')
+    startDay = models.CharField(max_length=10, choices=week_days, default='monday')
+    endDay = models.CharField(max_length=10, choices=week_days, default='friday')
+    startTime_Schedule=models.TimeField(default=datetime.now, blank=True)
+    endTime_Schedule=models.TimeField(default=datetime.now, blank=True)
 
     def __str__(self):
         return self.name
@@ -53,6 +73,7 @@ class Doctor(models.Model):
 
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, default='', blank=True)
+    img=models.ImageField()
     last_name = models.CharField(max_length=255)
     id_number = models.CharField(max_length=14, unique=True)
     address = models.TextField(max_length=255)

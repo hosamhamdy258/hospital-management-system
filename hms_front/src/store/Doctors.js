@@ -1,5 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import axiosInstance from './axios';
+
 export const getDoctors = createAsyncThunk(
   "department/getDoctors",
   async (_, thunkAPI) => {

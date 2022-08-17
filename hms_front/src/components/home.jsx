@@ -1,5 +1,18 @@
-import React from "react";
+import Banner from './Banner';
+import Contact from './Contact';
+import Departments from './Departments/Departments';
+import Doctors from './Doctors';
+import React from 'react'
 
-export default function Home() {
-  return <div>home</div>;
+const Home = () => {
+  return (
+    <>
+     <Banner/>
+     <Doctors />
+     <Departments />
+     <Contact/>
+    </>
+  )
 }
+
+export default Home
