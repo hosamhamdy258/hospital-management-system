@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from email.policy import default
 from logging import disable
 from django.db import models
@@ -72,6 +73,7 @@ class Doctor(models.Model):
 
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, default='', blank=True)
+    img=models.ImageField()
     last_name = models.CharField(max_length=255)
     id_number = models.CharField(max_length=14, unique=True)
     address = models.TextField(max_length=255)
