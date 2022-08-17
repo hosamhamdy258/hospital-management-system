@@ -14,12 +14,23 @@ import Login from "./components/login";
 import MyNav from './components/MyNav';
 import NotFound from "./components/notfound";
 import Register from "./components/register";
-import Doctors from "./components/Doctors";
 import Reserve from "./components/reserve";
 import TopNav from "./components/topNav";
 import { getDepartments } from './store/Departments';
 import { getDoctors } from "./store/Doctors";
 import { getPatients } from "./store/patient";
+// Attia components import
+import Patientindex from "./components/Patientindex";
+import Patienthistory from "./components/Patienthistory";
+import Patientcheckout from "./components/Patientcheckout";
+import Doctorindex from "./components/Doctorindex";
+import Doctorreport from "./components/Doctorreport";
+import Staffindex from "./components/Staffindex";
+import Staffhistory from "./components/Staffhistory";
+import Profile from "./components/Profile";
+import Patientedit from "./components/Patientedit";
+import Staffedit from "./components/Staffedit";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -59,7 +70,7 @@ function App() {
         <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
 
         <Route path="*" element={<NotFound />} />
-        {/* attia links */}
+        {/* attia links */} 
         <Route path="/patient" element={<Patientindex />} />
         <Route path="/patienthistory" element={<Patienthistory />} />
         <Route path="/checkout" element={<Patientcheckout />} />
