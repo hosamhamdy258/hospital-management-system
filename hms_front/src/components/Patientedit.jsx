@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Patientedit = () => {
   return (
@@ -18,25 +19,25 @@ const Patientedit = () => {
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
-          <a
+          <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="/patient"
+            to={"/patient"}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
-          </a>
+          </Link>
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <a className="nav-link" href="/patient">
+            <Link className="nav-link" to={"/patient"}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
 
           {/* <!-- Divider --> */}
@@ -44,26 +45,26 @@ const Patientedit = () => {
 
           {/* <!-- Nav Item - history --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="/patienthistory">
+            <Link className="nav-link" to={"/patienthistory"}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>History</span>
-            </a>
+            </Link>
           </li>
 
           {/* <!-- Nav Item - edit --> */}
           <li className="nav-item">
-            <a className="nav-link" href="/patientedit">
+            <Link className="nav-link" to={"/patientedit"}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit appointment</span>
-            </a>
+            </Link>
           </li>
 
           {/* <!-- Nav Item - checkout --> */}
           <li className="nav-item">
-            <a className="nav-link" href="/checkout">
+            <Link className="nav-link" to={"/checkout"}>
               <i className="fas fa-fw fa-table"></i>
               <span>CheckOut</span>
-            </a>
+            </Link>
           </li>
 
           {/* <!-- Divider --> */}
@@ -105,22 +106,22 @@ const Patientedit = () => {
                     <td>11/2/2022</td>
                     <td>Mark</td>
                     <td>
-                      <a
-                        href="#"
+                      <Link
+                        to={"#"}
                         className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                      </a>
+                      </Link>
                     </td>
                     <td>
-                      <a
-                        href="#"
+                      <Link
+                        to={"#"}
                         className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
                         <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
                         Delete
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                   <tr>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Doctorindex = () => {
   return (
@@ -18,25 +19,25 @@ const Doctorindex = () => {
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
-          <a
+          <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="/doctor"
+            to={"/doctor"}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Doctor Panel</div>
-          </a>
+          </Link>
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item active">
-            <a className="nav-link" href="/doctor">
+            <Link className="nav-link" to={"/doctor"}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
 
           {/* <!-- Divider --> */}
@@ -180,13 +181,13 @@ const Doctorindex = () => {
                       <td>06:00 PM</td>
                       <td>33</td>
                       <td>
-                        <a
-                          href="/doctorreport"
+                        <Link
+                          to={"/doctorreport"}
                           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         >
                           <i className="fas fa-download fa-sm text-white-50"></i>{" "}
                           Generate Report
-                        </a>
+                        </Link>
                       </td>
                     </tr>
                     <tr>
@@ -195,13 +196,13 @@ const Doctorindex = () => {
                       <td>06:00 PM</td>
                       <td>33</td>
                       <td>
-                        <a
-                          href="/doctorreport"
+                        <Link
+                          to={"/doctorreport"}
                           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         >
                           <i className="fas fa-download fa-sm text-white-50"></i>{" "}
                           Generate Report
-                        </a>
+                        </Link>
                       </td>
                     </tr>
                     <tr>
@@ -210,13 +211,13 @@ const Doctorindex = () => {
                       <td>06:00 PM</td>
                       <td>33</td>
                       <td>
-                        <a
-                          href="/doctorreport"
+                        <Link
+                          to={"/doctorreport"}
                           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         >
                           <i className="fas fa-download fa-sm text-white-50"></i>{" "}
                           Generate Report
-                        </a>
+                        </Link>
                       </td>
                     </tr>
                   </tbody>
