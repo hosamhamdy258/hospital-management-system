@@ -7,7 +7,6 @@ from datetime import date, datetime
 from time import gmtime, strftime
 from django.db import models
 from django.utils import timezone
-import weekday_field
 
 
 

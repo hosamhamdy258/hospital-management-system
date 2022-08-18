@@ -46,7 +46,7 @@ export default function Doctors() {
                 <h2>Meet Our Doctors</h2>
                 <Carousel responsive={responsive} infinite={true} className='doctors-slider'>
                 {state.doctors.map( (item) => (
-                   <Card className='item' style={{ width: '16rem' , height:'19rem' }}>
+                   <Card key={item.id} className='item' style={{ width: '16rem' , height:'19rem' }}>
                    <Card.Img variant="top" src={item.img} />
                    <Card.Body>
                      <Card.Title>{item.full_name}</Card.Title>

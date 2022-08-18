@@ -20,7 +20,7 @@ const Departments = () => {
   const firstSlicedArray = state.departments.slice(0, 3);
   const secondSlicedArray = state.departments.slice(3);
 
-  console.log(state.departments)
+//   console.log(state.departments)
 
   return (
     <section className='hDepts' id='hDepts'>
