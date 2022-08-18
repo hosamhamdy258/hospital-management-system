@@ -15,6 +15,7 @@ import MyNav from './components/MyNav';
 import NotFound from "./components/notfound";
 import Register from "./components/register";
 import Reserve from "./components/reserve";
+import ScrollToTop from "react-scroll-to-top";
 import TopNav from "./components/topNav";
 import { getDepartments } from './store/Departments';
 import { getDoctors } from "./store/Doctors";
@@ -27,8 +28,8 @@ function App() {
   const statePatient = useSelector((state) => state.patientsSlice);
   const stateDepartment = useSelector((state) => state.departmentsSlice);
 
-   console.log(statePatient);
-  console.log(stateDoctor);
+  //  console.log(statePatient);
+  // console.log(stateDoctor);
 //  const dept=(stateDepartment.departments.filter(x => x.id==3));
 
 //  const allDepts= stateDepartment.de
@@ -60,6 +61,8 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <BottomFooter />
+      <ScrollToTop smooth />
+
     </div>
   );
 }

@@ -26,6 +26,7 @@ week_days = (
 class Department(models.Model): 
     name = models.CharField(max_length=255, unique=True)
     desc= models.TextField()
+    logo_img=models.ImageField(upload_to='images')
     img=models.ImageField(upload_to='images')
     startDay = models.CharField(max_length=10, choices=week_days, default='monday')
     endDay = models.CharField(max_length=10, choices=week_days, default='friday')

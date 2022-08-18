@@ -12,7 +12,7 @@ const DepartmentPage = () => {
   useEffect(() => {
     dispatch(getDepartmentDetails(id));
   }, [dispatch]);
-  console.log(state.departmentDetails);
+  // console.log(state.departmentDetails);
   const myDep = state.departmentDetails;
   // const startDay=myDep.startDay.toUpperCase();
   // const endDay=myDep.endDay.toUpperCase();
