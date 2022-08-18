@@ -1,6 +1,37 @@
 import { Link } from "react-router-dom";
+//try
+// import React, { Fragment, useEffect, useRef } from "react";
+import Select from "react-select";
+import { useDispatch } from "react-redux";
+// import { getPatientDoctors } from "./../store/reserve";
 
-const Staffindex = () => {
+const Staffindex = ({ doctor, patient }) => {
+  //try
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getPatientDoctors());
+  // }, [dispatch]);
+
+  const doctorOptions = doctor.doctors.map(function (item) {
+    return { value: item.id, label: item.full_name };
+  });
+  const patientOptions = patient.patients.map(function (item) {
+    return { value: item.id, label: `${item.first_name}  ${item.last_name}` };
+  });
+  console.log("patient", patientOptions);
+  const data = {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+  const onChange = (e, str) => {
+    // console.log(e);
+    // console.log(str);
+    data[str] = e.value;
+    console.log(data);
+  };
+
   return (
     <section id="page-top">
       <link
@@ -86,7 +117,7 @@ const Staffindex = () => {
                     <hr />
                   </div>
                   <form action="">
-                    <div className="col-12 mb-2">
+                    {/* <div className="col-12 mb-2">
                       <h5 className="m-0 font-weight-bold text-primary">
                         Personal ifo
                       </h5>
@@ -114,38 +145,38 @@ const Staffindex = () => {
                           placeholder="Enter Date"
                         />
                       </div>
-                    </div>
-                    <div className="col-12 justify-content-center">
+                    </div> */}
+                    {/* <div className="col-12 justify-content-center">
                       <input
                         type="text"
                         className="form-control"
                         id=""
                         placeholder="Enter Mobile number"
                       />
-                    </div>
-                    <hr className="Form-divider" />
+                    </div> */}
+                    {/* <hr className="Form-divider" /> */}
                     <div className="col-12 mb-2">
                       <h5 className="m-0 font-weight-bold text-primary">
-                        Reservation ifo
+                        Reservation info
                       </h5>
                     </div>
                     <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Select department</label>
-                      <select className="form-select col-md-6">
-                        <option defaultValue>Purpose Of Appointment</option>
-                        <option value="1">Web Design</option>
-                        <option value="2">Web Development</option>
-                        <option value="3">IOS Developemt</option>
-                      </select>
+                      <label className="col-md-6">Select Doctor</label>
+                      <Select
+                        className="form-select col-md-6 m-auto"
+                        options={doctorOptions}
+                        name="doctor"
+                        onChange={(e) => onChange(e, "doctor")}
+                      ></Select>
                     </div>
                     <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Select Doctor</label>
-                      <select className="form-select col-md-6">
-                        <option defaultValue>Purpose Of Appointment</option>
-                        <option value="4">Web Design</option>
-                        <option value="5">Web Development</option>
-                        <option value="6">IOS Developemt</option>
-                      </select>
+                      <label className="col-md-6">Select Patient</label>
+                      <Select
+                        className="form-select col-md-6 m-auto"
+                        options={patientOptions}
+                        name="patient"
+                        onChange={(e) => onChange(e, "patient")}
+                      ></Select>
                     </div>
                     <div className="row g-3 mb-1">
                       <div className="col-md-6">

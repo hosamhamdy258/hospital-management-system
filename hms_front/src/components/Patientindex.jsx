@@ -111,13 +111,14 @@ const Patientindex = ({ doctor }) => {
                     <hr />
                   </div>
                   <form action="" method="post" onSubmit={handleSubmit}>
-                    <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Select Doctor</label>
+                    <div className="row mx-1 mb-1">
+                      {/* <label className="col-md-6">Select Doctor</label> */}
                       <Select
                         className="form-select col-md-6"
                         options={doctorOptions}
                         name="doctor"
                         onChange={(e) => onChange(e, "doctor")}
+                        placeholder="Select doctor"
                       ></Select>
                     </div>
                     {/* <div className="row mx-2 mb-1">

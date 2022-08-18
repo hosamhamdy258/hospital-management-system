@@ -20,6 +20,7 @@ export default function Reserve({ doctor, patient }) {
     return { value: item.id, label: item.full_name };
   });
   console.log(doctorOptions);
+  console.log(patientOptions);
   const data = {};
   const handleSubmit = (e) => {
     e.preventDefault();

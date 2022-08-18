@@ -53,7 +53,6 @@ function App() {
           element={<Reserve patient={statePatient} doctor={stateDoctor} />}
         />
         <Route path="doctors" element={<Doctors state={stateDoctor} />} />
-        <Route path="*" element={<NotFound />} />
 
         <Route
           path="/patient/:id"
@@ -64,14 +63,17 @@ function App() {
         <Route path="/checkout/:id" element={<Patientcheckout />} />
         <Route path="/doctor" element={<Doctorindex />} />
         <Route path="/doctorreport" element={<Doctorreport />} />
-        <Route path="/staff" element={<Staffindex />} />
+        <Route
+          path="/staff"
+          element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
+        />
         <Route path="/staffhistory" element={<Staffhistory />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <BottomFooter />
-      <Routes></Routes>
     </div>
   );
 }
