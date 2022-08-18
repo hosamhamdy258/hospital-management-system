@@ -16,6 +16,20 @@ import Login from "./components/login";
 import MyNav from './components/MyNav';
 import NotFound from "./components/notfound";
 import Register from "./components/register";
+import Doctors from "./components/Doctors";
+// Attia components import
+import Patientindex from "./components/Patientindex";
+import Patienthistory from "./components/Patienthistory";
+import Patientcheckout from "./components/Patientcheckout";
+import Doctorindex from "./components/Doctorindex";
+import Doctorreport from "./components/Doctorreport";
+import Staffindex from "./components/Staffindex";
+import Staffhistory from "./components/Staffhistory";
+import Profile from "./components/Profile";
+import Patientedit from "./components/Patientedit";
+import Staffedit from "./components/Staffedit";
+
+//done
 import Reserve from "./components/reserve";
 import ScrollToTop from "react-scroll-to-top";
 import TopNav from "./components/topNav";
@@ -65,6 +79,17 @@ function App() {
         <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
 
         <Route path="*" element={<NotFound />} />
+        {/* attia links */}
+        <Route path="/patient" element={<Patientindex />} />
+        <Route path="/patienthistory" element={<Patienthistory />} />
+        <Route path="/checkout" element={<Patientcheckout />} />
+        <Route path="/doctor" element={<Doctorindex />} />
+        <Route path="/doctorreport" element={<Doctorreport />} />
+        <Route path="/staff" element={<Staffindex />} />
+        <Route path="/staffhistory" element={<Staffhistory />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/patientedit" element={<Patientedit />} />
+        <Route path="/staffedit" element={<Staffedit />} />
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />

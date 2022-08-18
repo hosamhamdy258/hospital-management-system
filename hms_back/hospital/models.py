@@ -12,6 +12,26 @@ from django.utils import timezone
 
 # Create your models here.
 
+class Person(models.Model):
+    id_number = models.CharField(max_length=14, unique=True)
+    first_name = models.CharField(max_length=255)
+    middle_name = models.CharField(max_length=255, default='', blank=True)
+    last_name = models.CharField(max_length=255)
+    address = models.TextField(max_length=255)
+    birth_date = models.DateField()
+    options = (
+        ('male', "Male"),
+        ('female', "Female"),
+    )
+    gender = models.CharField(max_length=6, choices=options, default='male')
+    @property
+    def age(self):
+        age = date.today().year - self.birth_date.year
+        return age
+
+
+
+
 week_days = (
     ('monday','Monday'),
     ('tuesday', 'Tuesday'),
@@ -36,25 +56,13 @@ class Department(models.Model):
         return self.name
 
 
-class Patient(models.Model):
+class Patient(Person):
 
-    id_number = models.CharField(max_length=14, unique=True)
-    # need to changed to first name and last name **done
-    first_name = models.CharField(max_length=255)
-    middle_name = models.CharField(max_length=255, default='', blank=True)
-    last_name = models.CharField(max_length=255)
-    address = models.TextField(max_length=255)
-    birth_date = models.DateField()
+
     durgs = models.TextField(
         max_length=4000, verbose_name="Durgs Taken", null=True)
     comment = models.TextField(max_length=4000, null=True)
 
-    options = (
-        ('male', "Male"),
-        ('female', "Female"),
-    )
-    gender = models.CharField(max_length=6,
-                              choices=options, default='male')
 
     @property
     def age(self):
@@ -69,24 +77,13 @@ class Patient(models.Model):
         return self.full_name
 
 
-class Doctor(models.Model):
+class Doctor(Person):
 
-    first_name = models.CharField(max_length=255)
-    middle_name = models.CharField(max_length=255, default='', blank=True)
-    img=models.ImageField(upload_to='images')
-    last_name = models.CharField(max_length=255)
-    id_number = models.CharField(max_length=14, unique=True)
-    address = models.TextField(max_length=255)
-    birth_date = models.DateField()
+
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE,)
 
-    options = (
-        ('male', "Male"),
-        ('female', "Female"),
-    )
-    gender = models.CharField(max_length=6,
-                              choices=options, default='male')
+
 
     @property
     def age(self):
@@ -103,17 +100,6 @@ class Doctor(models.Model):
 
 class office_admin(models.Model):
 
-    first_name = models.CharField(max_length=255)
-    middle_name = models.CharField(max_length=255, default='', blank=True)
-    last_name = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
-    birth_date = models.DateField()
-    options = (
-        ('male', "Male"),
-        ('female', "Female"),
-    )
-    gender = models.CharField(max_length=6,
-                              choices=options, default='male')
 
     @property
     def age(self):
