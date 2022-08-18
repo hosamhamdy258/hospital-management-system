@@ -65,26 +65,17 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-
-        <Route path="/hDepts" element={<AllDepartmentsPage />} />
-        <Route path="/hDepts/:id" element={<DepartmentPage />} />
-
+        <Route path="/departments" element={<AllDepartmentsPage />} />
+        <Route path="/departments/:id" element={<DepartmentPage />} />
         <Route path="reserve" element={<Reserve />} />
         <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
-
-        <Route
-          path="/patient/:id"
-          element={<Patientindex doctor={stateDoctor} />}
-        />
+        <Route path="/patient/:id" element={<Patientindex doctor={stateDoctor} />}/>
         <Route path="/patient2/:id" element={<Patientindex2 />} />
         <Route path="/patienthistory/:id" element={<Patienthistory />} />
         <Route path="/checkout/:id" element={<Patientcheckout />} />
         <Route path="/doctor" element={<Doctorindex />} />
         <Route path="/doctorreport" element={<Doctorreport />} />
-        <Route
-          path="/staff"
-          element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
-        />
+        <Route path="/staff" element={<Staffindex patient={statePatient} doctor={stateDoctor} />}/>
         <Route path="/staffhistory" element={<Staffhistory />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
