@@ -454,15 +454,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width:250px;
   height: 250px;
 }
-
+.hDepts-imgbx h3{
+  color: #fff !important;
+}
 .contactH2{
   color:#fff !important;
 }
-.hDepts-imgbx button {
+.depCard_link {
   color: rgb(0, 0, 0);
-  font-weight: 700;
-  font-size: 20px;
-  margin: 20px auto;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  margin: 20px auto !important;
 
   letter-spacing: 0.8px;
   display: flex;
@@ -470,13 +472,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-color: #fff;
   padding: 15px;
 }
-.hDepts-imgbx button svg {
+.hDepts-imgbx .depCard_link svg {
   font-size: 25px;
   margin-left: 10px;
   transition: 0.3s ease-in-out;
-  line-height: 1;
+  line-height: 20;
 }
-.hDepts-imgbx button:hover svg {
+.hDepts-imgbx .depCard_link:hover svg {
   margin-left: 25px;
 }
 
