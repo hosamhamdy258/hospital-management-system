@@ -5,35 +5,35 @@ from rest_framework.views import APIView
 from django.shortcuts import render, redirect, get_object_or_404
 
 
-# from accounts.models import MyUser
-from .serializers import CustomUserSerializer
+# # from accounts.models import MyUser
+# # from .serializers import CustomUserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
-from rest_framework import generics
-from django.contrib.auth.models import User
-from django.contrib import messages
+# from rest_framework import generics
+# from django.contrib.auth.models import User
+# from django.contrib import messages
 
 
-class CustomUserCreate(generics.CreateAPIView):
-    permission_classes = [AllowAny]
-    # queryset = MyUser.objects.all()
-    queryset = User.objects.all()
-    serializer_class = CustomUserSerializer
+# class CustomUserCreate(generics.CreateAPIView):
+#     permission_classes = [AllowAny]
+#     # queryset = MyUser.objects.all()
+#     queryset = User.objects.all()
+#     serializer_class = CustomUserSerializer
 
-    def post(self, request, *args, **kwargs):
-        serializer = CustomUserSerializer(data=request.data)
-        if serializer.is_valid():
-            try:
-                if (User.objects.filter(username=request.data["username"])):
-                    response = {"msg": 'username exists'}
-                    return Response(response, status=status.HTTP_400_BAD_REQUEST)
-            except:
-                pass
-        print(request.data["username"])
+#     def post(self, request, *args, **kwargs):
+#         serializer = CustomUserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             try:
+#                 if (User.objects.filter(username=request.data["username"])):
+#                     response = {"msg": 'username exists'}
+#                     return Response(response, status=status.HTTP_400_BAD_REQUEST)
+#             except:
+#                 pass
+#         print(request.data["username"])
 
-        serializer.save()
-        response = {"msg": "username gooooooooooood"}
-        return Response(response, status=status.HTTP_200_OK)
+#         serializer.save()
+#         response = {"msg": "username gooooooooooood"}
+#         return Response(response, status=status.HTTP_200_OK)
 
 
 class BlacklistTokenUpdateView(APIView):
