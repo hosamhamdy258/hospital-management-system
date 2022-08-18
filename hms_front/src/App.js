@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import About from "./components/About/About";
 import AllDepartmentsPage from "./components/Departments/AllDepartmentsPage";
 import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
@@ -49,7 +50,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} />
-        <Route path="hDepts" element={<AllDepartmentsPage />} />
+        <Route path="/about" element={<About />} />
+
+        <Route path="/hDepts" element={<AllDepartmentsPage />} />
         <Route path='/hDepts/:id' element={<DepartmentPage />} />
 
         <Route
