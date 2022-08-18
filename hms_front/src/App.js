@@ -8,6 +8,7 @@ import About from "./components/About/About";
 import AllDepartmentsPage from "./components/Departments/AllDepartmentsPage";
 import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
+import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
@@ -51,6 +52,8 @@ function App() {
         <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+
 
         <Route path="/hDepts" element={<AllDepartmentsPage />} />
         <Route path='/hDepts/:id' element={<DepartmentPage />} />
