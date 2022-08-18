@@ -45,7 +45,7 @@ const Patientindex = ({ doctor }) => {
       <div id="wrapper">
         {/* sidebar */}
         <ul
-          className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
           id="accordionSidebar"
         >
           <Link
@@ -97,7 +97,7 @@ const Patientindex = ({ doctor }) => {
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
             {/* Body  */}
-            <div className="container-fluid">
+            <div className="container-fluid mt-5">
               <div className="d-sm-flex align-items-center justify-content-center mb-4 p-3">
                 <h1 className="h3  text-gray-800">Dashboard</h1>
               </div>
@@ -105,7 +105,7 @@ const Patientindex = ({ doctor }) => {
               <div className="row mb-4 justify-content-center">
                 <div className="col-lg-8 col-md-6 border p-4 shadow bg-light">
                   <div className="col-12">
-                    <h4 className="m-0 font-weight-bold text-primary">
+                    <h4 className="m-0 font-weight-bold text-dark">
                       Appointment form
                     </h4>
                     <hr />
@@ -151,8 +151,11 @@ const Patientindex = ({ doctor }) => {
                           placeholder="Message"
                         ></textarea>
                       </div>
-                      <div className="col-12 mt-5">
-                        <button type="submit" className="btn btn-primary mx-2">
+                      <div className="col-12 mt-5  text-center">
+                        <button
+                          type="submit"
+                          className="btn btn-secondary mx-2"
+                        >
                           Book Appointment
                         </button>
                         <button

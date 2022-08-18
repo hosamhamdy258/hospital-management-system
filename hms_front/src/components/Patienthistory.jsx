@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Patienthistory = () => {
+  const { id } = useParams();
   return (
     <section id="page-top">
       <link
@@ -14,13 +15,13 @@ const Patienthistory = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={"/patient"}
+            to={`/patient/${id}`}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -33,7 +34,7 @@ const Patienthistory = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/patient"}>
+            <Link className="nav-link" to={`/patient/${id}`}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </Link>
@@ -44,7 +45,7 @@ const Patienthistory = () => {
 
           {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item active">
-            <Link className="nav-link" to={"/patienthistory"}>
+            <Link className="nav-link" to={`/patienthistory/${id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>History</span>
             </Link>
@@ -52,7 +53,7 @@ const Patienthistory = () => {
 
           {/* <!-- Nav Item - edit --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/patientedit"}>
+            <Link className="nav-link" to={`/patientedit/${id}`}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit appointment</span>
             </Link>
@@ -60,7 +61,7 @@ const Patienthistory = () => {
 
           {/* <!-- Nav Item - Tables --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/checkout"}>
+            <Link className="nav-link" to={`/checkout/${id}`}>
               <i className="fas fa-fw fa-table"></i>
               <span>CheckOut</span>
             </Link>
@@ -80,7 +81,7 @@ const Patienthistory = () => {
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
-            <div className="container-fluid p-3">
+            <div className="container-fluid p-3 mt-5">
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Reports Hitory</h1>
 
@@ -103,7 +104,7 @@ const Patienthistory = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-download fa-sm text-white-50"></i>{" "}
                         Generate Report
@@ -116,13 +117,13 @@ const Patienthistory = () => {
                     <td>Cardio</td>
                     <td>Mark</td>
                     <td>
-                      <a
-                        href="#"
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                      <Link
+                        to={"#"}
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-download fa-sm text-white-50"></i>{" "}
                         Generate Report
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                   <tr>
@@ -131,13 +132,13 @@ const Patienthistory = () => {
                     <td>Cardio</td>
                     <td>Mark</td>
                     <td>
-                      <a
-                        href="#"
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                      <Link
+                        to={"#"}
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-download fa-sm text-white-50"></i>{" "}
                         Generate Report
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 </tbody>
