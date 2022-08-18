@@ -19,8 +19,8 @@ function App() {
   const stateAuth = useSelector((state) => state.authSlice);
   const stateDoctor = useSelector((state) => state.doctorsSlice);
   const statePatient = useSelector((state) => state.patientsSlice);
-  console.log(statePatient);
-  console.log(stateDoctor);
+  // console.log(statePatient);
+  // console.log(stateDoctor);
   useEffect(() => {
     dispatch(getDoctors());
     dispatch(getPatients());
@@ -33,10 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} />
-        <Route
-          path="reserve"
-          element={<Reserve patient={statePatient} doctor={stateDoctor} />}
-        />
+        <Route path="reserve" element={<Reserve />} />
         <Route path="doctors" element={<Doctors state={stateDoctor} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

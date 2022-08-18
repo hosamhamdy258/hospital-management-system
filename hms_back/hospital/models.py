@@ -57,6 +57,7 @@ class Doctor(models.Model):
     id_number = models.CharField(max_length=14, unique=True)
     address = models.TextField(max_length=255)
     birth_date = models.DateField()
+    duration = models.DurationField(null=True, blank=True, default=None)
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE,)
 
@@ -108,6 +109,12 @@ class office_admin(models.Model):
 
 
 class reservation(models.Model):
+    class Meta:
+        ordering = ('-date_now',)
+        constraints = [
+            models.UniqueConstraint(
+                fields=['date', 'doctor'], name='unique_reservation')
+        ]
     # validate use only date or date_now
     date = models.DateTimeField()
 
@@ -120,9 +127,6 @@ class reservation(models.Model):
 
     def __str__(self):
         return f"{self.date}"
-
-    class Meta:
-        ordering = ('-date_now',)
 
 
 class medical_record(models.Model):
