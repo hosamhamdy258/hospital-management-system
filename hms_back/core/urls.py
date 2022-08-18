@@ -26,4 +26,9 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls'), name='rest_framework'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    # Khalid Urls
+
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('auth/', include('djoser.social.urls')),
+]
