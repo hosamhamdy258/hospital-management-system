@@ -20,7 +20,7 @@ const Page404 = () => {
           {/* <!-- Sidebar - Brand --> */}
           <a
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="index.html"
+            href="/"
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -33,7 +33,7 @@ const Page404 = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <a className="nav-link" href="index.html">
+            <a className="nav-link" href="/">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
@@ -67,7 +67,7 @@ const Page404 = () => {
                 <p className="text-gray-500 mb-0">
                   It looks like you found a glitch in the matrix...
                 </p>
-                <a href="index.html">&larr; Back to Dashboard</a>
+                <a href="/">&larr; Back to Dashboard</a>
               </div>
             </div>
             {/* <!-- /.container-fluid --> */}

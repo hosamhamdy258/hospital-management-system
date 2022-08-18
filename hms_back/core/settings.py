@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-import os # new
+import os  # new
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'accounts',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
-    
+
 
 ]
 
@@ -69,8 +69,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR),'hms_back')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'hms_back')
 
 
 TEMPLATES = [
@@ -177,7 +177,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.AllowAny'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -298,9 +298,9 @@ AUTH_USER_MODEL = 'accounts.UserAccount'
 #     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
 #     # ),
 # }
-# # CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", ]
 
 
 # ]

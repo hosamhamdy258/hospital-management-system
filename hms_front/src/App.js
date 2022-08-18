@@ -34,7 +34,7 @@ import TopNav from "./components/topNav";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
 import { getPatientDetails, getPatients } from "./store/patient";
-import Patientindex2 from "./components/Patientindex2";
+import Page404 from "./components/Page404";
 
 function App() {
   const dispatch = useDispatch();
@@ -69,18 +69,23 @@ function App() {
         <Route path="/departments/:id" element={<DepartmentPage />} />
         <Route path="reserve" element={<Reserve />} />
         <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
-        <Route path="/patient/:id" element={<Patientindex doctor={stateDoctor} />}/>
-        <Route path="/patient2/:id" element={<Patientindex2 />} />
+        <Route
+          path="/patient/:id"
+          element={<Patientindex doctor={stateDoctor} />}
+        />
         <Route path="/patienthistory/:id" element={<Patienthistory />} />
         <Route path="/checkout/:id" element={<Patientcheckout />} />
         <Route path="/doctor" element={<Doctorindex />} />
         <Route path="/doctorreport" element={<Doctorreport />} />
-        <Route path="/staff" element={<Staffindex patient={statePatient} doctor={stateDoctor} />}/>
+        <Route
+          path="/staff"
+          element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
+        />
         <Route path="/staffhistory" element={<Staffhistory />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />
