@@ -58,3 +58,7 @@ class ReservationSerializerPatientList(generics.ListAPIView):
 class ReservationSerializerDoctorList(generics.ListAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializerReserve
+
+class PatientSerializerDetails(generics.RetrieveUpdateAPIView):
+    queryset = Patient.objects.all()
+    serializer_class = PatientSerializer

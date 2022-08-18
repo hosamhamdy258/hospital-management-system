@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const Staffedit = () => {
   return (
-    <body id="page-top">
+    <section id="page-top">
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
       />
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
@@ -63,14 +63,6 @@ const Staffedit = () => {
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
-
-          {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          {/* <div className="text-center d-none d-md-inline">
-            <button
-              className="rounded-circle border-0"
-              id="sidebarToggle"
-            ></button>
-          </div> */}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -131,7 +123,7 @@ const Staffedit = () => {
                         className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                        <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                        <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
                         Delete
                       </Link>
                     </td>
@@ -154,7 +146,7 @@ const Staffedit = () => {
                         className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                        <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                        <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
                         Delete
                       </Link>
                     </td>
@@ -177,7 +169,7 @@ const Staffedit = () => {
                         className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                        <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                        <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
                         Delete
                       </Link>
                     </td>
@@ -188,7 +180,7 @@ const Staffedit = () => {
           </div>
         </div>
       </div>
-    </body>
+    </section>
   );
 };
 

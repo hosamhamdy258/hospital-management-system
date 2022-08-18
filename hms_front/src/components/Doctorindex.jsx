@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const Doctorindex = () => {
   return (
-    <body id="page-top">
+    <section id="page-top">
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
       />
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
@@ -245,7 +245,7 @@ const Doctorindex = () => {
       <a className="scroll-to-top rounded" href="#page-top">
         <i className="fas fa-angle-up"></i>
       </a>
-    </body>
+    </section>
   );
 };
 

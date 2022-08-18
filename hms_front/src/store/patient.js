@@ -14,7 +14,23 @@ export const getPatients = createAsyncThunk(
   }
 );
 
-const initialState = { patients: [] };
+//try patient details
+export const getPatientDetails = createAsyncThunk(
+  "department/getPatientDetails",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    console.log("id ==" + id);
+    try {
+      const response = await axiosInstance.get(`api/patient/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(rejectWithValue);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+const initialState = { patients: [], patientDetails: {} };
 const patientsSlice = createSlice({
   name: "Patient",
   initialState,
@@ -27,6 +43,15 @@ const patientsSlice = createSlice({
       state.patients = action.payload;
     },
     [getPatients.rejected]: (state, action) => {
+      // show erorr tooltip at top of screen
+      // state.isLoading = true;
+    },
+    //try
+    [getPatientDetails.pending]: (state, action) => {},
+    [getPatientDetails.fulfilled]: (state, action) => {
+      state.patientDetails = action.payload;
+    },
+    [getPatientDetails.rejected]: (state, action) => {
       // show erorr tooltip at top of screen
       // state.isLoading = true;
     },
