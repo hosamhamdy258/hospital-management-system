@@ -9,7 +9,6 @@ from django.db import models
 from django.utils import timezone
 
 
-
 # Create your models here.
 
 class Person(models.Model):
@@ -24,33 +23,35 @@ class Person(models.Model):
         ('female', "Female"),
     )
     gender = models.CharField(max_length=6, choices=options, default='male')
+
     @property
     def age(self):
         age = date.today().year - self.birth_date.year
         return age
 
 
-
-
 week_days = (
-    ('monday','Monday'),
+    ('monday', 'Monday'),
     ('tuesday', 'Tuesday'),
-    ('wednesday','Wednesday'),
-    ('thursday','Thursday'),
-    ('friday','Friday'),
-    ('saturday','Saturday'),
-    ('sunday','Sunday'),
+    ('wednesday', 'Wednesday'),
+    ('thursday', 'Thursday'),
+    ('friday', 'Friday'),
+    ('saturday', 'Saturday'),
+    ('sunday', 'Sunday'),
 )
 
-class Department(models.Model): 
+
+class Department(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    desc= models.TextField()
-    logo_img=models.ImageField(upload_to='images')
-    img=models.ImageField(upload_to='images')
-    startDay = models.CharField(max_length=10, choices=week_days, default='monday')
-    endDay = models.CharField(max_length=10, choices=week_days, default='friday')
-    startTime_Schedule=models.TimeField(default=datetime.now, blank=True)
-    endTime_Schedule=models.TimeField(default=datetime.now, blank=True)
+    desc = models.TextField()
+    logo_img = models.ImageField(upload_to='images')
+    img = models.ImageField(upload_to='images')
+    startDay = models.CharField(
+        max_length=10, choices=week_days, default='monday')
+    endDay = models.CharField(
+        max_length=10, choices=week_days, default='friday')
+    startTime_Schedule = models.TimeField(default=datetime.now, blank=True)
+    endTime_Schedule = models.TimeField(default=datetime.now, blank=True)
 
     def __str__(self):
         return self.name
@@ -58,11 +59,9 @@ class Department(models.Model):
 
 class Patient(Person):
 
-
     durgs = models.TextField(
         max_length=4000, verbose_name="Durgs Taken", null=True)
     comment = models.TextField(max_length=4000, null=True)
-
 
     @property
     def age(self):
@@ -79,11 +78,9 @@ class Patient(Person):
 
 class Doctor(Person):
 
-
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE,)
-
-
+    img = models.ImageField(upload_to='images',)
 
     @property
     def age(self):
@@ -100,7 +97,6 @@ class Doctor(Person):
 
 class office_admin(models.Model):
 
-
     @property
     def age(self):
         age = date.today().year - self.birth_date.year
@@ -115,6 +111,12 @@ class office_admin(models.Model):
 
 
 class reservation(models.Model):
+    class Meta:
+        ordering = ('-date_now',)
+        constraints = [
+            models.UniqueConstraint(
+                fields=['date', 'doctor'], name='unique_reservation')
+        ]
     # validate use only date or date_now
     date = models.DateTimeField()
 
@@ -127,9 +129,6 @@ class reservation(models.Model):
 
     def __str__(self):
         return f"{self.date}"
-
-    class Meta:
-        ordering = ('-date_now',)
 
 
 class medical_record(models.Model):

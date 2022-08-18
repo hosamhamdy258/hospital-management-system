@@ -25,6 +25,7 @@ urlpatterns = [
     path('doctor/', DoctorSerializerList.as_view(), name='doctor'),
     path('office/', OfficeAdminSerializerList.as_view(), name='office'),
     path('reserve/', ReservationSerializerList.as_view(), name='reserve'),
+    path('reserve/<int:pk>', ReservationSerializerDetails.as_view(), name='reserve'),
     path('record/', MedicalRecordSerializerList.as_view(), name='record'),
     path('receipt/', ReceiptSerializerList.as_view(), name='receipt'),
     # path('<int:pk>/', PostDetails.as_view(), name='detailcreate'),

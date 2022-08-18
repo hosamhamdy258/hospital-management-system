@@ -1,11 +1,8 @@
 import React, { useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { loginUser, registerUser } from "./../store/authSlice";
+import { registerUser } from "./../store/authSlice";
 import { useDispatch } from "react-redux";
-import Col from "react-bootstrap/Col";
-import InputGroup from "react-bootstrap/InputGroup";
-import Row from "react-bootstrap/Row";
 
 export default function Register() {
   const username = useRef(null);

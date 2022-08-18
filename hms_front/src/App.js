@@ -13,11 +13,9 @@ import DepartmentPage from "./components/Departments/DepartmentPage";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
 import Login from "./components/login";
-import MyNav from './components/MyNav';
+import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Register from "./components/register";
-import Doctors from "./components/Doctors";
-// Attia components import
 import Patientindex from "./components/Patientindex";
 import Patienthistory from "./components/Patienthistory";
 import Patientcheckout from "./components/Patientcheckout";
@@ -33,7 +31,7 @@ import Staffedit from "./components/Staffedit";
 import Reserve from "./components/reserve";
 import ScrollToTop from "react-scroll-to-top";
 import TopNav from "./components/topNav";
-import { getDepartments } from './store/Departments';
+import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
 import { getPatientDetails, getPatients } from "./store/patient";
 import Patientindex2 from "./components/Patientindex2";
@@ -47,19 +45,18 @@ function App() {
 
   //  console.log(statePatient);
   // console.log(stateDoctor);
-//  const dept=(stateDepartment.departments.filter(x => x.id==3));
+  //  const dept=(stateDepartment.departments.filter(x => x.id==3));
 
-//  const allDepts= stateDepartment.de
+  //  const allDepts= stateDepartment.de
   useEffect(() => {
     dispatch(getDoctors());
     dispatch(getPatients());
     dispatch(getDepartments());
-
   }, [dispatch]);
 
   return (
     <div className="App">
-        <MyNav/>
+      <MyNav />
 
       {/* <TopNav /> */}
       <Routes>
@@ -69,16 +66,11 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
 
-
         <Route path="/hDepts" element={<AllDepartmentsPage />} />
-        <Route path='/hDepts/:id' element={<DepartmentPage />} />
+        <Route path="/hDepts/:id" element={<DepartmentPage />} />
 
-        <Route
-          path="reserve"
-          element={<Reserve patient={statePatient} doctor={stateDoctor} />}
-        />
+        <Route path="reserve" element={<Reserve />} />
         <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
-
 
         <Route
           path="/patient/:id"
@@ -101,7 +93,6 @@ function App() {
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />
-
     </div>
   );
 }

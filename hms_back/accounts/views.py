@@ -31,7 +31,7 @@ class CustomUserCreate(generics.CreateAPIView):
                 pass
         print(request.data["username"])
 
-        user = serializer.save()
+        serializer.save()
         response = {"msg": "username gooooooooooood"}
         return Response(response, status=status.HTTP_200_OK)
 
