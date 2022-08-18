@@ -1,14 +1,46 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPatientDetails } from "./../store/patient";
+import Select from "react-select";
 
-const Patientindex = () => {
+const Patientindex = ({ doctor }) => {
+  //try
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.patientsSlice);
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getPatientDetails(id));
+  }, [dispatch, id]);
+
+  // reserve try
+  const doctorOptions = doctor.doctors.map(function (item) {
+    return { value: item.id, label: item.full_name };
+  });
+  console.log("Doctor options", doctorOptions);
+  const data = {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+  const onChange = (e, str) => {
+    // console.log(e);
+    // console.log(str);
+    data[str] = e.value;
+    console.log(data);
+  };
+
+  // console.log("parameters test", state.patientDetails);
+
   return (
-    <body id="page-top">
+    <section id="page-top">
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
       />
       <div id="wrapper">
         {/* sidebar */}
@@ -18,7 +50,7 @@ const Patientindex = () => {
         >
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={"/patient"}
+            to={`/patient/${id}`}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -29,7 +61,7 @@ const Patientindex = () => {
           <hr className="sidebar-divider my-0" />
 
           <li className="nav-item active">
-            <Link className="nav-link" to={"/patient"}>
+            <Link className="nav-link" to={`/patient/${id}`}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </Link>
@@ -38,7 +70,7 @@ const Patientindex = () => {
           <hr className="sidebar-divider" />
 
           <li className="nav-item">
-            <Link className="nav-link" to={"/patienthistory"}>
+            <Link className="nav-link" to={`/patienthistory/${id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>History</span>
             </Link>
@@ -46,14 +78,14 @@ const Patientindex = () => {
 
           {/* <!-- Nav Item - edit --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/patientedit"}>
+            <Link className="nav-link" to={`/patientedit/${id}`}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit appointment</span>
             </Link>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to={"/checkout"}>
+            <Link className="nav-link" to={`/checkout/${id}`}>
               <i className="fas fa-fw fa-table"></i>
               <span>CheckOut</span>
             </Link>
@@ -68,14 +100,6 @@ const Patientindex = () => {
             <div className="container-fluid">
               <div className="d-sm-flex align-items-center justify-content-center mb-4 p-3">
                 <h1 className="h3  text-gray-800">Dashboard</h1>
-                {/* Button */}
-                {/* <a
-                  href="#"
-                  className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                >
-                  <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                  Generate Report
-                </a> */}
               </div>
 
               <div className="row mb-4 justify-content-center">
@@ -86,25 +110,25 @@ const Patientindex = () => {
                     </h4>
                     <hr />
                   </div>
-                  <form action="">
-                    <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Select department</label>
-                      <select className="form-select col-md-6">
-                        <option selected>Purpose Of Appointment</option>
-                        <option value="1">Web Design</option>
-                        <option value="2">Web Development</option>
-                        <option value="3">IOS Developemt</option>
-                      </select>
-                    </div>
+                  <form action="" method="post" onSubmit={handleSubmit}>
                     <div className="row mx-2 mb-1">
                       <label className="col-md-6">Select Doctor</label>
+                      <Select
+                        className="form-select col-md-6"
+                        options={doctorOptions}
+                        name="doctor"
+                        onChange={(e) => onChange(e, "doctor")}
+                      ></Select>
+                    </div>
+                    {/* <div className="row mx-2 mb-1">
+                      <label className="col-md-6">Select Doctor</label>
                       <select className="form-select col-md-6">
-                        <option selected>Purpose Of Appointment</option>
+                        <option defaultValue>Purpose Of Appointment</option>
                         <option value="4">Web Design</option>
                         <option value="5">Web Development</option>
                         <option value="6">IOS Developemt</option>
                       </select>
-                    </div>
+                    </div> */}
                     <div className="row g-3 mb-1">
                       <div className="col-md-6">
                         <input
@@ -127,15 +151,12 @@ const Patientindex = () => {
                         ></textarea>
                       </div>
                       <div className="col-12 mt-5">
-                        <button
-                          type="submit"
-                          className="btn btn-primary float-end"
-                        >
+                        <button type="submit" className="btn btn-primary mx-2">
                           Book Appointment
                         </button>
                         <button
                           type="button"
-                          className="btn btn-outline-secondary float-end me-2"
+                          className="btn btn-outline-secondary  me-2"
                         >
                           Cancel
                         </button>
@@ -144,69 +165,15 @@ const Patientindex = () => {
                   </form>
                 </div>
               </div>
-              {/* to show last report */}
-              {/* <div className="row mb-4 justify-content-center">
-                <div className="card shadow col-lg-8 col-md-6  border p-4 shadow bg-light">
-                  <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h4 className="m-0 font-weight-bold text-primary">
-                      Your medical reort
-                    </h4>
-                    <div className="dropdown no-arrow">
-                      <a
-                        className="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                      </a>
-                      <div
-                        className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div className="dropdown-header">Dropdown Header:</div>
-                        <a className="dropdown-item" href="#">
-                          Action
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          Another action
-                        </a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">
-                          Something else here
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body text-center">
-                    <img
-                      src="/img/noreports.jpg"
-                      alt="reports"
-                      className="img-fluid"
-                    />
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
       </div>
-      {/* footer */}
-      {/* <footer className="sticky-footer bg-white">
-        <div className="container my-auto">
-          <div className="copyright text-center my-auto">
-            <span>Copyright &copy; HMS 2022</span>
-          </div>
-        </div>
-      </footer> */}
 
       <a className="scroll-to-top rounded" href="#page-top">
         <i className="fas fa-angle-up"></i>
       </a>
-    </body>
+    </section>
   );
 };
 
