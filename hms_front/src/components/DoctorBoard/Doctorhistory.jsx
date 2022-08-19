@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-const Doctorindex = () => {
+const Doctorhistory = () => {
   const id = useParams();
   return (
     <section id="page-top">
@@ -43,76 +43,96 @@ const Doctorindex = () => {
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
+          <li className="nav-item active">
+            <Link className="nav-link" to={`/doctorhistory/${id.id}`}>
+              <i className="fas fa-fw fa-chart-area"></i>
+              <span>patients history</span>
+            </Link>
+          </li>
         </ul>
         {/* <!-- End of Sidebar --> */}
 
         {/* <!-- Content Wrapper --> */}
         <div id="content-wrapper" className="d-flex flex-column">
           {/* <!-- Main Content --> */}
+          <div id="content">
+            {/* <!-- Topbar --> */}
 
-          <div className="container-fluid">
-            {/* <!-- Page Heading --> */}
-            <div className="align-items-center p-2">
-              <h1 className="h2 mb-4 text-gray-800 text-center">
-                Todays appointements
+            {/* <!-- End of Topbar --> */}
+
+            {/* <!-- Begin Page Content --> */}
+            <div className="container-fluid p-2">
+              {/* <!-- Page Heading --> */}
+              <h1 className="h3 mb-4 text-gray-800 text-center">
+                Reports History
               </h1>
-              {/* <h3 className="h3 mb-2 text-gray-800 text-center">
-                Todays appointements
-              </h3> */}
-
+              <div className="container mb-4 text-center">
+                <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                  <div className="input-group">
+                    <input
+                      type="text"
+                      className="form-control bg-gradient-light border-0 small"
+                      placeholder="Enter Patient id"
+                      aria-label="Search patient"
+                      aria-describedby="basic-addon2"
+                    />
+                    <div className="input-group-append">
+                      <button className="btn btn-primary" type="button">
+                        <i className="fas fa-arrow-right fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
               <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Patient name</th>
-                    <th scope="col">visit time</th>
-                    <th scope="col">Patient age</th>
-                    <th scope="col">Begin session</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Edit Report</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row">1</th>
-                    <td>Omar</td>
-                    <td>06:00 PM</td>
-                    <td>33</td>
+                    <td>11/2/2022</td>
+                    <td>Mark</td>
                     <td>
                       <Link
-                        to={`/doctorreport/${id.id}`}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        to={`/doctoredit/${id.id}`}
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
+                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                        Report
                       </Link>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
-                    <td>Omar</td>
-                    <td>06:00 PM</td>
-                    <td>33</td>
+                    <td>11/2/2022</td>
+                    <td>Mark</td>
                     <td>
                       <Link
-                        to={`/doctorreport/${id.id}`}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        to={`/doctoredit/${id.id}`}
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
+                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                        Report
                       </Link>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
-                    <td>Omar</td>
-                    <td>06:00 PM</td>
-                    <td>33</td>
+                    <td>11/2/2022</td>
+                    <td>Mark</td>
                     <td>
                       <Link
-                        to={`/doctorreport/${id.id}`}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        to={`/doctoredit/${id.id}`}
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
+                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                        Report
                       </Link>
                     </td>
                   </tr>
@@ -122,15 +142,8 @@ const Doctorindex = () => {
           </div>
         </div>
       </div>
-      {/* <!-- End of Main Content --> */}
-      {/* <!-- End of Page Wrapper --> */}
-
-      {/* <!-- Scroll to Top Button--> */}
-      <a className="scroll-to-top rounded" href="#page-top">
-        <i className="fas fa-angle-up"></i>
-      </a>
     </section>
   );
 };
 
-export default Doctorindex;
+export default Doctorhistory;
