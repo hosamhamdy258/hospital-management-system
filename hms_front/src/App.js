@@ -10,7 +10,7 @@ import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
 import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
-import Doctors from "./components/Doctors";
+import Doctors  from "./components/Doctors";
 import Home from "./components/home";
 import Login from "./components/login";
 import MyNav from './components/MyNav';
