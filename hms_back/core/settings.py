@@ -33,7 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Khalid Connection To Server
-#ALLOWED_HOSTS=['*']
+# ALLOWED_HOSTS=['*']
 #CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'hospital',
     'hospital_api',
     'rest_framework',
+    'djoser',
+    "social_django",
     'accounts',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
@@ -126,7 +128,7 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
-
+DOMAIN = ("localhost:3000")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
