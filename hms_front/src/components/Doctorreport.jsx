@@ -16,7 +16,7 @@ const Doctorreport = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5 p-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
@@ -24,8 +24,8 @@ const Doctorreport = () => {
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/doctor/${id.id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Doctor Panel</div>
           </Link>
@@ -43,14 +43,6 @@ const Doctorreport = () => {
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider" />
-
-          {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          {/* <div className="text-center d-none d-md-inline">
-            <button
-              className="rounded-circle border-0"
-              id="sidebarToggle"
-            ></button>
-          </div> */}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -58,18 +50,16 @@ const Doctorreport = () => {
         <div id="content-wrapper" className="d-flex flex-column">
           {/* <!-- Main Content --> */}
           {/* <!-- Begin Page Content --> */}
-          <div className="container-fluid p-5 mt-5">
+          <div className="container-fluid">
             {/* <!-- Page Heading --> */}
-            <div className="align-items-center mb-4">
-              <h1 className="h1 mb-2 text-gray-800">Dashboard</h1>
+            <div className="align-items-center p-2">
+              {/* <h1 className="h2 mb-2 text-gray-800 text-center">Dashboard</h1> */}
+              <h4 className="h2 mb-4 text-gray-800 text-center">
+                Generate patient report
+              </h4>
               <div className="row mb-4 text-center justify-content-center">
                 <div className="col-lg-8 col-md-6  border p-4 shadow bg-light">
-                  <div className="col-12">
-                    <h4 className="m-0 font-weight-bold text-dark">
-                      Generate patient report
-                    </h4>
-                    <hr />
-                  </div>
+                  <div className="col-12">{/* <hr /> */}</div>
                   <form action="">
                     <div className="row mx-2 mb-1">
                       <label className="col-md-6">Patient name</label>

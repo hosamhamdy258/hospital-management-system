@@ -127,15 +127,15 @@ const Patientindex = ({ doctor }) => {
       <div id="wrapper">
         {/* sidebar */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/patient/${id.id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
@@ -179,8 +179,8 @@ const Patientindex = ({ doctor }) => {
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
             {/* Body  */}
-            <div className="container-fluid mt-5">
-              <div className="d-sm-flex align-items-center justify-content-center mb-4 p-3">
+            <div className="container-fluid">
+              <div className="d-sm-flex align-items-center justify-content-center p-3">
                 <h1 className="h3  text-gray-800">Dashboard</h1>
               </div>
 

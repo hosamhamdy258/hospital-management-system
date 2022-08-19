@@ -16,7 +16,7 @@ const Patientedit = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
@@ -24,8 +24,8 @@ const Patientedit = () => {
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/patient/${id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
@@ -72,96 +72,95 @@ const Patientedit = () => {
           <hr className="sidebar-divider d-none d-md-block" />
         </ul>
         {/* <!-- End of Sidebar --> */}
+        <div id="content-wrapper" className="d-flex flex-column">
+          {/* <!-- Main Content --> */}
+          <div className="container-fluid p-3">
+            {/* <!-- Page Heading --> */}
+            <h1 className="h3 mb-4 text-gray-800">Current reservations</h1>
 
-        {/* <!-- Main Content --> */}
-        <div className="container-fluid p-5 mt-4">
-          {/* <!-- Page Heading --> */}
-          <h1 className="h3 text-gray-800">.</h1>
-
-          <h1 className="h3 mb-4 text-gray-800">Current reservations</h1>
-
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Date</th>
-                <th scope="col">Doctor</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>11/2/2022</td>
-                <td>Mark</td>
-                <td>
-                  <Link
-                    to={"#"}
-                    className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                  >
-                    <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={"#"}
-                    className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                  >
-                    {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                    <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                    Delete
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>11/2/2022</td>
-                <td>Mark</td>
-                <td>
-                  <Link
-                    to={"#"}
-                    className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                  >
-                    <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={"#"}
-                    className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                  >
-                    {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                    <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                    Delete
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>11/2/2022</td>
-                <td>Mark</td>
-                <td>
-                  <Link
-                    to={"#"}
-                    className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                  >
-                    <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={"#"}
-                    className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                  >
-                    {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                    <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                    Delete
-                  </Link>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Doctor</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>11/2/2022</td>
+                  <td>Mark</td>
+                  <td>
+                    <Link
+                      to={"#"}
+                      className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                    >
+                      <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                    </Link>
+                  </td>
+                  <td>
+                    <Link
+                      to={"#"}
+                      className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                    >
+                      {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
+                      <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                      Delete
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>11/2/2022</td>
+                  <td>Mark</td>
+                  <td>
+                    <Link
+                      to={"#"}
+                      className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                    >
+                      <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                    </Link>
+                  </td>
+                  <td>
+                    <Link
+                      to={"#"}
+                      className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                    >
+                      {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
+                      <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                      Delete
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>11/2/2022</td>
+                  <td>Mark</td>
+                  <td>
+                    <Link
+                      to={"#"}
+                      className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                    >
+                      <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                    </Link>
+                  </td>
+                  <td>
+                    <Link
+                      to={"#"}
+                      className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                    >
+                      {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
+                      <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                      Delete
+                    </Link>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
