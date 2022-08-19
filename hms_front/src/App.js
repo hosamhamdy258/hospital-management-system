@@ -93,6 +93,16 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route exact path="/activate/:uid/:token" element={<Activate />} />
+        <Route path="/login" element={<Signin />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route
+          exact
+          path="/password/reset/confirm/:uid/:token"
+          element={<ResetPasswordConfirm />}
+        />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <BottomFooter />
