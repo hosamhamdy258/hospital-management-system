@@ -99,13 +99,14 @@ p.danger {
 	color: red;
 }
 /************ Navbar Css ************/
+
 nav.navbar {
   background-color: #edecea;
 
   padding: 5px 0;
   /* position: fixed; */
   position: sticky;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   width: 100%;
   top: 0;
   z-index: 9999;
@@ -213,7 +214,8 @@ span.navbar-text {
 nav.navbar .navbar-toggler:active,
 nav.navbar .navbar-toggler:focus {
 	outline: none;
-    box-shadow: none;
+  box-shadow: none;
+  color: rgb(133, 52, 52);
 }
 nav.navbar .navbar-toggler-icon {
   width: 24px;
@@ -254,6 +256,27 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
+}
+.nav_login_button {
+  height: min-content;
+  min-height: 48px;
+  border-radius: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #0a66c2;
+  
+}
+.nav_login_button:visited, .nav_login_button:focus {
+  cursor: pointer;
+  text-decoration-line: none;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  background-color: #004182;
+  color: #fff;
 }
 
 /************ Banner Css ************/

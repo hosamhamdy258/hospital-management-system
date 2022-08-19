@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getReservationList } from "../store/reserve";
+import { getReservationList } from "../../store/reserve";
 
 const Patienthistory = () => {
   const { id } = useParams();
