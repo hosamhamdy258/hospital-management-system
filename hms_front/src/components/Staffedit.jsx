@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Staffedit = () => {
+  const id = useParams();
   return (
     <section id="page-top">
       <link
@@ -15,13 +16,13 @@ const Staffedit = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={"/staff"}
+            to={`/staff/${id.id}`}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -34,7 +35,7 @@ const Staffedit = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/staff"}>
+            <Link className="nav-link" to={`/staff/${id.id}`}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </Link>
@@ -47,7 +48,7 @@ const Staffedit = () => {
 
           {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item active">
-            <Link className="nav-link" to={"/staffhistory"}>
+            <Link className="nav-link" to={`/staffhistory/${id.id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>patient history</span>
             </Link>
@@ -55,7 +56,7 @@ const Staffedit = () => {
 
           {/* <!-- Nav Item - edit --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/staffedit"}>
+            <Link className="nav-link" to={`/staffedit/${id.id}`}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit patients appointments</span>
             </Link>
@@ -73,27 +74,10 @@ const Staffedit = () => {
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
-            <div className="container-fluid">
+            <div className="container-fluid mt-5">
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Patients reservations</h1>
-              <div className="container mb-4 text-center">
-                <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control bg-gradient-light border-0 small"
-                      placeholder="Enter Patient id"
-                      aria-label="Search patient"
-                      aria-describedby="basic-addon2"
-                    />
-                    <div className="input-group-append">
-                      <button className="btn btn-primary" type="button">
-                        <i className="fas fa-arrow-right fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
+
               <table className="table">
                 <thead>
                   <tr>
@@ -112,7 +96,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                       </Link>
@@ -135,7 +119,7 @@ const Staffedit = () => {
                     <td>
                       <a
                         href="#"
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                       </a>
@@ -158,7 +142,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                       </Link>
