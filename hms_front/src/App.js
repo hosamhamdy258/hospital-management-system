@@ -74,17 +74,17 @@ function App() {
           element={<Patientindex doctor={stateDoctor} />}
         />
         <Route path="/patienthistory/:id" element={<Patienthistory />} />
+        <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/checkout/:id" element={<Patientcheckout />} />
-        <Route path="/doctor" element={<Doctorindex />} />
-        <Route path="/doctorreport" element={<Doctorreport />} />
+        <Route path="/doctor/:id" element={<Doctorindex />} />
+        <Route path="/doctorreport/:id" element={<Doctorreport />} />
         <Route
-          path="/staff"
+          path="/staff/:id"
           element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
         />
-        <Route path="/staffhistory" element={<Staffhistory />} />
+        <Route path="/staffhistory/:id" element={<Staffhistory />} />
+        <Route path="/staffedit/:id" element={<Staffedit />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/patientedit/:id" element={<Patientedit />} />
-        <Route path="/staffedit" element={<Staffedit />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <BottomFooter />

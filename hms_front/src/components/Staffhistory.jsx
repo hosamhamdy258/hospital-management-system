@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Staffhistory = () => {
+  const id = useParams();
   return (
     <section id="page-top">
       <link
@@ -14,13 +15,13 @@ const Staffhistory = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={"/staff"}
+            to={`/staff/${id.id}`}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -33,7 +34,7 @@ const Staffhistory = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/staff"}>
+            <Link className="nav-link" to={`/staff/${id.id}`}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </Link>
@@ -46,7 +47,7 @@ const Staffhistory = () => {
 
           {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item active">
-            <Link className="nav-link" to={"/staffhistory"}>
+            <Link className="nav-link" to={`/staffhistory/${id.id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>patient history</span>
             </Link>
@@ -54,7 +55,7 @@ const Staffhistory = () => {
 
           {/* <!-- Nav Item - edit --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={"/staffedit"}>
+            <Link className="nav-link" to={`/staffedit/${id.id}`}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit patients appointments</span>
             </Link>
@@ -114,7 +115,7 @@ const Staffhistory = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-print fa-sm text-white-50"></i>{" "}
                         Print Report
@@ -129,7 +130,7 @@ const Staffhistory = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-print fa-sm text-white-50"></i>{" "}
                         Print Report
@@ -144,7 +145,7 @@ const Staffhistory = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-print fa-sm text-white-50"></i>{" "}
                         Print Report
