@@ -12,7 +12,7 @@ import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
-import Login from "./components/login";
+// import Login from "./components/login";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Register from "./components/register";
@@ -35,6 +35,12 @@ import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
 import { getPatientDetails, getPatients } from "./store/patient";
 import Page404 from "./components/Page404";
+// Khalid import
+import Signup from "./components/Registration/Signup";
+import Activate from "./components/Registration/Activate";
+import Signin from "./components/Registration/Signin";
+import ResetPassword from "./components/Registration/ResetPassword";
+import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,8 +67,8 @@ function App() {
       {/* <TopNav /> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login state={stateAuth} />} />
-        <Route path="register" element={<Register />} />
+        {/* <Route path="login" element={<Login state={stateAuth} />} />
+        <Route path="register" element={<Register />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/departments" element={<AllDepartmentsPage />} />
@@ -85,6 +91,18 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
+        {/* Khalid Routs */}
+        <Route path="/signup" element={<Signup />} />
+        <Route exact path="/activate/:uid/:token" element={<Activate />} />
+        <Route path="/login" element={<Signin />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route
+          exact
+          path="/password/reset/confirm/:uid/:token"
+          element={<ResetPasswordConfirm />}
+        />
+        {/* End Khalid Routs */}
+
         <Route path="*" element={<Page404 />} />
       </Routes>
       <BottomFooter />

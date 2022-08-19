@@ -8,6 +8,7 @@ import logo from "../assets/img/logo.jpg";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
+import { Link } from "react-router-dom";
 
 const MyNav = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -28,7 +29,7 @@ const MyNav = () => {
     setActiveLink(value);
   };
   return (
-    <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
+    <Navbar expand="lg" className={scrolled ? "scrolled" : ""} id="MyNAv">
       <Container>
         <Navbar.Brand href="#home">
           <img src={logo} alt="logo" />
@@ -101,7 +102,8 @@ const MyNav = () => {
               className="vvd btn btn-info"
               onClick={() => console.log("login")}
             >
-              <span>Login</span>
+              {/* <span>Login</span> */}
+              <Link className='' to='/login' role='button'>Login</Link>
             </button>
           </span>
         </Navbar.Collapse>
