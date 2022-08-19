@@ -96,7 +96,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                       </Link>
@@ -104,7 +104,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                        className=" d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
                         <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>

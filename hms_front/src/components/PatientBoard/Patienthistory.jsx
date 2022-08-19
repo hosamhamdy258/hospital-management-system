@@ -1,7 +1,17 @@
 import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getReservationList } from "../store/reserve";
 
 const Patienthistory = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.reservationSlice);
+  useEffect(() => {
+    dispatch(getReservationList());
+  }, [dispatch]);
+
   return (
     <section id="page-top">
       <link
@@ -86,57 +96,33 @@ const Patienthistory = () => {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Date</th>
+                    <th scope="col">time</th>
                     <th scope="col">Department</th>
                     <th scope="col">Doctor</th>
                     <th scope="col">Download</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
+                  {state.reservation.map((element,index) => {
+                    return (
+                      <tr>
+                        <th scope="row">{index+1}</th>
+                        <td>{element.date.slice(0,10)}</td>
+                        <td>{element.date.slice(11,16)}</td>
+                        <td>{element.department}</td>
+                        <td>{element.doctor_name}</td>
+                        <td>
+                          <Link
+                            to={"#"}
+                            className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                          >
+                            <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                            Generate Report
+                          </Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
