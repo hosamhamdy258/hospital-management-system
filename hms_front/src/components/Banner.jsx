@@ -4,7 +4,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 import { ArrowRightCircle } from "react-bootstrap-icons";
-import Hbeat from "./HBeat/Hbeat";
 import React from "react";
 import headerImg from "../assets/img/h5.webp";
 

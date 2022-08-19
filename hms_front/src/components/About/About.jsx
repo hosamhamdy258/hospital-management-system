@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap'
 import PageHead from '../PagesHeading/PageHead'
 import React from 'react'
+import { motion } from "framer-motion"
 
 const About = () => {
     return (
@@ -17,15 +18,15 @@ const About = () => {
             </section>
             <div className="img_hero">
                 <div>
-                    <section className='img_present'>
+                    <motion.section className='img_present' initial={{scale:0.7}} whileInView={{scale:1 }} transition={{duration:1.2}}>
                         <div>
                             <img src="/features/h1.jpg" alt="" className="img-fluid shadow-4" />
                             <div>
-                                <div class="c-paragraph"><p>Our mission is to improve people's lives and bring back smiles.</p>
-                                </div>
+                                <motion.div initial={{x:200}} whileInView={{x:0 }} transition={{duration:1}} class="c-paragraph"><p>Our mission is to improve people's lives and bring back smiles.</p>
+                                </motion.div>
                             </div>
                         </div>
-                    </section>
+                    </motion.section>
                 </div>
             </div>
 
@@ -34,7 +35,7 @@ const About = () => {
                     <div className="row">
                         <h2 className="about_title">Our Services</h2>
 
-                        <div className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.5}} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/doctors.jpg" />
                                 <Card.Body>
@@ -45,8 +46,8 @@ const About = () => {
                                     <br />
                                 </Card.Body>
                             </Card>
-                        </div>
-                        <div className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        </motion.div>
+                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.6}} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/donationbox1.jpg" />
                                 <Card.Body>
@@ -57,8 +58,8 @@ const About = () => {
                                     <br />
                                 </Card.Body>
                             </Card>
-                        </div>
-                        <div className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        </motion.div>
+                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.7}} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/medical-counseling.jpg" />
                                 <Card.Body>
@@ -69,8 +70,8 @@ const About = () => {
                                     <br />
                                 </Card.Body>
                             </Card>
-                        </div>
-                        <div className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        </motion.div>
+                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.8}} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/Children-Healthcare-1920x1080-1.jpg" />
                                 <Card.Body>
@@ -81,12 +82,12 @@ const About = () => {
                                     <br />
                                 </Card.Body>
                             </Card>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 
             </section>
-            <section className="section awards">
+            <motion.section initial={{x:600}} whileInView={{x:0 }} transition={{duration:1.1}} className="section awards">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-4">
@@ -114,7 +115,7 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
 
 
