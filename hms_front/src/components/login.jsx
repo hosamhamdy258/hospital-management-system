@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { loginUser } from "./../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Login({state}) {
+export default function Login({ state }) {
   // const state = useSelector((state) => state.authSlice);
 
   const username = useRef(null);
@@ -25,7 +25,7 @@ export default function Login({state}) {
   };
 
   return (
-    <Form className="container w-50" method="POST" onSubmit={handleSubmit}>
+    <Form className="container w-50 my-5" method="POST" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label>User Name</Form.Label>
         <Form.Control

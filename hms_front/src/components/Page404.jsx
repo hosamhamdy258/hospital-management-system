@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Page404 = () => {
   return (
@@ -13,39 +14,7 @@ const Page404 = () => {
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
-        <ul
-          className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-          id="accordionSidebar"
-        >
-          {/* <!-- Sidebar - Brand --> */}
-          <a
-            className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="/"
-          >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
-            </div>
-            <div className="sidebar-brand-text mx-3">Patient Panel</div>
-          </a>
 
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider my-0" />
-
-          {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item">
-            <a className="nav-link" href="/">
-              <i className="fas fa-fw fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider" />
-
-          {/* <!-- Heading --> */}
-
-          {/* <!-- Nav Item - Pages Collapse Menu --> */}
-        </ul>
         {/* <!-- End of Sidebar --> */}
 
         {/* <!-- Content Wrapper --> */}
@@ -67,7 +36,7 @@ const Page404 = () => {
                 <p className="text-gray-500 mb-0">
                   It looks like you found a glitch in the matrix...
                 </p>
-                <a href="/">&larr; Back to Dashboard</a>
+                <Link to="/">&larr; Back to Dashboard</Link>
               </div>
             </div>
             {/* <!-- /.container-fluid --> */}

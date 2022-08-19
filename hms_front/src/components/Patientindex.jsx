@@ -132,7 +132,7 @@ const Patientindex = ({ doctor }) => {
         >
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/patient/${id}`}
+            to={`/patient/${id.id}`}
           >
             <div className="sidebar-brand-icon rotate-n-15">
               <i className="fas fa-laugh-wink"></i>
@@ -143,7 +143,7 @@ const Patientindex = ({ doctor }) => {
           <hr className="sidebar-divider my-0" />
 
           <li className="nav-item active">
-            <Link className="nav-link" to={`/patient/${id}`}>
+            <Link className="nav-link" to={`/patient/${id.id}`}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </Link>
@@ -152,7 +152,7 @@ const Patientindex = ({ doctor }) => {
           <hr className="sidebar-divider" />
 
           <li className="nav-item">
-            <Link className="nav-link" to={`/patienthistory/${id}`}>
+            <Link className="nav-link" to={`/patienthistory/${id.id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>History</span>
             </Link>
@@ -160,14 +160,14 @@ const Patientindex = ({ doctor }) => {
 
           {/* <!-- Nav Item - edit --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={`/patientedit/${id}`}>
+            <Link className="nav-link" to={`/patientedit/${id.id}`}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit appointment</span>
             </Link>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to={`/checkout/${id}`}>
+            <Link className="nav-link" to={`/checkout/${id.id}`}>
               <i className="fas fa-fw fa-table"></i>
               <span>CheckOut</span>
             </Link>
@@ -193,15 +193,17 @@ const Patientindex = ({ doctor }) => {
                     <hr />
                   </div>
                   <form action="" method="post" onSubmit={handleSubmit}>
-                    <Select
-                      placeholder="select a doctor"
-                      className="w-25 m-auto"
-                      options={doctorOptions}
-                      onChange={(e) =>
-                        dispatch(addReservationData(["doctor", e]))
-                      }
-                    />
-                    <br />
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select Adoctor</label>
+                      <Select
+                        placeholder="select a doctor"
+                        className="col-md-6"
+                        options={doctorOptions}
+                        onChange={(e) =>
+                          dispatch(addReservationData(["doctor", e]))
+                        }
+                      />
+                    </div>
                     {/* <Select
                       placeholder="select a patient"
                       className="w-25 m-auto"
@@ -211,66 +213,30 @@ const Patientindex = ({ doctor }) => {
                       }
                     />
                     <br /> */}
-
-                    <Select
-                      placeholder="select a date"
-                      className="w-25 m-auto"
-                      options={state.reservationData.datelist}
-                      onChange={(e) =>
-                        dispatch(addReservationData(["date1", e]))
-                      }
-                    />
-                    <br />
-                    <Select
-                      placeholder="select a time"
-                      className="w-25 m-auto"
-                      options={state.reservationData.timelist2}
-                      onChange={(e) =>
-                        dispatch(addReservationData(["time", e]))
-                      }
-                    />
-                    <br />
-                    <Button
-                      variant="primary"
-                      type="submit"
-                      disabled={state.reservationData.isDisabled}
-                    >
-                      Submit
-                    </Button>
-                    {/* <div className="row mx-1 mb-1">
-                      <label className="col-md-6">Select Doctor</label>
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select Date</label>
                       <Select
-                        className="form-select col-md-6"
-                        options={doctorOptions}
-                        name="doctor"
-                        onChange={(e) => onChange(e, "doctor")}
-                        placeholder="Select doctor"
-                      ></Select>
-                    </div> */}
-                    {/* <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Select Doctor</label>
-                      <select className="form-select col-md-6">
-                        <option defaultValue>Purpose Of Appointment</option>
-                        <option value="4">Web Design</option>
-                        <option value="5">Web Development</option>
-                        <option value="6">IOS Developemt</option>
-                      </select>
-                    </div> */}
+                        placeholder="select a date"
+                        className=" col-md-6"
+                        options={state.reservationData.datelist}
+                        onChange={(e) =>
+                          dispatch(addReservationData(["date1", e]))
+                        }
+                      />
+                    </div>
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select time</label>
+                      <Select
+                        placeholder="select a time"
+                        className="col-md-6"
+                        options={state.reservationData.timelist2}
+                        onChange={(e) =>
+                          dispatch(addReservationData(["time", e]))
+                        }
+                      />
+                    </div>
+                    <br />
                     <div className="row g-3 mb-1">
-                      <div className="col-md-6">
-                        <input
-                          type="date"
-                          className="form-control"
-                          placeholder="Enter Date"
-                        />
-                      </div>
-                      <div className="col-md-6 mb-1">
-                        <input
-                          type="time"
-                          className="form-control"
-                          placeholder="Enter Email"
-                        />
-                      </div>
                       <div className="col-12">
                         <textarea
                           className="form-control"
@@ -280,7 +246,8 @@ const Patientindex = ({ doctor }) => {
                       <div className="col-12 mt-5  text-center">
                         <button
                           type="submit"
-                          className="btn btn-secondary mx-2"
+                          className="btn btn-secondary mx-3"
+                          disabled={state.reservationData.isDisabled}
                         >
                           Book Appointment
                         </button>

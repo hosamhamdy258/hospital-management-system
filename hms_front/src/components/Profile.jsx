@@ -4,14 +4,14 @@ import "./../App.css";
 const Profile = () => {
   return (
     <section className="vh-100 mb-4" style={{ backgroundcolor: "#f4f5f7" }}>
-      <div className="container py-5 h-100">
+      <div className="container py-5 h-100 mt-5">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-lg-6 mb-4 mb-lg-0">
             <div className="card mb-3" style={{ borderradius: ".5rem" }}>
               <div className="row g-0">
                 <div className="col-md-4 gradient-custom text-center text-white border-top border-bottom">
                   <img
-                    src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                     alt="Avatar"
                     className="img-fluid my-5"
                     style={{ width: "80px" }}

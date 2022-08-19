@@ -12,7 +12,7 @@ import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
-import Login from "./components/login";
+// import Login from "./components/login";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Register from "./components/register";
@@ -35,6 +35,12 @@ import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
 import { getPatientDetails, getPatients } from "./store/patient";
 import Page404 from "./components/Page404";
+// Khalid import
+import Signup from "./components/Registration/Signup";
+import Activate from "./components/Registration/Activate";
+import Signin from "./components/Registration/Signin";
+import ResetPassword from "./components/Registration/ResetPassword";
+import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,8 +67,8 @@ function App() {
       {/* <TopNav /> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login state={stateAuth} />} />
-        <Route path="register" element={<Register />} />
+        {/* <Route path="login" element={<Login state={stateAuth} />} />
+        <Route path="register" element={<Register />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/departments" element={<AllDepartmentsPage />} />
@@ -74,14 +80,16 @@ function App() {
           element={<Patientindex doctor={stateDoctor} />}
         />
         <Route path="/patienthistory/:id" element={<Patienthistory />} />
+        <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/checkout/:id" element={<Patientcheckout />} />
-        <Route path="/doctor" element={<Doctorindex />} />
-        <Route path="/doctorreport" element={<Doctorreport />} />
+        <Route path="/doctor/:id" element={<Doctorindex />} />
+        <Route path="/doctorreport/:id" element={<Doctorreport />} />
         <Route
-          path="/staff"
+          path="/staff/:id"
           element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
         />
-        <Route path="/staffhistory" element={<Staffhistory />} />
+        <Route path="/staffhistory/:id" element={<Staffhistory />} />
+        <Route path="/staffedit/:id" element={<Staffedit />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
