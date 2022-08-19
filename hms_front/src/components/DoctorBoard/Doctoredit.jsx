@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-const Doctorreport = () => {
+const Doctoredit = () => {
   const id = useParams();
+
   return (
     <section id="page-top">
       <link
@@ -16,7 +17,7 @@ const Doctorreport = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5 p-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
@@ -24,15 +25,13 @@ const Doctorreport = () => {
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/doctor/${id.id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Doctor Panel</div>
           </Link>
-
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />
-
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item active">
             <Link className="nav-link" to={`/doctor/${id.id}`}>
@@ -40,17 +39,14 @@ const Doctorreport = () => {
               <span>Dashboard</span>
             </Link>
           </li>
-
           {/* <!-- Divider --> */}
-          <hr className="sidebar-divider" />
-
-          {/* <!-- Sidebar Toggler (Sidebar) --> */}
-          {/* <div className="text-center d-none d-md-inline">
-            <button
-              className="rounded-circle border-0"
-              id="sidebarToggle"
-            ></button>
-          </div> */}
+          <hr className="sidebar-divider d-none d-md-block" />
+          <li className="nav-item active">
+            <Link className="nav-link" to={`/doctorhistory/${id.id}`}>
+              <i className="fas fa-fw fa-chart-area"></i>
+              <span>patients history</span>
+            </Link>
+          </li>{" "}
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -58,18 +54,16 @@ const Doctorreport = () => {
         <div id="content-wrapper" className="d-flex flex-column">
           {/* <!-- Main Content --> */}
           {/* <!-- Begin Page Content --> */}
-          <div className="container-fluid p-5 mt-5">
+          <div className="container-fluid">
             {/* <!-- Page Heading --> */}
-            <div className="align-items-center mb-4">
-              <h1 className="h1 mb-2 text-gray-800">Dashboard</h1>
+            <div className="align-items-center p-2">
+              {/* <h1 className="h2 mb-2 text-gray-800 text-center">Dashboard</h1> */}
+              <h4 className="h2 mb-4 text-gray-800 text-center">
+                Edit patient report
+              </h4>
               <div className="row mb-4 text-center justify-content-center">
                 <div className="col-lg-8 col-md-6  border p-4 shadow bg-light">
-                  <div className="col-12">
-                    <h4 className="m-0 font-weight-bold text-dark">
-                      Generate patient report
-                    </h4>
-                    <hr />
-                  </div>
+                  <div className="col-12">{/* <hr /> */}</div>
                   <form action="">
                     <div className="row mx-2 mb-1">
                       <label className="col-md-6">Patient name</label>
@@ -87,13 +81,13 @@ const Doctorreport = () => {
                       <div className="col-12 mb-1">
                         <textarea
                           className="form-control"
-                          placeholder="Diagnosis"
+                          placeholder="Placeholder for Diagnosis of database"
                         ></textarea>
                       </div>
                       <div className="col-12 mb-1">
                         <textarea
                           className="form-control"
-                          placeholder="recommended Medications"
+                          placeholder="Place holder for Medications from data base"
                         ></textarea>
                       </div>
                       <div className="col-12 mt-5 text-center justify-content-center">
@@ -101,7 +95,7 @@ const Doctorreport = () => {
                           type="submit"
                           className="btn btn-secondary mx-4"
                         >
-                          Submit report
+                          Save edits
                         </button>
                         <button
                           type="button"
@@ -132,4 +126,4 @@ const Doctorreport = () => {
   );
 };
 
-export default Doctorreport;
+export default Doctoredit;

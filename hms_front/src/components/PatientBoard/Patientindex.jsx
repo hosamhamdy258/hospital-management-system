@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { getPatientDetails } from "./../store/patient";
+import { getPatientDetails } from "./../../store/patient";
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect } from "react";
 import Select from "react-select";
@@ -11,11 +11,11 @@ import {
   makeReservation,
   restReservationData,
   updateReservationLists,
-} from "./../store/reserve";
+} from "./../../store/reserve";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
 
-const Staffindex = ({ doctor, patient }) => {
+const Patientindex = ({ doctor }) => {
   const id = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reservationSlice);
@@ -66,6 +66,9 @@ const Staffindex = ({ doctor, patient }) => {
     dispatch(getPatientDoctors());
     generateDateTimeLists();
     dispatch(updateReservationLists(true));
+    // to be deleted on staff page
+    dispatch(addReservationData(["patient", { value: Number(id.id) }]));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -121,151 +124,143 @@ const Staffindex = ({ doctor, patient }) => {
         crossOrigin="anonymous"
         referrerPolicy="no-referrer"
       />
-      {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
-        {/* <!-- Sidebar --> */}
+        {/* sidebar */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
-          {/* <!-- Sidebar - Brand --> */}
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/staff/${id.id}`}
+            to={`/patient/${id.id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
-            <div className="sidebar-brand-text mx-3">Staff Panel</div>
+            <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
 
-          {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />
 
-          {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item active">
-            <Link className="nav-link" to={`/staff/${id.id}`}>
+            <Link className="nav-link" to={`/patient/${id.id}`}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </Link>
           </li>
 
-          {/* <!-- Divider --> */}
           <hr className="sidebar-divider" />
 
-          {/* <!-- Heading --> */}
-
-          {/* <!-- Nav Item - Charts --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={`/staffhistory/${id.id}`}>
+            <Link className="nav-link" to={`/patienthistory/${id.id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
-              <span>Patients History</span>
+              <span>History</span>
             </Link>
           </li>
 
           {/* <!-- Nav Item - edit --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={`/staffedit/${id.id}`}>
+            <Link className="nav-link" to={`/patientedit/${id.id}`}>
               <i className="fas fa-fw fa-edit"></i>
-              <span>Edit patients appointments</span>
+              <span>Edit appointment</span>
             </Link>
           </li>
 
-          {/* <!-- Divider --> */}
+          <li className="nav-item">
+            <Link className="nav-link" to={`/checkout/${id.id}`}>
+              <i className="fas fa-fw fa-table"></i>
+              <span>CheckOut</span>
+            </Link>
+          </li>
+
           <hr className="sidebar-divider d-none d-md-block" />
         </ul>
-        {/* <!-- End of Sidebar --> */}
-
-        {/* <!-- Content Wrapper --> */}
+        {/* end of side bar */}
         <div id="content-wrapper" className="d-flex flex-column">
-          {/* <!-- Main Content --> */}
+          <div id="content">
+            {/* Body  */}
+            <div className="container-fluid">
+              <div className="d-sm-flex align-items-center justify-content-center p-3">
+                <h1 className="h3  text-gray-800">Dashboard</h1>
+              </div>
 
-          <div className="container-fluid mt-5 p-5">
-            {/* <!-- Page Heading --> */}
-            <div className="d-sm-flex align-items-center justify-content-center mb-4">
-              <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-            </div>
-
-            {/* <!-- reserve an appointment --> */}
-            <div className="row mb-4 justify-content-center">
-              <div className="col-lg-8 col-md-6 border p-4 shadow bg-light">
-                <div className="col-12">
-                  <h4 className="m-0 font-weight-bold text-dark">
-                    Appointment form
-                  </h4>
-                  <hr />
-                </div>
-                <form action="" method="post" onSubmit={handleSubmit}>
-                  {/* <hr className="Form-divider" /> */}
-                  <div className="row mx-1 mb-2">
-                    <label className="col-md-6">Select Adoctor</label>
-                    <Select
-                      placeholder="select a doctor"
-                      className="col-md-6"
-                      options={doctorOptions}
-                      onChange={(e) =>
-                        dispatch(addReservationData(["doctor", e]))
-                      }
-                    />
+              <div className="row mb-4 justify-content-center">
+                <div className="col-lg-8 col-md-6 border p-4 shadow bg-light">
+                  <div className="col-12">
+                    <h4 className="m-0 font-weight-bold text-dark">
+                      Appointment form
+                    </h4>
+                    <hr />
                   </div>
-                  <div className="row mx-2 mb-1">
-                    <label className="col-md-6">Select Patient</label>
-                    <Select
-                      className="col-md-6 m-auto"
+                  <form action="" method="post" onSubmit={handleSubmit}>
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select Adoctor</label>
+                      <Select
+                        placeholder="select a doctor"
+                        className="col-md-6"
+                        options={doctorOptions}
+                        onChange={(e) =>
+                          dispatch(addReservationData(["doctor", e]))
+                        }
+                      />
+                    </div>
+                    {/* <Select
                       placeholder="select a patient"
+                      className="w-25 m-auto"
                       options={patientOptions}
                       onChange={(e) =>
                         dispatch(addReservationData(["patient", e]))
                       }
                     />
-                  </div>
-                  <div className="row mx-1 mb-2">
-                    <label className="col-md-6">Select Date</label>
-                    <Select
-                      placeholder="select a date"
-                      className=" col-md-6"
-                      options={state.reservationData.datelist}
-                      onChange={(e) =>
-                        dispatch(addReservationData(["date1", e]))
-                      }
-                    />
-                  </div>
-                  <div className="row mx-1 mb-2">
-                    <label className="col-md-6">Select time</label>
-                    <Select
-                      placeholder="select a time"
-                      className="col-md-6"
-                      options={state.reservationData.timelist2}
-                      onChange={(e) =>
-                        dispatch(addReservationData(["time", e]))
-                      }
-                    />
-                  </div>
-                  <hr />
-                  <div className="col-12 mt-3 text-center">
-                    <button
-                      type="submit"
-                      className="btn btn-secondary mx-3"
-                      disabled={state.reservationData.isDisabled}
-                    >
-                      Book Appointment
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary me-2"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
+                    <br /> */}
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select Date</label>
+                      <Select
+                        placeholder="select a date"
+                        className=" col-md-6"
+                        options={state.reservationData.datelist}
+                        onChange={(e) =>
+                          dispatch(addReservationData(["date1", e]))
+                        }
+                      />
+                    </div>
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select time</label>
+                      <Select
+                        placeholder="select a time"
+                        className="col-md-6"
+                        options={state.reservationData.timelist2}
+                        onChange={(e) =>
+                          dispatch(addReservationData(["time", e]))
+                        }
+                      />
+                    </div>
+                    <br />
+                    <div className="row g-3 mb-1">
+                      <div className="col-12 mt-5  text-center">
+                        <button
+                          type="submit"
+                          className="btn btn-secondary mx-3"
+                          disabled={state.reservationData.isDisabled}
+                        >
+                          Book Appointment
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-outline-secondary  me-2"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* <!-- End of Page Wrapper --> */}
 
-      {/* <!-- Scroll to Top Button--> */}
       <a className="scroll-to-top rounded" href="#page-top">
         <i className="fas fa-angle-up"></i>
       </a>
@@ -273,4 +268,4 @@ const Staffindex = ({ doctor, patient }) => {
   );
 };
 
-export default Staffindex;
+export default Patientindex;

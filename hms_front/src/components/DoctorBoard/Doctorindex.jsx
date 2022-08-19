@@ -16,7 +16,7 @@ const Doctorindex = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5 p-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
@@ -24,9 +24,9 @@ const Doctorindex = () => {
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/doctor/${id.id}`}
           >
-            {/* <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
-            </div> */}
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
+            </div>
             <div className="sidebar-brand-text mx-3">Doctor Panel</div>
           </Link>
 
@@ -43,6 +43,12 @@ const Doctorindex = () => {
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
+          <li className="nav-item active">
+            <Link className="nav-link" to={`/doctorhistory/${id.id}`}>
+              <i className="fas fa-fw fa-chart-area"></i>
+              <span>patients history</span>
+            </Link>
+          </li>
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -52,11 +58,13 @@ const Doctorindex = () => {
 
           <div className="container-fluid">
             {/* <!-- Page Heading --> */}
-            <div className="align-items-center mb-4 mt-5">
-              <h1 className="h1 mb-4 text-gray-800">Dashboard</h1>
-              <h3 className="h3 mb-2 text-gray-800 text-center">
+            <div className="align-items-center p-2">
+              <h1 className="h2 mb-4 text-gray-800 text-center">
                 Todays appointements
-              </h3>
+              </h1>
+              {/* <h3 className="h3 mb-2 text-gray-800 text-center">
+                Todays appointements
+              </h3> */}
 
               <table className="table">
                 <thead>

@@ -25,7 +25,7 @@ const Patienthistory = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
@@ -33,8 +33,8 @@ const Patienthistory = () => {
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/patient/${id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
@@ -86,12 +86,8 @@ const Patienthistory = () => {
         <div id="content-wrapper" className="d-flex flex-column">
           {/* <!-- Main Content --> */}
           <div id="content">
-            {/* <!-- Topbar --> */}
-
-            {/* <!-- End of Topbar --> */}
-
             {/* <!-- Begin Page Content --> */}
-            <div className="container-fluid p-3 mt-5">
+            <div className="container-fluid p-3">
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Reports Hitory</h1>
 

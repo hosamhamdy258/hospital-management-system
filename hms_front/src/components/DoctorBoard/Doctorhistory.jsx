@@ -1,6 +1,7 @@
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-const Staffhistory = () => {
+const Doctorhistory = () => {
   const id = useParams();
   return (
     <section id="page-top">
@@ -15,54 +16,39 @@ const Staffhistory = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/staff/${id.id}`}
+            to={`/doctor/${id.id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
-            <div className="sidebar-brand-text mx-3">Staff Panel</div>
+            <div className="sidebar-brand-text mx-3">Doctor Panel</div>
           </Link>
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />
 
           {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/staff/${id.id}`}>
-              <i className="fas fa-fw fa-tachometer-alt"></i>
+          <li className="nav-item active">
+            <Link className="nav-link" to={`/doctor/${id.id}`}>
+              {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
               <span>Dashboard</span>
             </Link>
           </li>
 
           {/* <!-- Divider --> */}
-          <hr className="sidebar-divider" />
-
-          {/* <!-- Heading --> */}
-
-          {/* <!-- Nav Item - Charts --> */}
-          <li className="nav-item active">
-            <Link className="nav-link" to={`/staffhistory/${id.id}`}>
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>patient history</span>
-            </Link>
-          </li>
-
-          {/* <!-- Nav Item - edit --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/staffedit/${id.id}`}>
-              <i className="fas fa-fw fa-edit"></i>
-              <span>Edit patients appointments</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
+          <li className="nav-item active">
+            <Link className="nav-link" to={`/doctorhistory/${id.id}`}>
+              <i className="fas fa-fw fa-chart-area"></i>
+              <span>patients history</span>
+            </Link>
+          </li>
         </ul>
         {/* <!-- End of Sidebar --> */}
 
@@ -75,9 +61,11 @@ const Staffhistory = () => {
             {/* <!-- End of Topbar --> */}
 
             {/* <!-- Begin Page Content --> */}
-            <div className="container-fluid">
+            <div className="container-fluid p-2">
               {/* <!-- Page Heading --> */}
-              <h1 className="h3 mb-4 text-gray-800">Reports Hitory</h1>
+              <h1 className="h3 mb-4 text-gray-800 text-center">
+                Reports History
+              </h1>
               <div className="container mb-4 text-center">
                 <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                   <div className="input-group">
@@ -101,54 +89,50 @@ const Staffhistory = () => {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Doctor</th>
-                    <th scope="col">Print</th>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Edit Report</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row">1</th>
                     <td>11/2/2022</td>
-                    <td>Cardio</td>
                     <td>Mark</td>
                     <td>
                       <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        to={`/doctoredit/${id.id}`}
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
-                        <i className="fas fa-print fa-sm text-white-50"></i>{" "}
-                        Print Report
+                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                        Report
                       </Link>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>11/2/2022</td>
-                    <td>Cardio</td>
                     <td>Mark</td>
                     <td>
                       <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        to={`/doctoredit/${id.id}`}
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
-                        <i className="fas fa-print fa-sm text-white-50"></i>{" "}
-                        Print Report
+                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                        Report
                       </Link>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
                     <td>11/2/2022</td>
-                    <td>Cardio</td>
                     <td>Mark</td>
                     <td>
                       <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        to={`/doctoredit/${id.id}`}
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
-                        <i className="fas fa-print fa-sm text-white-50"></i>{" "}
-                        Print Report
+                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                        Report
                       </Link>
                     </td>
                   </tr>
@@ -162,4 +146,4 @@ const Staffhistory = () => {
   );
 };
 
-export default Staffhistory;
+export default Doctorhistory;
