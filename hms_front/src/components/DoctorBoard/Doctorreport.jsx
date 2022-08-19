@@ -32,7 +32,7 @@ const Doctorreport = () => {
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider my-0" />
           {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link className="nav-link" to={`/doctor/${id.id}`}>
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
@@ -40,7 +40,7 @@ const Doctorreport = () => {
           </li>
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link className="nav-link" to={`/doctorhistory/${id.id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>patients history</span>

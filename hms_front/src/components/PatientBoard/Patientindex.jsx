@@ -12,7 +12,7 @@ import {
   restReservationData,
   updateReservationLists,
 } from "./../../store/reserve";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import moment from "moment";
 
 const Patientindex = ({ doctor }) => {

@@ -47,7 +47,7 @@ const Staffedit = () => {
           {/* <!-- Heading --> */}
 
           {/* <!-- Nav Item - Charts --> */}
-          <li className="nav-item active">
+          <li className="nav-item ">
             <Link className="nav-link" to={`/staffhistory/${id.id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>patient history</span>
@@ -55,7 +55,7 @@ const Staffedit = () => {
           </li>
 
           {/* <!-- Nav Item - edit --> */}
-          <li className="nav-item">
+          <li className="nav-item active">
             <Link className="nav-link" to={`/staffedit/${id.id}`}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit patients appointments</span>
@@ -96,7 +96,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                       </Link>
@@ -104,7 +104,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                        className="d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
                         <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
@@ -119,7 +119,7 @@ const Staffedit = () => {
                     <td>
                       <a
                         href="#"
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                       </a>
@@ -127,7 +127,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                        className="d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
                         <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
@@ -142,7 +142,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                       </Link>
@@ -150,7 +150,7 @@ const Staffedit = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                        className=" d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                       >
                         {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
                         <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>

@@ -45,7 +45,7 @@ const Patientedit = () => {
           <hr className="sidebar-divider" />
 
           {/* <!-- Nav Item - history --> */}
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link className="nav-link" to={`/patienthistory/${id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>History</span>
@@ -53,7 +53,7 @@ const Patientedit = () => {
           </li>
 
           {/* <!-- Nav Item - edit --> */}
-          <li className="nav-item">
+          <li className="nav-item active">
             <Link className="nav-link" to={`/patientedit/${id}`}>
               <i className="fas fa-fw fa-edit"></i>
               <span>Edit appointment</span>

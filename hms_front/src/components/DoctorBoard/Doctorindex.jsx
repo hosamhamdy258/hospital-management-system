@@ -43,7 +43,7 @@ const Doctorindex = () => {
 
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link className="nav-link" to={`/doctorhistory/${id.id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>patients history</span>

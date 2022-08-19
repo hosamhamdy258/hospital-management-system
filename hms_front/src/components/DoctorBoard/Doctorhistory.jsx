@@ -34,7 +34,7 @@ const Doctorhistory = () => {
           <hr className="sidebar-divider my-0" />
 
           {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link className="nav-link" to={`/doctor/${id.id}`}>
               {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
               <span>Dashboard</span>

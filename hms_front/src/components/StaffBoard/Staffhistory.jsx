@@ -117,7 +117,7 @@ const Staffhistory = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-print fa-sm text-white-50"></i>{" "}
                         Print Report
@@ -132,7 +132,7 @@ const Staffhistory = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-print fa-sm text-white-50"></i>{" "}
                         Print Report
@@ -147,7 +147,7 @@ const Staffhistory = () => {
                     <td>
                       <Link
                         to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-print fa-sm text-white-50"></i>{" "}
                         Print Report
