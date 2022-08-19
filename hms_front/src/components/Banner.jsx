@@ -1,4 +1,4 @@
-import "animate.css";
+// import 'animate.css'
 
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
