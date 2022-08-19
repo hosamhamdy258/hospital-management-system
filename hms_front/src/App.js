@@ -30,7 +30,6 @@ import Staffedit from "./components/Staffedit";
 //done
 import Reserve from "./components/reserve";
 import ScrollToTop from "react-scroll-to-top";
-import TopNav from "./components/topNav";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
 import { getPatientDetails, getPatients } from "./store/patient";
@@ -41,6 +40,7 @@ import Activate from "./components/Registration/Activate";
 import Signin from "./components/Registration/Signin";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
+import PrivateRoutes from "./store/PrivateRoutes";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,8 +64,8 @@ function App() {
     <div className="App">
       <MyNav />
 
-      {/* <TopNav /> */}
       <Routes>
+        <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
         <Route path="/" element={<Home />} />
         {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
