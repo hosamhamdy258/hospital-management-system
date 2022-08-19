@@ -139,6 +139,8 @@ class medical_record(models.Model):
         Doctor, on_delete=models.CASCADE, related_name="doctor_medical_records")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+    reservation = models.ForeignKey(
+        reservation, on_delete=models.CASCADE, related_name="reservation_medical_records",unique=True)
 
     def __str__(self):
         return f"{self.patient_id.full_name}"
