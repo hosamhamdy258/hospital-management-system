@@ -16,21 +16,22 @@ import Home from "./components/home";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Register from "./components/register";
-import Patientindex from "./components/Patientindex";
-import Patienthistory from "./components/Patienthistory";
-import Patientcheckout from "./components/Patientcheckout";
-import Doctorindex from "./components/Doctorindex";
-import Doctorreport from "./components/Doctorreport";
-import Staffindex from "./components/Staffindex";
-import Staffhistory from "./components/Staffhistory";
+import Patientindex from "./components/PatientBoard/Patientindex";
+import Patienthistory from "./components/PatientBoard/Patienthistory";
+import Patientcheckout from "./components/PatientBoard/Patientcheckout";
+import Doctorindex from "./components/DoctorBoard/Doctorindex";
+import Doctorreport from "./components/DoctorBoard/Doctorreport";
+import Doctoredit from "./components/DoctorBoard/Doctoredit";
+import Doctorhistory from "./components/DoctorBoard/Doctorhistory";
+import Staffindex from "./components/StaffBoard/Staffindex";
+import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Profile from "./components/Profile";
-import Patientedit from "./components/Patientedit";
-import Staffedit from "./components/Staffedit";
+import Patientedit from "./components/PatientBoard/Patientedit";
+import Staffedit from "./components/StaffBoard/Staffedit";
 
 //done
 import Reserve from "./components/reserve";
 import ScrollToTop from "react-scroll-to-top";
-import TopNav from "./components/topNav";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
 import { getPatientDetails, getPatients } from "./store/patient";
@@ -41,6 +42,7 @@ import Activate from "./components/Registration/Activate";
 import Signin from "./components/Registration/Signin";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
+import PrivateRoutes from "./store/PrivateRoutes";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,8 +66,8 @@ function App() {
     <div className="App">
       <MyNav />
 
-      {/* <TopNav /> */}
       <Routes>
+        <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
         <Route path="/" element={<Home />} />
         {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
@@ -73,8 +75,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/departments" element={<AllDepartmentsPage />} />
         <Route path="/departments/:id" element={<DepartmentPage />} />
-        <Route path="reserve" element={<Reserve />} />
-        <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
+        {/* <Route path="reserve" element={<Reserve />} />
+        <Route path="doctors" element={<AllDoctors state={stateDoctor} />} /> */}
         <Route
           path="/patient/:id"
           element={<Patientindex doctor={stateDoctor} />}
@@ -84,6 +86,8 @@ function App() {
         <Route path="/checkout/:id" element={<Patientcheckout />} />
         <Route path="/doctor/:id" element={<Doctorindex />} />
         <Route path="/doctorreport/:id" element={<Doctorreport />} />
+        <Route path="/doctoredit/:id" element={<Doctoredit />} />
+        <Route path="/doctorhistory/:id" element={<Doctorhistory />} />
         <Route
           path="/staff/:id"
           element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
@@ -93,6 +97,16 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/signup" element={<Signup />} />
+        <Route exact path="/activate/:uid/:token" element={<Activate />} />
+        <Route path="/login" element={<Signin />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route
+          exact
+          path="/password/reset/confirm/:uid/:token"
+          element={<ResetPasswordConfirm />}
+        />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <BottomFooter />

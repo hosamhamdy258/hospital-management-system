@@ -75,6 +75,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+from hospital.models import Person
+
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -114,6 +116,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_doctor = models.BooleanField(default=False)
     is_emp = models.BooleanField(default=False)
+   
 
     objects = UserAccountManager()
 
