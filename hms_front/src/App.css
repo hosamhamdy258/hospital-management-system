@@ -127,7 +127,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
     opacity: 1;
-    font-size: 20px !important;
+    /* font-size: 20px !important; */
 
 }
 span.navbar-text {
@@ -378,7 +378,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .hDepts {
   padding: 80px 0;
   position: relative;
-  background-color: #C5DDE0;
+  background-color: #dbe0e1;
 }
 .hDepts h2 {
 	font-size: 45px;
@@ -439,10 +439,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     color: #fff;
 }
 .nav-link#hDepts-tabs-tab-first {
+  background-color: #fff;
   border: 1px solid #fff;
   border-radius: 55px 0px 0px 55px;
 }
 .nav-link#hDepts-tabs-tab-second {
+  background-color: #fff;
   border: 1px solid #fff;
   border-radius: 0 55px 55px 0;}
 
@@ -757,14 +759,14 @@ vertical-align: middle;
 
 
 /* All Departments Styling */
-
-.row .card{
-  /* height:150px !important; */
-  /* margin: 15px; */
-  background-color: #f0f2f4;
-}
 .row .card img{
   height: 65% !important;
+}
+.row .card img.home_doc_img{
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover;
+
 }
 .row .card-body{
   background-color: #fff !important;
@@ -780,17 +782,18 @@ vertical-align: middle;
 
 .card {
   background: #fff;
-  width: 24em;
+  width: 24rem;
   border-radius: 0.6em;
   margin: 1em;
   overflow: hidden;
   cursor: pointer;
+  background-color: #f0f2f4 !important;
   box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
   transition: all ease 200ms;
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: scale(1.1);
   box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
 }
 
@@ -811,8 +814,11 @@ vertical-align: middle;
 
 .card p {
   color: #777;
+  margin-bottom: 5px;
 }
-
+.card a.dep_link{
+  margin-bottom: 10px !important;
+}
 .card h5 {
   color: #bbb;
   font-weight: 700;
@@ -823,7 +829,7 @@ vertical-align: middle;
 }
 
 .card-body {
-  padding: 1.2em;
+  padding-bottom: 20px !important;
 }
 
 .tabulation .nav-pills {
@@ -1064,6 +1070,7 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
   background: #e12454;
   color: #fff;
   border-color: #e12454;
+  font-size:13px !important;
 }
 
 /* About Page Styling */
@@ -1157,4 +1164,63 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
     border-radius: 35px !important;
     border: 2px solid transparent !important;
     transition: all .35s ease !important;
+}
+
+/* We Section Style */
+.we_summary{
+  background-color: #fff;
+}
+.we_img{
+  background-image: url('../public/features/happy.webp');
+}
+.we_summ_span{
+  color: #299adc;
+}
+/* statistics */
+.statistic_block{
+  border:2px solid rgba(167, 166, 166, 0.613);
+  width: 300px;
+  text-align: center;
+}
+.statistic_block .text strong.number {
+  font-weight: 700;
+  font-size: 34px;
+  color: #fff;
+  display: block;
+}
+
+
+.Dbg-2{
+  background: url(../public/features/mm.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    position: relative;
+    margin-top: 0;
+    padding: 170px 0;
+    background-position: top center;
+}
+
+.Dbg-2 h1{
+  font-size: 50px;
+  margin-top: 2vh;
+
+}
+.Dbg-2 span , h1{
+  color: #fff;
+  z-index: 100;
+  position: relative;
+
+}
+.overlay_s:before {
+
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  background: rgba(34, 58, 102, 0.8);
+  box-sizing: border-box;
 }

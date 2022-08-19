@@ -38,10 +38,11 @@ const AllDepartmentsPage = () => {
                     <Card.Text>
                     {item.desc.split('.')[0].replace(/[^a-zA-Z0-9]/g, '')}
                     </Card.Text>
-
-                    <Link className="dep_link" to={`/hDepts/${item.id}`} d_id={item.id}><span className="dept-readmore">read more<i className="fa fa-arrow-right px-2" aria-hidden="true"></i>
-                    </span>
+                    <button>
+                    <Link className="dep_link" to={`/hDepts/${item.id}`} d_id={item.id}>
+                      read more<i className="fa fa-arrow-right px-2" aria-hidden="true"></i>
                     </Link>
+                    </button>
                     <br />
                   </Card.Body>
                 </Card>

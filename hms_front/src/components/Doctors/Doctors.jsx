@@ -39,7 +39,7 @@ const Doctors = () => {
                     <Carousel responsive={responsive} infinite={true} className='doctors-slider'>
                     {doctorNames.map((val) => (
                        <Card className='item' style={{ width: '16rem' , height:'19rem' }}>
-                       <Card.Img variant="top" src={val.img} />
+                       <Card.Img className='home_doc_img' variant="top" src={val.img} />
                        <Card.Body>
                          <Card.Title>{val.title}</Card.Title>
                          <NavLink to={`/doctor/${val.id}`} className="btn btn-main-2 btn-round-full btn-primary">Make an Appointment</NavLink>

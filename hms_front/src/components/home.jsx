@@ -3,6 +3,8 @@ import Contact from './Contact';
 import Departments from './Departments/Departments';
 import Doctors from './Doctors';
 import React from 'react'
+import Statisc from './Statisc/Statisc';
+import WeSummary from './Summary/WeSummary';
 
 const Home = () => {
   return (
@@ -10,7 +12,10 @@ const Home = () => {
      <Banner/>
      <Doctors />
      <Departments />
-     <Contact/>
+     {/* <Contact/> */} 
+     <WeSummary/>
+     <Statisc/>
+
     </>
   )
 }

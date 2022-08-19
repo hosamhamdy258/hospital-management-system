@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 import { ArrowRightCircle } from "react-bootstrap-icons";
+import Hbeat from "./HBeat/Hbeat";
 import React from "react";
 import headerImg from "../assets/img/h5.webp";
 
@@ -55,7 +56,6 @@ const Banner = () => {
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <span className="tagline">Welcome to HOPE</span>
-
             <h2>
               {`Where `} <span className="wrap">{text}</span>
             </h2>

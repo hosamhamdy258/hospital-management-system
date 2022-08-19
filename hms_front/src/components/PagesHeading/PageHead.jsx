@@ -4,8 +4,7 @@ const PageHead = ({title}) => {
   return (
     <>
      <section className='Dbg-1'>
-        <div className="overlay">
-            
+        <div className="overlay">      
         </div>
         <div className="container">
             <div className="row">

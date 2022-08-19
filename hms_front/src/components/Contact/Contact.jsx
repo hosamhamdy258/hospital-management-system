@@ -1,7 +1,23 @@
+import React , {useRef, useState} from 'react'
+
 import PageHead from '../PagesHeading/PageHead'
-import React from 'react'
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+    const [result,setResult]=useState(false);
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_tfaim8c', 'template_mxekqii', form.current, 'sPzuh52O8EZDH-9Ws')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+        e.target.reset();
+        setResult(true);
+      };
     return (
         <>
             <PageHead title='Contact Us' />
@@ -42,35 +58,28 @@ const Contact = () => {
                     </div>
                     <div  className="row">
                         <div  className="col-lg-12 col-md-12 col-sm-12">
-                            <form id="contact-form"  className="contact_form " method="post" action="mail.php">
-                                <div  className="row">
-                                    <div  className="col-12">
-                                        <div  className="alert alert-success contact__msg" style={{display: 'none'}} role="alert">
-                                            Your message was sent successfully.
-                                        </div>
-                                    </div>
-                                </div>
-
+                            <form ref={form} id="contact-form"  className="contact_form " onSubmit={sendEmail}>
+                              
                                 <div  className="row">
                                     <div  className="col-lg-6">
                                         <div  className=" form_group">
-                                            <input name="name" id="name" type="text"  className="form_control" placeholder="Your Full Name"/>
+                                            <input name="fullName" id="name" type="text"  className="form_control" placeholder="Your Full Name" required/>
                                         </div>
                                     </div>
 
                                     <div  className="col-lg-6">
                                         <div  className=" form_group">
-                                            <input name="email" id="email" type="email"  className="form_control" placeholder="Your Email Address" required=""/>
+                                            <input name="email" id="email" type="email"  className="form_control" placeholder="Your Email Address" required/>
                                         </div>
                                     </div>
                                     <div  className="col-lg-6">
                                         <div  className=" form_group">
-                                            <input name="subject" id="subject" type="text"  className="form_control" placeholder="Message Title" required=""/>
+                                            <input name="subject" id="subject" type="text"  className="form_control" placeholder="Message Title" required/>
                                         </div>
                                     </div>
                                     <div  className="col-lg-6">
                                         <div  className=" form_group">
-                                            <input name="phone" id="phone" type="text"  className="form_control" placeholder="Your Phone Number" required=""/>
+                                            <input name="phone" id="phone" type="text"  className="form_control" placeholder="Your Phone Number" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -82,6 +91,16 @@ const Contact = () => {
                                 <div>
                                     <input  className="btn send_btn btn-round-full" name="submit" type="submit" value="Send Messege"/>
                                 </div>
+                               {
+                                result? <div  className="row">
+                                <div  className="col-6">
+                                    <div  className="mt-3 alert alert-success contact__msg" role="alert">
+                                        Your message was sent successfully.
+                                    </div>
+                                </div>
+                            </div>:null
+                               }
+
                             </form>
                         </div>
                     </div>
