@@ -160,7 +160,7 @@ const initialState = {
   verified: null,
 };
 
-const usersSlice = createSlice({
+const users = createSlice({
   name: "users",
   initialState,
   extraReducers: {
@@ -199,4 +199,4 @@ const usersSlice = createSlice({
   },
 });
 
-export default usersSlice.reducer;
+export default users.reducer;
