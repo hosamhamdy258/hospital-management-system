@@ -93,7 +93,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/signup" element={<Signup />} />
         <Route exact path="/activate/:uid/:token" element={<Activate />} />
         <Route path="/login" element={<Signin />} />

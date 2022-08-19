@@ -170,7 +170,7 @@ const users = createSlice({
     },
     [Signup.fulfilled]: (state, action) => {
       // state.users.push(action.payload);
-      console.log(action.payload);
+      // console.log(action.payload);
     },
     [Signup.rejected]: (state, action) => {
       state.erorr = action.payload;
