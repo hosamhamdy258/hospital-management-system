@@ -66,11 +66,10 @@ function App() {
 
   return (
     <div className="App">
-      <Layout>
-        <Routes>
-          <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="login" element={<Login state={stateAuth} />} />
+      <Routes>
+        <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -96,6 +95,7 @@ function App() {
         <Route path="/staffhistory/:id" element={<Staffhistory />} />
         <Route path="/staffedit/:id" element={<Staffedit />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/completedata/:id" element={<Completedata />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
         {/* <Route path="/" element={<Home />} /> */}
