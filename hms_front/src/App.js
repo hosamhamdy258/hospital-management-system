@@ -31,7 +31,7 @@ import Register from "./components/register";
 import Reserve from "./components/reserve";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
-import ScrollToTop from "react-scroll-to-top";
+import { ScrollToTop } from 'react-router-scroll-to-top';
 import Signin from "./components/Registration/Signin";
 import Signup from "./components/Registration/Signup";
 import Staffedit from "./components/StaffBoard/Staffedit";
@@ -39,6 +39,17 @@ import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Staffindex from "./components/StaffBoard/Staffindex";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
+
+// import ScrollToTop from "react-scroll-to-top";
+
+
+
+
+
+
+
+
+
 
 // import Login from "./components/login";
 
@@ -139,6 +150,7 @@ function App() {
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />
+
     </div>
   );
 }
