@@ -10,6 +10,7 @@ import Activate from "./components/Registration/Activate";
 import AllDepartmentsPage from "./components/Departments/AllDepartmentsPage";
 import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
+import Completedata from "./components/Completedata";
 import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
 import Doctoredit from "./components/DoctorBoard/Doctoredit";
@@ -30,25 +31,27 @@ import Patientindex from "./components/PatientBoard/Patientindex";
 import PrivateRoutes from "./store/PrivateRoutes";
 import Profile from "./components/Profile";
 import Register from "./components/register";
+import ReqActivate from "./components/Registration/ReqActivate";
 import Reserve from "./components/reserve";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
 import { ScrollToTop } from "react-router-scroll-to-top";
 import Signin from "./components/Registration/Signin";
 import Signup from "./components/Registration/Signup";
-import ReqActivate from "./components/Registration/ReqActivate";
 import Staffedit from "./components/StaffBoard/Staffedit";
 import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Staffindex from "./components/StaffBoard/Staffindex";
+import Verified from "./components/Registration/Verified";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
+
 // import ScrollToTop from "react-scroll-to-top";
 
 //done
 
 // Khalid import
-import Completedata from "./components/Completedata";
-import Verified from "./components/Registration/Verified";
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -75,6 +78,8 @@ function App() {
         <Routes>
           <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+
           {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
           <Route path="/about" element={<About />} />
