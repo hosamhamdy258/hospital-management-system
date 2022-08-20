@@ -95,7 +95,7 @@ const PatientMedicalRecord = () => {
               <div className="row mb-4 text-center justify-content-center">
                 <div className="col-lg-8 col-md-6  border p-4 shadow bg-light">
                   <div className="col-12">{/* <hr /> */}</div>
-                  <form action="">
+                  <form action="" className="text-start">
                     <div className="row mx-1 mb-1 text-start">
                       <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Patient name </span>: Omar</label>
                       <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Age </span> : 35</label>
@@ -104,32 +104,22 @@ const PatientMedicalRecord = () => {
                     <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Doctor Name</span> :Maha</label>
                     <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Date</span> :22/02/2022 06:30 PM</label>
                     </div>
-                    <div className="row g-3 mb-1">
-                      <div className="col-12 mb-1">
-                        <textarea
-                          className="form-control"
-                          placeholder="Diagnosis"
-                        ></textarea>
+                    <div className="row g-3 mt-2 mb-1">
+                      <div className="col-12 ">
+                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Diagnosis :</span> test </label>
                       </div>
-                      <div className="col-12 mb-1">
-                        <textarea
-                          className="form-control"
-                          placeholder="recommended Medications"
-                        ></textarea>
+                      <div className="col-12 ">
+                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Diagnosis :</span> test </label>
+
                       </div>
                       <div className="col-12 mt-5 text-center justify-content-center">
                         <button
                           type="submit"
                           className="btn btn-secondary mx-4"
                         >
-                          Submit report
+                         Get pdf Report
                         </button>
-                        <button
-                          type="button"
-                          className="btn btn-outline-secondary me-2"
-                        >
-                          Cancel
-                        </button>
+                     
                       </div>
                     </div>
                   </form>

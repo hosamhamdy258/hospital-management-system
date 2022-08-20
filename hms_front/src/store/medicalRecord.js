@@ -42,16 +42,14 @@ const medicalRecordSlice = createSlice({
       state.departments = action.payload;
     },
     [getmedicalRecords.rejected]: (state, action) => {
-      // show erorr tooltip at top of screen
-      // state.isLoading = true;
+      
     },
     [getMedicalRecordDetails.pending]: (state, action) => {},
     [getMedicalRecordDetails.fulfilled]: (state, action) => {
       state.departmentDetails = action.payload;
     },
     [getMedicalRecordDetails.rejected]: (state, action) => {
-      // show erorr tooltip at top of screen
-      // state.isLoading = true;
+      
     },
   },
 });

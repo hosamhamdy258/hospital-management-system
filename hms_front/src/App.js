@@ -22,6 +22,7 @@ import Layout from "./components/Registration/Layout";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Page404 from "./components/Page404";
+import PatientMedicalRecord from "./components/PatientBoard/PatientMedicalRecord";
 import Patientcheckout from "./components/PatientBoard/Patientcheckout";
 import Patientedit from "./components/PatientBoard/Patientedit";
 import Patienthistory from "./components/PatientBoard/Patienthistory";
@@ -165,6 +166,9 @@ function App() {
           element={<ResetPasswordConfirm />}
         />
         <Route path="*" element={<Page404 />} />
+
+        <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
+
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />
