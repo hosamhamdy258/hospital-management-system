@@ -284,11 +284,18 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Banner Css ************/
 .banner {
   margin-top: 0;
-  padding: 275px 0 100px 0;
-  background-image: url('./assets/img/test.webp');
+  padding: 530px 0 100px 0;
+  background-image: url('../public/features/bg_test.webp');
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+}
+.banner .intro{
+  width: 550px;
+  position: absolute;
+  top: 27%;
+  right: 8%;
 }
 .banner .tagline {
   font-weight: 700;
@@ -959,7 +966,7 @@ a {
   position: relative;
 }
 .staff .img {
-  height: 200px;
+  height: 180px;
   width: 200px;
   display: block;
   background-position: top center;
@@ -983,7 +990,7 @@ a {
 .staff .text {
   position: relative;
   background: #fff;
-  padding: 110px 30px 30px 30px;
+  padding: 60px 5px 10px 5px;
   transition: all .3s ease;
   margin-top: -100px;
   z-index: 1;
@@ -1262,3 +1269,9 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
   }
+
+  /* Medical Record Styling */
+  .medi_rec_labels{
+    color: #093868;
+    font-weight: 700;
+  }  

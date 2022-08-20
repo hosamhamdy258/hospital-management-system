@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 import logo from "../assets/img/logo.jpg";
+import { logout } from "../store/usersSlice";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
-import { Link } from "react-router-dom";
-import { logout } from "../store/usersSlice";
+
 
 const MyNav = () => {
   const [activeLink, setActiveLink] = useState("home");
-  const { isAuthenticated, user } = useSelector((state) => state.users);
+  const { isAuthenticated, user, } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -115,13 +117,14 @@ const MyNav = () => {
               </div>}
             {!isAuthenticated &&
               <div>
-                <button className="vvd btn btn-info">
-                  <Link className='' to='/login' role='button'>Login</Link>
-                </button>
-                <button className="vvd btn btn-info">
-                  <Link className='' to='/signup' role='button'>Signup</Link>
-                </button>
+                  <Link className='nav_login_button' to='/login' role='button'>Login</Link>
+                  <Link className='nav_login_button' to='/signup' role='button'>Signup</Link>
+              
               </div>}
+              {isAuthenticated && !user.profile_complete &&
+              
+              <Link className='btn' to='/completedata' role='button'>Complete Your Profile</Link>
+          }
 
 
 

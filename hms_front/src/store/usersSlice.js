@@ -243,8 +243,8 @@ export const verify = (uid, token) => async (dispatch) => {
 const initialState = {
   access: localStorage.getItem("access"),
   refresh: localStorage.getItem("refresh"),
-  isAuthenticated: null,
-  user: null,
+  isAuthenticated: false,
+  user: {},
   err: null,
 };
 
@@ -281,7 +281,9 @@ const users = createSlice({
     },
     [logout.fulfilled]: (state, action) => {
       state.isAuthenticated = false;
-      state.user = action.payload;
+      state.user = {};
+      // console.log(action.payload);
+
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
     },

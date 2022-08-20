@@ -29,6 +29,15 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 
 class MedicalRecordSerializer(serializers.ModelSerializer):
+    patient_id = serializers.SlugRelatedField(
+        slug_field='full_name',
+        queryset=Patient.objects.all()
+    )
+    added_doctor_id = serializers.SlugRelatedField(
+        slug_field='full_name',
+        queryset=Doctor.objects.all()
+    )
+    
     class Meta:
         model = medical_record
         fields = "__all__"
@@ -41,7 +50,7 @@ class ReceiptSerializer(serializers.ModelSerializer):
 
 
 class PatientSerializer(serializers.ModelSerializer):
-    patient_medical_records = MedicalRecordSerializer(many=True)
+    patient_medical_records = MedicalRecordSerializer(many=True,read_only=True)
 
     class Meta:
         model = Patient
@@ -78,9 +87,9 @@ class DoctorSerializerReserve(serializers.ModelSerializer):
         model = Doctor
         fields = ['id', 'full_name', ]
 
-# class ReservationSerializerReserve(serializers.ModelSerializer):
-#     class Meta:
-#         model = reservation
-#         fields = "__all__"
+class PersonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
+        fields = "__all__"
 
 
