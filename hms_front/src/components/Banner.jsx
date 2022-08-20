@@ -52,8 +52,8 @@ const Banner = () => {
   return (
     <section className="banner" id="home">
       <Container>
-        <Row className="align-items-center">
-          <Col xs={12} md={6} xl={7}>
+        <Row className="align-items-center intro">
+          <div xs={12} md={6} xl={7}>
             <span className="tagline">Welcome to HOPE</span>
             <h2>
               {`Where `} <span className="wrap">{text}</span>
@@ -65,7 +65,7 @@ const Banner = () => {
             <button onClick={() => console.log("appointment")}>
               Make an Appointment <ArrowRightCircle size={23} />{" "}
             </button>
-          </Col>
+          </div>
           {/* <Col xs={12} md={6} xl={5}>
                         <img src={headerImg} alt="HeaderImage"/>
                     </Col>
