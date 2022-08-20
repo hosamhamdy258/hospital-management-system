@@ -45,7 +45,7 @@ class MedicalRecordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = medical_record
-        fields = ["patient_name","doctor_name","patient_age"]
+        fields = ["patient_name","doctor_name","patient_age","diagnosis","recommended_medications","added_on"]
 
 
 class ReceiptSerializer(serializers.ModelSerializer):

@@ -127,11 +127,11 @@ const PatientMedicalRecord = () => {
                   <PDFExport ref={pdfExportComponent} paperSize="A4">
                   <form action="" className="text-start">
                     <div className="row mx-1 mb-1 text-start">
-                      <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Patient name </span>: {state.medicalRecord.patient_id}</label>
-                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Age </span> : 35</label>
+                      <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Patient name </span>: {state.medicalRecord.patient_name}</label>
+                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Age </span> : {state.medicalRecord.patient_age}</label>
                     </div>
                     <div className="row mx-1 mb-1 text-start">
-                    <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Doctor Name</span> :{state.medicalRecord.added_doctor_id}</label>
+                    <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Doctor Name</span> :{state.medicalRecord.doctor_name}</label>
                     <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Date</span> :{(state.medicalRecord.added_on)?state.medicalRecord.added_on.slice(0,10):'Not registered'}</label>
                     </div>
                     <div className="row g-3 mt-2 mb-1">
