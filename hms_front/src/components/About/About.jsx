@@ -18,11 +18,11 @@ const About = () => {
             </section>
             <div className="img_hero">
                 <div>
-                    <motion.section className='img_present' initial={{scale:0.7}} whileInView={{scale:1 }} transition={{duration:1.2}}>
+                    <motion.section className='img_present' initial={{ scale: 0.7 }} whileInView={{ scale: 1 }} transition={{ duration: 1.2 }}>
                         <div>
                             <img src="/features/h1.jpg" alt="" className="img-fluid shadow-4" />
                             <div>
-                                <motion.div initial={{x:200}} whileInView={{x:0 }} transition={{duration:1}} class="c-paragraph"><p>Our mission is to improve people's lives and bring back smiles.</p>
+                                <motion.div initial={{ x: 200 }} whileInView={{ x: 0 }} transition={{ duration: 1 }} className="c-paragraph"><p>Our mission is to improve people's lives and bring back smiles.</p>
                                 </motion.div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@ const About = () => {
                     <div className="row">
                         <h2 className="about_title">Our Services</h2>
 
-                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.5}} className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{ y: 400 }} whileInView={{ y: 0 }} transition={{ duration: .5 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/doctors.jpg" />
                                 <Card.Body>
@@ -47,7 +47,7 @@ const About = () => {
                                 </Card.Body>
                             </Card>
                         </motion.div>
-                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.6}} className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{ y: 400 }} whileInView={{ y: 0 }} transition={{ duration: .6 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/donationbox1.jpg" />
                                 <Card.Body>
@@ -59,7 +59,7 @@ const About = () => {
                                 </Card.Body>
                             </Card>
                         </motion.div>
-                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.7}} className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{ y: 400 }} whileInView={{ y: 0 }} transition={{ duration: .7 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/medical-counseling.jpg" />
                                 <Card.Body>
@@ -71,7 +71,7 @@ const About = () => {
                                 </Card.Body>
                             </Card>
                         </motion.div>
-                        <motion.div initial={{y:400}} whileInView={{y:0 }} transition={{duration:.8}} className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{ y: 400 }} whileInView={{ y: 0 }} transition={{ duration: .8 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/Children-Healthcare-1920x1080-1.jpg" />
                                 <Card.Body>
@@ -87,7 +87,7 @@ const About = () => {
                 </div>
 
             </section>
-            <motion.section initial={{x:600}} whileInView={{x:0 }} transition={{duration:1.1}} className="section awards">
+            <motion.section initial={{ x: 600 }} whileInView={{ x: 0 }} transition={{ duration: 1.1 }} className="section awards">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-4">

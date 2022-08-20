@@ -4,10 +4,11 @@ import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
 import { Signup } from "../../store/usersSlice";
+import { Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 export default function AddUser() {
-  const { erorr } = useSelector((state) => state.users);
+  const { erorr, isAuthenticated } = useSelector((state) => state.users);
   const first_name = useRef(null);
   const last_name = useRef(null);
   const email = useRef(null);
@@ -40,7 +41,6 @@ export default function AddUser() {
       }
     }
   }
-
   return (
     <>
       <div className="container text-start w-50 my-5">

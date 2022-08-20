@@ -201,6 +201,7 @@ SIMPLE_JWT = {
     )
 }
 DOMAIN = ('localhost:3000')
+
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
@@ -238,90 +239,3 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'hms',
-#         'USER': 'admin',
-#         'PASSWORD': 'admin',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-# # Password validation
-# # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
-
-# AUTH_PASSWORD_VALIDATORS = [
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-#     },
-# ]
-
-
-# # Internationalization
-# # https://docs.djangoproject.com/en/4.1/topics/i18n/
-
-# LANGUAGE_CODE = 'en-us'
-
-# TIME_ZONE = 'UTC'
-
-# USE_I18N = True
-
-# USE_TZ = True
-
-
-# # Static files (CSS, JavaScript, Images)
-# # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-# STATIC_URL = 'static/'
-
-# # Default primary key field type
-# # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.AllowAny',
-#         # 'rest_framework.permissions.IsAuthenticated',
-#     ],
-#     # 'DEFAULT_AUTHENTICATION_CLASSES': (
-#     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     # ),
-# }
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000", ]
-
-
-# ]
-# # AUTH_USER_MODEL = 'accounts.MyUser'
-
-
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-#     'ROTATE_REFRESH_TOKENS': False,
-#     'BLACKLIST_AFTER_ROTATION': True,
-#     'ALGORITHM': 'HS256',
-#     'SIGNING_KEY': SECRET_KEY,
-#     'VERIFYING_KEY': None,
-#     'AUTH_HEADER_TYPES': ('Bearer',),
-#     'USER_ID_FIELD': 'id',
-#     'USER_ID_CLAIM': 'user_id',
-#     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-#     'TOKEN_TYPE_CLAIM': 'token_type',
-# }
-
-# AUTH_USER_MODEL = 'accounts.UserAccount'
