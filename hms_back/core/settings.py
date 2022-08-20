@@ -238,4 +238,3 @@ DJOSER = {
 # }
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
-

@@ -246,6 +246,7 @@ const initialState = {
   isAuthenticated: false,
   user: {},
   err: null,
+  registered: null,
 };
 
 const users = createSlice({
@@ -256,7 +257,9 @@ const users = createSlice({
     [Signup.pending]: (state, action) => {
       state.err = null;
     },
-    [Signup.fulfilled]: (state, action) => {},
+    [Signup.fulfilled]: (state, action) => {
+      state.registered = true;
+    },
     [Signup.rejected]: (state, action) => {
       state.err = action.payload;
     },
