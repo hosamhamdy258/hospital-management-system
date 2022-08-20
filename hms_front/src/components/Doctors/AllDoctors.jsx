@@ -35,7 +35,7 @@ const AllDoctors = () => {
                                 <div className="staff mb-5">
                                     <div className="img-wrap d-flex align-items-stretch">
                                     <div className="img align-self-stretch">
-                                        <img src="https://preview.colorlib.com/theme/medex/images/xdoc-3.jpg.pagespeed.ic.ssPmw2cMao.webp" alt="doctor_img" className='img-fluid w-100' />
+                                        <img src={item.img} alt="doctor_img" className='img-fluid w-100' />
                                     </div>
                                     </div>
                                     <div className="text text-center">
