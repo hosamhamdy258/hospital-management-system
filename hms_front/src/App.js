@@ -2,47 +2,75 @@ import "./App.css";
 
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { getPatientDetails, getPatients } from "./store/patient";
 import { useDispatch, useSelector } from "react-redux";
 
 import About from "./components/About/About";
+import Activate from "./components/Registration/Activate";
 import AllDepartmentsPage from "./components/Departments/AllDepartmentsPage";
 import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
 import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
-import Doctors from "./components/Doctors";
-import Home from "./components/home";
-// import Login from "./components/login";
-import MyNav from "./components/MyNav";
-import NotFound from "./components/notfound";
-import Register from "./components/register";
-import Patientindex from "./components/PatientBoard/Patientindex";
-import Patienthistory from "./components/PatientBoard/Patienthistory";
-import Patientcheckout from "./components/PatientBoard/Patientcheckout";
-import Doctorindex from "./components/DoctorBoard/Doctorindex";
-import Doctorreport from "./components/DoctorBoard/Doctorreport";
 import Doctoredit from "./components/DoctorBoard/Doctoredit";
 import Doctorhistory from "./components/DoctorBoard/Doctorhistory";
-import Staffindex from "./components/StaffBoard/Staffindex";
-import Staffhistory from "./components/StaffBoard/Staffhistory";
-import Profile from "./components/Profile";
-import Patientedit from "./components/PatientBoard/Patientedit";
-import Staffedit from "./components/StaffBoard/Staffedit";
-
-//done
-import Reserve from "./components/reserve";
-import ScrollToTop from "react-scroll-to-top";
-import { getDepartments } from "./store/Departments";
-import { getDoctors } from "./store/Doctors";
-import { getPatientDetails, getPatients } from "./store/patient";
+import Doctorindex from "./components/DoctorBoard/Doctorindex";
+import Doctorreport from "./components/DoctorBoard/Doctorreport";
+import Doctors from "./components/Doctors";
+import Home from "./components/home";
+import MyNav from "./components/MyNav";
+import NotFound from "./components/notfound";
 import Page404 from "./components/Page404";
-// Khalid import
-import Signup from "./components/Registration/Signup";
-import Activate from "./components/Registration/Activate";
-import Signin from "./components/Registration/Signin";
+import Patientcheckout from "./components/PatientBoard/Patientcheckout";
+import Patientedit from "./components/PatientBoard/Patientedit";
+import Patienthistory from "./components/PatientBoard/Patienthistory";
+import Patientindex from "./components/PatientBoard/Patientindex";
+import PrivateRoutes from "./store/PrivateRoutes";
+import Profile from "./components/Profile";
+import Register from "./components/register";
+import Reserve from "./components/reserve";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
-import PrivateRoutes from "./store/PrivateRoutes";
+import ScrollToTop from "react-scroll-to-top";
+import Signin from "./components/Registration/Signin";
+import Signup from "./components/Registration/Signup";
+import Staffedit from "./components/StaffBoard/Staffedit";
+import Staffhistory from "./components/StaffBoard/Staffhistory";
+import Staffindex from "./components/StaffBoard/Staffindex";
+import { getDepartments } from "./store/Departments";
+import { getDoctors } from "./store/Doctors";
+
+// import Login from "./components/login";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//done
+
+
+
+
+
+
+// Khalid import
+
+
+
+
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -75,8 +103,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/departments" element={<AllDepartmentsPage />} />
         <Route path="/departments/:id" element={<DepartmentPage />} />
-        {/* <Route path="reserve" element={<Reserve />} />
-        <Route path="doctors" element={<AllDoctors state={stateDoctor} />} /> */}
+        {/* <Route path="reserve" element={<Reserve />} />*/}
+        <Route path="doctors" element={<AllDoctors state={stateDoctor} />} /> 
         <Route
           path="/patient/:id"
           element={<Patientindex doctor={stateDoctor} />}

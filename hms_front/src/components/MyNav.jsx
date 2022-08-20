@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import React from "react";
@@ -8,7 +9,6 @@ import logo from "../assets/img/logo.jpg";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
-import { Link } from "react-router-dom";
 
 const MyNav = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -98,13 +98,8 @@ const MyNav = () => {
                 <img src={navIcon3} alt="" />
               </a>
             </div>
-            <button
-              className="vvd btn btn-info"
-              onClick={() => console.log("login")}
-            >
               {/* <span>Login</span> */}
-              <Link className='' to='/login' role='button'>Login</Link>
-            </button>
+              <Link className='nav_login_button' to='/login' role='button'>Login</Link>
           </span>
         </Navbar.Collapse>
       </Container>

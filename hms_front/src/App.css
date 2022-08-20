@@ -105,7 +105,9 @@ nav.navbar {
 
   padding: 5px 0;
   /* position: fixed; */
+  position: -webkit-sticky;
   position: sticky;
+
   /* margin-bottom: 20px; */
   width: 100%;
   top: 0;
@@ -258,24 +260,23 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 .nav_login_button {
-  height: min-content;
-  min-height: 48px;
+  height: 48px;
+  width:110px;
+  margin-left: 20px;
   border-radius: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 12px 25px;
   text-align: center;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  background-color: #0a66c2;
+  background-color: #299ADC !important;
+  color: #fff !important;
   
 }
-.nav_login_button:visited, .nav_login_button:focus {
+.nav_login_button:hover {
   cursor: pointer;
   text-decoration-line: none;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
-  background-color: #004182;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  background-color: #004182 !important;
   color: #fff;
 }
 
