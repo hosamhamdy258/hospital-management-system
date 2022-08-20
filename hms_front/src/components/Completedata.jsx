@@ -1,11 +1,40 @@
 import { getDoctors } from "./../store/Doctors";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { useRef } from "react";
+import { postProfile } from "./../store/Profile";
 
 const Completedata = () => {
-  const id = useParams();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.doctorsSlice);
+  const state = useSelector((state) => state.profileSlice);
+  const id_number = useRef(null);
+  const first_name = useRef(null);
+  const last_name = useRef(null);
+  const address = useRef(null);
+  const birth_date = useRef(null);
+  const gender = useRef(null);
+  const durgs = useRef(null);
+  const comment = useRef(null);
+  const departments = useRef(null);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      first_name: first_name.current.value,
+      last_name: last_name.current.value,
+      id_number: id_number.current.value,
+      address: address.current.value,
+      birth_date: birth_date.current.value,
+      gender: gender.current.value,
+    };
+    if (!state.is_doctor && !state.is_emp && !state.is_superuser) {
+      data["durgs"] = durgs.current.value;
+      data["comment"] = comment.current.value;
+    }
+    console.log(data);
+
+    dispatch(postProfile(data));
+  };
+
   return (
     <div className="container-fluid">
       <div className="d-sm-flex align-items-center justify-content-center p-3">
@@ -22,21 +51,35 @@ const Completedata = () => {
             </h4>
             <hr />
           </div>
-          <form action="" method="post" className="form">
+          <form
+            action=""
+            method="post"
+            className="form"
+            onSubmit={handleSubmit}
+          >
             <div className="row mx-1 mb-2 text-center justify-content-center">
               <label type="text" className="col-md-5 mx-2 mb-2">
                 Enter your birthdate
               </label>
-              <input type="date" className="col-md-5 mb-2" />
               <input
+                ref={birth_date}
+                type="date"
+                className="col-md-5 mb-2"
+                required
+              />
+              <input
+                ref={id_number}
+                required
                 type="text"
                 placeholder="Enter National id"
                 className="col-md-5 mx-2 mb-2"
               />
               <input
+                required
                 type="text"
                 placeholder="Enter first name"
                 className="col-md-5 mb-2"
+                ref={first_name}
               />
               <input
                 type="text"
@@ -44,19 +87,24 @@ const Completedata = () => {
                 className="col-md-5 mx-2 mb-2"
               />
               <input
+                required
                 type="text"
                 placeholder="Enter last name"
                 className="col-md-5 mb-2"
+                ref={last_name}
               />
               <input
+                required
                 type="text"
                 placeholder="Enter your Address"
                 className="col-md-5 mx-2 mb-2"
+                ref={address}
               />
               <select
-                type="date"
+                required
+                ref={gender}
+                name="gender"
                 className="col-md-5 mb-2"
-                placeholder="select a doctor"
               >
                 <option value="">Select your gender</option>
                 <option value="male">Male</option>
@@ -65,7 +113,8 @@ const Completedata = () => {
               {state.is_doctor ? (
                 <>
                   <select
-                    type="date"
+                    ref={departments}
+                    required
                     className="col-md-5 mb-2"
                     placeholder="select a doctor"
                   >
@@ -80,34 +129,28 @@ const Completedata = () => {
                     className="col-md-5 mb-2"
                   />
                 </>
-              ) : (
-                <></>
-              )}
-              {state.is_patient ? (
+              ) : null}
+              {state.is_doctor && state.is_emp && state.is_superuser ? null : (
                 <>
                   <input
                     type="text"
+                    ref={durgs}
                     placeholder="Enter drugs taken"
                     className="col-md-5 mx-2 mb-2"
                   />
                   <input
                     type="text"
+                    ref={comment}
                     placeholder="Enter your comments"
                     className="col-md-5 mb-2"
                   />
                 </>
-              ) : (
-                <></>
               )}
             </div>
             <hr />
             <div className="row g-3 mb-1 mt-1">
               <div className="col-12 mt-1 text-center">
-                <button
-                  type="submit"
-                  className="btn btn-secondary mx-3"
-                  //   disabled={state.reservationData.isDisabled}
-                >
+                <button type="submit" className="btn btn-secondary mx-3">
                   Submit Data
                 </button>
                 <button

@@ -33,7 +33,7 @@ import Register from "./components/register";
 import Reserve from "./components/reserve";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
-import { ScrollToTop } from 'react-router-scroll-to-top';
+import { ScrollToTop } from "react-router-scroll-to-top";
 import Signin from "./components/Registration/Signin";
 import Signup from "./components/Registration/Signup";
 import Staffedit from "./components/StaffBoard/Staffedit";
@@ -44,64 +44,14 @@ import { getDoctors } from "./store/Doctors";
 
 // import Login from "./components/login";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import ScrollToTop from "react-scroll-to-top";
-
-
-
-
-
-
-
-
-
 
 // import Login from "./components/login";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //done
 
-
-
-
-
-
 // Khalid import
-
-
-
-
-
-
+import Completedata from "./components/Completedata";
 
 function App() {
   const dispatch = useDispatch();
@@ -109,7 +59,8 @@ function App() {
   const stateDoctor = useSelector((state) => state.doctorsSlice);
   const statePatient = useSelector((state) => state.patientsSlice);
   const stateDepartment = useSelector((state) => state.departmentsSlice);
-
+  const stateUser = useSelector((state) => state.users);
+  // console.log(stateUser.user.profile_complete);
   //  console.log(statePatient);
   // console.log(stateDoctor);
   //  const dept=(stateDepartment.departments.filter(x => x.id==3));
@@ -129,50 +80,52 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/departments" element={<AllDepartmentsPage />} />
-        <Route path="/departments/:id" element={<DepartmentPage />} />
-        {/* <Route path="reserve" element={<Reserve />} />*/}
-        <Route path="doctors" element={<AllDoctors state={stateDoctor} />} /> 
-        <Route
-          path="/patient/:id"
-          element={<Patientindex doctor={stateDoctor} />}
-        />
-        <Route path="/patienthistory/:id" element={<Patienthistory />} />
-        <Route path="/patientedit/:id" element={<Patientedit />} />
-        <Route path="/checkout/:id" element={<Patientcheckout />} />
-        <Route path="/doctor/:id" element={<Doctorindex />} />
-        <Route path="/doctorreport/:id" element={<Doctorreport />} />
-        <Route path="/doctoredit/:id" element={<Doctoredit />} />
-        <Route path="/doctorhistory/:id" element={<Doctorhistory />} />
-        <Route
-          path="/staff/:id"
-          element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
-        />
-        <Route path="/staffhistory/:id" element={<Staffhistory />} />
-        <Route path="/staffedit/:id" element={<Staffedit />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/patientedit/:id" element={<Patientedit />} />
-        <Route path="/staffedit" element={<Staffedit />} />
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/signup" element={<Signup />} />
-        <Route exact path="/activate/:uid/:token" element={<Activate />} />
-        <Route path="/login" element={<Signin />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route
-          exact
-          path="/password/reset/confirm/:uid/:token"
-          element={<ResetPasswordConfirm />}
-        />
-        <Route path="*" element={<Page404 />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/departments" element={<AllDepartmentsPage />} />
+          <Route path="/departments/:id" element={<DepartmentPage />} />
+          {/* <Route path="reserve" element={<Reserve />} />*/}
+          <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
+          <Route
+            path="/patient/:id"
+            element={<Patientindex doctor={stateDoctor} />}
+          />
+          <Route path="/patienthistory/:id" element={<Patienthistory />} />
+          <Route path="/patientedit/:id" element={<Patientedit />} />
+          <Route path="/checkout/:id" element={<Patientcheckout />} />
+          <Route path="/doctor/:id" element={<Doctorindex />} />
+          <Route path="/doctorreport/:id" element={<Doctorreport />} />
+          <Route path="/doctoredit/:id" element={<Doctoredit />} />
+          <Route path="/doctorhistory/:id" element={<Doctorhistory />} />
+          <Route
+            path="/staff/:id"
+            element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
+          />
+          <Route path="/staffhistory/:id" element={<Staffhistory />} />
+          <Route path="/staffedit/:id" element={<Staffedit />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/patientedit/:id" element={<Patientedit />} />
+          <Route path="/staffedit" element={<Staffedit />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/signup" element={<Signup />} />
+          <Route exact path="/activate/:uid/:token" element={<Activate />} />
+          <Route path="/login" element={<Signin />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            exact
+            path="/password/reset/confirm/:uid/:token"
+            element={<ResetPasswordConfirm />}
+          />
+          {!stateUser.user.profile_complete ? (
+            <Route path="/completedata" element={<Completedata />} />
+          ) : null}
 
-        <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
-
-      </Routes>
-      <BottomFooter />
-      <ScrollToTop smooth />
-</Layout>
+          <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+        <BottomFooter />
+        <ScrollToTop smooth />
+      </Layout>
     </div>
   );
 }

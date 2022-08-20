@@ -12,10 +12,10 @@ class DepartmentSerializerList(generics.ListCreateAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
 
+
 class DepartmentSerializerDetails(generics.RetrieveUpdateAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-
 
 
 class PatientSerializerList(generics.ListCreateAPIView):
@@ -83,6 +83,12 @@ class ReservationSerializerDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = reservation.objects.all()
     serializer_class = ReservationSerializer
 
+
 class PatientSerializerDetails(generics.RetrieveUpdateAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+
+
+class PersonSerializerDetails(generics.RetrieveUpdateAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer

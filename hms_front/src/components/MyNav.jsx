@@ -13,9 +13,10 @@ import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
 
+
 const MyNav = () => {
   const [activeLink, setActiveLink] = useState("home");
-  const { isAuthenticated, user } = useSelector((state) => state.users);
+  const { isAuthenticated, user, } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -118,7 +119,12 @@ const MyNav = () => {
               <div>
                   <Link className='nav_login_button' to='/login' role='button'>Login</Link>
                   <Link className='nav_login_button' to='/signup' role='button'>Signup</Link>
+              
               </div>}
+              {isAuthenticated && !user.profile_complete &&
+              
+              <Link className='btn' to='/completedata' role='button'>Complete Your Profile</Link>
+          }
 
 
 

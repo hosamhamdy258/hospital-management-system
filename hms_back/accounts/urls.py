@@ -19,7 +19,9 @@ from .views import BlacklistTokenUpdateView
 
 
 urlpatterns = [
-    # path('register/', CustomUserCreate.as_view(), name="create_user"),
+    # path('link/<int:pk>/', UsersSerializerDetails.as_view(), name="link_user"),
+    # path('link', UsersSerializerDetails.as_view(), name="link_users"),
+
     path('logout/blacklist/', BlacklistTokenUpdateView.as_view(),
          name='blacklist')
 ]

@@ -243,8 +243,8 @@ export const verify = (uid, token) => async (dispatch) => {
 const initialState = {
   access: localStorage.getItem("access"),
   refresh: localStorage.getItem("refresh"),
-  isAuthenticated: null,
-  user: null,
+  isAuthenticated: false,
+  user: {},
   erorr: null,
 };
 
@@ -273,7 +273,7 @@ const users = createSlice({
       window.location.reload(false);
     },
     [Signin.rejected]: (state, action) => {
-      state.erorr = "Email or Password is incorrect";
+      state.error = "Email or Password is incorrect";
     },
     // logout Actions
     [logout.pending]: (state, action) => {
@@ -281,7 +281,9 @@ const users = createSlice({
     },
     [logout.fulfilled]: (state, action) => {
       state.isAuthenticated = false;
-      state.user = action.payload;
+      state.user = {};
+      // console.log(action.payload);
+
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
     },

@@ -5,7 +5,8 @@ import doctorsSlice from "./Doctors";
 import medicalRecordSlice from "./medicalRecord";
 import patientsSlice from "./patient";
 import reservationSlice from "./reserve";
-import users from './usersSlice';
+import users from "./usersSlice";
+import profileSlice from "./Profile";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     departmentsSlice,
     users,
     medicalRecordSlice,
+    profileSlice,
   },
 
   middleware: (getDefaultMiddleware) =>

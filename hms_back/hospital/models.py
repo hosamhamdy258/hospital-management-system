@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-from email.policy import default
 from logging import disable
 from msilib.schema import _Validation_records
 from django.db import models
@@ -10,11 +8,19 @@ from django.db import models
 from django.utils import timezone
 import os
 from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator, RegexValidator
+
+from accounts.models import UserAccount
+
 
 # Create your models here.
 
+ID_NUMBER_REGEX = RegexValidator(r"^[0-9]{14}$", 'Id Number must be 14 numbers')
+
+
 class Person(models.Model):
-    id_number = models.CharField(max_length=14, unique=True)
+    id_number = models.CharField(max_length=14, unique=True, validators=[
+                                 ID_NUMBER_REGEX])
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, default='', blank=True)
     last_name = models.CharField(max_length=255)
@@ -26,7 +32,9 @@ class Person(models.Model):
         ('female', "Female"),
     )
     gender = models.CharField(max_length=6, choices=options, default='male')
-
+   
+    linked_users = models.OneToOneField(
+        UserAccount, related_name='linked_users', on_delete=models.RESTRICT,null=True)
     @property
     def age(self):
         age = date.today().year - self.birth_date.year
@@ -50,15 +58,17 @@ week_days = (
     ('sunday', 'Sunday'),
 )
 
+
 def check_image(value):
     img_extionsion = os.path.splitext(value.name)[1]
-    
-    accepted_extensions = ['.webp','.jpg', '.png', '.jpeg']
+
+    accepted_extensions = ['.webp', '.jpg', '.png', '.jpeg']
     if not img_extionsion.lower() in accepted_extensions:
         raise ValidationError('Unsupported file extension.')
 
+
 class Department(models.Model):
-    
+
     name = models.CharField(max_length=255, unique=True)
     desc = models.TextField()
     logo_img = models.ImageField(upload_to='images', validators=[check_image])
