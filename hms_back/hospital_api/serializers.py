@@ -15,6 +15,14 @@ class OfficeAdminSerializer(serializers.ModelSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
+    department = serializers.CharField(
+        source='doctor.department', read_only=True)
+
+    doctor_name = serializers.CharField(
+        source='doctor', 
+        read_only=True,
+    )
+
     class Meta:
         model = reservation
         fields = "__all__"
@@ -48,11 +56,14 @@ class DoctorSerializer(serializers.ModelSerializer):
     department = serializers.SlugRelatedField(
         slug_field='name',
         queryset=Department.objects.all()
-        )
+    )
 
     class Meta:
         model = Doctor
-        fields = ['id', 'full_name', 'address', 'birth_date', 'gender','department', 'age','img']
+        fields = ['id', 'full_name', 'address', 'birth_date',
+                  'gender', 'department', 'age', 'img']
+        # fields = "__all__"
+
 
 
 class PatientSerializerReserve(serializers.ModelSerializer):
@@ -71,3 +82,5 @@ class DoctorSerializerReserve(serializers.ModelSerializer):
 #     class Meta:
 #         model = reservation
 #         fields = "__all__"
+
+

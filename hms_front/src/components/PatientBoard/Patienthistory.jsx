@@ -1,7 +1,17 @@
 import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getReservationList } from "../../store/reserve";
 
 const Patienthistory = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.reservationSlice);
+  useEffect(() => {
+    dispatch(getReservationList());
+  }, [dispatch]);
+
   return (
     <section id="page-top">
       <link
@@ -15,7 +25,7 @@ const Patienthistory = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
@@ -23,8 +33,8 @@ const Patienthistory = () => {
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/patient/${id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
@@ -76,12 +86,8 @@ const Patienthistory = () => {
         <div id="content-wrapper" className="d-flex flex-column">
           {/* <!-- Main Content --> */}
           <div id="content">
-            {/* <!-- Topbar --> */}
-
-            {/* <!-- End of Topbar --> */}
-
             {/* <!-- Begin Page Content --> */}
-            <div className="container-fluid p-3 mt-5">
+            <div className="container-fluid p-3">
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Reports Hitory</h1>
 
@@ -90,57 +96,33 @@ const Patienthistory = () => {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Date</th>
+                    <th scope="col">time</th>
                     <th scope="col">Department</th>
                     <th scope="col">Doctor</th>
                     <th scope="col">Download</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
+                  {state.reservation.map((element,index) => {
+                    return (
+                      <tr>
+                        <th scope="row">{index+1}</th>
+                        <td>{element.date.slice(0,10)}</td>
+                        <td>{element.date.slice(11,16)}</td>
+                        <td>{element.department}</td>
+                        <td>{element.doctor_name}</td>
+                        <td>
+                          <Link
+                            to={"#"}
+                            className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                          >
+                            <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                            Generate Report
+                          </Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

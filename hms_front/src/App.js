@@ -1,22 +1,30 @@
 import "./App.css";
 
 import React, { useEffect } from "react";
-import { Route, Routes, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { getPatientDetails, getPatients } from "./store/patient";
 import { useDispatch, useSelector } from "react-redux";
 
 import About from "./components/About/About";
+import Activate from "./components/Registration/Activate";
 import AllDepartmentsPage from "./components/Departments/AllDepartmentsPage";
 import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
 import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
+import Doctoredit from "./components/DoctorBoard/Doctoredit";
+import Doctorhistory from "./components/DoctorBoard/Doctorhistory";
+import Doctorindex from "./components/DoctorBoard/Doctorindex";
+import Doctorreport from "./components/DoctorBoard/Doctorreport";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
+// import Login from "./components/login";
+import MyNav from "./components/MyNav";
+import NotFound from "./components/notfound";
+import Register from "./components/register";
 import Patientindex from "./components/Patientindex";
 import Patienthistory from "./components/Patienthistory";
 import Patientcheckout from "./components/Patientcheckout";
-import Doctorindex from "./components/Doctorindex";
-import Doctorreport from "./components/Doctorreport";
 import Staffindex from "./components/Staffindex";
 import Staffhistory from "./components/Staffhistory";
 import Profile from "./components/Profile";
@@ -37,7 +45,6 @@ import Signin from "./components/Registration/Signin";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
 import PrivateRoutes from "./store/PrivateRoutes";
-import Layout from "./components/Registration/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,6 +70,8 @@ function App() {
         <Routes>
           <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
           <Route path="/" element={<Home />} />
+          {/* <Route path="login" element={<Login state={stateAuth} />} />
+        <Route path="register" element={<Register />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/departments" element={<AllDepartmentsPage />} />
@@ -87,7 +96,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/patientedit/:id" element={<Patientedit />} />
           <Route path="/staffedit" element={<Staffedit />} />
-
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/signup" element={<Signup />} />
           <Route exact path="/activate/:uid/:token" element={<Activate />} />
           <Route path="/login" element={<Signin />} />

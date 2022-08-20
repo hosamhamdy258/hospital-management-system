@@ -16,7 +16,7 @@ const Patientcheckout = () => {
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
         <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion mt-5"
+          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
           id="accordionSidebar"
         >
           {/* <!-- Sidebar - Brand --> */}
@@ -24,8 +24,8 @@ const Patientcheckout = () => {
             className="sidebar-brand d-flex align-items-center justify-content-center"
             to={`/patient/${id}`}
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
+            <div className="sidebar-brand-icon">
+              <i class="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
@@ -83,10 +83,8 @@ const Patientcheckout = () => {
           {/* <!-- End of Topbar --> */}
 
           {/* <!-- Begin Page Content --> */}
-          <div className="container-fluid mt-5">
-            <div className="py-3 text-center">
-              <h2 className="h3 mb-4 text-gray-800">.</h2>
-
+          <div className="container-fluid mx-2">
+            <div className="p-3 text-center">
               <h2 className="h3 mb-4 text-gray-800">Checkout form</h2>
             </div>
             <div className="row">
@@ -123,7 +121,7 @@ const Patientcheckout = () => {
                   </li>
                 </ul>
               </div>
-              <div className="col-md-8 order-md-1 border p-2">
+              <div className="col-md-8 order-md-1 border p-2 mb-2">
                 <h4 className="mb-3">Billing address</h4>
                 <form className="needs-validation" novalidate="">
                   <div className="row">

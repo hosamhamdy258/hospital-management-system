@@ -33,7 +33,7 @@ const About = () => {
             <section className='features'>
                 <div className="container">
                     <div className="row">
-                        <h2 className="about_title">Our Services</h2>
+                        <motion.h2 className="about_title" initial={{ x: -100 }} whileInView={{ x: 0 }} transition={{ duration: .5 }}>Our Services</motion.h2>
 
                         <motion.div initial={{ y: 400 }} whileInView={{ y: 0 }} transition={{ duration: .5 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >

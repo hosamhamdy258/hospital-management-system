@@ -27,11 +27,11 @@ export default function AddUser() {
       re_password: re_password.current.value,
     };
     dispatch(Signup(data));
-    first_name.current.value = null;
-    last_name.current.value = null;
-    email.current.value = null;
-    password.current.value = null;
-    re_password.current.value = null;
+    // first_name.current.value = null;
+    // last_name.current.value = null;
+    // email.current.value = null;
+    // password.current.value = null;
+    // re_password.current.value = null;
   };
 
   function erorrMsg(myObject) {
