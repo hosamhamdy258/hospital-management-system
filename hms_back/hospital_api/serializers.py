@@ -1,3 +1,4 @@
+from importlib.util import source_hash
 from rest_framework import serializers
 from hospital.models import *
 
@@ -29,18 +30,22 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 
 class MedicalRecordSerializer(serializers.ModelSerializer):
-    patient_id = serializers.SlugRelatedField(
-        slug_field='full_name',
-        queryset=Patient.objects.all()
-    )
-    added_doctor_id = serializers.SlugRelatedField(
-        slug_field='full_name',
-        queryset=Doctor.objects.all()
-    )
+    # patient_id = serializers.SlugRelatedField(
+    #     slug_field='first_name',
+    #     queryset=Patient.objects.all()
+    # )
+    # added_doctor_id = serializers.SlugRelatedField(
+    #     slug_field='first_name',
+    #     queryset=Doctor.objects.all()
+    # )
+    patient_name= serializers.CharField(source="patient_id.full_name",read_only=True)
+    doctor_name= serializers.CharField(source="added_doctor_id.full_name",read_only=True)
+    patient_age= serializers.CharField(source="patient_id.age",read_only=True)
     
+
     class Meta:
         model = medical_record
-        fields = "__all__"
+        fields = ["patient_name","doctor_name","patient_age"]
 
 
 class ReceiptSerializer(serializers.ModelSerializer):
