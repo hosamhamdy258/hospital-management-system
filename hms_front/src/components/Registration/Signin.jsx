@@ -5,8 +5,7 @@ import { Signin } from '../../store/usersSlice';
 import { Link, Navigate } from 'react-router-dom';
 
 export default function UserLog() {
-    const { erorr, isAuthenticated } = useSelector((state) => state.users);
-
+    const { err, isAuthenticated } = useSelector((state) => state.users);
     const email = useRef(null);
     const password = useRef(null);
 
@@ -29,11 +28,11 @@ export default function UserLog() {
 
     return (
         <>
-            <div className='container'>
+            <div className='container mt-4'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        {erorr &&
-                            <p className="text-danger">{erorr}</p>}
+
+                        {err && <p className="text-danger mt-1">{err}</p>}
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" ref={email} />
                     </Form.Group>

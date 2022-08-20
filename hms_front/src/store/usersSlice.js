@@ -41,7 +41,7 @@ export const load_user = createAsyncThunk(
       }
     } else {
       // eslint-disable-next-line no-throw-literal
-      throw "Error";
+      throw "err";
     }
   }
 );
@@ -78,7 +78,7 @@ export const checkAuthenticated = createAsyncThunk(
       }
     } else {
       // eslint-disable-next-line no-throw-literal
-      throw "Error";
+      throw "err";
     }
   }
 );
@@ -245,7 +245,7 @@ const initialState = {
   refresh: localStorage.getItem("refresh"),
   isAuthenticated: null,
   user: null,
-  erorr: null,
+  err: null,
 };
 
 const users = createSlice({
@@ -254,15 +254,15 @@ const users = createSlice({
   extraReducers: {
     // Signup Actions
     [Signup.pending]: (state, action) => {
-      state.error = null;
+      state.err = null;
     },
     [Signup.fulfilled]: (state, action) => {},
     [Signup.rejected]: (state, action) => {
-      state.erorr = action.payload;
+      state.err = action.payload;
     },
     // Signin Actions
     [Signin.pending]: (state, action) => {
-      state.error = null;
+      state.err = null;
     },
     [Signin.fulfilled]: (state, action) => {
       state.isAuthenticated = true;
@@ -273,11 +273,11 @@ const users = createSlice({
       window.location.reload(false);
     },
     [Signin.rejected]: (state, action) => {
-      state.erorr = "Email or Password is incorrect";
+      state.err = "Email or Password is incorrect";
     },
     // logout Actions
     [logout.pending]: (state, action) => {
-      state.error = null;
+      state.err = null;
     },
     [logout.fulfilled]: (state, action) => {
       state.isAuthenticated = false;
@@ -285,40 +285,38 @@ const users = createSlice({
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
     },
-    [logout.rejected]: (state, action) => {
-      state.erorr = "Email or Password is incorrect";
-    },
+    [logout.rejected]: (state, action) => {},
 
     // Activation Actions
     [Activate.pending]: (state, action) => {
-      state.error = null;
+      state.err = null;
     },
     [Activate.fulfilled]: (state, action) => {
       state.verified = true;
     },
     [Activate.rejected]: (state, action) => {
-      state.erorr = action.payload;
+      state.err = action.payload;
     },
     // load_user Actions
     [load_user.pending]: (state, action) => {
-      state.error = null;
+      state.err = null;
     },
     [load_user.fulfilled]: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
     },
     [load_user.rejected]: (state, action) => {
-      state.erorr = action.payload;
+      state.err = action.payload;
     },
     // checkAuthenticated Actions
     [checkAuthenticated.pending]: (state, action) => {
-      state.error = null;
+      state.err = null;
     },
     [checkAuthenticated.fulfilled]: (state, action) => {
       state.isAuthenticated = true;
     },
     [checkAuthenticated.rejected]: (state, action) => {
-      state.erorr = action.payload;
+      state.err = action.payload;
     },
   },
 });
