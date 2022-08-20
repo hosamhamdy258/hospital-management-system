@@ -1,19 +1,26 @@
 import { Link, useParams } from "react-router-dom";
 import React ,{useEffect} from "react";
 
-import { getReservationList } from "../../store/reserve";
+import { getMedicalRecordDetails } from "../../store/medicalRecord";
+import { jsPDF } from "jspdf";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const PatientMedicalRecord = () => {
      const { id } = useParams();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.reservationSlice);
+  const state = useSelector((state) => state.medicalRecordSlice);
   useEffect(() => {
-    dispatch(getReservationList());
+    dispatch(getMedicalRecordDetails());
   }, [dispatch]);
-
+  const prescPdf_generator=()=>{
+    const doc = new jsPDF();
+    doc.text(`Patient name : ${id}`, 10, 10);
+    doc.save(`${id}.pdf`);
+  }
+  console.log(state);
   return (
+    
     <>
      <section id="page-top">
       <link
@@ -36,7 +43,7 @@ const PatientMedicalRecord = () => {
             to={`/patient/${id}`}
           >
             <div className="sidebar-brand-icon">
-              <i class="fa-regular fa-hospital"></i>
+              <i className="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
@@ -116,6 +123,7 @@ const PatientMedicalRecord = () => {
                         <button
                           type="submit"
                           className="btn btn-secondary mx-4"
+                          onClick={prescPdf_generator}
                         >
                          Get pdf Report
                         </button>
