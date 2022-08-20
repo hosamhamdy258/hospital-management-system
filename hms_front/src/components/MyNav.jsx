@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
+import { NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 import logo from "../assets/img/logo.jpg";
@@ -11,7 +11,7 @@ import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
 
 const MyNav = () => {
-  const [activeLink, setActiveLink] = useState("home");
+  const [activeLink, setActiveLink] = useState("");
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => {
@@ -31,60 +31,60 @@ const MyNav = () => {
   return (
     <Navbar expand="lg" className={scrolled ? "scrolled" : ""} id="MyNAv">
       <Container>
-        <Navbar.Brand href="#home">
+        <NavLink className='logo nav-link' to="/home">
           <img src={logo} alt="logo" />
-        </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link
+            <NavLink
               className={
-                activeLink === "home" ? "active navbar-link" : "navbar-link"
+                activeLink === "home" ? "active navbar-link nav-link" : "navbar-link nav-link"
               }
-              href="/"
+              to="/"
               onClick={() => onUpdateActiveLink("home")}
             >
               Home
-            </Nav.Link>
-            <Nav.Link
+            </NavLink>
+            <NavLink
               className={
-                activeLink === "doctors" ? "active navbar-link" : "navbar-link"
+                activeLink === "doctors" ? "active navbar-link nav-link" : "navbar-link nav-link"
               }
-              href="/doctors"
+              to="/doctors"
               onClick={() => onUpdateActiveLink("doctors")}
             >
               Doctors
-            </Nav.Link>
+            </NavLink>
 
-            <Nav.Link
+            <NavLink
               className={
-                activeLink === "departments" ? "active navbar-link" : "navbar-link"
+                activeLink === "departments" ? "active navbar-link nav-link" : "navbar-link nav-link"
               }
-              href="/departments"
+              to="/departments"
               onClick={() => onUpdateActiveLink("departments")}
             >
               Departments
-            </Nav.Link>
-            <Nav.Link
+            </NavLink>
+            <NavLink
               className={
-                activeLink === "about" ? "active navbar-link" : "navbar-link"
+                activeLink === "about" ? "active navbar-link nav-link" : "navbar-link nav-link"
               }
-              href="/about"
+              to="/about"
               onClick={() => onUpdateActiveLink("about")}
             >
               About US
-            </Nav.Link>
-            <Nav.Link
+            </NavLink>
+            <NavLink
               className={
-                activeLink === "contact" ? "active navbar-link" : "navbar-link"
+                activeLink === "contact" ? "active navbar-link nav-link" : "navbar-link nav-link"
               }
-              href="/contact"
+              to="/contact"
               onClick={() => onUpdateActiveLink("contact")}
             >
               Contact Us
-            </Nav.Link>
+            </NavLink>
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
@@ -99,7 +99,7 @@ const MyNav = () => {
               </a>
             </div>
               {/* <span>Login</span> */}
-              <Link className='nav_login_button' to='/login' role='button'>Login</Link>
+              <NavLink className='nav_login_button' to='/login' role='button'>Login</NavLink>
           </span>
         </Navbar.Collapse>
       </Container>
