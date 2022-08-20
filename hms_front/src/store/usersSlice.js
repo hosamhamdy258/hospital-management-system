@@ -246,7 +246,6 @@ const initialState = {
   isAuthenticated: null,
   user: null,
   erorr: null,
-  verified: null,
 };
 
 const users = createSlice({
@@ -268,8 +267,10 @@ const users = createSlice({
     [Signin.fulfilled]: (state, action) => {
       state.isAuthenticated = true;
       state.user = action.payload;
+      console.log(action.payload);
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
+      window.location.reload(false);
     },
     [Signin.rejected]: (state, action) => {
       state.erorr = "Email or Password is incorrect";

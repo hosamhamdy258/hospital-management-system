@@ -14,7 +14,7 @@ import { logout } from "../store/usersSlice";
 
 const MyNav = () => {
   const [activeLink, setActiveLink] = useState("home");
-  const { isAuthenticated } = useSelector((state) => state.users);
+  const { isAuthenticated, user } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -38,12 +38,6 @@ const MyNav = () => {
     dispatch(logout());
   }
 
-  // console.log(isAuthenticated);
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     dispatch(load_user());
-  //   }
-  // }, []);
 
   return (
     <Navbar expand="lg" className={scrolled ? "scrolled" : ""} id="MyNAv">
@@ -115,6 +109,10 @@ const MyNav = () => {
                 <img src={navIcon3} alt="" />
               </a>
             </div>
+            {user && user.first_name &&
+              <div>
+                Welcome {user.first_name}
+              </div>}
             {!isAuthenticated &&
               <div>
                 <button className="vvd btn btn-info">
