@@ -26,6 +26,7 @@ import Doctorhistory from "./components/DoctorBoard/Doctorhistory";
 import Staffindex from "./components/StaffBoard/Staffindex";
 import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Profile from "./components/Profile";
+import Completedata from "./components/Completedata";
 import Patientedit from "./components/PatientBoard/Patientedit";
 import Staffedit from "./components/StaffBoard/Staffedit";
 
@@ -95,6 +96,7 @@ function App() {
         <Route path="/staffhistory/:id" element={<Staffhistory />} />
         <Route path="/staffedit/:id" element={<Staffedit />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/completedata/:id" element={<Completedata />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
         {/* <Route path="/" element={<Home />} /> */}

@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getReservationList } from "../store/reserve";
+import { getReservationList } from "../../store/reserve";
 
 const Patienthistory = () => {
   const { id } = useParams();
@@ -103,12 +103,12 @@ const Patienthistory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.reservation.map((element,index) => {
+                  {state.reservation.map((element, index) => {
                     return (
                       <tr>
-                        <th scope="row">{index+1}</th>
-                        <td>{element.date.slice(0,10)}</td>
-                        <td>{element.date.slice(11,16)}</td>
+                        <th scope="row">{index + 1}</th>
+                        <td>{element.date.slice(0, 10)}</td>
+                        <td>{element.date.slice(11, 16)}</td>
                         <td>{element.department}</td>
                         <td>{element.doctor_name}</td>
                         <td>
