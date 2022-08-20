@@ -30,18 +30,18 @@ const AllDepartmentsPage = () => {
           <div className="row">
             {state.departments.map((item) => (
 
-              <div className="col-lg-4 col-md-6 d-flex justify-content-between"  key={item.id}>
+              <div className="col-lg-4 col-md-6 d-flex justify-content-between" key={item.id}>
                 <Card >
                   <Card.Img variant="top" src={item.img} />
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
                     <Card.Text>
-                    {item.desc.split('.')[0].replace(/[^a-zA-Z0-9]/g, '')}
+                      {item.desc.split('.')[0].replace(/[^a-zA-Z0-9]/g, '')}
                     </Card.Text>
                     <button>
-                    <Link className="dep_link" to={`/hDepts/${item.id}`} d_id={item.id}>
-                      read more<i className="fa fa-arrow-right px-2" aria-hidden="true"></i>
-                    </Link>
+                      <Link className="dep_link" to={`/departments/${item.id}`} d_id={item.id}>
+                        read more<i className="fa fa-arrow-right px-2" aria-hidden="true"></i>
+                      </Link>
                     </button>
                     <br />
                   </Card.Body>

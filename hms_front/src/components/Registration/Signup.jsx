@@ -8,7 +8,7 @@ import { Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 export default function AddUser() {
-  const { erorr, isAuthenticated } = useSelector((state) => state.users);
+  const { err, isAuthenticated } = useSelector((state) => state.users);
   const first_name = useRef(null);
   const last_name = useRef(null);
   const email = useRef(null);
@@ -53,21 +53,21 @@ export default function AddUser() {
               ref={first_name}
             />
             <p className="text-danger">
-              {erorr && erorr.hasOwnProperty("first_name") && erorrMsg(erorr)}
+              {err && err.hasOwnProperty("first_name") && erorrMsg(err)}
             </p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Last Name</Form.Label>
             <Form.Control type="text" placeholder="Last Name" ref={last_name} />
             <p className="text-danger">
-              {erorr && erorr.hasOwnProperty("last_name") && erorrMsg(erorr)}
+              {err && err.hasOwnProperty("last_name") && erorrMsg(err)}
             </p>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" ref={email} />
             <p className="text-danger">
-              {erorr && erorr.hasOwnProperty("email") && erorrMsg(erorr)}
+              {err && err.hasOwnProperty("email") && erorrMsg(err)}
             </p>
           </Form.Group>
           <Form.Group className="mb-3">
@@ -78,7 +78,7 @@ export default function AddUser() {
               ref={password}
             />
             <p className="text-danger">
-              {erorr && erorr.hasOwnProperty("password") && erorrMsg(erorr)}
+              {err && err.hasOwnProperty("password") && erorrMsg(err)}
             </p>
           </Form.Group>
           <Form.Group className="mb-3">
@@ -89,7 +89,7 @@ export default function AddUser() {
               ref={re_password}
             />
             <p className="text-danger">
-              {erorr && erorr.hasOwnProperty("re_password") && erorrMsg(erorr)}
+              {err && err.hasOwnProperty("re_password") && erorrMsg(err)}
             </p>
           </Form.Group>
           <div className="text-end mb-3">
