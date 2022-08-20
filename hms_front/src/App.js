@@ -66,50 +66,52 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="login" element={<Login state={stateAuth} />} />
+      <Layout>
+        <Routes>
+          <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/departments" element={<AllDepartmentsPage />} />
-        <Route path="/departments/:id" element={<DepartmentPage />} />
-        {/* <Route path="reserve" element={<Reserve />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/departments" element={<AllDepartmentsPage />} />
+          <Route path="/departments/:id" element={<DepartmentPage />} />
+          {/* <Route path="reserve" element={<Reserve />} />
         <Route path="doctors" element={<AllDoctors state={stateDoctor} />} /> */}
-        <Route
-          path="/patient/:id"
-          element={<Patientindex doctor={stateDoctor} />}
-        />
-        <Route path="/patienthistory/:id" element={<Patienthistory />} />
-        <Route path="/patientedit/:id" element={<Patientedit />} />
-        <Route path="/checkout/:id" element={<Patientcheckout />} />
-        <Route path="/doctor/:id" element={<Doctorindex />} />
-        <Route path="/doctorreport/:id" element={<Doctorreport />} />
-        <Route path="/doctoredit/:id" element={<Doctoredit />} />
-        <Route path="/doctorhistory/:id" element={<Doctorhistory />} />
-        <Route
-          path="/staff/:id"
-          element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
-        />
-        <Route path="/staffhistory/:id" element={<Staffhistory />} />
-        <Route path="/staffedit/:id" element={<Staffedit />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/completedata/:id" element={<Completedata />} />
-        <Route path="/patientedit/:id" element={<Patientedit />} />
-        <Route path="/staffedit" element={<Staffedit />} />
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/signup" element={<Signup />} />
-        <Route exact path="/activate/:uid/:token" element={<Activate />} />
-        <Route path="/login" element={<Signin />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route
-          exact
-          path="/password/reset/confirm/:uid/:token"
-          element={<ResetPasswordConfirm />}
-        />
-        <Route path="*" element={<Page404 />} />
-      </Routes>
+          <Route
+            path="/patient/:id"
+            element={<Patientindex doctor={stateDoctor} />}
+          />
+          <Route path="/patienthistory/:id" element={<Patienthistory />} />
+          <Route path="/patientedit/:id" element={<Patientedit />} />
+          <Route path="/checkout/:id" element={<Patientcheckout />} />
+          <Route path="/doctor/:id" element={<Doctorindex />} />
+          <Route path="/doctorreport/:id" element={<Doctorreport />} />
+          <Route path="/doctoredit/:id" element={<Doctoredit />} />
+          <Route path="/doctorhistory/:id" element={<Doctorhistory />} />
+          <Route
+            path="/staff/:id"
+            element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
+          />
+          <Route path="/staffhistory/:id" element={<Staffhistory />} />
+          <Route path="/staffedit/:id" element={<Staffedit />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/completedata/:id" element={<Completedata />} />
+          <Route path="/patientedit/:id" element={<Patientedit />} />
+          <Route path="/staffedit" element={<Staffedit />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/signup" element={<Signup />} />
+          <Route exact path="/activate/:uid/:token" element={<Activate />} />
+          <Route path="/login" element={<Signin />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            exact
+            path="/password/reset/confirm/:uid/:token"
+            element={<ResetPasswordConfirm />}
+          />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </Layout>
       <BottomFooter />
       <ScrollToTop smooth />
     </div>
