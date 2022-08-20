@@ -18,7 +18,7 @@ import Doctorindex from "./components/DoctorBoard/Doctorindex";
 import Doctorreport from "./components/DoctorBoard/Doctorreport";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
-// import Login from "./components/login";
+import Layout from "./components/Registration/Layout";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Page404 from "./components/Page404";
@@ -40,6 +40,24 @@ import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Staffindex from "./components/StaffBoard/Staffindex";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
+
+// import Login from "./components/login";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import ScrollToTop from "react-scroll-to-top";
 
@@ -77,12 +95,12 @@ import { getDoctors } from "./store/Doctors";
 
 
 // Khalid import
-import Signup from "./components/Registration/Signup";
-import Signin from "./components/Registration/Signin";
-import ResetPassword from "./components/Registration/ResetPassword";
-import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
-import PrivateRoutes from "./store/PrivateRoutes";
-import Layout from "./components/Registration/Layout";
+
+
+
+
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -150,7 +168,7 @@ function App() {
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />
-
+</Layout>
     </div>
   );
 }
