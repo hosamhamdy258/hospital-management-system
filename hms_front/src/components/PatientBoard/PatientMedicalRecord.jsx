@@ -11,7 +11,7 @@ const PatientMedicalRecord = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.medicalRecordSlice);
   useEffect(() => {
-    dispatch(getMedicalRecordDetails());
+    dispatch(getMedicalRecordDetails(id));
   }, [dispatch]);
   const prescPdf_generator=()=>{
     const doc = new jsPDF();
