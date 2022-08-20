@@ -2,14 +2,20 @@ import "./App.css";
 
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { getPatientDetails, getPatients } from "./store/patient";
 import { useDispatch, useSelector } from "react-redux";
 
 import About from "./components/About/About";
+import Activate from "./components/Registration/Activate";
 import AllDepartmentsPage from "./components/Departments/AllDepartmentsPage";
 import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
 import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
+import Doctoredit from "./components/DoctorBoard/Doctoredit";
+import Doctorhistory from "./components/DoctorBoard/Doctorhistory";
+import Doctorindex from "./components/DoctorBoard/Doctorindex";
+import Doctorreport from "./components/DoctorBoard/Doctorreport";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
 // import Login from "./components/login";
@@ -19,10 +25,6 @@ import Register from "./components/register";
 import Patientindex from "./components/PatientBoard/Patientindex";
 import Patienthistory from "./components/PatientBoard/Patienthistory";
 import Patientcheckout from "./components/PatientBoard/Patientcheckout";
-import Doctorindex from "./components/DoctorBoard/Doctorindex";
-import Doctorreport from "./components/DoctorBoard/Doctorreport";
-import Doctoredit from "./components/DoctorBoard/Doctoredit";
-import Doctorhistory from "./components/DoctorBoard/Doctorhistory";
 import Staffindex from "./components/StaffBoard/Staffindex";
 import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Profile from "./components/Profile";
@@ -35,15 +37,14 @@ import Reserve from "./components/reserve";
 import ScrollToTop from "react-scroll-to-top";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
-import { getPatientDetails, getPatients } from "./store/patient";
 import Page404 from "./components/Page404";
 // Khalid import
 import Signup from "./components/Registration/Signup";
-import Activate from "./components/Registration/Activate";
 import Signin from "./components/Registration/Signin";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
 import PrivateRoutes from "./store/PrivateRoutes";
+import Layout from "./components/Registration/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,12 +66,11 @@ function App() {
 
   return (
     <div className="App">
-      <MyNav />
-
-      <Routes>
-        <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="login" element={<Login state={stateAuth} />} />
+      <Layout>
+        <Routes>
+          <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -96,7 +96,6 @@ function App() {
         <Route path="/staffhistory/:id" element={<Staffhistory />} />
         <Route path="/staffedit/:id" element={<Staffedit />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/completedata/:id" element={<Completedata />} />
         <Route path="/patientedit/:id" element={<Patientedit />} />
         <Route path="/staffedit" element={<Staffedit />} />
         {/* <Route path="/" element={<Home />} /> */}

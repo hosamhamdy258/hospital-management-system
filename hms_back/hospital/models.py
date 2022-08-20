@@ -1,13 +1,15 @@
 from asyncio.windows_events import NULL
 from email.policy import default
 from logging import disable
+from msilib.schema import _Validation_records
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date, datetime
 from time import gmtime, strftime
 from django.db import models
 from django.utils import timezone
-
+import os
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -48,12 +50,19 @@ week_days = (
     ('sunday', 'Sunday'),
 )
 
+def check_image(value):
+    img_extionsion = os.path.splitext(value.name)[1]
+    
+    accepted_extensions = ['.webp','.jpg', '.png', '.jpeg']
+    if not img_extionsion.lower() in accepted_extensions:
+        raise ValidationError('Unsupported file extension.')
 
 class Department(models.Model):
+    
     name = models.CharField(max_length=255, unique=True)
     desc = models.TextField()
-    logo_img = models.ImageField(upload_to='images')
-    img = models.ImageField(upload_to='images')
+    logo_img = models.ImageField(upload_to='images', validators=[check_image])
+    img = models.ImageField(upload_to='images', validators=[check_image])
     startDay = models.CharField(
         max_length=10, choices=week_days, default='monday')
     endDay = models.CharField(
@@ -76,7 +85,7 @@ class Doctor(Person):
 
     department = models.ForeignKey(
         Department, on_delete=models.CASCADE,)
-    img = models.ImageField(upload_to='images',)
+    img = models.ImageField(upload_to='images', validators=[check_image])
 
 
 class office_admin(models.Model):
