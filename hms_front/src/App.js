@@ -21,6 +21,7 @@ import Home from "./components/home";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Page404 from "./components/Page404";
+import PatientMedicalRecord from "./components/PatientBoard/PatientMedicalRecord";
 import Patientcheckout from "./components/PatientBoard/Patientcheckout";
 import Patientedit from "./components/PatientBoard/Patientedit";
 import Patienthistory from "./components/PatientBoard/Patienthistory";
@@ -146,10 +147,14 @@ function App() {
           path="/password/reset/confirm/:uid/:token"
           element={<ResetPasswordConfirm />}
         />
+        <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
+
+
         <Route path="*" element={<Page404 />} />
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />
+
 
     </div>
   );
