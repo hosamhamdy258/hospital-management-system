@@ -10,6 +10,7 @@ import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
 import { Link } from "react-router-dom";
+import { logout } from "../store/usersSlice";
 
 const MyNav = () => {
   const [activeLink, setActiveLink] = useState("home");

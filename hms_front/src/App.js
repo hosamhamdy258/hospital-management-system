@@ -22,29 +22,28 @@ import Home from "./components/home";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Register from "./components/register";
-import Patientindex from "./components/Patientindex";
-import Patienthistory from "./components/Patienthistory";
-import Patientcheckout from "./components/Patientcheckout";
-import Staffindex from "./components/Staffindex";
-import Staffhistory from "./components/Staffhistory";
+import Patientindex from "./components/PatientBoard/Patientindex";
+import Patienthistory from "./components/PatientBoard/Patienthistory";
+import Patientcheckout from "./components/PatientBoard/Patientcheckout";
+import Staffindex from "./components/StaffBoard/Staffindex";
+import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Profile from "./components/Profile";
-import Patientedit from "./components/Patientedit";
-import Staffedit from "./components/Staffedit";
+import Patientedit from "./components/PatientBoard/Patientedit";
+import Staffedit from "./components/StaffBoard/Staffedit";
 
 //done
 import Reserve from "./components/reserve";
 import ScrollToTop from "react-scroll-to-top";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
-import { getPatientDetails, getPatients } from "./store/patient";
 import Page404 from "./components/Page404";
 // Khalid import
 import Signup from "./components/Registration/Signup";
-import Activate from "./components/Registration/Activate";
 import Signin from "./components/Registration/Signin";
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
 import PrivateRoutes from "./store/PrivateRoutes";
+import Layout from "./components/Registration/Layout";
 
 function App() {
   const dispatch = useDispatch();
