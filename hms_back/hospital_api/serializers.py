@@ -29,6 +29,15 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 
 class MedicalRecordSerializer(serializers.ModelSerializer):
+    patient_id = serializers.SlugRelatedField(
+        slug_field='full_name',
+        queryset=Patient.objects.all()
+    )
+    added_doctor_id = serializers.SlugRelatedField(
+        slug_field='full_name',
+        queryset=Doctor.objects.all()
+    )
+    
     class Meta:
         model = medical_record
         fields = "__all__"

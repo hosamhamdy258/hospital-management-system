@@ -1,4 +1,7 @@
+import '@progress/kendo-theme-default/dist/all.css';
+
 import { Link, useParams } from "react-router-dom";
+import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 import React ,{useEffect} from "react";
 
 import { getMedicalRecordDetails } from "../../store/medicalRecord";
@@ -7,6 +10,23 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const PatientMedicalRecord = () => {
+    const pdfExportComponent = React.useRef(null);
+    const exportPDFWithMethod = () => {
+        let element = document.querySelector('.k-grid') || document.body;
+        savePDF(element, {
+        paperSize: 'A4'
+        });
+        };
+        const exportPDFWithComponent = () => {
+        if (pdfExportComponent.current) {
+        pdfExportComponent.current.save();
+        console.log('hi')
+
+        }
+        };
+        const downloadPdfTest=(event)=>{
+            pdfExportComponent.current.save();
+        }
      const { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.medicalRecordSlice);
@@ -15,7 +35,9 @@ const PatientMedicalRecord = () => {
   }, [dispatch]);
   const prescPdf_generator=()=>{
     const doc = new jsPDF();
-    doc.text(`Patient name : ${id}`, 10, 10);
+
+    doc.text(60,60,`Patient name : ${state.medicalRecord.patient_id}`);
+    doc.text(60,60,`recommended_medications : ${state.medicalRecord.recommended_medications}`, 10, 10);
     doc.save(`${id}.pdf`);
   }
   console.log(state);
@@ -102,28 +124,28 @@ const PatientMedicalRecord = () => {
               <div className="row mb-4 text-center justify-content-center">
                 <div className="col-lg-8 col-md-6  border p-4 shadow bg-light">
                   <div className="col-12">{/* <hr /> */}</div>
+                  <PDFExport ref={pdfExportComponent} paperSize="A4">
                   <form action="" className="text-start">
                     <div className="row mx-1 mb-1 text-start">
-                      <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Patient name </span>: Omar</label>
+                      <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Patient name </span>: {state.medicalRecord.patient_id}</label>
                       <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Age </span> : 35</label>
                     </div>
                     <div className="row mx-1 mb-1 text-start">
-                    <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Doctor Name</span> :Maha</label>
-                    <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Date</span> :22/02/2022 06:30 PM</label>
+                    <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Doctor Name</span> :{state.medicalRecord.added_doctor_id}</label>
+                    <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Date</span> :{(state.medicalRecord.added_on)?state.medicalRecord.added_on.slice(0,10):'Not registered'}</label>
                     </div>
                     <div className="row g-3 mt-2 mb-1">
                       <div className="col-12 ">
-                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Diagnosis :</span> test </label>
+                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Diagnosis :</span> {state.medicalRecord.diagnosis} </label>
                       </div>
                       <div className="col-12 ">
-                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Diagnosis :</span> test </label>
+                      <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Recommended Medications :</span> {state.medicalRecord.recommended_medications} </label>
 
                       </div>
                       <div className="col-12 mt-5 text-center justify-content-center">
                         <button
-                          type="submit"
                           className="btn btn-secondary mx-4"
-                          onClick={prescPdf_generator}
+                          onClick={exportPDFWithComponent}
                         >
                          Get pdf Report
                         </button>
@@ -131,6 +153,8 @@ const PatientMedicalRecord = () => {
                       </div>
                     </div>
                   </form>
+                  </PDFExport>
+
                 </div>
               </div>
             </div>

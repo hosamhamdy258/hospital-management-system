@@ -29,7 +29,7 @@ export const getMedicalRecordDetails = createAsyncThunk(
   }
 );
 
-const initialState = { medicalRecord: [] , medicalRecordDetails:{}};
+const initialState = { medicalRecord: [] };
 const medicalRecordSlice = createSlice({
   name: "Medical_records",
   initialState,
@@ -46,7 +46,7 @@ const medicalRecordSlice = createSlice({
     // },
     [getMedicalRecordDetails.pending]: (state, action) => {},
     [getMedicalRecordDetails.fulfilled]: (state, action) => {
-      state.departmentDetails = action.payload;
+      state.medicalRecord = action.payload;
     },
     [getMedicalRecordDetails.rejected]: (state, action) => {
       
