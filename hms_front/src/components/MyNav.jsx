@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
@@ -9,9 +9,13 @@ import logo from "../assets/img/logo.jpg";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
+import { Link } from "react-router-dom";
+import { logout } from "../store/usersSlice";
 
 const MyNav = () => {
-  const [activeLink, setActiveLink] = useState("");
+  const [activeLink, setActiveLink] = useState("home");
+  const { isAuthenticated, user } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => {
@@ -25,9 +29,16 @@ const MyNav = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   };
+
+  const logoutButton = () => {
+    dispatch(logout());
+  }
+
+
   return (
     <Navbar expand="lg" className={scrolled ? "scrolled" : ""} id="MyNAv">
       <Container>
@@ -98,8 +109,25 @@ const MyNav = () => {
                 <img src={navIcon3} alt="" />
               </a>
             </div>
-              {/* <span>Login</span> */}
-              <NavLink className='nav_login_button' to='/login' role='button'>Login</NavLink>
+            {user && user.first_name &&
+              <div>
+                Welcome {user.first_name}
+              </div>}
+            {!isAuthenticated &&
+              <div>
+                <button className="vvd btn btn-info">
+                  <Link className='' to='/login' role='button'>Login</Link>
+                </button>
+                <button className="vvd btn btn-info">
+                  <Link className='' to='/signup' role='button'>Signup</Link>
+                </button>
+              </div>}
+
+
+
+            {isAuthenticated && <button className="vvd btn btn-info" onClick={logoutButton}>
+              <Link className='' to='/' role='button'>Logout</Link>
+            </button>}
           </span>
         </Navbar.Collapse>
       </Container>

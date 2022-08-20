@@ -28,14 +28,14 @@ const AllDoctors = () => {
                         </div>
                     </div>
                     <div className="row">
-                    {state.doctors.map((item) => (
+                        {state.doctors.map((item) => (
 
-                        <div className="col-lg-4 col-md-6">
+                            <div key={item.id} className="col-lg-4 col-md-6">
 
                                 <div className="staff mb-5">
                                     <div className="img-wrap d-flex align-items-stretch">
                                     <div className="img align-self-stretch">
-                                        <img src={item.img} alt="doctor_img" className='img-fluid w-100' />
+                                        <img src="https://preview.colorlib.com/theme/medex/images/xdoc-3.jpg.pagespeed.ic.ssPmw2cMao.webp" alt="doctor_img" className='img-fluid w-100' />
                                     </div>
                                     </div>
                                     <div className="text text-center">
@@ -43,8 +43,8 @@ const AllDoctors = () => {
                                         <p className='depName mb-4'>{item.department}</p>
                                     </div>
                                 </div>
-                        </div>
-                            ))}
+                            </div>
+                        ))}
 
                     </div>
                 </div>

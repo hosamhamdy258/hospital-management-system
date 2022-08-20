@@ -18,10 +18,10 @@ import Doctorindex from "./components/DoctorBoard/Doctorindex";
 import Doctorreport from "./components/DoctorBoard/Doctorreport";
 import Doctors from "./components/Doctors";
 import Home from "./components/home";
+// import Login from "./components/login";
 import MyNav from "./components/MyNav";
 import NotFound from "./components/notfound";
 import Page404 from "./components/Page404";
-import PatientMedicalRecord from "./components/PatientBoard/PatientMedicalRecord";
 import Patientcheckout from "./components/PatientBoard/Patientcheckout";
 import Patientedit from "./components/PatientBoard/Patientedit";
 import Patienthistory from "./components/PatientBoard/Patienthistory";
@@ -77,12 +77,12 @@ import { getDoctors } from "./store/Doctors";
 
 
 // Khalid import
-
-
-
-
-
-
+import Signup from "./components/Registration/Signup";
+import Signin from "./components/Registration/Signin";
+import ResetPassword from "./components/Registration/ResetPassword";
+import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
+import PrivateRoutes from "./store/PrivateRoutes";
+import Layout from "./components/Registration/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -104,12 +104,11 @@ function App() {
 
   return (
     <div className="App">
-      <MyNav />
-
-      <Routes>
-        <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="login" element={<Login state={stateAuth} />} />
+      <Layout>
+        <Routes>
+          <Route element={<PrivateRoutes />}>add PrivateRoutes here</Route>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="login" element={<Login state={stateAuth} />} />
         <Route path="register" element={<Register />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -147,14 +146,10 @@ function App() {
           path="/password/reset/confirm/:uid/:token"
           element={<ResetPasswordConfirm />}
         />
-        <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
-
-
         <Route path="*" element={<Page404 />} />
       </Routes>
       <BottomFooter />
       <ScrollToTop smooth />
-
 
     </div>
   );
