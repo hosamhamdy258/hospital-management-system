@@ -13,23 +13,18 @@ const Activate = ({ verify }) => {
     };
 
     if (verified) {
-        return <Navigate to='/' />
+        return <Navigate to='/verified' />
     }
 
     return (
-        <div className='container'>
-            <div
-                className='d-flex flex-column justify-content-center align-items-center'
-                style={{ marginTop: '200px' }}
-            >
-                <h1>Verify your Account:</h1>
+        <div className='container text-center my-5'>
+            <div className=''>
                 <button
                     onClick={verify_account}
-                    style={{ marginTop: '50px' }}
                     type='button'
-                    className='btn btn-primary'
+                    className='btn btn-primary p-3'
                 >
-                    Verify
+                    Verify Account
                 </button>
             </div>
         </div>

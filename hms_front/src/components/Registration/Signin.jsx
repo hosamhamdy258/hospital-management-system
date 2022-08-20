@@ -6,11 +6,6 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export default function UserLog() {
     const { err, isAuthenticated } = useSelector((state) => state.users);
-    // const navigate = useNavigate();
-
-    // const navigateHome = () => {
-    //   navigate("/");
-    // };
     const email = useRef(null);
     const password = useRef(null);
 
@@ -31,42 +26,65 @@ export default function UserLog() {
 
     return (
         <>
-            <div className="container">
-                {/* {isAuthenticated && navigateHome()} */}
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        {err && <p className="text-danger">{err}</p>}
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" ref={email} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            ref={password}
-                        />
-                    </Form.Group>
-                    <div className="text-end mb-3">
-                        <Button variant="primary" type="submit">
-                            Login
-                        </Button>
+            <div className="container m-5">
+                <div className="row justify-content-center">
+                    <div className="col-xl-10 col-lg-12 col-md-9">
+                        <div className="card o-hidden border-0 shadow-lg my-5 w-100">
+                            <div className="card-body p-0">
+                                <div className="row">
+                                    <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                                    <div className="col-lg-6">
+                                        <div className="p-5">
+                                            <div className="text-center">
+                                                <h1 className="h4 text-gray-900 mb-4">
+                                                    Welcome Back!
+                                                </h1>
+                                            </div>
+                                            <form className="user" onSubmit={handleSubmit}>
+                                                {err && <p className="text-danger">{err}</p>}
+                                                <div className="form-group">
+                                                    <input
+                                                        type="email"
+                                                        className="form-control form-control-user"
+                                                        id="exampleInputEmail"
+                                                        aria-describedby="emailHelp"
+                                                        placeholder="Enter Email Address..."
+                                                        ref={email}
+                                                    />
+                                                </div>
+                                                <div className="form-group">
+                                                    <input
+                                                        type="password"
+                                                        className="form-control form-control-user"
+                                                        id="exampleInputPassword"
+                                                        placeholder="Password"
+                                                        ref={password}
+                                                    />
+                                                </div>
+                                                <Button className="btn btn-primary btn-user btn-block" variant="primary" type="submit">
+                                                    Login
+                                                </Button>
+                                            </form>
+                                            <hr />
+                                            <div className="text-center">
+                                                <p>
+                                                    <Link to="/reset-password" className="small">Forgot Password? </Link>
+                                                </p>
+                                            </div>
+                                            <div className="text-center">
+                                                <p>
+                                                    <Link to="/signup" className="small">Create an Account! </Link>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </Form>
-                <p className="mt-3">
-                    Forgot your Password? <Link to="/reset-password">Reset Password</Link>
-                </p>
+                </div>
             </div>
+
         </>
     );
 }
-
-// const { erorr } = useSelector((state) => state.users);
-
-// function erorrMsg(myObject) {
-//     for (var key in myObject) {
-//         if (myObject.hasOwnProperty(key)) {
-//             return (myObject[key]);
-//         }
-//     }
-// }

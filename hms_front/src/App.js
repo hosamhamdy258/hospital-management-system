@@ -36,22 +36,19 @@ import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm
 import { ScrollToTop } from "react-router-scroll-to-top";
 import Signin from "./components/Registration/Signin";
 import Signup from "./components/Registration/Signup";
+import ReqActivate from "./components/Registration/ReqActivate";
 import Staffedit from "./components/StaffBoard/Staffedit";
 import Staffhistory from "./components/StaffBoard/Staffhistory";
 import Staffindex from "./components/StaffBoard/Staffindex";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
-
-// import Login from "./components/login";
-
 // import ScrollToTop from "react-scroll-to-top";
-
-// import Login from "./components/login";
 
 //done
 
 // Khalid import
 import Completedata from "./components/Completedata";
+import Verified from "./components/Registration/Verified";
 
 function App() {
   const dispatch = useDispatch();
@@ -106,8 +103,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/patientedit/:id" element={<Patientedit />} />
           <Route path="/staffedit" element={<Staffedit />} />
-          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/signup" element={<Signup />} />
+          <Route path="/reqActivate" element={<ReqActivate />} />
+          <Route path="/verified" element={<Verified />} />
           <Route exact path="/activate/:uid/:token" element={<Activate />} />
           <Route path="/login" element={<Signin />} />
           <Route path="/reset-password" element={<ResetPassword />} />
@@ -119,7 +117,6 @@ function App() {
           {!stateUser.user.profile_complete ? (
             <Route path="/completedata" element={<Completedata />} />
           ) : null}
-
           <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
           <Route path="*" element={<Page404 />} />
         </Routes>

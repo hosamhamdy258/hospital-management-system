@@ -101,15 +101,16 @@ const MyNav = () => {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="#">
+              <a href="https://www.linkedin.com/school/information-technology-institute-iti-/" target="_blank" rel="noreferrer">
                 <img src={navIcon1} alt="" />
               </a>
-              <a href="#">
+              <a href="https://www.facebook.com/itimenofiabranch/" target="_blank" rel="noreferrer">
                 <img src={navIcon2} alt="" />
+
               </a>
-              <a href="#">
+              {/* <a href="#">
                 <img src={navIcon3} alt="" />
-              </a>
+              </a> */}
             </div>
             {user && user.first_name &&
               <div>
@@ -117,14 +118,14 @@ const MyNav = () => {
               </div>}
             {!isAuthenticated &&
               <div>
-                  <Link className='nav_login_button' to='/login' role='button'>Login</Link>
-                  <Link className='nav_login_button' to='/signup' role='button'>Signup</Link>
-              
+                <Link className='nav_login_button' to='/login' role='button'>Login</Link>
+                <Link className='nav_login_button' to='/signup' role='button'>Signup</Link>
+
               </div>}
-              {isAuthenticated && !user.profile_complete &&
-              
+            {isAuthenticated && !user.profile_complete &&
+
               <Link className='btn' to='/completedata' role='button'>Complete Your Profile</Link>
-          }
+            }
 
 
 
