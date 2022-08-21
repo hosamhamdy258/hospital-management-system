@@ -12,7 +12,7 @@ import { logout } from "../store/usersSlice";
 
 const MyNav = () => {
   const [activeLink, setActiveLink] = useState("home");
-  const { isAuthenticated, user, } = useSelector((state) => state.users);
+  const { isAuthenticated, user } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -27,20 +27,18 @@ const MyNav = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   };
 
   const logoutButton = () => {
     dispatch(logout());
-  }
-
+  };
 
   return (
     <Navbar expand="lg" className={scrolled ? "scrolled" : ""} id="MyNAv">
       <Container>
-        <NavLink className='logo nav-link' to="/home">
+        <NavLink className="logo nav-link" to="/home">
           <img src={logo} alt="logo" />
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -50,7 +48,9 @@ const MyNav = () => {
           <Nav className="me-auto">
             <NavLink
               className={
-                activeLink === "home" ? "active navbar-link nav-link" : "navbar-link nav-link"
+                activeLink === "home"
+                  ? "active navbar-link nav-link"
+                  : "navbar-link nav-link"
               }
               to="/"
               onClick={() => onUpdateActiveLink("home")}
@@ -59,7 +59,9 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink === "doctors" ? "active navbar-link nav-link" : "navbar-link nav-link"
+                activeLink === "doctors"
+                  ? "active navbar-link nav-link"
+                  : "navbar-link nav-link"
               }
               to="/doctors"
               onClick={() => onUpdateActiveLink("doctors")}
@@ -69,7 +71,9 @@ const MyNav = () => {
 
             <NavLink
               className={
-                activeLink === "departments" ? "active navbar-link nav-link" : "navbar-link nav-link"
+                activeLink === "departments"
+                  ? "active navbar-link nav-link"
+                  : "navbar-link nav-link"
               }
               to="/departments"
               onClick={() => onUpdateActiveLink("departments")}
@@ -78,7 +82,9 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink === "about" ? "active navbar-link nav-link" : "navbar-link nav-link"
+                activeLink === "about"
+                  ? "active navbar-link nav-link"
+                  : "navbar-link nav-link"
               }
               to="/about"
               onClick={() => onUpdateActiveLink("about")}
@@ -87,7 +93,9 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink === "contact" ? "active navbar-link nav-link" : "navbar-link nav-link"
+                activeLink === "contact"
+                  ? "active navbar-link nav-link"
+                  : "navbar-link nav-link"
               }
               to="/contact"
               onClick={() => onUpdateActiveLink("contact")}
@@ -96,27 +104,44 @@ const MyNav = () => {
             </NavLink>
           </Nav>
           <span className="navbar-text">
-          
-            {user && user.first_name &&
+            {user && user.first_name && (
+              <div className="mx-3">Welcome {user.first_name}</div>
+            )}
+            {!isAuthenticated && (
               <div>
-                Welcome {user.first_name}
-              </div>}
-            {!isAuthenticated &&
-              <div>
-                <Link className='nav_login_button' to='/login' role='button'>Login</Link>
-                <Link className='nav_login_button' to='/signup' role='button'>Signup</Link>
+                <Link className="nav_login_button" to="/login" role="button">
+                  Login
+                </Link>
+                <Link className="nav_login_button" to="/signup" role="button">
+                  Signup
+                </Link>
+              </div>
+            )}
+            {isAuthenticated && !user.profile_complete && (
+              <Link className="btn" to="/completedata" role="button">
+                Complete Your Profile
+              </Link>
+            )}
+            {user.profile_complete &&
+            !user.is_doctor &&
+            !user.is_emp &&
+            !user.is_superuser ? (
+              <Link
+                className="btn btn-info"
+                to={`/patient/${user.id}`}
+                role="button"
+              >
+                Dashboard
+              </Link>
+            ) : null}
 
-              </div>}
-            {isAuthenticated && !user.profile_complete &&
-
-              <Link className='btn' to='/completedata' role='button'>Complete Your Profile</Link>
-            }
-
-
-
-            {isAuthenticated && <button className="vvd btn btn-info" onClick={logoutButton}>
-              <Link className='' to='/' role='button'>Logout</Link>
-            </button>}
+            {isAuthenticated && (
+              <button className="vvd btn btn-info" onClick={logoutButton}>
+                <Link className="" to="/" role="button">
+                  Logout
+                </Link>
+              </button>
+            )}
           </span>
         </Navbar.Collapse>
       </Container>

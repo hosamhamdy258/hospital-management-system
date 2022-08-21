@@ -15,7 +15,8 @@ from accounts.models import UserAccount
 
 # Create your models here.
 
-ID_NUMBER_REGEX = RegexValidator(r"^[0-9]{14}$", 'Id Number must be 14 numbers')
+ID_NUMBER_REGEX = RegexValidator(
+    r"^[0-9]{14}$", 'Id Number must be 14 numbers')
 
 
 class Person(models.Model):
@@ -32,9 +33,10 @@ class Person(models.Model):
         ('female', "Female"),
     )
     gender = models.CharField(max_length=6, choices=options, default='male')
-   
+
     linked_users = models.OneToOneField(
-        UserAccount, related_name='linked_users', on_delete=models.RESTRICT,null=True)
+        UserAccount, related_name='linked_users', on_delete=models.RESTRICT, null=True)
+
     @property
     def age(self):
         age = date.today().year - self.birth_date.year
@@ -94,7 +96,7 @@ class Patient(Person):
 class Doctor(Person):
 
     department = models.ForeignKey(
-        Department, on_delete=models.CASCADE,)
+        Department, on_delete=models.SET_DEFAULT,default="Doctor")
     img = models.ImageField(upload_to='images', validators=[check_image])
 
 

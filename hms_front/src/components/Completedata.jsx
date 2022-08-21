@@ -1,12 +1,15 @@
 import { getDoctors } from "./../store/Doctors";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useRef } from "react";
 import { postProfile } from "./../store/Profile";
 
 const Completedata = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.profileSlice);
+  const userState = useSelector((state) => state.users.user);
+  const profileState = useSelector((state) => state.profileSlice);
+
+  const depState = useSelector((state) => state.departmentsSlice);
   const id_number = useRef(null);
   const first_name = useRef(null);
   const last_name = useRef(null);
@@ -15,7 +18,8 @@ const Completedata = () => {
   const gender = useRef(null);
   const durgs = useRef(null);
   const comment = useRef(null);
-  const departments = useRef(null);
+  const department = useRef(null);
+  const img = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -26,14 +30,27 @@ const Completedata = () => {
       birth_date: birth_date.current.value,
       gender: gender.current.value,
     };
-    if (!state.is_doctor && !state.is_emp && !state.is_superuser) {
+    if (!userState.is_doctor && !userState.is_emp && !userState.is_superuser) {
       data["durgs"] = durgs.current.value;
       data["comment"] = comment.current.value;
+    }
+    if (userState.is_doctor) {
+      data["department"] = department.current.value;
+      data["img"] = img.current.files[0];
     }
     console.log(data);
 
     dispatch(postProfile(data));
   };
+
+  const navigate = useNavigate();
+
+  if (profileState.data.profile_complete) {
+    console.log("in");
+    try {
+      navigate("/");
+    } catch (error) {}
+  }
 
   return (
     <div className="container-fluid">
@@ -56,6 +73,7 @@ const Completedata = () => {
             method="post"
             className="form"
             onSubmit={handleSubmit}
+            encType="multipart/form-data"
           >
             <div className="row mx-1 mb-2 text-center justify-content-center">
               <label type="text" className="col-md-5 mx-2 mb-2">
@@ -110,27 +128,34 @@ const Completedata = () => {
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
-              {state.is_doctor ? (
+              {userState.is_doctor ? (
                 <>
                   <select
-                    ref={departments}
+                    ref={department}
                     required
                     className="col-md-5 mb-2"
-                    placeholder="select a doctor"
+                    placeholder="Select your department"
                   >
                     <option value="">Select your department</option>
-                    <option value="ortho">ortho</option>
-                    <option value="cardio">cardio</option>
+                    {depState.departments.map((element) => {
+                      return (
+                        <option key={element.id} value={element.id}>
+                          {element.name}
+                        </option>
+                      );
+                    })}
                   </select>
                   <input
+                    ref={img}
                     type="file"
                     id="exampleFormControlFile1"
-                    placeholder="Enter middle name"
                     className="col-md-5 mb-2"
                   />
                 </>
               ) : null}
-              {state.is_doctor && state.is_emp && state.is_superuser ? null : (
+              {!userState.is_doctor &&
+              !userState.is_emp &&
+              !userState.is_superuser ? (
                 <>
                   <input
                     type="text"
@@ -145,7 +170,7 @@ const Completedata = () => {
                     className="col-md-5 mb-2"
                   />
                 </>
-              )}
+              ) : null}
             </div>
             <hr />
             <div className="row g-3 mb-1 mt-1">

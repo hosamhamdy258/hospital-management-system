@@ -324,7 +324,7 @@ const users = createSlice({
       state.isAuthenticated = true;
     },
     [load_user.rejected]: (state, action) => {
-      state.err = action.payload;
+      state.error = action.payload;
     },
     // checkAuthenticated Actions
     [checkAuthenticated.pending]: (state, action) => {
@@ -334,7 +334,7 @@ const users = createSlice({
       state.isAuthenticated = true;
     },
     [checkAuthenticated.rejected]: (state, action) => {
-      state.err = action.payload;
+      state.error = action.payload;
     },
     // reset_password Actions
     [reset_password.pending]: (state, action) => {

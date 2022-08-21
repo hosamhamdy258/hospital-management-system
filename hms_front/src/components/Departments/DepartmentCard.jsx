@@ -10,7 +10,7 @@ const DepartmentCard = ({name , logo_img ,id}) => {
           <img src={logo_img} alt=""  />
           <div className="hDepts-txtx">
             <h3>{name}</h3>
-            <Link className="depCard_link" to={`/hDepts/${id}`} d_id={id}>read more <ArrowRightCircle size={15}/>
+            <Link className="depCard_link" to={`/departments/${id}`} d_id={id}>read more <ArrowRightCircle size={15}/>
             </Link>
           </div>
         </div>

@@ -6,15 +6,19 @@ import Departments from "./Departments/Departments";
 import Doctors from "./Doctors";
 import Statisc from "./Statisc/Statisc";
 import WeSummary from "./Summary/WeSummary";
-import { load_user } from "./../store/usersSlice";
+import { checkAuthenticated, load_user } from "./../store/usersSlice";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  // const { isAuthenticated } = useSelector((state) => state.users);
+  const profileState = useSelector((state) => state.profileSlice);
+  if (profileState.data.profile_complete) {
+    window.location.reload(false);
+  }
 
-  // useEffect(() => {
-  //   load_user();
-  // }, [isAuthenticated]);
+  useEffect(() => {
+    checkAuthenticated();
+    load_user();
+  }, []);
   return (
     <>
       <Banner />

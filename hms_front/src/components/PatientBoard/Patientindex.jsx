@@ -135,7 +135,7 @@ const Patientindex = ({ doctor }) => {
             to={`/patient/${id.id}`}
           >
             <div className="sidebar-brand-icon">
-              <i class="fa-regular fa-hospital"></i>
+              <i className="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>

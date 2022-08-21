@@ -9,9 +9,29 @@ export const postProfile = createAsyncThunk(
     const state = getState();
     console.log(state.users.user.id);
     try {
+      let link;
       data["linked_users"] = state.users.user.id;
       data["profile_complete"] = true;
-      const response = await axiosInstance.post("api/patient/", data);
+      if (
+        !state.users.user.is_doctor &&
+        !state.users.user.is_emp &&
+        !state.users.user.is_superuser
+      ) {
+        link = "api/patient/";
+      }
+      if (state.users.user.is_doctor) {
+        link = "api/doctor/";
+      }
+      if (state.users.user.is_staff) {
+        link = "api/office/";
+      }
+      const response = await axiosInstance.post(link, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(link);
+      console.log(data);
 
       return response;
     } catch (error) {
@@ -21,7 +41,7 @@ export const postProfile = createAsyncThunk(
   }
 );
 
-const initialState = {};
+const initialState = {data: {}};
 const profileSlice = createSlice({
   name: "Profile",
   initialState,
@@ -31,7 +51,9 @@ const profileSlice = createSlice({
     [postProfile.pending]: (state, action) => {},
     [postProfile.fulfilled]: (state, action) => {
       console.log(action.payload);
-      state = action.payload;
+      state.data = action.payload.data;
+      
+
     },
     [postProfile.rejected]: (state, action) => {
       // show erorr tooltip at top of screen

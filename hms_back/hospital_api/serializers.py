@@ -20,7 +20,7 @@ class ReservationSerializer(serializers.ModelSerializer):
         source='doctor.department', read_only=True)
 
     doctor_name = serializers.CharField(
-        source='doctor', 
+        source='doctor',
         read_only=True,
     )
 
@@ -38,14 +38,18 @@ class MedicalRecordSerializer(serializers.ModelSerializer):
     #     slug_field='first_name',
     #     queryset=Doctor.objects.all()
     # )
-    patient_name= serializers.CharField(source="patient_id.full_name",read_only=True)
-    doctor_name= serializers.CharField(source="added_doctor_id.full_name",read_only=True)
-    patient_age= serializers.CharField(source="patient_id.age",read_only=True)
-    
+    patient_name = serializers.CharField(
+        source="patient_id.full_name", read_only=True)
+    doctor_name = serializers.CharField(
+        source="added_doctor_id.full_name", read_only=True)
+    patient_age = serializers.CharField(
+        source="patient_id.age", read_only=True)
 
     class Meta:
         model = medical_record
-        fields = ["patient_name","doctor_name","patient_age","diagnosis","recommended_medications","added_on"]
+        # fields = ["patient_name", "doctor_name", "patient_age",
+        #           "diagnosis", "recommended_medications", "added_on"]
+        fields= "__all__"
 
 
 class ReceiptSerializer(serializers.ModelSerializer):
@@ -55,7 +59,8 @@ class ReceiptSerializer(serializers.ModelSerializer):
 
 
 class PatientSerializer(serializers.ModelSerializer):
-    patient_medical_records = MedicalRecordSerializer(many=True,read_only=True)
+    patient_medical_records = MedicalRecordSerializer(
+        many=True, read_only=True)
 
     class Meta:
         model = Patient
@@ -67,17 +72,16 @@ class DoctorSerializer(serializers.ModelSerializer):
     #     many=True, allow_null=True)
     # full_name = serializers.Field(source='full_name')
     # age = serializers.Field(source='age')
-    department = serializers.SlugRelatedField(
-        slug_field='name',
-        queryset=Department.objects.all()
+    department_name = serializers.CharField(
+        source='department.name',
+        read_only=True
     )
 
     class Meta:
         model = Doctor
-        fields = ['id', 'full_name', 'address', 'birth_date',
-                  'gender', 'department', 'age', 'img']
+        fields = ['id', 'id_number', 'full_name', 'last_name', 'first_name', 'address', 'birth_date',
+                  'gender', 'department', 'age', 'img', 'profile_complete','linked_users','department_name']
         # fields = "__all__"
-
 
 
 class PatientSerializerReserve(serializers.ModelSerializer):
@@ -92,9 +96,8 @@ class DoctorSerializerReserve(serializers.ModelSerializer):
         model = Doctor
         fields = ['id', 'full_name', ]
 
+
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = "__all__"
-
-
