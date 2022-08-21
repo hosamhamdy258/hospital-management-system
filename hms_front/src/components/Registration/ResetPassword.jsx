@@ -1,52 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reset_password } from '../../store/usersSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { useRef } from "react";
 
-const ResetPassword = ({ reset_password }) => {
-    const [requestSent, setRequestSent] = useState(false);
-    const [formData, setFormData] = useState({
-        email: ''
-    });
+export default function UserResetPass() {
+    // const ResetPassword = ({ reset_password }) => {
+    // const [requestSent, setRequestSent] = useState(false);
+    // const [formData, setFormData] = useState({
+    //     email: ''
+    // });
 
-    const { email } = formData;
+    // const { email } = formData;
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    // const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const onSubmit = e => {
+    // const onSubmit = e => {
+    //     e.preventDefault();
+    //     reset_password(email);
+    //     setRequestSent(true);
+    // };
+    // e => onSubmit(e)
+
+    /////////////////////////////////////////////////////////////////
+    const [x, setX] = useState(false);
+    const dispatch = useDispatch();
+    const email = useRef(null)
+    const { requestSent } = useSelector((state) => state.users)
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-
-        reset_password(email);
-        setRequestSent(true);
+        const data = {
+            email: email.current.value,
+        };
+        dispatch(reset_password(data));
     };
 
+
     if (requestSent) {
-        return <Navigate to='/' />
+        setX(true);
+        setTimeout(function () {
+            window.location.href = '/';
+        }, 3000);
     }
+
+
 
     return (
         <>
-
-            {/* <div className='container mt-5'>
-                <h1>Request Password Reset:</h1>
-                <form onSubmit={e => onSubmit(e)}>
-                    <div className='form-group'>
-                        <input
-                            className='form-control'
-                            type='email'
-                            placeholder='Email'
-                            name='email'
-                            value={email}
-                            onChange={e => onChange(e)}
-                            required
-                        />
-                    </div>
-                    <button className='btn btn-primary' type='submit'>Reset Password</button>
-                </form>
-            </div> */}
-
-            {/* //////////////////////////////////////////////////////////////////////// */}
-
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-xl-10 col-lg-12 col-md-9">
@@ -65,17 +67,19 @@ const ResetPassword = ({ reset_password }) => {
                                                     address below and we'll send you a link to reset
                                                     your password!
                                                 </p>
+                                                {x && <p className="text-danger">confirmation Email has been Sent Redirecting ....</p>}
                                             </div>
-                                            <form className="user" onSubmit={e => onSubmit(e)}>
+                                            <form className="user" onSubmit={handleSubmit}>
                                                 <div className="form-group">
                                                     <input
                                                         className='form-control form-control-user'
                                                         type='email'
                                                         placeholder='Email'
                                                         name='email'
-                                                        value={email}
-                                                        onChange={e => onChange(e)}
+                                                        // value={email}
+                                                        // onChange={e => onChange(e)}
                                                         required
+                                                        ref={email}
                                                     />
                                                 </div>
                                                 <button className='btn btn-primary btn-user btn-block' type='submit'>Reset Password</button>
@@ -100,4 +104,4 @@ const ResetPassword = ({ reset_password }) => {
     );
 };
 
-export default connect(null, { reset_password })(ResetPassword);
+// export default connect(null, { reset_password })(ResetPassword);

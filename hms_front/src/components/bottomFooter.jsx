@@ -1,4 +1,4 @@
-import React,{ useEffect }  from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavLink } from "react-router-dom";
@@ -8,10 +8,10 @@ import navIcon2 from "../assets/img/nav-icon2.svg";
 
 export default function BottomFooter() {
 	const dispatch = useDispatch();
-  const state = useSelector((state) => state.departmentsSlice);
-  useEffect(() => {
-    dispatch(getDepartments());
-  }, [dispatch]);
+	const state = useSelector((state) => state.departmentsSlice);
+	useEffect(() => {
+		dispatch(getDepartments());
+	}, [dispatch]);
 	return (
 		<footer className="footer section gray-bg">
 			<div className="container">
@@ -42,8 +42,8 @@ export default function BottomFooter() {
 							<div className="divider mb-4"></div>
 
 							<ul className="list-unstyled footer-menu lh-35">
-							{state.departments.map((item) => (
-								<li><NavLink to={`/departments/${item.id}`}>{item.name} </NavLink></li>
+								{state.departments.map((item) => (
+									<li key={item.id}><NavLink to={`/departments/${item.id}`}>{item.name} </NavLink></li>
 								))
 								}
 							</ul>
@@ -57,7 +57,7 @@ export default function BottomFooter() {
 
 							<ul className="list-unstyled footer-menu lh-35">
 								<li>
-								<NavLink to="/about">About US</NavLink>
+									<NavLink to="/about">About US</NavLink>
 								</li>
 							</ul>
 						</div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,10 +44,12 @@ export default function AddUser() {
       }
     }
   }
-
   if (registered) {
     return <Navigate to='/reqActivate' />
   }
+
+
+
   return (
     <>
       <div className="container">

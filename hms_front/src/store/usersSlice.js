@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   ACTIVATION_FAIL,
   ACTIVATION_SUCCESS,
+  Local,
   LOGOUT,
   PASSWORD_RESET_CONFIRM_FAIL,
   PASSWORD_RESET_CONFIRM_SUCCESS,
@@ -13,6 +14,18 @@ import {
 
 //////////////////////////////////////
 
+const initialState = {
+  access: localStorage.getItem("access"),
+  refresh: localStorage.getItem("refresh"),
+  isAuthenticated: false,
+  user: {},
+  err: null,
+  registered: null,
+  requestSent: null,
+};
+
+////////////////////////////////////////////////////////
+// const local = "http://127.0.0.1:8009";
 export const load_user = createAsyncThunk(
   "users/load_user",
   async (_, thunkAPI) => {
@@ -27,10 +40,7 @@ export const load_user = createAsyncThunk(
       };
 
       try {
-        const res = await axios.get(
-          `http://127.0.0.1:8000/auth/users/me/`,
-          config
-        );
+        const res = await axios.get(`${Local}/auth/users/me/`, config);
         console.log(res.data);
         return res.data;
       } catch (err) {
@@ -61,11 +71,7 @@ export const checkAuthenticated = createAsyncThunk(
       const body = JSON.stringify({ token: localStorage.getItem("access") });
 
       try {
-        const res = await axios.post(
-          `http://127.0.0.1:8000/auth/jwt/verify/`,
-          body,
-          config
-        );
+        const res = await axios.post(`${Local}/auth/jwt/verify/`, body, config);
 
         if (res.data.code !== "token_not_valid") {
           return res.data;
@@ -90,7 +96,7 @@ export const Signup = createAsyncThunk(
     try {
       const res = await axios({
         method: "post",
-        url: "http://127.0.0.1:8000/auth/users/",
+        url: `${Local}/auth/users/`,
         data: userData,
       });
       return res.data;
@@ -108,10 +114,11 @@ export const Signin = createAsyncThunk(
   "users/Signin",
   async (userData, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
+    console.log(userData);
     try {
       const res = await axios({
         method: "post",
-        url: "http://127.0.0.1:8000/auth/jwt/create/",
+        url: `${Local}/auth/jwt/create/`,
         data: userData,
       });
       return res.data;
@@ -119,7 +126,6 @@ export const Signin = createAsyncThunk(
       if (!err.response) {
         throw err;
       }
-
       return rejectWithValue(err.response.data);
     }
   }
@@ -147,7 +153,7 @@ export const Activate = createAsyncThunk(
     try {
       const res = await axios({
         method: "post",
-        url: "http://127.0.0.1:8000/auth/users/activation/",
+        url: `${Local}/auth/users/activation/`,
         data: userData,
       });
       return res.data;
@@ -155,37 +161,57 @@ export const Activate = createAsyncThunk(
       if (!err.response) {
         throw err;
       }
-
       return rejectWithValue(err.response.data);
     }
   }
 );
 
-export const reset_password = (email) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+// export const reset_password = (email) => async (dispatch) => {
+//   const config = {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   };
 
-  const body = JSON.stringify({ email });
+//   const body = JSON.stringify({ email });
 
-  try {
-    await axios.post(
-      `http://127.0.0.1:8000/auth/users/reset_password/`,
-      body,
-      config
-    );
+//   try {
+//     await axios.post(
+//       `/auth/users/reset_password/`,
+//       body,
+//       config
+//     );
 
-    dispatch({
-      type: PASSWORD_RESET_SUCCESS,
-    });
-  } catch (err) {
-    dispatch({
-      type: PASSWORD_RESET_FAIL,
-    });
+//     dispatch({
+//       type: PASSWORD_RESET_SUCCESS,
+//     });
+//   } catch (err) {
+//     dispatch({
+//       type: PASSWORD_RESET_FAIL,
+//     });
+//   }
+// };
+
+export const reset_password = createAsyncThunk(
+  "users/reset_password",
+  async (userData, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    console.log(userData);
+    try {
+      const res = await axios({
+        method: "post",
+        url: `${Local}/auth/users/reset_password/`,
+        data: userData,
+      });
+      return res.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
   }
-};
+);
 
 export const reset_password_confirm =
   (uid, token, new_password, re_new_password) => async (dispatch) => {
@@ -199,7 +225,7 @@ export const reset_password_confirm =
 
     try {
       await axios.post(
-        `http://127.0.0.1:8000/auth/users/reset_password_confirm/`,
+        `${Local}/auth/users/reset_password_confirm/`,
         body,
         config
       );
@@ -224,11 +250,7 @@ export const verify = (uid, token) => async (dispatch) => {
   const body = JSON.stringify({ uid, token });
 
   try {
-    await axios.post(
-      `http://127.0.0.1:8000/auth/users/activation/`,
-      body,
-      config
-    );
+    await axios.post(`${Local}/auth/users/activation/`, body, config);
 
     dispatch({
       type: ACTIVATION_SUCCESS,
@@ -238,15 +260,6 @@ export const verify = (uid, token) => async (dispatch) => {
       type: ACTIVATION_FAIL,
     });
   }
-};
-
-const initialState = {
-  access: localStorage.getItem("access"),
-  refresh: localStorage.getItem("refresh"),
-  isAuthenticated: false,
-  user: {},
-  err: null,
-  registered: null,
 };
 
 const users = createSlice({
@@ -322,6 +335,17 @@ const users = createSlice({
     },
     [checkAuthenticated.rejected]: (state, action) => {
       state.err = action.payload;
+    },
+    // reset_password Actions
+    [reset_password.pending]: (state, action) => {
+      state.err = null;
+    },
+    [reset_password.fulfilled]: (state, action) => {
+      console.log("reset_password fulfilled");
+      state.requestSent = true;
+    },
+    [reset_password.rejected]: (state, action) => {
+      console.log("reset_password rejected");
     },
   },
 });
