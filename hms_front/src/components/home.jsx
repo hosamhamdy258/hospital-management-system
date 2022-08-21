@@ -21,8 +21,8 @@ const Home = () => {
       <Doctors />
       <Departments />
       {/* <Contact/> */}
-      {/* <WeSummary />
-      <Statisc /> */}
+      <WeSummary />
+      <Statisc />
     </>
   );
 };
