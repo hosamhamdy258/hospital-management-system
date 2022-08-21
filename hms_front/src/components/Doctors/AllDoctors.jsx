@@ -40,7 +40,7 @@ const AllDoctors = () => {
                                     </div>
                                     <div className="text text-center">
                                         <h4 className='mt-4 mb-2 title-color'>{item.full_name}</h4>
-                                        <p className='depName mb-4'>{item.department}</p>
+                                        <p className='depName mb-4'>{item.department_name}</p>
                                     </div>
                                 </div>
                             </div>

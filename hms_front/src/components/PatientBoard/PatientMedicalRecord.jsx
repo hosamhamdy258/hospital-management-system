@@ -10,36 +10,28 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 const PatientMedicalRecord = () => {
-    const pdfExportComponent = React.useRef(null);
-    const exportPDFWithMethod = () => {
-        let element = document.querySelector('.k-grid') || document.body;
-        savePDF(element, {
-        paperSize: 'A4'
-        });
-        };
-        const exportPDFWithComponent = () => {
-        if (pdfExportComponent.current) {
-        pdfExportComponent.current.save();
-        console.log('hi')
-
+        const generateMyPdf=()=>{
+          var doc=new jsPDF('p','pt','a4');
+          doc.html(document.querySelector('#myform'),{
+            callback:function(pdf){
+              pdf.save('patientReport.pdf');
+            }
+          })
         }
-        };
-        const downloadPdfTest=(event)=>{
-            pdfExportComponent.current.save();
-        }
+       
      const { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.medicalRecordSlice);
   useEffect(() => {
     dispatch(getMedicalRecordDetails(id));
   }, [dispatch]);
-  const prescPdf_generator=()=>{
-    const doc = new jsPDF();
+  // const prescPdf_generator=()=>{
+  //   const doc = new jsPDF();
 
-    doc.text(60,60,`Patient name : ${state.medicalRecord.patient_id}`);
-    doc.text(60,60,`recommended_medications : ${state.medicalRecord.recommended_medications}`, 10, 10);
-    doc.save(`${id}.pdf`);
-  }
+  //   doc.text(60,60,`Patient name : ${state.medicalRecord.patient_id}`);
+  //   doc.text(60,60,`recommended_medications : ${state.medicalRecord.recommended_medications}`, 10, 10);
+  //   doc.save(`${id}.pdf`);
+  // }
   console.log(state);
   return (
     
@@ -124,9 +116,9 @@ const PatientMedicalRecord = () => {
               <div className="row mb-4 text-center justify-content-center">
                 <div className="col-lg-8 col-md-6  border p-4 shadow bg-light">
                   <div className="col-12">{/* <hr /> */}</div>
-                  <PDFExport ref={pdfExportComponent} paperSize="A4">
-                  <form action="" className="text-start">
-                    <div className="row mx-1 mb-1 text-start">
+                  <form  action="" className="text-start">
+                   <div id='myform'>
+                   <div className="row mx-1 mb-1 text-start">
                       <label className="col-lg-6 col-md-12 col-sm-8"><span className="medi_rec_labels"> Patient name </span>: {state.medicalRecord.patient_name}</label>
                       <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Age </span> : {state.medicalRecord.patient_age}</label>
                     </div>
@@ -142,18 +134,31 @@ const PatientMedicalRecord = () => {
                       <label className="col-lg-6 col-md-12 col-sm-8"> <span className="medi_rec_labels">Recommended Medications :</span> {state.medicalRecord.recommended_medications} </label>
 
                       </div>
-                      <div className="col-12 mt-5 text-center justify-content-center">
+                      
+                    </div>
+                    
+                   </div>
+                   <div className="col-12 mt-5 text-center justify-content-center">
                         <button
-                          className="btn btn-secondary mx-4"
-                          onClick={exportPDFWithComponent}
+                          className="btn btn-success mx-4"
+                          onClick={(e)=>{
+                            e.preventDefault();
+                            console.log('clicked')
+                            var doc=new jsPDF('p','pt','a4');
+                            doc.html(document.querySelector('#myform'),{
+                              callback:function(pdf){
+                                pdf.save('patientReport.pdf');
+                              }
+                            })
+                            
+                          }
+                          }
                         >
                          Get pdf Report
                         </button>
                      
                       </div>
-                    </div>
                   </form>
-                  </PDFExport>
 
                 </div>
               </div>
