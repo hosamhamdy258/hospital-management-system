@@ -24,20 +24,16 @@ class ReservationSerializer(serializers.ModelSerializer):
         read_only=True,
     )
 
+    reservation_medical_records = serializers.PrimaryKeyRelatedField(
+        many=True, read_only=True)
+
     class Meta:
         model = reservation
         fields = "__all__"
 
 
 class MedicalRecordSerializer(serializers.ModelSerializer):
-    # patient_id = serializers.SlugRelatedField(
-    #     slug_field='first_name',
-    #     queryset=Patient.objects.all()
-    # )
-    # added_doctor_id = serializers.SlugRelatedField(
-    #     slug_field='first_name',
-    #     queryset=Doctor.objects.all()
-    # )
+
     patient_name = serializers.CharField(
         source="patient_id.full_name", read_only=True)
     doctor_name = serializers.CharField(
@@ -49,7 +45,7 @@ class MedicalRecordSerializer(serializers.ModelSerializer):
         model = medical_record
         # fields = ["patient_name", "doctor_name", "patient_age",
         #           "diagnosis", "recommended_medications", "added_on"]
-        fields= "__all__"
+        fields = "__all__"
 
 
 class ReceiptSerializer(serializers.ModelSerializer):
@@ -68,10 +64,7 @@ class PatientSerializer(serializers.ModelSerializer):
 
 
 class DoctorSerializer(serializers.ModelSerializer):
-    # doctor_medical_records = MedicalRecordSerializer(
-    #     many=True, allow_null=True)
-    # full_name = serializers.Field(source='full_name')
-    # age = serializers.Field(source='age')
+
     department_name = serializers.CharField(
         source='department.name',
         read_only=True
@@ -80,7 +73,7 @@ class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
         fields = ['id', 'id_number', 'full_name', 'last_name', 'first_name', 'address', 'birth_date',
-                  'gender', 'department', 'age', 'img', 'profile_complete','linked_users','department_name']
+                  'gender', 'department', 'age', 'img', 'profile_complete', 'linked_users', 'department_name']
         # fields = "__all__"
 
 

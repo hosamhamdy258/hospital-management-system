@@ -128,7 +128,7 @@ const MyNav = () => {
             !user.is_superuser ? (
               <Link
                 className="btn btn-info"
-                to={`/patient/${user.id}`}
+                to={`/patient/${user.linked_users}`}
                 role="button"
               >
                 Dashboard

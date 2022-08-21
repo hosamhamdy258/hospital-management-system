@@ -25,7 +25,7 @@ const Patientedit = () => {
             to={`/patient/${id}`}
           >
             <div className="sidebar-brand-icon">
-              <i class="fa-regular fa-hospital"></i>
+              <i className="fa-regular fa-hospital"></i>
             </div>
             <div className="sidebar-brand-text mx-3">Patient Panel</div>
           </Link>
@@ -82,7 +82,7 @@ const Patientedit = () => {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Date</th>
+                  <th scope="col">Date2</th>
                   <th scope="col">Doctor</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
@@ -107,7 +107,7 @@ const Patientedit = () => {
                       className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                     >
                       {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                      <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                      <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
                       Delete
                     </Link>
                   </td>
@@ -130,7 +130,7 @@ const Patientedit = () => {
                       className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                     >
                       {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                      <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                      <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
                       Delete
                     </Link>
                   </td>
@@ -153,7 +153,7 @@ const Patientedit = () => {
                       className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                     >
                       {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                      <i class="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                      <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
                       Delete
                     </Link>
                   </td>
@@ -164,8 +164,8 @@ const Patientedit = () => {
         </div>
       </div>
 
-      <a classNameName="scroll-to-top rounded" href="#page-top">
-        <i classNameName="fas fa-angle-up"></i>
+      <a className="scroll-to-top rounded" href="#page-top">
+        <i className="fas fa-angle-up"></i>
       </a>
     </section>
   );
