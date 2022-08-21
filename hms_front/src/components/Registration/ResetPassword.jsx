@@ -1,30 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { reset_password } from '../../store/usersSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
 
 export default function UserResetPass() {
-    // const ResetPassword = ({ reset_password }) => {
-    // const [requestSent, setRequestSent] = useState(false);
-    // const [formData, setFormData] = useState({
-    //     email: ''
-    // });
-
-    // const { email } = formData;
-
-    // const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    // const onSubmit = e => {
-    //     e.preventDefault();
-    //     reset_password(email);
-    //     setRequestSent(true);
-    // };
-    // e => onSubmit(e)
-
-    /////////////////////////////////////////////////////////////////
-    const [x, setX] = useState(false);
+    const [redirect, setRedirect] = useState(false);
     const dispatch = useDispatch();
     const email = useRef(null)
     const { requestSent } = useSelector((state) => state.users)
@@ -37,15 +18,14 @@ export default function UserResetPass() {
         dispatch(reset_password(data));
     };
 
-
-    if (requestSent) {
-        setX(true);
-        setTimeout(function () {
-            window.location.href = '/';
-        }, 3000);
-    }
-
-
+    useEffect(() => {
+        if (requestSent) {
+            setRedirect(true);
+            setTimeout(function () {
+                window.location.href = '/';
+            }, 5000);
+        }
+    }, [requestSent])
 
     return (
         <>
@@ -67,7 +47,7 @@ export default function UserResetPass() {
                                                     address below and we'll send you a link to reset
                                                     your password!
                                                 </p>
-                                                {x && <p className="text-danger">confirmation Email has been Sent Redirecting ....</p>}
+                                                {redirect && <p className="text-danger">Confirmation Email has been Sent Successfully, Redirecting ....</p>}
                                             </div>
                                             <form className="user" onSubmit={handleSubmit}>
                                                 <div className="form-group">
@@ -76,8 +56,6 @@ export default function UserResetPass() {
                                                         type='email'
                                                         placeholder='Email'
                                                         name='email'
-                                                        // value={email}
-                                                        // onChange={e => onChange(e)}
                                                         required
                                                         ref={email}
                                                     />
@@ -104,4 +82,3 @@ export default function UserResetPass() {
     );
 };
 
-// export default connect(null, { reset_password })(ResetPassword);
