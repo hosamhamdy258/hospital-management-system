@@ -35,5 +35,4 @@ urlpatterns = [
     path('patient/<int:pk>', PatientSerializerDetails.as_view(), name='patientdetails'),
     path('person/<int:pk>', PersonSerializerDetails.as_view(), name='persondetails'),
 
-
 ]

@@ -1,4 +1,5 @@
 import "./App.css";
+import '@progress/kendo-theme-default/dist/all.css';
 
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -125,7 +126,6 @@ function App() {
           ) : null}
           <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
           <Route path="*" element={<Page404 />} />
-
         </Routes>
         <BottomFooter />
         <ScrollToTop smooth />

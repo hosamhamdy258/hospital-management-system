@@ -50,7 +50,7 @@ body{
   position: relative;
   background-color: #fff !important;
   color:rgb(32, 30, 30) !important;
-  font-family: 'Centra' , sans-serif !important;
+  font-family:Roboto , sans-serif !important;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -118,6 +118,9 @@ p.danger {
 }
  .logo.nav-link {
     width: 8%;
+}
+.logo_pdf{
+  width: 8%;
 }
 nav.navbar .nav-link.navbar-link {
   font-weight: 400;
@@ -262,7 +265,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .nav_login_button {
   height: 48px;
-  width:110px;
   margin-left: 20px;
   border-radius: 24px;
   padding: 12px 25px;
@@ -1275,3 +1277,21 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
     color: #093868;
     font-weight: 700;
   }  
+
+  /* Report css */
+  .report_header{
+    padding: 8px;
+    background-color: rgb(220 220 220) !important;
+  }
+  .report_hsname{
+    color: #004182;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 35px;
+    vertical-align:middle;
+
+  }
+  .report_header img{
+    vertical-align:middle;
+    margin-right: 10px;
+  }

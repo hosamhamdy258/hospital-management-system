@@ -127,7 +127,7 @@ const MyNav = () => {
             !user.is_emp &&
             !user.is_superuser ? (
               <Link
-                className="btn btn-info"
+                className="nav_login_button"
                 to={`/patient/${user.linked_users}`}
                 role="button"
               >
@@ -136,7 +136,7 @@ const MyNav = () => {
             ) : null}
 
             {isAuthenticated && (
-              <button className="vvd btn btn-info" onClick={logoutButton}>
+              <button className=" btn btn-info" onClick={logoutButton}>
                 <Link className="" to="/" role="button">
                   Logout
                 </Link>
