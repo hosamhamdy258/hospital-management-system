@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import Sidebar from './Sidebar';
 
 const Patientcheckout = () => {
   const { id } = useParams();
@@ -14,66 +15,7 @@ const Patientcheckout = () => {
       />
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
-        {/* <!-- Sidebar --> */}
-        <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
-          id="accordionSidebar"
-        >
-          {/* <!-- Sidebar - Brand --> */}
-          <Link
-            className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/patient/${id}`}
-          >
-            <div className="sidebar-brand-icon">
-              <i className="fa-regular fa-hospital"></i>
-            </div>
-            <div className="sidebar-brand-text mx-3">Patient Panel</div>
-          </Link>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider my-0" />
-
-          {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/patient/${id}`}>
-              <i className="fas fa-fw fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider" />
-
-          {/* <!-- Heading --> */}
-
-          {/* <!-- Nav Item - Charts --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/patienthistory/${id}`}>
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>History</span>
-            </Link>
-          </li>
-
-          {/* <!-- Nav Item - edit --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/patientedit/${id}`}>
-              <i className="fas fa-fw fa-edit"></i>
-              <span>Edit appointment</span>
-            </Link>
-          </li>
-
-          {/* <!-- Nav Item - Tables --> */}
-          <li className="nav-item active">
-            <Link className="nav-link" to={`/checkout/${id}`}>
-              <i className="fas fa-fw fa-table"></i>
-              <span>Checkout</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider d-none d-md-block" />
-        </ul>
-        {/* <!-- End of Sidebar --> */}
+      <Sidebar />
 
         {/* <!-- Content Wrapper --> */}
         <div id="content-wrapper" className="d-flex flex-column">

@@ -126,11 +126,18 @@ const MyNav = () => {
             !user.is_doctor &&
             !user.is_emp &&
             !user.is_superuser ? (
-              <Link
-                className="nav_login_button"
-                to={`/patient/${user.linked_users}`}
-                role="button"
-              >
+              <Link className="nav_login_button" to="/patient" role="button">
+                Dashboard
+              </Link>
+            ) : null}
+
+            {user.profile_complete && user.is_doctor ? (
+              <Link className="nav_login_button" to="/doctor" role="button">
+                Dashboard
+              </Link>
+            ) : null}
+               {user.profile_complete && user.is_staff ? (
+              <Link className="nav_login_button" to="/doctor" role="button">
                 Dashboard
               </Link>
             ) : null}

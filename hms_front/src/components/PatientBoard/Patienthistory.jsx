@@ -4,9 +4,9 @@ import { getReservationList } from "../../store/reserve";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import Sidebar from "./Sidebar";
 
 const Patienthistory = () => {
-  const { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reservationSlice);
   useEffect(() => {
@@ -24,64 +24,7 @@ const Patienthistory = () => {
       />
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
-        {/* <!-- Sidebar --> */}
-        <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
-          id="accordionSidebar"
-        >
-          {/* <!-- Sidebar - Brand --> */}
-          <Link
-            className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/patient/${id}`}
-          >
-            <div className="sidebar-brand-icon">
-              <i className="fa-regular fa-hospital"></i>
-            </div>
-            <div className="sidebar-brand-text mx-3">Patient Panel</div>
-          </Link>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider my-0" />
-
-          {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/patient/${id}`}>
-              <i className="fas fa-fw fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider" />
-
-          {/* <!-- Nav Item - Charts --> */}
-          <li className="nav-item active">
-            <Link className="nav-link" to={`/patienthistory/${id}`}>
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>History</span>
-            </Link>
-          </li>
-
-          {/* <!-- Nav Item - edit --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/patientedit/${id}`}>
-              <i className="fas fa-fw fa-edit"></i>
-              <span>Edit appointment</span>
-            </Link>
-          </li>
-
-          {/* <!-- Nav Item - Tables --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/checkout/${id}`}>
-              <i className="fas fa-fw fa-table"></i>
-              <span>CheckOut</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider d-none d-md-block" />
-        </ul>
-        {/* <!-- End of Sidebar --> */}
+        <Sidebar />
 
         {/* <!-- Content Wrapper --> */}
         <div id="content-wrapper" className="d-flex flex-column">
@@ -106,20 +49,23 @@ const Patienthistory = () => {
                 <tbody>
                   {state.reservation.map((element, index) => {
                     return (
-                      <tr>
+                      <tr key={index}>
                         <th scope="row">{index + 1}</th>
                         <td>{element.date.slice(0, 10)}</td>
                         <td>{element.date.slice(11, 16)}</td>
                         <td>{element.department}</td>
                         <td>{element.doctor_name}</td>
                         <td>
-                          <Link
-                            to={`/medicalRecord/${element.id}`}
-                            className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                          >
-                            <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                            Get Report
-                          </Link>
+                          {element.reservation_medical_records.length > 0 ? (
+                            <Link
+                              to={"/medicalRecord/"}
+                              state={element.reservation_medical_records}
+                              className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                            >
+                              <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                              Get Report
+                            </Link>
+                          ) : null}
                         </td>
                       </tr>
                     );

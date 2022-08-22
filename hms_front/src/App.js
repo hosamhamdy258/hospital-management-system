@@ -91,25 +91,27 @@ function App() {
           {/* <Route path="reserve" element={<Reserve />} />*/}
           <Route path="doctors" element={<AllDoctors state={stateDoctor} />} />
           <Route
-            path="/patient/:id"
+            path="/patient/"
             element={<Patientindex doctor={stateDoctor} />}
           />
-          <Route path="/patienthistory/:id" element={<Patienthistory />} />
-          <Route path="/patientedit/:id" element={<Patientedit />} />
-          <Route path="/checkout/:id" element={<Patientcheckout />} />
+          <Route path="/patienthistory/" element={<Patienthistory />} />
+          <Route path="/patientedit/" element={<Patientedit />} />
+          <Route path="/checkout/" element={<Patientcheckout />} />
+
           <Route path="/doctor/:id" element={<Doctorindex />} />
           <Route path="/doctorreport/:id" element={<Doctorreport />} />
           <Route path="/doctoredit/:id" element={<Doctoredit />} />
           <Route path="/doctorhistory/:id" element={<Doctorhistory />} />
+
           <Route
             path="/staff/:id"
             element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
           />
           <Route path="/staffhistory/:id" element={<Staffhistory />} />
           <Route path="/staffedit/:id" element={<Staffedit />} />
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/patientedit/:id" element={<Patientedit />} />
-          <Route path="/staffedit" element={<Staffedit />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/reqActivate" element={<ReqActivate />} />
           <Route path="/verified" element={<Verified />} />
@@ -124,7 +126,7 @@ function App() {
           {!stateUser.user.profile_complete ? (
             <Route path="/completedata" element={<Completedata />} />
           ) : null}
-          <Route path="/medicalRecord/:id" element={<PatientMedicalRecord />} />
+          <Route path="/medicalRecord" element={<PatientMedicalRecord />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <BottomFooter />
