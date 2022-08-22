@@ -145,7 +145,7 @@ const PatientMedicalRecord = () => {
                         </div>
                       </PDFExport>
 
-                      <div className="col-12 mt-5 text-center justify-content-center">
+                      <div className="col-12 mt-3 mb-4 text-center justify-content-center">
                         <button
                           className="btn btn-success mx-4"
                           onClick={handlePdfExport}

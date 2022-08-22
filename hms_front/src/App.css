@@ -221,7 +221,8 @@ span.navbar-text {
 .navbar-toggler:focus {
 	outline: none;
   box-shadow: none;
-  color: rgb(133, 52, 52);
+  color: rgb(246, 240, 240);
+  border: none;
 }
  .navbar-toggler-icon {
   width: 24px;
@@ -248,16 +249,21 @@ span.navbar-text {
 	transition: all 300ms linear;
 }
 nav.navbar .navbar-toggler-icon:after {
+  border-color: transparent;
+
 	top: 8px;
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
 	transform: rotate(45deg);
 	background-color: #fff;
+  border-color: transparent;
+
 	height: 2px;
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
 	transform: translateY(8px) rotate(-45deg);
 	background-color: #fff;
+  border-color: transparent;
 	height: 2px;
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
@@ -1294,4 +1300,44 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
   .report_header img{
     vertical-align:middle;
     margin-right: 10px;
+  }
+
+  /* Complete ur data styling */
+  .cData_header{
+    margin: auto;
+    align-items: center;
+    text-align: center;
+  }
+  .complete_data{
+    position: relative;
+  }
+  .complete_data h2{
+    color:#000;
+  }
+  .summ{
+    margin: auto;
+    width: 280px;
+    color: #545556;
+  }
+
+  .bDate_cData{
+    height: 60px;
+    box-shadow: none;
+    width: 100%;
+  }
+  .cData_hr{
+    color: #adacac;
+  }
+
+  .bDate_cData{
+    vertical-align:middle;
+    line-height: 50px;
+  }
+  .img_cData{
+    width: 220px;
+    height: 220px;
+    background-image: url(../public/features/Fillout.svg);
+    position: absolute;
+    top:0px;
+    right: 0px;
   }

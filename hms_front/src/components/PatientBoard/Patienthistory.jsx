@@ -1,8 +1,9 @@
 import { Link, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+
 import { getReservationList } from "../../store/reserve";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Patienthistory = () => {
   const { id } = useParams();
@@ -89,7 +90,7 @@ const Patienthistory = () => {
             {/* <!-- Begin Page Content --> */}
             <div className="container-fluid p-3">
               {/* <!-- Page Heading --> */}
-              <h1 className="h3 mb-4 text-gray-800">Reports Hitory</h1>
+              <h1 className="h3 mb-4 text-gray-800">Reports History</h1>
 
               <table className="table">
                 <thead>
@@ -113,11 +114,11 @@ const Patienthistory = () => {
                         <td>{element.doctor_name}</td>
                         <td>
                           <Link
-                            to={"#"}
+                            to={`/medicalRecord/${element.id}`}
                             className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                           >
                             <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                            Generate Report
+                            Get Report
                           </Link>
                         </td>
                       </tr>
