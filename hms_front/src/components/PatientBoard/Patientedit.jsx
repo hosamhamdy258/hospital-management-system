@@ -8,14 +8,6 @@ import moment from "moment";
 const Patientedit = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reservationSlice);
-  // const hour = moment().format("YYYY-MM-DD");
-  // console.log(hour);
-  state.upComingReservation.map((element) => {
-    // console.log(hour.format("YYYY-MM-DD").isSame(element.date));
-    // console.log(moment(hour).isSame(element.date,"day"))
-    console.log(moment().isSame(element.date, "day"));
-    return null;
-  });
   useEffect(() => {
     dispatch(getUpcomingReservationList());
   }, [dispatch]);

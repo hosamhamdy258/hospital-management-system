@@ -49,7 +49,7 @@ const PatientMedicalRecord = () => {
               {/* <!-- Begin Page Content --> */}
               <div className="container-fluid p-3">
                 {/* <!-- Page Heading --> */}
-                <h1 className="h3 mb-4 text-gray-800">your Prescription </h1>
+                {/* <h1 className="h3 mb-4 text-gray-800">your Prescription </h1> */}
                 <div className=" row mb-4 text-center justify-content-center">
                   <div className="report_form col-lg-8 col-md-6  border p-2 shadow bg-light">
                     <div className="col-12">{/* <hr /> */}</div>

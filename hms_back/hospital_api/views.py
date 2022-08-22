@@ -94,7 +94,10 @@ class PersonSerializerDetails(generics.RetrieveUpdateAPIView):
     serializer_class = PersonSerializer
 
 
-
 class UpcomingReservationSerializerList(generics.ListAPIView):
-    queryset = reservation.up_coming_reservations.all()
+    # queryset = reservation.up_coming_reservations.all()
     serializer_class = ReservationSerializer
+
+    def get_queryset(self):
+        time = datetime.now()
+        return reservation.objects.all().filter(date__gt=time).order_by("date")
