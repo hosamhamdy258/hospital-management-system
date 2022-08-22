@@ -96,7 +96,7 @@ class Patient(Person):
 class Doctor(Person):
 
     department = models.ForeignKey(
-        Department, on_delete=models.SET_DEFAULT,default="Doctor")
+        Department, on_delete=models.SET_DEFAULT, default="Doctor")
     img = models.ImageField(upload_to='images', validators=[check_image])
 
 
@@ -105,6 +105,11 @@ class office_admin(models.Model):
 
 
 class reservation(models.Model):
+    class CustomManager(models.Manager):
+
+        def get_queryset(self):
+            return super().get_queryset().filter(date__gt=datetime.now()).order_by('date')
+
     class Meta:
         ordering = ('-date',)
         constraints = [
@@ -120,6 +125,8 @@ class reservation(models.Model):
     # date_now = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE,)
+    objects = models.Manager()
+    up_coming_reservations = CustomManager()
 
     def __str__(self):
         return f"Patent : {self.patient.full_name} // Doctor : {self.doctor.full_name} // Date : {self.date} "

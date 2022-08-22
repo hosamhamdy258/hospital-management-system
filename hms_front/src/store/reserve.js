@@ -32,7 +32,20 @@ export const getReservationList = createAsyncThunk(
     }
   }
 );
+export const getUpcomingReservationList = createAsyncThunk(
+  "reserve/getUpcomingReservationList",
+  async (_, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const response = await axiosInstance.get("api/list/upcomingreservations/");
 
+      return response;
+    } catch (error) {
+      console.error(rejectWithValue);
+      return rejectWithValue(error);
+    }
+  }
+);
 export const makeReservation = createAsyncThunk(
   "reserve/makeReservation",
   async (data, thunkAPI) => {
@@ -52,6 +65,7 @@ const initialState = {
   doctors: [],
   patients: [],
   reservation: [],
+  upComingReservation: [],
   reservationData: { date: "", isDisabled: true },
 };
 const reservationSlice = createSlice({
@@ -93,6 +107,11 @@ const reservationSlice = createSlice({
       state.reservation = action.payload.data;
     },
     [getReservationList.rejected]: (state, action) => {},
+    [getUpcomingReservationList.pending]: (state, action) => {},
+    [getUpcomingReservationList.fulfilled]: (state, action) => {
+      state.upComingReservation = action.payload.data;
+    },
+    [getUpcomingReservationList.rejected]: (state, action) => {},
     [makeReservation.pending]: (state, action) => {},
     [makeReservation.fulfilled]: (state, action) => {},
     [makeReservation.rejected]: (state, action) => {},

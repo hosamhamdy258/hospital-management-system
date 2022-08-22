@@ -92,3 +92,9 @@ class PatientSerializerDetails(generics.RetrieveUpdateAPIView):
 class PersonSerializerDetails(generics.RetrieveUpdateAPIView):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+
+
+
+class UpcomingReservationSerializerList(generics.ListAPIView):
+    queryset = reservation.up_coming_reservations.all()
+    serializer_class = ReservationSerializer
