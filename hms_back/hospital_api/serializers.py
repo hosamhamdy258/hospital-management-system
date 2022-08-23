@@ -32,6 +32,7 @@ class ReservationSerializer(serializers.ModelSerializer):
         source='patient.full_name',
         read_only=True
     )
+
     class Meta:
         model = reservation
         fields = "__all__"
@@ -62,6 +63,9 @@ class ReceiptSerializer(serializers.ModelSerializer):
 class PatientSerializer(serializers.ModelSerializer):
     patient_medical_records = MedicalRecordSerializer(
         many=True, read_only=True)
+# ssss
+    patient_reserves = ReservationSerializer(
+        many=True, read_only=True)
 
     class Meta:
         model = Patient
@@ -71,17 +75,17 @@ class PatientSerializer(serializers.ModelSerializer):
 class DoctorSerializer(serializers.ModelSerializer):
     doctor_medical_records = MedicalRecordSerializer(
         many=True, read_only=True)
-    doctor_reserves=ReservationSerializer(
+    doctor_reserves = ReservationSerializer(
         many=True, read_only=True)
     department_name = serializers.CharField(
         source='department.name',
         read_only=True
     )
- 
+
     class Meta:
         model = Doctor
         fields = ['id', 'id_number', 'full_name', 'last_name', 'first_name', 'address', 'birth_date',
-                  'gender', 'department', 'age', 'img', 'profile_complete', 'linked_users', 'department_name','doctor_medical_records','doctor_reserves']
+                  'gender', 'department', 'age', 'img', 'profile_complete', 'linked_users', 'department_name', 'doctor_medical_records', 'doctor_reserves']
         # fields = "__all__"
 
 
@@ -93,13 +97,18 @@ class PatientSerializerReserve(serializers.ModelSerializer):
 
 
 class DoctorSerializerReserve(serializers.ModelSerializer):
+    department_name = serializers.CharField(
+        source='department.name',
+        read_only=True
+    )
+
     class Meta:
         model = Doctor
-        fields = ['id', 'full_name', ]
+        fields = ['id', 'full_name', "img", "department_name"]
+        # fields = "__all__"
 
 
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = "__all__"
-

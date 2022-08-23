@@ -18,8 +18,9 @@ export const getPatients = createAsyncThunk(
 export const getPatientDetails = createAsyncThunk(
   "department/getPatientDetails",
   async (id, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    console.log("id ==" + id);
+    const { rejectWithValue, getState } = thunkAPI;
+    const state = getState();
+    console.log(state.users.user.linked_users);
     try {
       const response = await axiosInstance.get(`api/patient/${id}`);
       return response.data;
@@ -30,7 +31,7 @@ export const getPatientDetails = createAsyncThunk(
   }
 );
 
-const initialState = { patients: [], patientDetails: {} };
+const initialState = { patients: [], patientDetails: [] };
 const patientsSlice = createSlice({
   name: "Patient",
   initialState,

@@ -94,8 +94,8 @@ const MyNav = () => {
             <NavLink
               className={
                 activeLink === "contact"
-                  ? "active navbar-link nav-link"
-                  : "navbar-link nav-link"
+                  ? "active navbar-link nav-link mb-3"
+                  : "navbar-link nav-link mb-3"
               }
               to="/contact"
               onClick={() => onUpdateActiveLink("contact")}
