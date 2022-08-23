@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
-export default function ReserveReply() {
-  const state = useSelector((state) => state.reservationSlice);
-  const state2 = useSelector((state) => state.medicalRecordSlice);
+export default function ReportStatus() {
+  const state = useSelector((state) => state.medicalRecordSlice);
 
   return (
     <section id="page-top">
@@ -27,9 +26,8 @@ export default function ReserveReply() {
             {/* <!-- Begin Page Content --> */}
             <div className="container-fluid p-3">
               {/* <!-- Page Heading --> */}
-              <h1 className="h3 mb-4 text-gray-800">Reserve Status</h1>
+              <h1 className="h3 mb-4 text-gray-800">Report Status</h1>
               <h3 className="text-gray-800">{state.details}</h3>
-              <h3 className="text-gray-800">{state2.details}</h3>
               <button onClick={() => window.history.go(-2)}>Back</button>
             </div>
           </div>

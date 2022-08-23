@@ -35,10 +35,10 @@ export default function Sidebar() {
         <li className="nav-item">
           <Link className="nav-link" to={`/doctorhistory/`}>
             <i className="fas fa-fw fa-chart-area"></i>
-            <span>patients history</span>
+            <span>Patients History</span>
           </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link" to={`/doctorreport/`}>
             <i className="fas fa-fw fa-chart-area"></i>
             <span>Doctor Report</span>
@@ -49,7 +49,7 @@ export default function Sidebar() {
             <i className="fas fa-fw fa-chart-area"></i>
             <span>Doctor Edit</span>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </>
   );

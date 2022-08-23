@@ -1,22 +1,59 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getMedicalRecordDetails } from "../../store/medicalRecord";
-import Sidebar from './Sidebar';
+import {
+  addMedicalRecord,
+  getMedicalRecordDetails,
+  updateMedicalRecord,
+} from "../../store/medicalRecord";
+import Sidebar from "./Sidebar";
 const Doctoredit = () => {
-
-  const { id } = useParams();
+  let location = useLocation();
+  console.log(location.state);
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.medicalRecordSlice);
+  const state = useSelector((state) => state.doctorsSlice);
+  const stateMedical = useSelector((state) => state.medicalRecordSlice);
+  const diagnosis = useRef(null);
+  const recommended_medications = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      diagnosis: diagnosis.current.value,
+      recommended_medications: recommended_medications.current.value,
+      reservation: location.state.id,
+      added_doctor_id: location.state.doctor,
+      patient_id: location.state.patient,
+    };
+    dispatch(
+      updateMedicalRecord([
+        data,
+        location.state.reservation_medical_records[0].id,
+      ])
+    );
+  };
   useEffect(() => {
-    dispatch(getMedicalRecordDetails(id));
+    diagnosis.current.value =
+      location.state.reservation_medical_records[0].diagnosis;
+    recommended_medications.current.value =
+      location.state.reservation_medical_records[0].recommended_medications;
   }, [dispatch]);
-  console.log(state)
-  const record = state.medicalRecord
+  const navigate = useNavigate();
+  const navigateMSG = () => {
+    try {
+      navigate("/reportstatus");
+    } catch (error) {}
+  };
+
+  // recommended_medications.current.value =
+  //   location.state.reservation_medical_records[0].recommended_medications;
+  // diagnosis.current.value =
+  //   location.state.reservation_medical_records[0].diagnosis;
 
   return (
     <section id="page-top">
+      {stateMedical.details && navigateMSG()}
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -39,48 +76,74 @@ const Doctoredit = () => {
             <div className="align-items-center p-2">
               {/* <h1 className="h2 mb-2 text-gray-800 text-center">Dashboard</h1> */}
               <h4 className="h2 mb-4 text-gray-800 text-center">
-                Edit patient report
+                Generate patient report
               </h4>
               <div className="row mb-4 text-center justify-content-center">
                 <div className="col-lg-8 col-md-6  border p-4 shadow bg-light">
                   <div className="col-12">{/* <hr /> */}</div>
-                  <form action="">
-                    <div className="row mx-2 mb-1 d-flex text-start">
-                      <label className="col-md-6"><span className="medi_rec_labels">Patient name :</span> {record.patient_name}</label>
-                      <label className="col-md-6"><span className="medi_rec_labels">Patient Age :</span> {record.patient_age}</label>
+                  <form action="" method="post" onSubmit={handleSubmit}>
+                    <div className="row mx-2 mb-1">
+                      <label className="col-md-6">Patient name</label>
+                      <label className="col-md-6">
+                        {location.state.patient_name}
+                      </label>
                     </div>
-                 
-                    <div className="row mx-2 mb-3 text-start">
-                      <label className="col-md-6"><span className="medi_rec_labels">Date - Time :</span> {record.added_on?.slice(0, 10)} - {record.added_on?.slice(11,16)}</label>
+                    <div className="row mx-2 mb-1">
+                      <label className="col-md-6">Patient Age</label>
+                      <label className="col-md-6">
+                        {location.state.patient_age}
+                      </label>
                     </div>
-                    <hr className="cData_hr mb-4"/>
+                    <div className="row mx-2 mb-1">
+                      <label className="col-md-6">Date</label>
+                      <label className="col-md-6">
+                        {location.state.date.slice(0, 10)}
+                      </label>
+                    </div>
+                    <div className="row mx-2 mb-1">
+                      <label className="col-md-6">Time</label>
+                      <label className="col-md-6">
+                        {location.state.date.slice(11, 16)}
+                      </label>
+                    </div>
+                    <div className="row mx-2 mb-1">
+                      <label className="col-md-6">Drugs</label>
+                      <label className="col-md-6">
+                        {location.state.patient_durgs}
+                      </label>
+                    </div>
+                    <div className="row mx-2 mb-1">
+                      <label className="col-md-6">Comments</label>
+                      <label className="col-md-6">
+                        {location.state.patient_comment}
+                      </label>
+                    </div>
                     <div className="row g-3 mb-1">
-                      <div className="d-flex col-12 mb-1">
-                        <label className="px-3">Diagnosis </label>
+                      <div className="col-12 mb-1">
                         <textarea
+                          ref={diagnosis}
+                          required
                           className="form-control"
-                        >{record.diagnosis}</textarea>
+                          placeholder="Diagnosis"
+                        ></textarea>
                       </div>
-                      <div className="d-flex col-12 mb-1">
-                        <label>Recommended Medications </label>
-
+                      <div className="col-12 mb-1">
                         <textarea
+                          required
+                          ref={recommended_medications}
                           className="form-control"
-                        >
-                          {record.recommended_medications}
-                        </textarea>
+                          placeholder="recommended Medications"
+                        ></textarea>
                       </div>
                       <div className="col-12 mt-5 text-center justify-content-center">
-                        <button
-                          type="submit"
-                          className="btn btn-secondary mx-4"
-                        >
-                          Save edits
+                        <button type="submit" className="btn btn-secondary m-4">
+                          Submit report
                         </button>
                         <button
                           type="button"
                           className="btn btn-outline-secondary me-2"
                         >
+                           onClick={() => window.history.go(-1)}
                           Cancel
                         </button>
                       </div>

@@ -15,29 +15,6 @@ class OfficeAdminSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ReservationSerializer(serializers.ModelSerializer):
-    department = serializers.CharField(
-        source='doctor.department', read_only=True)
-
-    doctor_name = serializers.CharField(
-        source='doctor',
-        read_only=True,
-    )
-    # reservation_medical_records=serializers.MedicalRecordSerializer(
-    #     many=True, read_only=True)
-    reservation_medical_records = serializers.PrimaryKeyRelatedField(
-        many=True, read_only=True)
-
-    patient_name = serializers.CharField(
-        source='patient.full_name',
-        read_only=True
-    )
-
-    class Meta:
-        model = reservation
-        fields = "__all__"
-
-
 class MedicalRecordSerializer(serializers.ModelSerializer):
 
     patient_name = serializers.CharField(
@@ -51,6 +28,41 @@ class MedicalRecordSerializer(serializers.ModelSerializer):
         model = medical_record
         # fields = ["patient_name", "doctor_name", "patient_age",
         #           "diagnosis", "recommended_medications", "added_on"]
+        fields = "__all__"
+
+
+class ReservationSerializer(serializers.ModelSerializer):
+    department = serializers.CharField(
+        source='doctor.department', read_only=True)
+
+    doctor_name = serializers.CharField(
+        source='doctor',
+        read_only=True,
+    )
+    # reservation_medical_records=serializers.MedicalRecordSerializer(
+    #     many=True, read_only=True)
+    reservation_medical_records = MedicalRecordSerializer(
+        many=True, read_only=True)
+
+    patient_name = serializers.CharField(
+        source='patient.full_name',
+        read_only=True
+    )
+    patient_age = serializers.CharField(
+        source='patient.age',
+        read_only=True
+    )
+    patient_durgs = serializers.CharField(
+        source='patient.durgs',
+        read_only=True
+    )
+    patient_comment = serializers.CharField(
+        source='patient.comment',
+        read_only=True
+    )
+
+    class Meta:
+        model = reservation
         fields = "__all__"
 
 

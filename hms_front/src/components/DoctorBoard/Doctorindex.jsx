@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Sidebar from './Sidebar';
-
+import Sidebar from "./Sidebar";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { getDoctorDetails } from "../../store/Doctors";
+import moment from "moment";
 
 const Doctorindex = () => {
-  const id = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.doctorsSlice);
+  const userstate = useSelector((state) => state.users.user);
+
+  console.log(userstate.linked_users);
+
+  useEffect(() => {
+    dispatch(getDoctorDetails(userstate.linked_users));
+  }, [dispatch]);
+
   return (
     <section id="page-top">
       <link
@@ -28,7 +40,7 @@ const Doctorindex = () => {
             {/* <!-- Page Heading --> */}
             <div className="align-items-center p-2">
               <h1 className="h2 mb-4 text-gray-800 text-center">
-                Todays appointements
+                Today Appointements
               </h1>
               {/* <h3 className="h3 mb-2 text-gray-800 text-center">
                 Todays appointements
@@ -39,57 +51,52 @@ const Doctorindex = () => {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Patient name</th>
-                    <th scope="col">visit time</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Visit Time</th>
                     <th scope="col">Patient age</th>
-                    <th scope="col">Begin session</th>
+                    <th scope="col">Session Report</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Omar</td>
-                    <td>06:00 PM</td>
-                    <td>33</td>
-                    <td>
-                      <Link
-                        to={`/doctorreport/${id.id}`}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Omar</td>
-                    <td>06:00 PM</td>
-                    <td>33</td>
-                    <td>
-                      <Link
-                        to={`/doctorreport/${id.id}`}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Omar</td>
-                    <td>06:00 PM</td>
-                    <td>33</td>
-                    <td>
-                      <Link
-                        to={`/doctorreport/${id.id}`}
-                        className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                        Generate Report
-                      </Link>
-                    </td>
-                  </tr>
+                  {state.doctorDetails.doctor_reserves &&
+                    state.doctorDetails.doctor_reserves.map(
+                      (element, index) => {
+                        if (moment().isSame(element.date, "day")) {
+                          return (
+                            <tr key={element.id}>
+                              <th scope="row">#</th>
+                              <td>{element.patient_name}</td>
+                              <td>{element.date.slice(0, 10)}</td>
+                              <td>{element.date.slice(11, 16)}</td>
+                              <td>{element.patient_age}</td>
+                              <td>
+                                {element.reservation_medical_records.length ===
+                                0 ? (
+                                  <Link
+                                    to={`/doctorreport/`}
+                                    state={element}
+                                    className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                                  >
+                                    <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                                    Generate Report
+                                  </Link>
+                                ) : (
+                                  <Link
+                                    to={""}
+                                    state={element}
+                                    className="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
+                                  >
+                                    <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                                    Completed
+                                  </Link>
+                                )}
+                              </td>
+                            </tr>
+                          );
+                        }
+                        return null;
+                      }
+                    )}
                 </tbody>
               </table>
             </div>

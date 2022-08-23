@@ -136,7 +136,6 @@ const Completedata = () => {
                   name="gender"
                   className="form_control col-md-5 mb-3"
                 >
-                  <option value="">Select your gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
@@ -148,7 +147,6 @@ const Completedata = () => {
                       className="form_control col-md-5 mb-3"
                       placeholder="Select your department"
                     >
-                      <option value="">Select your department</option>
                       {depState.departments.map((element) => {
                         return (
                           <option key={element.id} value={element.id}>

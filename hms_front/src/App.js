@@ -52,6 +52,7 @@ import { getDoctors } from "./store/Doctors";
 
 // Khalid import
 import ReserveReply from './components/PatientBoard/ReserveReply';
+import ReportStatus from "./components/DoctorBoard/ReportReply";
 
 
 
@@ -104,6 +105,8 @@ function App() {
           <Route path="/doctorreport/" element={<Doctorreport />} />
           <Route path="/doctoredit/" element={<Doctoredit />} />
           <Route path="/doctorhistory/" element={<Doctorhistory />} />
+          <Route path="/reportstatus/" element={<ReportStatus />} />
+
 
           <Route
             path="/staff/:id"

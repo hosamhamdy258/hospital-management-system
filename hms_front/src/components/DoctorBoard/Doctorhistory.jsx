@@ -4,16 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getDoctorDetails } from "../../store/Doctors";
 import moment from "moment";
-import Sidebar from './Sidebar';
+import Sidebar from "./Sidebar";
 const Doctorhistory = () => {
-  const { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.doctorsSlice);
+  const userstate = useSelector((state) => state.users.user);
+
   useEffect(() => {
-    dispatch(getDoctorDetails(id));
+    dispatch(getDoctorDetails(userstate.linked_users));
   }, [dispatch]);
-  const reservations = state.doctorDetails.doctor_reserves;
- 
 
   return (
     <section id="page-top">
@@ -66,60 +65,49 @@ const Doctorhistory = () => {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Reservation Date</th>
                     <th scope="col">Patient Name</th>
+                    <th scope="col">Patient Age</th>
+                    <th scope="col">Reservation Date</th>
+                    <th scope="col">Reservation Time</th>
                     <th scope="col">Edit Report</th>
                   </tr>
                 </thead>
                 <tbody>
-
-                  {reservations?.map((item,key) => (
-                    moment().isAfter(item.date)&&
-                    <tr key={key}>
-                      <th scope="row">{key}</th>
-                      <td>{item.date.slice(0,10)}</td>
-                      <td>{item.patient_name}</td>
-                      <td>
-                     { item.reservation_medical_records.length !== 0 && <Link
-                          to={`/doctoredit/${item.reservation_medical_records}` }
-                          className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                        >
-                          <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                          Report
-                        </Link>}
-                       
-                      </td>
-                    </tr>
-                  ))}
-                 
-                  {/* <tr>
-                    <th scope="row">2</th>
-                    <td>11/2/2022</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={`/doctoredit/${id}`}
-                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                        Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>11/2/2022</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={`/doctoredit/${id}`}
-                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                        Report
-                      </Link>
-                    </td>
-                  </tr> */}
+                  {state.doctorDetails.doctor_reserves &&
+                    state.doctorDetails.doctor_reserves.map(
+                      (element, key) =>
+                        moment().isAfter(element.date, "minute") && (
+                          <tr key={element.id}>
+                            <th scope="row">#</th>
+                            <td>{element.patient_name}</td>
+                            <td>{element.patient_age}</td>
+                            <td>{element.date.slice(0, 10)}</td>
+                            <td>{element.date.slice(11, 16)}</td>
+                            <td>
+                              {element.reservation_medical_records.length ===
+                              0 ? (
+                                <Link
+                                  to={`/doctorreport/`}
+                                  state={element}
+                                  className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                                >
+                                  <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                                  Generate Report
+                                </Link>
+                              ) : (
+                                <Link
+                                  to={`/doctoredit/`}
+                                  state={element}
+                                  className=" d-sm-inline-block btn btn-sm btn-success shadow-sm"
+                                >
+                                  <i className="fas fa-edit fa-sm text-white-50"></i>{" "}
+                                  Edit Report
+                                </Link>
+                              )}
+                            </td>
+                          </tr>
+                        )
+                    )}
                 </tbody>
               </table>
             </div>
