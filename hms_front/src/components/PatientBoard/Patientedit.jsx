@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { getUpcomingReservationList } from "../../store/reserve";
+import {
+  deleteReservation,
+  getUpcomingReservationList,
+  restReservationData,
+} from "../../store/reserve";
 import moment from "moment";
 import { getPatientDetails } from "../../store/patient";
 
@@ -10,16 +14,27 @@ const Patientedit = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.patientsSlice);
   const userstate = useSelector((state) => state.users.user);
+  const stateReserve = useSelector((state) => state.reservationSlice);
+
   console.log(userstate.linked_users);
 
   useEffect(() => {
-    // dispatch(getReservationList());
+    dispatch(restReservationData());
 
     dispatch(getPatientDetails(userstate.linked_users));
   }, [dispatch]);
- 
+
+  const navigate = useNavigate();
+
+  const navigateMSG = () => {
+    try {
+      navigate("/reserverstatus");
+    } catch (error) {}
+  };
+
   return (
     <section id="page-top">
+      {stateReserve.details && navigateMSG()}
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -44,8 +59,7 @@ const Patientedit = () => {
                   <th scope="col">time</th>
                   <th scope="col">Department</th>
                   <th scope="col">Doctor</th>
-                  <th scope="col">Edit</th>
-                  <th scope="col">Delete</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -62,32 +76,19 @@ const Patientedit = () => {
                             <td>{element.doctor_name}</td>
 
                             {!moment().isSame(element.date, "day") ? (
-                              <>
-                                <td>
-                                  <Link
-                                    to={"#"}
-                                    className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                                  >
-                                    <i className="fas fa-edit fa-sm text-white-50"></i>{" "}
-                                    Edit
-                                  </Link>
-                                </td>
-                                <td>
-                                  <Link
-                                    to={"#"}
-                                    className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                                  >
-                                    {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                                    <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                                    Delete
-                                  </Link>
-                                </td>
-                              </>
+                              <td>
+                                <button
+                                  className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                                  onClick={() => {
+                                    dispatch(deleteReservation(element.id));
+                                  }}
+                                >
+                                  <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                                  Delete
+                                </button>
+                              </td>
                             ) : (
-                              <>
-                                <td></td>
-                                <td></td>
-                              </>
+                              <td></td>
                             )}
                           </tr>
                         );
