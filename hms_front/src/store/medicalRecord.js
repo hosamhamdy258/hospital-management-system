@@ -49,7 +49,7 @@ const medicalRecordSlice = createSlice({
       state.medicalRecord = action.payload;
     },
     [getMedicalRecordDetails.rejected]: (state, action) => {
-      
+     
     },
   },
 });

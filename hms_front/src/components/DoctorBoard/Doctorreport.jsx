@@ -1,8 +1,17 @@
-import React from "react";
 import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getMedicalRecordDetails } from "../../store/medicalRecord";
 
 const Doctorreport = () => {
-  const id = useParams();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.doctorsSlice);
+  useEffect(() => {
+    dispatch(getMedicalRecordDetails(id));
+  }, [dispatch]);
+  console.log(state)
   return (
     <section id="page-top">
       <link

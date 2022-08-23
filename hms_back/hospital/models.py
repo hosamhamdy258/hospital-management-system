@@ -115,7 +115,7 @@ class reservation(models.Model):
     date = models.DateTimeField()
     date_now = models.DateTimeField(auto_now_add=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE,)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE,related_name='doctor_reserves')
     def __str__(self):
         return f"Patent : {self.patient.full_name} // Doctor : {self.doctor.full_name} // Date : {self.date} "
 

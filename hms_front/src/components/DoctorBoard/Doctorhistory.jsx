@@ -1,8 +1,20 @@
-import React from "react";
 import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getDoctorDetails } from "../../store/Doctors";
+import moment from "moment";
 
 const Doctorhistory = () => {
-  const id = useParams();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.doctorsSlice);
+  useEffect(() => {
+    dispatch(getDoctorDetails(id));
+  }, [dispatch]);
+  const reservations = state.doctorDetails.doctor_reserves;
+ 
+
   return (
     <section id="page-top">
       <link
@@ -22,7 +34,7 @@ const Doctorhistory = () => {
           {/* <!-- Sidebar - Brand --> */}
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/doctor/${id.id}`}
+            to={`/doctor/${id}`}
           >
             <div className="sidebar-brand-icon">
               <i className="fa-regular fa-hospital"></i>
@@ -35,7 +47,7 @@ const Doctorhistory = () => {
 
           {/* <!-- Nav Item - Dashboard --> */}
           <li className="nav-item">
-            <Link className="nav-link" to={`/doctor/${id.id}`}>
+            <Link className="nav-link" to={`/doctor/${id}`}>
               {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
               <span>Dashboard</span>
             </Link>
@@ -44,7 +56,7 @@ const Doctorhistory = () => {
           {/* <!-- Divider --> */}
           <hr className="sidebar-divider d-none d-md-block" />
           <li className="nav-item active">
-            <Link className="nav-link" to={`/doctorhistory/${id.id}`}>
+            <Link className="nav-link" to={`/doctorhistory/${id}`}>
               <i className="fas fa-fw fa-chart-area"></i>
               <span>patients history</span>
             </Link>
@@ -88,33 +100,39 @@ const Doctorhistory = () => {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Patient</th>
+                    <th scope="col">Reservation Date</th>
+                    <th scope="col">Patient Name</th>
                     <th scope="col">Edit Report</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11/2/2022</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={`/doctoredit/${id.id}`}
-                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                        Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
+
+                  {reservations?.map((item,key) => (
+                    moment().isAfter(item.date)&&
+                    <tr key={key}>
+                      <th scope="row">{key}</th>
+                      <td>{item.date.slice(0,10)}</td>
+                      <td>{item.patient_name}</td>
+                      <td>
+                     { item.reservation_medical_records.length !== 0 && <Link
+                          to={`/doctoredit/${item.reservation_medical_records}` }
+                          className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                        >
+                          <i className="fas fa-edit fa-sm text-white-50"></i> Edit
+                          Report
+                        </Link>}
+                       
+                      </td>
+                    </tr>
+                  ))}
+                 
+                  {/* <tr>
                     <th scope="row">2</th>
                     <td>11/2/2022</td>
                     <td>Mark</td>
                     <td>
                       <Link
-                        to={`/doctoredit/${id.id}`}
+                        to={`/doctoredit/${id}`}
                         className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
@@ -128,14 +146,14 @@ const Doctorhistory = () => {
                     <td>Mark</td>
                     <td>
                       <Link
-                        to={`/doctoredit/${id.id}`}
+                        to={`/doctoredit/${id}`}
                         className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                       >
                         <i className="fas fa-edit fa-sm text-white-50"></i> Edit
                         Report
                       </Link>
                     </td>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
             </div>

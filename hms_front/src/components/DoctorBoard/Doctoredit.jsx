@@ -1,8 +1,19 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getMedicalRecordDetails } from "../../store/medicalRecord";
 
 const Doctoredit = () => {
-  const id = useParams();
+
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.medicalRecordSlice);
+  useEffect(() => {
+    dispatch(getMedicalRecordDetails(id));
+  }, [dispatch]);
+  console.log(state)
+  const record = state.medicalRecord
 
   return (
     <section id="page-top">
@@ -65,30 +76,30 @@ const Doctoredit = () => {
                 <div className="col-lg-8 col-md-6  border p-4 shadow bg-light">
                   <div className="col-12">{/* <hr /> */}</div>
                   <form action="">
-                    <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Patient name</label>
-                      <label className="col-md-6">Omar</label>
+                    <div className="row mx-2 mb-1 d-flex text-start">
+                      <label className="col-md-6"><span className="medi_rec_labels">Patient name :</span> {record.patient_name}</label>
+                      <label className="col-md-6"><span className="medi_rec_labels">Patient Age :</span> {record.patient_age}</label>
                     </div>
-                    <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Patient Age</label>
-                      <label className="col-md-6">35</label>
+                 
+                    <div className="row mx-2 mb-3 text-start">
+                      <label className="col-md-6"><span className="medi_rec_labels">Date - Time :</span> {record.added_on?.slice(0, 10)} - {record.added_on?.slice(11,16)}</label>
                     </div>
-                    <div className="row mx-2 mb-1">
-                      <label className="col-md-6">Date - time</label>
-                      <label className="col-md-6">22/02/2022 06:30 PM</label>
-                    </div>
+                    <hr className="cData_hr mb-4"/>
                     <div className="row g-3 mb-1">
-                      <div className="col-12 mb-1">
+                      <div className="d-flex col-12 mb-1">
+                        <label className="px-3">Diagnosis </label>
                         <textarea
                           className="form-control"
-                          placeholder="Placeholder for Diagnosis of database"
-                        ></textarea>
+                        >{record.diagnosis}</textarea>
                       </div>
-                      <div className="col-12 mb-1">
+                      <div className="d-flex col-12 mb-1">
+                        <label>Recommended Medications </label>
+
                         <textarea
                           className="form-control"
-                          placeholder="Place holder for Medications from data base"
-                        ></textarea>
+                        >
+                          {record.recommended_medications}
+                        </textarea>
                       </div>
                       <div className="col-12 mt-5 text-center justify-content-center">
                         <button

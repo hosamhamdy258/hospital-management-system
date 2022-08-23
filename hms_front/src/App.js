@@ -32,7 +32,6 @@ import Patientindex from "./components/PatientBoard/Patientindex";
 import PrivateRoutes from "./store/PrivateRoutes";
 import Profile from "./components/Profile";
 import Register from "./components/register";
-import Report from "./components/PatientReport/Report";
 import ReqActivate from "./components/Registration/ReqActivate";
 import Reserve from "./components/reserve";
 import ResetPassword from "./components/Registration/ResetPassword";
