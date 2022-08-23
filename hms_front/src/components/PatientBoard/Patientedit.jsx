@@ -17,6 +17,7 @@ const Patientedit = () => {
 
     dispatch(getPatientDetails(userstate.linked_users));
   }, [dispatch]);
+ 
   return (
     <section id="page-top">
       <link

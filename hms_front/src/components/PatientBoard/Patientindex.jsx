@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getPatientDetails } from "./../../store/patient";
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect } from "react";
@@ -118,6 +118,11 @@ const Patientindex = ({ doctor }) => {
     state.reservationData.time,
     state.reservationData.patient,
   ]);
+  const navigate = useNavigate();
+
+  const navigateHome = () => {
+    navigate("/reservereply");
+  };
   return (
     <section id="page-top">
       <link
@@ -147,7 +152,7 @@ const Patientindex = ({ doctor }) => {
                   </div>
                   <form action="" method="post" onSubmit={handleSubmit}>
                     <div className="row mx-1 mb-2">
-                      <label className="col-md-6">Select Adoctor</label>
+                      <label className="col-md-6">Select Doctor</label>
                       <Select
                         placeholder="select a doctor"
                         className="col-md-6"
@@ -180,6 +185,9 @@ const Patientindex = ({ doctor }) => {
                         }
                       />
                     </div>
+                    <br />
+                    {state.details && navigateHome()}
+
                     <br />
                     <div className="row g-3 mb-1">
                       <div className="col-12 mt-5  text-center">

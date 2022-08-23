@@ -100,7 +100,7 @@ class Doctor(Person):
     img = models.ImageField(upload_to='images', validators=[check_image])
 
 
-class office_admin(models.Model):
+class office_admin(Person):
     pass
 
 

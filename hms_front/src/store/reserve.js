@@ -84,7 +84,8 @@ const initialState = {
   reservation: [],
   upComingReservation: [],
   patientReservation: [],
-  reservationData: { date: "", isDisabled: true },
+  reservationData: { date: "", isDisabled: true ,},
+  details: "",
 };
 const reservationSlice = createSlice({
   name: "Reservation",
@@ -92,6 +93,7 @@ const reservationSlice = createSlice({
   reducers: {
     restReservationData: (state, action) => {
       state.reservationData = { date: "", isDisabled: true };
+      state.details=""
       console.log("clear");
     },
     addReservationData: (state, action) => {
@@ -136,7 +138,9 @@ const reservationSlice = createSlice({
     },
     [getUpcomingReservationList.rejected]: (state, action) => {},
     [makeReservation.pending]: (state, action) => {},
-    [makeReservation.fulfilled]: (state, action) => {},
+    [makeReservation.fulfilled]: (state, action) => {
+      state.details = action.payload.data.details;
+    },
     [makeReservation.rejected]: (state, action) => {},
   },
 });
