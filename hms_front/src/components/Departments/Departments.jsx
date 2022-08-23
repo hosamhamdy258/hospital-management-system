@@ -16,7 +16,7 @@ const Departments = () => {
     dispatch(getDepartments());
   }, [dispatch]);
   const firstSlicedArray = state.departments.slice(0, 3);
-  const secondSlicedArray = state.departments.slice(3);
+  const secondSlicedArray = state.departments.slice(3,6);;
 
   //   console.log(state.departments)
 

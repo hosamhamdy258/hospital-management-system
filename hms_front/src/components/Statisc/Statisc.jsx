@@ -8,7 +8,7 @@ const Statisc = ({ isVisible }) => {
         <div className="overlay_s">      
         </div>
 
-            <motion.div className="container" initial={{scale:.7}} whileInView={{scale:1 ,x: [0, -140,0]}} transition={{duration:2}}>
+            <motion.div className="container" initial={{scale:.7}} whileInView={{scale:1 ,y: [0, -140,0]}} transition={{duration:2}}>
                 <div className="row">
                     <div className="col-md-3 d-flex justify-content-center ">
                         <div className="statistic_block p-4">
