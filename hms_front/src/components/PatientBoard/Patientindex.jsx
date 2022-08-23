@@ -120,8 +120,10 @@ const Patientindex = ({ doctor }) => {
   ]);
   const navigate = useNavigate();
 
-  const navigateHome = () => {
-    navigate("/reservereply");
+  const navigateMSG = () => {
+    try {
+      navigate("/reserverstatus");
+    } catch (error) {}
   };
   return (
     <section id="page-top">
@@ -186,7 +188,7 @@ const Patientindex = ({ doctor }) => {
                       />
                     </div>
                     <br />
-                    {state.details && navigateHome()}
+                    {state.details && navigateMSG()}
 
                     <br />
                     <div className="row g-3 mb-1">
