@@ -4,14 +4,19 @@ import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { getUpcomingReservationList } from "../../store/reserve";
 import moment from "moment";
+import { getPatientDetails } from "../../store/patient";
 
 const Patientedit = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.reservationSlice);
-  useEffect(() => {
-    dispatch(getUpcomingReservationList());
-  }, [dispatch]);
+  const state = useSelector((state) => state.patientsSlice);
+  const userstate = useSelector((state) => state.users.user);
+  console.log(userstate.linked_users);
 
+  useEffect(() => {
+    // dispatch(getReservationList());
+
+    dispatch(getPatientDetails(userstate.linked_users));
+  }, [dispatch]);
   return (
     <section id="page-top">
       <link
@@ -43,46 +48,52 @@ const Patientedit = () => {
                 </tr>
               </thead>
               <tbody>
-                {state.upComingReservation.map((element, index) => {
-                  return (
-                    <tr key={index}>
-                      <th scope="row">{index + 1}</th>
-                      <td>{element.date.slice(0, 10)}</td>
-                      <td>{element.date.slice(11, 16)}</td>
-                      <td>{element.department}</td>
-                      <td>{element.doctor_name}</td>
+                {state.patientDetails.patient_reserves &&
+                  state.patientDetails.patient_reserves.map(
+                    (element, index) => {
+                      if (moment().isBefore(element.date, "minute")) {
+                        return (
+                          <tr key={index}>
+                            <th scope="row">{index + 1}</th>
+                            <td>{element.date.slice(0, 10)}</td>
+                            <td>{element.date.slice(11, 16)}</td>
+                            <td>{element.department}</td>
+                            <td>{element.doctor_name}</td>
 
-                      {!moment().isSame(element.date, "day") ? (
-                        <>
-                          <td>
-                            <Link
-                              to={"#"}
-                              className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                            >
-                              <i className="fas fa-edit fa-sm text-white-50"></i>{" "}
-                              Edit
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={"#"}
-                              className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                            >
-                              {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                              <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                              Delete
-                            </Link>
-                          </td>
-                        </>
-                      ) : (
-                        <>
-                          <td></td>
-                          <td></td>
-                        </>
-                      )}
-                    </tr>
-                  );
-                })}
+                            {!moment().isSame(element.date, "day") ? (
+                              <>
+                                <td>
+                                  <Link
+                                    to={"#"}
+                                    className="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                                  >
+                                    <i className="fas fa-edit fa-sm text-white-50"></i>{" "}
+                                    Edit
+                                  </Link>
+                                </td>
+                                <td>
+                                  <Link
+                                    to={"#"}
+                                    className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                                  >
+                                    {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
+                                    <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                                    Delete
+                                  </Link>
+                                </td>
+                              </>
+                            ) : (
+                              <>
+                                <td></td>
+                                <td></td>
+                              </>
+                            )}
+                          </tr>
+                        );
+                      }
+                      return null;
+                    }
+                  )}
               </tbody>
             </table>
           </div>

@@ -63,7 +63,7 @@ class ReceiptSerializer(serializers.ModelSerializer):
 class PatientSerializer(serializers.ModelSerializer):
     patient_medical_records = MedicalRecordSerializer(
         many=True, read_only=True)
-# ssss
+
     patient_reserves = ReservationSerializer(
         many=True, read_only=True)
 

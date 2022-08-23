@@ -14,7 +14,7 @@ const Patienthistory = () => {
   console.log(userstate.linked_users);
 
   useEffect(() => {
-    dispatch(getReservationList());
+    // dispatch(getReservationList());
 
     dispatch(getPatientDetails(userstate.linked_users));
   }, [dispatch]);
