@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import os  # new
+from .jasmin import JAZZMIN_SETTINGS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -238,3 +240,4 @@ DJOSER = {
 # }
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
+JAZZMIN_SETTINGS = JAZZMIN_SETTINGS

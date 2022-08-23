@@ -28,9 +28,16 @@ export default function ReserveReply() {
             <div className="container-fluid p-3">
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Reserve Status</h1>
-              <h3 className="text-gray-800">{state.details}</h3>
-              <h3 className="text-gray-800">{state2.details}</h3>
-              <button onClick={() => window.history.go(-2)}>Back</button>
+              <div className="text-center">
+                <h3 className="h4 text-gray-800 mb-4">{state.details}</h3>
+                <button
+                  onClick={() => window.history.go(-2)}
+                  className="btn btn-secondary"
+                >
+                  <i className="fa-solid fa-arrow-left mx-2"></i>
+                  <span>Back</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

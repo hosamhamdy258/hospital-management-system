@@ -29,7 +29,7 @@ export default function Doctors() {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 1,
+      items: 2,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -53,7 +53,7 @@ export default function Doctors() {
                   <Card
                     key={item.id}
                     className="item"
-                    style={{ width: "16rem", height: "19rem" }}
+                    style={{ height: "19rem" }}
                   >
                     <Card.Img variant="top" src={item.img} />
                     <Card.Body>
