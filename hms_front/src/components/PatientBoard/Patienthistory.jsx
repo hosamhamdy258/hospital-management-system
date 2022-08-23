@@ -5,12 +5,18 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
+import { getPatientDetails } from "../../store/patient";
 
 const Patienthistory = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.reservationSlice);
+  const state = useSelector((state) => state.patientsSlice);
+  const userstate = useSelector((state) => state.users.user);
+  console.log(userstate.linked_users);
+
   useEffect(() => {
     dispatch(getReservationList());
+
+    dispatch(getPatientDetails(userstate.linked_users));
   }, [dispatch]);
 
   return (
@@ -47,7 +53,7 @@ const Patienthistory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.reservation.map((element, index) => {
+                  {state.patientDetails.patient_reserves.map((element, index) => {
                     return (
                       <tr key={index}>
                         <th scope="row">{index + 1}</th>

@@ -68,7 +68,7 @@ export const getDoctors = createAsyncThunk(
   async (_, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const response = await axiosInstance.get("api/doctor/");
+      const response = await axiosInstance.get("api/list/doctor/");
       return response.data;
     } catch (error) {
       console.error(rejectWithValue);

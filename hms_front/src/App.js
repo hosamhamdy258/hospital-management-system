@@ -69,7 +69,7 @@ function App() {
   //  const allDepts= stateDepartment.de
   useEffect(() => {
     dispatch(getDoctors());
-    dispatch(getPatients());
+    // dispatch(getPatients());
     dispatch(getDepartments());
   }, [dispatch]);
 
@@ -97,10 +97,10 @@ function App() {
           <Route path="/patientedit/" element={<Patientedit />} />
           <Route path="/checkout/" element={<Patientcheckout />} />
 
-          <Route path="/doctor/:id" element={<Doctorindex />} />
-          <Route path="/doctorreport/:id" element={<Doctorreport />} />
-          <Route path="/doctoredit/:id" element={<Doctoredit />} />
-          <Route path="/doctorhistory/:id" element={<Doctorhistory />} />
+          <Route path="/doctor/" element={<Doctorindex />} />
+          <Route path="/doctorreport/" element={<Doctorreport />} />
+          <Route path="/doctoredit/" element={<Doctoredit />} />
+          <Route path="/doctorhistory/" element={<Doctorhistory />} />
 
           <Route
             path="/staff/:id"

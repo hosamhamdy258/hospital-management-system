@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getDoctorDetails } from "../../store/Doctors";
 import moment from "moment";
-
+import Sidebar from './Sidebar';
 const Doctorhistory = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -27,41 +27,7 @@ const Doctorhistory = () => {
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
-        <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
-          id="accordionSidebar"
-        >
-          {/* <!-- Sidebar - Brand --> */}
-          <Link
-            className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/doctor/${id}`}
-          >
-            <div className="sidebar-brand-icon">
-              <i className="fa-regular fa-hospital"></i>
-            </div>
-            <div className="sidebar-brand-text mx-3">Doctor Panel</div>
-          </Link>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider my-0" />
-
-          {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/doctor/${id}`}>
-              {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
-              <span>Dashboard</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider d-none d-md-block" />
-          <li className="nav-item active">
-            <Link className="nav-link" to={`/doctorhistory/${id}`}>
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>patients history</span>
-            </Link>
-          </li>
-        </ul>
+        <Sidebar />
         {/* <!-- End of Sidebar --> */}
 
         {/* <!-- Content Wrapper --> */}

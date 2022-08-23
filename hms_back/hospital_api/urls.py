@@ -33,6 +33,8 @@ urlpatterns = [
     # path('<int:pk>/', PostDetails.as_view(), name='detailcreate'),
     path('record/<int:pk>', MedicalRecordSerializerDetails.as_view(), name='record'),
     path('list/patient/', ReservationSerializerPatientList.as_view(), name='list_patient'),
+    path('list/patientReservation/', ReservationSerializerPatientList.as_view(), name='list_patient_reservation'),
+
     path('list/doctor/', ReservationSerializerDoctorList.as_view(), name='list_doctor'),
     path('list/upcomingreservations/', UpcomingReservationSerializerList.as_view(), name='list_reserve'),
     path('list/pastreservations/<int:doctor>', PastReservationSerializerList.as_view(), name='list_past_reserve'),
