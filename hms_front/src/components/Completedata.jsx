@@ -46,7 +46,6 @@ const Completedata = () => {
   const navigate = useNavigate();
 
   if (profileState.data.profile_complete) {
-    console.log("in");
     try {
       navigate("/");
     } catch (error) {}

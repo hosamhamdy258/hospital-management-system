@@ -77,6 +77,19 @@ export const makeReservation = createAsyncThunk(
     }
   }
 );
+export const deleteReservation = createAsyncThunk(
+  "reserve/deleteReservation",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const response = await axiosInstance.delete(`api/reserve/${id}`);
+      return response;
+    } catch (error) {
+      console.error(rejectWithValue);
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const initialState = {
   doctors: [],
@@ -142,6 +155,14 @@ const reservationSlice = createSlice({
       state.details = action.payload.data.details;
     },
     [makeReservation.rejected]: (state, action) => {},
+    [deleteReservation.pending]: (state, action) => {},
+    [deleteReservation.fulfilled]: (state, action) => {
+      // console.log(action.payload.status);
+      state.details = "Reservation deleted successfully"
+    },
+    [deleteReservation.rejected]: (state, action) => {
+      state.details = "Something went wrong try again later"
+    },
   },
 });
 export default reservationSlice.reducer;

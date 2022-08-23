@@ -53,29 +53,33 @@ const Patienthistory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.patientDetails.patient_reserves && state.patientDetails.patient_reserves.map((element, index) => {
-                    return (
-                      <tr key={index}>
-                        <th scope="row">{index + 1}</th>
-                        <td>{element.date.slice(0, 10)}</td>
-                        <td>{element.date.slice(11, 16)}</td>
-                        <td>{element.department}</td>
-                        <td>{element.doctor_name}</td>
-                        <td>
-                          {element.reservation_medical_records.length > 0 ? (
-                            <Link
-                              to={"/medicalRecord/"}
-                              state={element.reservation_medical_records}
-                              className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                            >
-                              <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                              Get Report
-                            </Link>
-                          ) : null}
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {state.patientDetails.patient_reserves &&
+                    state.patientDetails.patient_reserves.map(
+                      (element, index) => {
+                        return (
+                          <tr key={index}>
+                            <th scope="row">{index + 1}</th>
+                            <td>{element.date.slice(0, 10)}</td>
+                            <td>{element.date.slice(11, 16)}</td>
+                            <td>{element.department}</td>
+                            <td>{element.doctor_name}</td>
+                            <td>
+                              {element.reservation_medical_records.length >
+                              0 ? (
+                                <Link
+                                  to={"/medicalRecord/"}
+                                  state={element.reservation_medical_records}
+                                  className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                                >
+                                  <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                                  Get Report
+                                </Link>
+                              ) : null}
+                            </td>
+                          </tr>
+                        );
+                      }
+                    )}
                 </tbody>
               </table>
             </div>

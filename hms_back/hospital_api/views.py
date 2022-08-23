@@ -102,6 +102,7 @@ class UpcomingReservationSerializerList(generics.ListAPIView):
         time = datetime.now()
         return reservation.objects.all().filter(date__gt=time).order_by("date")
 
+
 class PastReservationSerializerList(generics.RetrieveAPIView):
     # queryset = reservation.up_coming_reservations.all()
     serializer_class = ReservationSerializer
@@ -111,8 +112,6 @@ class PastReservationSerializerList(generics.RetrieveAPIView):
         return reservation.objects.all().filter(date__lt=time).order_by("date")
 
 
-
 class DoctorSerializerDetails(generics.RetrieveUpdateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-
