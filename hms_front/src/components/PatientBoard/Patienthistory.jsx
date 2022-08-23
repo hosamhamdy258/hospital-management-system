@@ -53,7 +53,7 @@ const Patienthistory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.patientDetails.patient_reserves.map((element, index) => {
+                  {state.patientDetails.patient_reserves && state.patientDetails.patient_reserves.map((element, index) => {
                     return (
                       <tr key={index}>
                         <th scope="row">{index + 1}</th>
