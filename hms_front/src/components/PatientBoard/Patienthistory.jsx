@@ -67,6 +67,7 @@ const Patienthistory = () => {
                               {element.reservation_medical_records.length >
                               0 ? (
                                 <Link
+                                
                                   to={"/medicalRecord/"}
                                   state={element.reservation_medical_records}
                                   className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"

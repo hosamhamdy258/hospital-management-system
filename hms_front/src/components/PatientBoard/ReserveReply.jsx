@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
 export default function ReserveReply() {
   const state = useSelector((state) => state.reservationSlice);
-  const state2 = useSelector((state) => state.medicalRecordSlice);
+  console.log("render");
 
   return (
     <section id="page-top">
@@ -31,7 +31,7 @@ export default function ReserveReply() {
               <div className="text-center">
                 <h3 className="h4 text-gray-800 mb-4">{state.details}</h3>
                 <button
-                  onClick={() => window.history.go(-2)}
+                  onClick={() => window.history.go(-1)}
                   className="btn btn-secondary"
                 >
                   <i className="fa-solid fa-arrow-left mx-2"></i>

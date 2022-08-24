@@ -1,8 +1,8 @@
 import "@progress/kendo-theme-default/dist/all.css";
 
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import { getMedicalRecordDetails } from "../../store/medicalRecord";
 import { jsPDF } from "jspdf";
@@ -10,10 +10,14 @@ import logo from "../../assets/img/logo.jpg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
+import { useMemo } from "react";
 
 const PatientMedicalRecord = () => {
-  let location = useLocation();
-  console.log(location.state);
+  const location = useLocation();
+
+  const report = location.state[0];
+  // report
+  // console.log(report);
 
   const pdfExportComponent = React.useRef(null);
 
@@ -21,12 +25,19 @@ const PatientMedicalRecord = () => {
     e.preventDefault();
     pdfExportComponent.current.save();
   };
-  const { id } = useParams();
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.medicalRecordSlice);
-  useEffect(() => {
-    dispatch(getMedicalRecordDetails(location.state));
-  }, [dispatch]);
+  // const { id } = useParams();
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getMedicalRecordDetails(location.state));
+  // }, [dispatch]);
+  const navigate = useNavigate();
+
+  const navigateBack = () => {
+    try {
+      navigate("/patienthistory");
+    } catch (error) {}
+  };
 
   return (
     <>
@@ -75,12 +86,12 @@ const PatientMedicalRecord = () => {
                                   {" "}
                                   Doctor Name
                                 </span>{" "}
-                                :{state.medicalRecord.doctor_name}
+                                :{report.doctor_name}
                               </div>
                               <div className="">
                                 <span className="medi_rec_labels"> Date</span> :
-                                {state.medicalRecord.added_on
-                                  ? state.medicalRecord.added_on.slice(0, 10)
+                                {report.added_on
+                                  ? report.added_on.slice(0, 10)
                                   : "Not registered"}
                               </div>
                             </div>
@@ -91,13 +102,13 @@ const PatientMedicalRecord = () => {
                                 {" "}
                                 Patient name{" "}
                               </span>
-                              : {state.medicalRecord.patient_name}
+                              : {report.patient_name}
                             </label>
                             <label className="col-lg-6 col-md-12 col-sm-8">
                               {" "}
                               <span className="medi_rec_labels">
                                 Age{" "}
-                              </span> : {state.medicalRecord.patient_age}
+                              </span> : {report.patient_age}
                             </label>
                           </div>
 
@@ -108,7 +119,7 @@ const PatientMedicalRecord = () => {
                                 <span className="medi_rec_labels px-2">
                                   Diagnosis :{" "}
                                 </span>{" "}
-                                {state.medicalRecord.diagnosis}{" "}
+                                {report.diagnosis}{" "}
                               </label>
                             </div>
                             <div className="col-12 ">
@@ -117,7 +128,7 @@ const PatientMedicalRecord = () => {
                                 <span className="medi_rec_labels px-2">
                                   Recommended Medications :{" "}
                                 </span>{" "}
-                                {state.medicalRecord.recommended_medications}{" "}
+                                {report.recommended_medications}{" "}
                               </label>
                             </div>
                           </div>
@@ -130,6 +141,14 @@ const PatientMedicalRecord = () => {
                           onClick={handlePdfExport}
                         >
                           Get pdf Report
+                        </button>
+
+                        <button
+                          onClick={() => navigateBack()}
+                          className="btn btn-secondary m-3"
+                        >
+                          <i className="fa-solid fa-arrow-left m-2"></i>
+                          <span>Back</span>
                         </button>
                       </div>
                     </form>

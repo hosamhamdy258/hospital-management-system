@@ -118,6 +118,13 @@ const Patientindex = ({ doctor }) => {
     state.reservationData.time,
     state.reservationData.patient,
   ]);
+
+  useEffect(() => {
+    if (state.details) {
+      navigateMSG();
+    }
+  }, [state.details]);
+
   const navigate = useNavigate();
 
   const navigateMSG = () => {
@@ -188,7 +195,7 @@ const Patientindex = ({ doctor }) => {
                       />
                     </div>
                     <br />
-                    {state.details && navigateMSG()}
+                    {/* {state.details && navigateMSG()} */}
 
                     <br />
                     <div className="row g-3 mb-1">

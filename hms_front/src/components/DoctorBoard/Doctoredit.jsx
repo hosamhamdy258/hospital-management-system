@@ -53,7 +53,7 @@ const Doctoredit = () => {
 
   return (
     <section id="page-top">
-      {stateMedical.details && navigateMSG()}
+      {/* {stateMedical.details && navigateMSG()} */}
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -141,9 +141,9 @@ const Doctoredit = () => {
                         </button>
                         <button
                           type="button"
-                          className="btn btn-outline-secondary me-2"
+                          className="btn btn-outline-secondary m-2"
+                          onClick={() => window.history.go(-1)}
                         >
-                           onClick={() => window.history.go(-1)}
                           Cancel
                         </button>
                       </div>

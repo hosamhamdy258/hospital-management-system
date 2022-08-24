@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +24,12 @@ const Patientedit = () => {
     dispatch(getPatientDetails(userstate.linked_users));
   }, [dispatch]);
 
+  useEffect(() => {
+    if (stateReserve.details) {
+      navigateMSG();
+    }
+  }, [stateReserve.details]);
+
   const navigate = useNavigate();
 
   const navigateMSG = () => {
@@ -31,10 +37,9 @@ const Patientedit = () => {
       navigate("/reserverstatus");
     } catch (error) {}
   };
-
   return (
     <section id="page-top">
-      {stateReserve.details && navigateMSG()}
+      {/* {stateReserve.details && navigateMSG()} */}
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"

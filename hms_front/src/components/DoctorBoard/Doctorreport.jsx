@@ -27,7 +27,15 @@ const Doctorreport = () => {
     dispatch(addMedicalRecord(data));
   };
   useEffect(() => {}, [dispatch]);
+
+  useEffect(() => {
+    if (state.details) {
+      navigateMSG();
+    }
+  }, [state.details]);
+
   const navigate = useNavigate();
+
   const navigateMSG = () => {
     try {
       navigate("/reportstatus");
