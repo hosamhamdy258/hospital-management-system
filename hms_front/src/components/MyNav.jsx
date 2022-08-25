@@ -125,7 +125,7 @@ const MyNav = () => {
             {user.profile_complete &&
             !user.is_doctor &&
             !user.is_emp &&
-            !user.is_superuser ? (
+            !user.is_staff ? (
               <Link className="nav_login_button" to="/patient" role="button">
                 Dashboard
               </Link>
@@ -137,7 +137,7 @@ const MyNav = () => {
               </Link>
             ) : null}
                {user.profile_complete && user.is_staff ? (
-              <Link className="nav_login_button" to="/doctor" role="button">
+              <Link className="nav_login_button" to="/staff" role="button">
                 Dashboard
               </Link>
             ) : null}

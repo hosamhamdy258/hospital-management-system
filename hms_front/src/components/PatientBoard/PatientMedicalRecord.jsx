@@ -14,10 +14,7 @@ import { useMemo } from "react";
 
 const PatientMedicalRecord = () => {
   const location = useLocation();
-
-  const report = location.state[0];
-  // report
-  // console.log(report);
+  const report = location.state[0][0];
 
   const pdfExportComponent = React.useRef(null);
 
@@ -25,17 +22,12 @@ const PatientMedicalRecord = () => {
     e.preventDefault();
     pdfExportComponent.current.save();
   };
-  // const { id } = useParams();
-  // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getMedicalRecordDetails(location.state));
-  // }, [dispatch]);
   const navigate = useNavigate();
 
   const navigateBack = () => {
     try {
-      navigate("/patienthistory");
+      navigate(location.state[1]);
     } catch (error) {}
   };
 

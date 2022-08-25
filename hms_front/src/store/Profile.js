@@ -15,7 +15,7 @@ export const postProfile = createAsyncThunk(
       if (
         !state.users.user.is_doctor &&
         !state.users.user.is_emp &&
-        !state.users.user.is_superuser
+        !state.users.user.is_staff
       ) {
         link = "api/patient/";
       }

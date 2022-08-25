@@ -109,14 +109,13 @@ function App() {
 
 
           <Route
-            path="/staff/:id"
+            path="/staff/"
             element={<Staffindex patient={statePatient} doctor={stateDoctor} />}
           />
-          <Route path="/staffhistory/:id" element={<Staffhistory />} />
-          <Route path="/staffedit/:id" element={<Staffedit />} />
+          <Route path="/staffhistory/" element={<Staffhistory />} />
+          <Route path="/staffedit/" element={<Staffedit />} />
 
           <Route path="/profile" element={<Profile />} />
-          <Route path="/patientedit/:id" element={<Patientedit />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/reqActivate" element={<ReqActivate />} />
           <Route path="/verified" element={<Verified />} />

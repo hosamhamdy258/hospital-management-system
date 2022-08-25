@@ -209,7 +209,7 @@ const Patientindex = ({ doctor }) => {
                         </button>
                         <button
                           type="button"
-                          className="btn btn-outline-secondary  me-2"
+                          className="btn btn-outline-secondary  m-3"
                           onClick={() => window.history.go(-1)}
                         >
                           Cancel

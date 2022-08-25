@@ -30,7 +30,7 @@ const Completedata = () => {
       birth_date: birth_date.current.value,
       gender: gender.current.value,
     };
-    if (!userState.is_doctor && !userState.is_emp && !userState.is_superuser) {
+    if (!userState.is_doctor && !userState.is_emp && !userState.is_staff) {
       data["durgs"] = durgs.current.value;
       data["comment"] = comment.current.value;
     }
@@ -65,7 +65,7 @@ const Completedata = () => {
             <div className="img_cData"></div>
             <div className="col-12">
               <h5 className="m-0 font-weight-bold text-dark">
-                <i class="fa-solid fa-user-pen px-3"></i>Personal info
+                <i className="fa-solid fa-user-pen px-3"></i>Personal info
               </h5>
               <hr />
             </div>
@@ -166,7 +166,7 @@ const Completedata = () => {
                 ) : null}
                 {!userState.is_doctor &&
                 !userState.is_emp &&
-                !userState.is_superuser ? (
+                !userState.is_staff ? (
                   <>
                     <input
                       type="text"

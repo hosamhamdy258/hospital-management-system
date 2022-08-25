@@ -69,7 +69,7 @@ const Patienthistory = () => {
                                 <Link
                                 
                                   to={"/medicalRecord/"}
-                                  state={element.reservation_medical_records}
+                                  state={[element.reservation_medical_records,"/patienthistory"]}
                                   className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                                 >
                                   <i className="fas fa-download fa-sm text-white-50"></i>{" "}

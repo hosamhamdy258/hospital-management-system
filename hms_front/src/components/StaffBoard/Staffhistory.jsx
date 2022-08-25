@@ -1,7 +1,20 @@
 import { Link, useParams } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getReservationList } from "../../store/reserve";
 
 const Staffhistory = () => {
-  const id = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.reservationSlice);
+
+  useEffect(() => {
+    // dispatch(getReservationList());
+
+    dispatch(getReservationList());
+  }, [dispatch]);
+
   return (
     <section id="page-top">
       <link
@@ -14,56 +27,7 @@ const Staffhistory = () => {
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
-        <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
-          id="accordionSidebar"
-        >
-          {/* <!-- Sidebar - Brand --> */}
-          <Link
-            className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/staff/${id.id}`}
-          >
-            <div className="sidebar-brand-icon">
-              <i className="fa-regular fa-hospital"></i>
-            </div>
-            <div className="sidebar-brand-text mx-3">Staff Panel</div>
-          </Link>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider my-0" />
-
-          {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/staff/${id.id}`}>
-              <i className="fas fa-fw fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider" />
-
-          {/* <!-- Heading --> */}
-
-          {/* <!-- Nav Item - Charts --> */}
-          <li className="nav-item active">
-            <Link className="nav-link" to={`/staffhistory/${id.id}`}>
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>patient history</span>
-            </Link>
-          </li>
-
-          {/* <!-- Nav Item - edit --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/staffedit/${id.id}`}>
-              <i className="fas fa-fw fa-edit"></i>
-              <span>Edit patients appointments</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider d-none d-md-block" />
-        </ul>
+        <Sidebar />
         {/* <!-- End of Sidebar --> */}
 
         {/* <!-- Content Wrapper --> */}
@@ -103,57 +67,39 @@ const Staffhistory = () => {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Date</th>
+                    <th scope="col">time</th>
+                    <th scope="col">Patient</th>
                     <th scope="col">Department</th>
                     <th scope="col">Doctor</th>
-                    <th scope="col">Print</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-print fa-sm text-white-50"></i>{" "}
-                        Print Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-print fa-sm text-white-50"></i>{" "}
-                        Print Report
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>11/2/2022</td>
-                    <td>Cardio</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-print fa-sm text-white-50"></i>{" "}
-                        Print Report
-                      </Link>
-                    </td>
-                  </tr>
+                  {state.reservation &&
+                    state.reservation.map((element, index) => {
+                      return (
+                        <tr key={index}>
+                          <th scope="row">{index + 1}</th>
+                          <td>{element.date.slice(0, 10)}</td>
+                          <td>{element.date.slice(11, 16)}</td>
+                          <td>{element.patient_name}</td>
+                          <td>{element.department}</td>
+                          <td>{element.doctor_name}</td>
+                          <td>
+                            {element.reservation_medical_records.length > 0 ? (
+                              <Link
+                                to={"/medicalRecord/"}
+                                state={[element.reservation_medical_records,"/staffhistory"]}
+                                className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
+                              >
+                                <i className="fas fa-download fa-sm text-white-50"></i>{" "}
+                                Get Report
+                              </Link>
+                            ) : null}
+                          </td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </table>
             </div>

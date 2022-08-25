@@ -1,8 +1,40 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {
+  deleteReservation,
+  getUpcomingReservationList,
+  restReservationData,
+} from "../../store/reserve";
+import { getPatientDetails } from "../../store/patient";
+import moment from "moment";
 
 const Staffedit = () => {
-  const id = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.reservationSlice);
+
+  useEffect(() => {
+    dispatch(restReservationData());
+
+    dispatch(getUpcomingReservationList());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (state.details) {
+      navigateMSG();
+    }
+  }, [state.details]);
+
+  const navigate = useNavigate();
+
+  const navigateMSG = () => {
+    try {
+      navigate("/reserverstatus");
+    } catch (error) {}
+  };
+
   return (
     <section id="page-top">
       <link
@@ -15,152 +47,55 @@ const Staffedit = () => {
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
         {/* <!-- Sidebar --> */}
-        <ul
-          className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
-          id="accordionSidebar"
-        >
-          {/* <!-- Sidebar - Brand --> */}
-          <Link
-            className="sidebar-brand d-flex align-items-center justify-content-center"
-            to={`/staff/${id.id}`}
-          >
-            <div className="sidebar-brand-icon">
-              <i className="fa-regular fa-hospital"></i>
-            </div>
-            <div className="sidebar-brand-text mx-3">Staff Panel</div>
-          </Link>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider my-0" />
-
-          {/* <!-- Nav Item - Dashboard --> */}
-          <li className="nav-item">
-            <Link className="nav-link" to={`/staff/${id.id}`}>
-              <i className="fas fa-fw fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider" />
-
-          {/* <!-- Heading --> */}
-
-          {/* <!-- Nav Item - Charts --> */}
-          <li className="nav-item ">
-            <Link className="nav-link" to={`/staffhistory/${id.id}`}>
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>patient history</span>
-            </Link>
-          </li>
-
-          {/* <!-- Nav Item - edit --> */}
-          <li className="nav-item active">
-            <Link className="nav-link" to={`/staffedit/${id.id}`}>
-              <i className="fas fa-fw fa-edit"></i>
-              <span>Edit patients appointments</span>
-            </Link>
-          </li>
-
-          {/* <!-- Divider --> */}
-          <hr className="sidebar-divider d-none d-md-block" />
-        </ul>
+        <Sidebar />
         {/* <!-- End of Sidebar --> */}
 
         {/* <!-- Content Wrapper --> */}
         <div id="content-wrapper" className="d-flex flex-column">
           {/* <!-- Main Content --> */}
-          <div id="content">
-            {/* <!-- End of Topbar --> */}
+          <div className="container-fluid p-3">
+            {/* <!-- Page Heading --> */}
+            <h1 className="h3 mb-4 text-gray-800">Current reservations</h1>
 
-            {/* <!-- Begin Page Content --> */}
-            <div className="container-fluid p-2">
-              {/* <!-- Page Heading --> */}
-              <h1 className="h3 mb-4 text-gray-800">Patients reservations</h1>
-
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Doctor</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11/2/2022</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className=" d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                      >
-                        {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                        <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                        Delete
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11/2/2022</td>
-                    <td>Mark</td>
-                    <td>
-                      <a
-                        href="#"
-                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                      </a>
-                    </td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className="d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                      >
-                        {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                        <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                        Delete
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>11/2/2022</td>
-                    <td>Mark</td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className=" d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
-                      >
-                        <i className="fas fa-edit fa-sm text-white-50"></i> Edit
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={"#"}
-                        className=" d-sm-inline-block btn btn-sm btn-danger shadow-sm"
-                      >
-                        {/* <i className="fas fa-delete fa-sm text-white-50"></i> */}
-                        <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
-                        Delete
-                      </Link>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">time</th>
+                  <th scope="col">Patient</th>
+                  <th scope="col">Department</th>
+                  <th scope="col">Doctor</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {state.upComingReservation &&
+                  state.upComingReservation.map((element, index) => {
+                    return (
+                      <tr key={index}>
+                        <th scope="row">{index + 1}</th>
+                        <td>{element.date.slice(0, 10)}</td>
+                        <td>{element.date.slice(11, 16)}</td>
+                        <td>{element.patient_name}</td>
+                        <td>{element.department}</td>
+                        <td>{element.doctor_name}</td>
+                        <td>
+                          <button
+                            className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
+                            onClick={() => {
+                              dispatch(deleteReservation(element.id));
+                            }}
+                          >
+                            <i className="fa-solid fa-calendar-xmark fa-sm text-white-50 mx-1"></i>
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
