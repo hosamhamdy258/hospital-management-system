@@ -819,7 +819,6 @@ vertical-align: middle;
   height: 100% !important;
   width: 100% !important;
   object-fit: cover;
-
 }
 .row .card-body{
   background-color: #fff !important;
@@ -853,7 +852,6 @@ vertical-align: middle;
 
 .card img {
   width: 100%;
-  object-fit: fill;
 }
 
 .card h2 {
@@ -1378,3 +1376,41 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
     text-align: center;
     background-color: #fff !important;
   }
+
+  /* All Doctors page Styling */
+  .doctorsCards{
+    height: 55vh !important;
+    cursor: default;
+  }
+  .doctorsCards h2{
+    color: #000;
+  }
+  .doctorsCards .card-body{
+    padding-bottom: 0px !important;
+  }
+  .doctorsCards .card-body h5 {
+    color: rgb(104, 101, 101);
+    font-weight: 500;
+    font-size: 0.85em;
+    letter-spacing: 0.04em;
+    margin: 1.4em 0 0 0;
+    text-transform: uppercase;
+  }
+  .doctorsCards .card-body h5 .doctorDepName{
+    color: #3b86d2;
+    font-weight: 900;
+  }
+  .doctorsCards:hover .card-body {
+   background-color: #299ADC !important;
+}
+  .doctorsCards:hover h2{
+      color: #fff !important;
+  }
+  .doctorsCards:hover h5{
+    color: rgb(230, 224, 224) !important;
+}
+.doctorsCards:hover h5 .doctorDepName{
+  color: #fff !important;
+  font-size: 1.1rem;
+
+}
