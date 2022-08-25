@@ -16,7 +16,7 @@ const WeSummary = () => {
                                 <div className="row justify-content-start pb-3">
                                     <motion.div initial={{y:100}} whileInView={{y:0 }} transition={{duration:1.5}} className="col-md-12 heading-section">
                                         <h2 className="mb-4">We Are <span className='we_summ_span'>HOPE</span> A Healthcare Provider</h2>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                                        <p>Our mission is to inspire hope and contribute to health and well-being by providing the best care to every patient through integrated clinical practice, education and research. Our primary value is "The needs of the patient come first."</p>
                                         <p><a href="#" className="btn btn-primary py-3 px-4">Make an appointment</a> <a href="#" className="btn btn-success py-3 px-4">Contact us</a></p>
                                     </motion.div>
                                 </div>

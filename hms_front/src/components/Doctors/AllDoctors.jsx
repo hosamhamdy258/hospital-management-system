@@ -1,13 +1,25 @@
+import {
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBCardSubTitle,
+    MDBCardText,
+    MDBCardTitle,
+    MDBCol,
+    MDBRow
+} from 'mdb-react-ui-kit';
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Card } from "react-bootstrap";
 import PageHead from '../PagesHeading/PageHead'
 import { getDoctors } from '../../store/Doctors';
+import { useState } from "react";
 
 const AllDoctors = () => {
     const dispatch = useDispatch();
     const state = useSelector((state) => state.doctorsSlice);
-
+    const [name, setName] = useState('');
 
     useEffect(() => {
         dispatch(getDoctors());
@@ -16,6 +28,7 @@ const AllDoctors = () => {
 
         <>
             <PageHead title='Qualified Doctors' />
+
             <section className='section service'>
                 <div className="container">
                     <div className="row justify-content-center">
@@ -27,24 +40,44 @@ const AllDoctors = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        {state.doctors.map((item) => (
+                    <div className="container mb-4 text-center">
+                        <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div className="input-group">
+                                <input
+                                    type="text"
+                                    className="form-control bg-gradient-light border-0 small"
+                                    placeholder="Enter Doctor name"
+                                    aria-label="Search Doctor"
+                                    aria-describedby="basic-addon2"
+                                />
+                                <button onClick={(e) => (e.target.previousSibling.value) ? setName(e.target.previousSibling.value) : setName('')} className="btn btn-primary" type="button" >
+                                    <i className="fas fa-arrow-right fa-sm"></i>
+                                </button>
 
-                            <div key={item.id} className="col-lg-4 col-md-6">
-
-                                <div className="staff mb-5">
-                                    <div className="img-wrap d-flex align-items-stretch">
-                                    <div className="img align-self-stretch">
-                                        <img src={item.img} alt="doctor_img" className='img-fluid w-100' />
-                                    </div>
-                                    </div>
-                                    <div className="text text-center">
-                                        <h4 className='mt-4 mb-2 title-color'>{item.full_name}</h4>
-                                        <p className='depName mb-4'>{item.department_name}</p>
-                                    </div>
-                                </div>
                             </div>
-                        ))}
+                        </form>
+                    </div>
+                    <div className="Container">
+                        <MDBRow>
+                            {state.doctors.filter((item) =>
+                                item.full_name.toLowerCase().includes(name)
+                            ).map((item) => (
+
+                                <MDBCol lg='4' md='5' sm='6'>
+
+                                    <MDBCard className='doctorsCards'>
+                                        <MDBCardImage src={item.img} alt='...' position='top' />
+                                        <MDBCardBody>
+                                            <h2>{item.full_name.charAt(0).toUpperCase() + item.full_name.slice(1)}</h2>
+                                            <h5>
+                                               Department: <span className='doctorDepName'>{item.department_name}</span> 
+                                            </h5>
+                                        </MDBCardBody>
+                                    </MDBCard>
+                                </MDBCol>
+
+                            ))}
+                        </MDBRow>
 
                     </div>
                 </div>
