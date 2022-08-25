@@ -46,8 +46,8 @@ const AllDoctors = () => {
                                 <input
                                     type="text"
                                     className="form-control bg-gradient-light border-0 small"
-                                    placeholder="Enter Patient name"
-                                    aria-label="Search patient"
+                                    placeholder="Enter Doctor name"
+                                    aria-label="Search Doctor"
                                     aria-describedby="basic-addon2"
                                 />
                                 <button onClick={(e) => (e.target.previousSibling.value) ? setName(e.target.previousSibling.value) : setName('')} className="btn btn-primary" type="button" >
@@ -70,7 +70,7 @@ const AllDoctors = () => {
                                         <MDBCardBody>
                                             <h2>{item.full_name.charAt(0).toUpperCase() + item.full_name.slice(1)}</h2>
                                             <h5>
-                                               Department :<span className='doctorDepName'>{item.department_name}</span> 
+                                               Department: <span className='doctorDepName'>{item.department_name}</span> 
                                             </h5>
                                         </MDBCardBody>
                                     </MDBCard>

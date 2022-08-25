@@ -1411,6 +1411,4 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
 }
 .doctorsCards:hover h5 .doctorDepName{
   color: #fff !important;
-  font-size: 1.1rem;
-
 }
