@@ -40,7 +40,10 @@ const AllDoctors = () => {
             </div>
           </div>
           <div className="container mb-4 text-center">
-            <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            >
               <div className="input-group">
                 <input
                   id="search"
@@ -50,12 +53,16 @@ const AllDoctors = () => {
                   placeholder="Enter Doctor name"
                   aria-label="Search Doctor"
                   aria-describedby="basic-addon2"
-                  onChange={(e) => (e.target.value) ? setName(e.target.value) : setName('')}
+                  // onChange={(e) =>
+                  //   e.target.value.trim().toLowerCase()
+                  //     ? setName(e.target.value.trim().toLowerCase())
+                  //     : setName("")
+                  // }
                 />
                 <button
                   onClick={(e) =>
                     inputRef.current.value
-                      ? setName(inputRef.current.value)
+                      ? setName(inputRef.current.value.trim().toLowerCase())
                       : setName("")
                   }
                   className="btn btn-primary"
@@ -69,7 +76,9 @@ const AllDoctors = () => {
           <div className="Container">
             <MDBRow>
               {state.doctors
-                .filter((item) => item.full_name.toLowerCase().includes(name))
+                .filter((item) =>
+                  item.full_name.trim().toLowerCase().includes(name)
+                )
                 .map((item) => (
                   <MDBCol lg="4" md="5" sm="6" key={item.id}>
                     <MDBCard className="doctorsCards">

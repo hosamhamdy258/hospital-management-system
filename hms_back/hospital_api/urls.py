@@ -24,7 +24,7 @@ urlpatterns = [
     path('patient/', PatientSerializerList.as_view(), name='patient'),
     path('doctor/', DoctorSerializerList.as_view(), name='doctor'),
     path('doctor/<int:pk>', DoctorSerializerDetails.as_view(), name='doctor'),
-
+   
     path('office/', OfficeAdminSerializerList.as_view(), name='office'),
     path('reserve/', ReservationSerializerList.as_view(), name='reserve_list'),
     path('reserve/<int:pk>', ReservationSerializerDetails.as_view(), name='reserve_details'),
