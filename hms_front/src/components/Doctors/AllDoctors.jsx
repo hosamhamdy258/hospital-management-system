@@ -50,7 +50,7 @@ const AllDoctors = () => {
                   placeholder="Enter Doctor name"
                   aria-label="Search Doctor"
                   aria-describedby="basic-addon2"
-                  onChange={(e) => (e.target.value) ? setName(e.target.value) : setName('')}
+                //   onChange={(e) => (e.target.value) ? setName(e.target.value) : setName('')}
                 />
                 <button
                   onClick={(e) =>
