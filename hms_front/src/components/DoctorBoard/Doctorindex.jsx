@@ -64,7 +64,7 @@ const Doctorindex = () => {
                         if (moment().isSame(element.date, "day")) {
                           return (
                             <tr key={element.id}>
-                              <th scope="row">#</th>
+                              <th scope="row">{index + 1}</th>
                               <td>{element.patient_name}</td>
                               <td>{element.date.slice(0, 10)}</td>
                               <td>{element.date.slice(11, 16)}</td>

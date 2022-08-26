@@ -39,13 +39,16 @@ class ReservationSerializer(serializers.ModelSerializer):
         source='doctor',
         read_only=True,
     )
-    # reservation_medical_records=serializers.MedicalRecordSerializer(
-    #     many=True, read_only=True)
+
     reservation_medical_records = MedicalRecordSerializer(
         many=True, read_only=True)
 
     patient_name = serializers.CharField(
         source='patient.full_name',
+        read_only=True
+    )
+    patient_id_number = serializers.CharField(
+        source='patient.id_number',
         read_only=True
     )
     patient_age = serializers.CharField(
