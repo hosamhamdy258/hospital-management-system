@@ -19,7 +19,10 @@ const initialState = {
   refresh: localStorage.getItem("refresh"),
   isAuthenticated: false,
   user: {},
+  signuperr: null,
   err: null,
+  loaderror: null,
+  signerr: null,
   registered: null,
   requestSent: null,
 };
@@ -268,17 +271,17 @@ const users = createSlice({
   extraReducers: {
     // Signup Actions
     [Signup.pending]: (state, action) => {
-      state.err = null;
+      state.signuperr = null;
     },
     [Signup.fulfilled]: (state, action) => {
       state.registered = true;
     },
     [Signup.rejected]: (state, action) => {
-      state.err = action.payload;
+      state.signuperr = action.payload;
     },
     // Signin Actions
     [Signin.pending]: (state, action) => {
-      state.err = null;
+      state.signerr = null;
     },
     [Signin.fulfilled]: (state, action) => {
       state.isAuthenticated = true;
@@ -286,14 +289,14 @@ const users = createSlice({
       console.log(action.payload);
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
-      window.location.reload(false);
+      // window.location.reload(false);
     },
     [Signin.rejected]: (state, action) => {
-      state.err = "Email or Password is incorrect";
+      state.signerr = "Email or Password is incorrect";
     },
     // logout Actions
     [logout.pending]: (state, action) => {
-      state.err = null;
+      state.signerr = null;
     },
     [logout.fulfilled]: (state, action) => {
       state.isAuthenticated = false;
@@ -317,14 +320,14 @@ const users = createSlice({
     },
     // load_user Actions
     [load_user.pending]: (state, action) => {
-      state.err = null;
+      state.loaderror = null;
     },
     [load_user.fulfilled]: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
     },
     [load_user.rejected]: (state, action) => {
-      state.error = action.payload;
+      state.loaderror = action.payload;
     },
     // checkAuthenticated Actions
     [checkAuthenticated.pending]: (state, action) => {

@@ -10,7 +10,7 @@ const Completedata = () => {
   const profileState = useSelector((state) => state.profileSlice);
 
   const depState = useSelector((state) => state.departmentsSlice);
-  const id_number = useRef(null);
+  const phone_number = useRef(null);
   const first_name = useRef(null);
   const last_name = useRef(null);
   const address = useRef(null);
@@ -25,7 +25,7 @@ const Completedata = () => {
     const data = {
       first_name: first_name.current.value,
       last_name: last_name.current.value,
-      id_number: id_number.current.value,
+      phone_number: phone_number.current.value,
       address: address.current.value,
       birth_date: birth_date.current.value,
       gender: gender.current.value,
@@ -85,11 +85,6 @@ const Completedata = () => {
                     className="form_control col-md-5 mb-3"
                     ref={first_name}
                   />
-                  {/* <input
-               type="text"
-               placeholder="Enter middle name"
-               className="form_control col-md-5 mx-2 mb-2"
-             /> */}
                   <input
                     required
                     type="text"
@@ -101,10 +96,10 @@ const Completedata = () => {
                 <hr className="cData_hr" />
                 <div className="row d-flex justify-content-around">
                   <input
-                    ref={id_number}
+                    ref={phone_number}
                     required
                     type="text"
-                    placeholder="Enter National id"
+                    placeholder="Enter Phone Number"
                     className="form_control col-md-5 mx-2 mb-3"
                   />
                   <input
@@ -193,7 +188,8 @@ const Completedata = () => {
                   </button>
                   <button
                     type="button"
-                    className="btn btn-outline-secondary  me-2"
+                    className="btn btn-outline-secondary  m-3"
+                    onClick={() => window.history.go(-1)}
                   >
                     Cancel
                   </button>

@@ -92,7 +92,7 @@ const Staffhistory = () => {
                     <th scope="col">Date</th>
                     <th scope="col">time</th>
                     <th scope="col">Patient</th>
-                    <th scope="col">ID Number</th>
+                    <th scope="col">Phone Number</th>
                     <th scope="col">Department</th>
                     <th scope="col">Doctor</th>
                     <th scope="col">Action</th>
@@ -103,7 +103,7 @@ const Staffhistory = () => {
                     state.reservation
                       .filter(
                         (element) =>
-                          element.patient_id_number.includes(search) ||
+                          element.patient_phone_number.includes(search) ||
                           element.patient_name
                             .trim()
                             .toLowerCase()
@@ -119,7 +119,7 @@ const Staffhistory = () => {
                             <td>{element.patient_name}</td>
                             <td>
                               <div className="col-1 col-sm-3 col-md-6 text-truncate">
-                                {element.patient_id_number}
+                                {element.patient_phone_number}
                               </div>
                             </td>
                             <td>{element.department}</td>

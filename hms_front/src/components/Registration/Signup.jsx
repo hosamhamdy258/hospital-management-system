@@ -8,9 +8,9 @@ import { Link, Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 export default function AddUser() {
-  const { err, registered } = useSelector((state) => state.users);
-  if (err && err.non_field_errors) {
-    console.log(err.non_field_errors[0])
+  const { signuperr, registered } = useSelector((state) => state.users);
+  if (signuperr && signuperr.non_field_errors) {
+    console.log(signuperr.non_field_errors[0])
   }
   const first_name = useRef(null);
   const last_name = useRef(null);
@@ -75,7 +75,7 @@ export default function AddUser() {
                           ref={first_name}
                         />
                         <p className="text-danger">
-                          {err && err.hasOwnProperty("first_name") && erorrMsg(err)}
+                          {signuperr && signuperr.hasOwnProperty("first_name") && erorrMsg(signuperr)}
                         </p>
                       </div>
                       <div className="col-sm-6">
@@ -87,7 +87,7 @@ export default function AddUser() {
                           ref={last_name}
                         />
                         <p className="text-danger">
-                          {err && err.hasOwnProperty("last_name") && erorrMsg(err)}
+                          {signuperr && signuperr.hasOwnProperty("last_name") && erorrMsg(signuperr)}
                         </p>
                       </div>
                     </div>
@@ -100,7 +100,7 @@ export default function AddUser() {
                         ref={email}
                       />
                       <p className="text-danger">
-                        {err && err.hasOwnProperty("email") && erorrMsg(err)}
+                        {signuperr && signuperr.hasOwnProperty("email") && erorrMsg(signuperr)}
                       </p>
                     </div>
                     <div className="form-group row">
@@ -113,7 +113,7 @@ export default function AddUser() {
                           ref={password}
                         />
                         <p className="text-danger">
-                          {err && err.hasOwnProperty("password") && erorrMsg(err)}
+                          {signuperr && signuperr.hasOwnProperty("password") && erorrMsg(signuperr)}
                         </p>
                       </div>
                       <div className="col-sm-6">
@@ -125,7 +125,7 @@ export default function AddUser() {
                           ref={re_password}
                         />
                         <p className="text-danger">
-                          {err && err.non_field_errors && err.non_field_errors[0]}
+                          {signuperr && signuperr.non_field_errors && signuperr.non_field_errors[0]}
                         </p>
                       </div>
                     </div>

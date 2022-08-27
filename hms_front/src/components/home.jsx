@@ -7,17 +7,18 @@ import Doctors from "./Doctors";
 import Statisc from "./Statisc/Statisc";
 import WeSummary from "./Summary/WeSummary";
 import { checkAuthenticated, load_user } from "./../store/usersSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
   const profileState = useSelector((state) => state.profileSlice);
-  if (profileState.data.profile_complete) {
-    window.location.reload(false);
-  }
+  // if (profileState.data.profile_complete) {
+  //   window.location.reload(false);
+  // }
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    checkAuthenticated();
-    load_user();
+    dispatch(checkAuthenticated());
+    dispatch(load_user());
   }, []);
   return (
     <>
