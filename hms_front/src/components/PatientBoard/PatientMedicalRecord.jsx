@@ -1,16 +1,11 @@
 import "@progress/kendo-theme-default/dist/all.css";
 
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
-import React, { useCallback, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { PDFExport } from "@progress/kendo-react-pdf";
+import React from "react";
 
-import { getMedicalRecordDetails } from "../../store/medicalRecord";
-import { jsPDF } from "jspdf";
 import logo from "../../assets/img/logo.jpg";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
-import { useMemo } from "react";
 
 const PatientMedicalRecord = () => {
   const location = useLocation();

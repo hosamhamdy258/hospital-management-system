@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { loginUser } from "./../store/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Login({ state }) {
   // const state = useSelector((state) => state.authSlice);

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useEffect, useRef } from "react";
 import { checkAuthenticated, load_user, Signin } from "../../store/usersSlice";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UserLog() {
   const { signerr, isAuthenticated } = useSelector((state) => state.users);
@@ -27,6 +27,7 @@ export default function UserLog() {
     // dispatch(checkAuthenticated());
     // dispatch(load_user());
     if (isAuthenticated) {
+      console.log("in if login");
       dispatch(checkAuthenticated());
       dispatch(load_user());
       navigateMSG();

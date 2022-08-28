@@ -1,5 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { getPatientDetails } from "./../../store/patient";
+import { useNavigate } from "react-router-dom";
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect } from "react";
 import Select from "react-select";

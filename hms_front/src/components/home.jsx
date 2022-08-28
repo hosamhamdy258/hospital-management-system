@@ -1,19 +1,14 @@
 import React, { useEffect } from "react";
 
 import Banner from "./Banner";
-import Contact from "./Contact";
 import Departments from "./Departments/Departments";
 import Doctors from "./Doctors";
 import Statisc from "./Statisc/Statisc";
 import WeSummary from "./Summary/WeSummary";
 import { checkAuthenticated, load_user } from "./../store/usersSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
-  const profileState = useSelector((state) => state.profileSlice);
-  // if (profileState.data.profile_complete) {
-  //   window.location.reload(false);
-  // }
   const dispatch = useDispatch();
 
   useEffect(() => {

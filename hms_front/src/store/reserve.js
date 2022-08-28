@@ -33,20 +33,6 @@ export const getReservationList = createAsyncThunk(
   }
 );
 
-// export const getPatientReservationList = createAsyncThunk(
-//   "reserve/getPatientReservationList",
-//   async (_, thunkAPI) => {
-//     const { rejectWithValue } = thunkAPI;
-//     try {
-//       const response = await axiosInstance.get("api/reserve/");
-
-//       return response;
-//     } catch (error) {
-//       console.error(rejectWithValue);
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
 export const getUpcomingReservationList = createAsyncThunk(
   "reserve/getUpcomingReservationList",
   async (_, thunkAPI) => {
@@ -96,8 +82,7 @@ const initialState = {
   patients: [],
   reservation: [],
   upComingReservation: [],
-  patientReservation: [],
-  reservationData: { date: "", isDisabled: true ,},
+  reservationData: { date: "", isDisabled: true },
   details: "",
 };
 const reservationSlice = createSlice({
@@ -106,7 +91,7 @@ const reservationSlice = createSlice({
   reducers: {
     restReservationData: (state, action) => {
       state.reservationData = { date: "", isDisabled: true };
-      state.details=""
+      state.details = "";
       console.log("clear");
     },
     addReservationData: (state, action) => {
@@ -125,7 +110,9 @@ const reservationSlice = createSlice({
   },
 
   extraReducers: {
-    [getPatientDoctors.pending]: (state, action) => {},
+    [getPatientDoctors.pending]: (state, action) => {
+       console.log(action);
+    },
     [getPatientDoctors.fulfilled]: (state, action) => {
       state.doctors = action.payload[0].data;
       state.patients = action.payload[1].data;
@@ -140,11 +127,7 @@ const reservationSlice = createSlice({
       state.reservation = action.payload.data;
     },
     [getReservationList.rejected]: (state, action) => {},
-    // [getPatientReservationList.pending]: (state, action) => {},
-    // [getPatientReservationList.fulfilled]: (state, action) => {
-    //   state.patientReservation = action.payload.data;
-    // },
-    // [getPatientReservationList.rejected]: (state, action) => {},
+
     [getUpcomingReservationList.pending]: (state, action) => {},
     [getUpcomingReservationList.fulfilled]: (state, action) => {
       state.upComingReservation = action.payload.data;
@@ -158,10 +141,10 @@ const reservationSlice = createSlice({
     [deleteReservation.pending]: (state, action) => {},
     [deleteReservation.fulfilled]: (state, action) => {
       // console.log(action.payload.status);
-      state.details = "Reservation deleted successfully"
+      state.details = "Reservation deleted successfully";
     },
     [deleteReservation.rejected]: (state, action) => {
-      state.details = "Something went wrong try again later"
+      state.details = "Something went wrong try again later";
     },
   },
 });

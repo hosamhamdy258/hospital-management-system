@@ -1,17 +1,15 @@
 // import 'animate.css'
 
-import { Col, Container, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { Container, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import React from "react";
-import headerImg from "../assets/img/h5.webp";
-import { logout } from "../store/usersSlice";
 
 const Banner = () => {
-  const { isAuthenticated, user, } = useSelector((state) => state.users);
+  const { isAuthenticated, user } = useSelector((state) => state.users);
   const [loopNumber, setLoopNumber] = useState(0);
   const toRotate = [
     "Better Doctors",
@@ -66,19 +64,20 @@ const Banner = () => {
               HOPE is an online Hospital Management System Graduation Project
               Created by ITIans team
             </p>
-            {isAuthenticated && !user.profile_complete &&  
-            <button>
-              <Link to='/completedata'>
-              Make an Appointment <ArrowRightCircle size={23} />{" "}
-              </Link>
-            </button>}
-            {!isAuthenticated && 
-            <button>
-              <Link to='/login'>
-              Make an Appointment <ArrowRightCircle size={23} />{" "}
-              </Link>
-            </button>
-            }
+            {isAuthenticated && !user.profile_complete && (
+              <button>
+                <Link to="/completedata">
+                  Make an Appointment <ArrowRightCircle size={23} />{" "}
+                </Link>
+              </button>
+            )}
+            {!isAuthenticated && (
+              <button>
+                <Link to="/login">
+                  Make an Appointment <ArrowRightCircle size={23} />{" "}
+                </Link>
+              </button>
+            )}
           </div>
           {/* <Col xs={12} md={6} xl={5}>
                         <img src={headerImg} alt="HeaderImage"/>

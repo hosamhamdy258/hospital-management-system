@@ -136,14 +136,14 @@ const MyNav = () => {
                 Dashboard
               </Link>
             ) : null}
-               {user.profile_complete && user.is_staff ? (
+            {user.profile_complete && user.is_staff ? (
               <Link className="nav_login_button" to="/staff" role="button">
                 Dashboard
               </Link>
             ) : null}
 
             {isAuthenticated && (
-              <button className=" btn btn-info" onClick={logoutButton}>
+              <button className=" btn btn-info" onClick={() => logoutButton()}>
                 <Link className="" to="/" role="button">
                   Logout
                 </Link>

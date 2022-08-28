@@ -3,68 +3,72 @@ from rest_framework import generics
 from .serializers import *
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 
 # Create your views here.
 
 
-class DepartmentSerializerList(generics.ListCreateAPIView):
+class DepartmentSerializerList(generics.ListAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
 
 
-class DepartmentSerializerDetails(generics.RetrieveUpdateAPIView):
+class DepartmentSerializerDetails(generics.RetrieveAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
 
 
-class PatientSerializerList(generics.ListCreateAPIView):
+class PatientSerializerList(generics.ListAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+    permission_classes = [IsAuthenticated]
 
 
-class DoctorSerializerList(generics.ListCreateAPIView):
+class DoctorSerializerList(generics.ListAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-class OfficeAdminSerializerList(generics.ListCreateAPIView):
+class OfficeAdminSerializerList(generics.CreateAPIView):
     queryset = office_admin.objects.all()
     serializer_class = OfficeAdminSerializer
+    permission_classes = [IsAuthenticated]
 
 
-class MedicalRecordSerializerList(generics.ListCreateAPIView):
+class MedicalRecordSerializerList(generics.CreateAPIView):
     queryset = medical_record.objects.all()
     serializer_class = MedicalRecordSerializer
 
 
-class MedicalRecordSerializerDetails(generics.RetrieveUpdateDestroyAPIView):
+class MedicalRecordSerializerDetails(generics.RetrieveUpdateAPIView):
     queryset = medical_record.objects.all()
     serializer_class = MedicalRecordSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class ReceiptSerializerList(generics.ListCreateAPIView):
     queryset = receipt.objects.all()
     serializer_class = ReceiptSerializer
-############################################################################
-# working
 
 
 class ReservationSerializerPatientList(generics.ListAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializerReserve
-
-# working
+    permission_classes = [IsAuthenticated]
 
 
 class ReservationSerializerDoctorList(generics.ListAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializerReserve
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class ReservationSerializerList(generics.ListCreateAPIView):
     queryset = reservation.objects.all()
     serializer_class = ReservationSerializer
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         serializer = ReservationSerializer(data=request.data)
@@ -79,14 +83,16 @@ class ReservationSerializerList(generics.ListCreateAPIView):
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ReservationSerializerDetails(generics.RetrieveUpdateDestroyAPIView):
+class ReservationSerializerDetails(generics.DestroyAPIView):
     queryset = reservation.objects.all()
     serializer_class = ReservationSerializer
+    permission_classes = [IsAuthenticated]
 
 
-class PatientSerializerDetails(generics.RetrieveUpdateAPIView):
+class PatientSerializerDetails(generics.RetrieveAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class PersonSerializerDetails(generics.RetrieveUpdateAPIView):
@@ -97,6 +103,7 @@ class PersonSerializerDetails(generics.RetrieveUpdateAPIView):
 class UpcomingReservationSerializerList(generics.ListAPIView):
     # queryset = reservation.up_coming_reservations.all()
     serializer_class = ReservationSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         time = datetime.now()
@@ -115,5 +122,4 @@ class PastReservationSerializerList(generics.RetrieveAPIView):
 class DoctorSerializerDetails(generics.RetrieveAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-
-
+    permission_classes = [IsAuthenticated]

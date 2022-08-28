@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import axiosInstance from "./axios";
 import {
   ACTIVATION_FAIL,
   ACTIVATION_SUCCESS,
@@ -37,7 +37,7 @@ export const load_user = createAsyncThunk(
       const config = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `JWT ${localStorage.getItem("access")}`,
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
           Accept: "application/json",
         },
       };
@@ -216,32 +216,36 @@ export const reset_password = createAsyncThunk(
   }
 );
 
-export const reset_password_confirm =
-  (uid, token, new_password, re_new_password) => async (dispatch) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const body = JSON.stringify({ uid, token, new_password, re_new_password });
-
-    try {
-      await axios.post(
-        `${Local}/auth/users/reset_password_confirm/`,
-        body,
-        config
-      );
-
-      dispatch({
-        type: PASSWORD_RESET_CONFIRM_SUCCESS,
-      });
-    } catch (err) {
-      dispatch({
-        type: PASSWORD_RESET_CONFIRM_FAIL,
-      });
-    }
+export const reset_password_confirm = (
+  uid,
+  token,
+  new_password,
+  re_new_password
+) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
+
+  const body = JSON.stringify({ uid, token, new_password, re_new_password });
+
+  try {
+    await axios.post(
+      `${Local}/auth/users/reset_password_confirm/`,
+      body,
+      config
+    );
+
+    dispatch({
+      type: PASSWORD_RESET_CONFIRM_SUCCESS,
+    });
+  } catch (err) {
+    dispatch({
+      type: PASSWORD_RESET_CONFIRM_FAIL,
+    });
+  }
+};
 
 export const verify = (uid, token) => async (dispatch) => {
   const config = {
@@ -289,6 +293,8 @@ const users = createSlice({
       console.log(action.payload);
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
+      axiosInstance.defaults.headers["Authorization"] =
+        "Bearer " + action.payload.access;
       // window.location.reload(false);
     },
     [Signin.rejected]: (state, action) => {
@@ -297,6 +303,8 @@ const users = createSlice({
     // logout Actions
     [logout.pending]: (state, action) => {
       state.signerr = null;
+      state.isAuthenticated = false;
+      state.user = {};
     },
     [logout.fulfilled]: (state, action) => {
       state.isAuthenticated = false;

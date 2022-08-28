@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -8,8 +8,6 @@ import {
   getUpcomingReservationList,
   restReservationData,
 } from "../../store/reserve";
-import { getPatientDetails } from "../../store/patient";
-import moment from "moment";
 
 const Staffedit = () => {
   const [search, setSearch] = useState("");
