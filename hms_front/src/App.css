@@ -1410,5 +1410,44 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
     color: rgb(230, 224, 224) !important;
 }
 .doctorsCards:hover h5 .doctorDepName{
+  color: #ffffff !important;
+}
+
+.hhh{
+  height: 100px;
+}
+@media screen and (max-width: 568px)
+{
+  .sc-iwsKbI.cDxnev.rsc-container {
+    border-radius: 0;
+    bottom: 0 !important;
+    left: initial !important;
+    height: 80%;
+    right: 0 !important;
+    top: initial !important;
+    width: 100%;
+  }
+}
+
+.pagintion{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  cursor: pointer;
+}
+.pagintion a{
+  padding: 10px;
+  border: 1px solid #299ADC;
+  color: #299ADC;
+}
+.pagination__link{
+  font-weight: bold;
+}
+.pagination__link__active a{
   color: #fff !important;
+  background-color: #299ADC;
+}
+.pagination__link__disabled a{
+  color: #BFBEC0;
+  border: 1px solid #BFBEC0 ;
 }

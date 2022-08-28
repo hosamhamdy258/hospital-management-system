@@ -2,7 +2,7 @@ import "./App.css";
 import '@progress/kendo-theme-default/dist/all.css';
 
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import { getPatientDetails, getPatients } from "./store/patient";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,7 +11,7 @@ import Activate from "./components/Registration/Activate";
 import AllDepartmentsPage from "./components/Departments/AllDepartmentsPage";
 import AllDoctors from "./components/Doctors/AllDoctors";
 import BottomFooter from "./components/bottomFooter";
-import Completedata from "./components/Completedata";
+
 import Contact from "./components/Contact/Contact";
 import DepartmentPage from "./components/Departments/DepartmentPage";
 import Doctoredit from "./components/DoctorBoard/Doctoredit";
@@ -32,8 +32,10 @@ import Patientindex from "./components/PatientBoard/Patientindex";
 import PrivateRoutes from "./store/PrivateRoutes";
 import Profile from "./components/Profile";
 import Register from "./components/register";
+import ReportStatus from "./components/DoctorBoard/ReportReply";
 import ReqActivate from "./components/Registration/ReqActivate";
 import Reserve from "./components/reserve";
+import ReserveReply from './components/PatientBoard/ReserveReply';
 import ResetPassword from "./components/Registration/ResetPassword";
 import ResetPasswordConfirm from "./components/Registration/ResetPasswordConfirm";
 import { ScrollToTop } from "react-router-scroll-to-top";
@@ -45,14 +47,91 @@ import Staffindex from "./components/StaffBoard/Staffindex";
 import Verified from "./components/Registration/Verified";
 import { getDepartments } from "./store/Departments";
 import { getDoctors } from "./store/Doctors";
+import Completedata from "./components/Completedata";
 
+
+
+import ChatBot from 'react-simple-chatbot';
+import { ThemeProvider } from 'styled-components';
+
+const theme = {
+  height:'100px',
+  background: '#e9f6f7',
+  headerBgColor: '#299ADC',
+  headerFontSize: '20px',
+  botBubbleColor: '#0F3789',
+  headerFontColor: 'white',
+  botFontColor: 'white',
+  userBubbleColor: '#FF5733',
+  userFontColor: 'white',
+};
+const config = {
+  height:'450px',
+  floating: true,
+  botAvatar: "avatar2.jpg",
+};
+
+const steps = [
+  {
+      id: '0',
+      message: 'Welcome to HOPE !',
+      trigger: '1',
+  }, {
+      id: '1',
+
+      // This message appears in
+      // the bot chat bubble
+      message: 'Please enter your name',
+      trigger: '2'
+  }, {
+      id: '2',
+      user: true,
+      trigger: '3',
+  }, {
+      id: '3',
+      message: " hi {previousValue}, how can I help you?",
+      trigger: 4
+  }, {
+      id: '4',
+      options: [
+           
+          { value: 1, label: 'About Us' ,trigger:5},
+      //     { value: 2, label: 'Book an appointment',trigger:6 },
+      //     { value: 3, label: 'Contact Us' ,trigger:5},
+      //     { value: 4, label: 'create an account',trigger:6 },
+      //     { value: 4, label: 'having a problem logging in ?',trigger:6 },
+      // 
+    ],
+  },
+  {
+    id:'5',
+    message: " HOPE is a Hospital Management System graduation project created by ITIans ",
+    trigger:6
+  }
+  ,
+  {
+    id:'6',
+    
+    options: [
+       { value: 1, label: 'Read more about us', component:(
+        <NavLink
+        className="nav_login_button"
+              to="/about"
+              
+            >Read more</NavLink>
+       )},
+       { value: 2, label: 'Back To main menu' ,trigger:4},
+],
+
+  }
+];
 // import ScrollToTop from "react-scroll-to-top";
 
 //done
 
 // Khalid import
-import ReserveReply from './components/PatientBoard/ReserveReply';
-import ReportStatus from "./components/DoctorBoard/ReportReply";
+
+
 
 
 
@@ -135,6 +214,10 @@ function App() {
         </Routes>
         <BottomFooter />
         <ScrollToTop smooth />
+        <ThemeProvider theme={theme}>
+        <ChatBot steps={steps} {...config}   />
+        </ThemeProvider>
+
       </Layout>
    
     </div>
