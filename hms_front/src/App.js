@@ -2,7 +2,7 @@ import "./App.css";
 import "@progress/kendo-theme-default/dist/all.css";
 
 import React, { useEffect } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import About from "./components/About/About";
@@ -60,6 +60,7 @@ const config = {
   height: "450px",
   floating: true,
   botAvatar: "avatar2.jpg",
+  // floatingIcon:'https://img.freepik.com/premium-vector/woman-nurse-cartoon-icon_24908-9145.jpg?w=2000'
 };
 
 const steps = [
@@ -70,9 +71,6 @@ const steps = [
   },
   {
     id: "1",
-
-    // This message appears in
-    // the bot chat bubble
     message: "Please enter your name",
     trigger: "2",
   },
@@ -90,11 +88,11 @@ const steps = [
     id: "4",
     options: [
       { value: 1, label: "About Us", trigger: 5 },
-      //     { value: 2, label: 'Book an appointment',trigger:6 },
-      //     { value: 3, label: 'Contact Us' ,trigger:5},
-      //     { value: 4, label: 'create an account',trigger:6 },
-      //     { value: 4, label: 'having a problem logging in ?',trigger:6 },
-      //
+      { value: 2, label: 'Book an appointment',trigger:6 },
+      { value: 3, label: 'Contact Us' ,trigger:4},
+      { value: 4, label: 'create an account',trigger:4 },
+      { value: 5, label: 'having a problem logging in ?',trigger:4 },
+      
     ],
   },
   {
@@ -105,20 +103,22 @@ const steps = [
   },
   {
     id: "6",
-
+    component: (
+      <Link className="nav_login_button" to="/about">
+        Read more
+      </Link>
+    ),
+    delay:0,
+    trigger:7,
+  },
+  {
+    id: "7",
     options: [
-      {
-        value: 1,
-        label: "Read more about us",
-        component: (
-          <NavLink className="nav_login_button" to="/about">
-            Read more
-          </NavLink>
-        ),
-      },
-      { value: 2, label: "Back To main menu", trigger: 4 },
+      { value: 1, label: "Back to Main Menu", trigger: 4 },
+      { value: 2, label: 'No , thanks',trigger:6 }, 
     ],
   },
+
 ];
 
 function App() {
