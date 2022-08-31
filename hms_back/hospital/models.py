@@ -1,5 +1,5 @@
 from logging import disable
-from msilib.schema import _Validation_records
+# from msilib.schema import _Validation_records
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date, datetime
@@ -73,8 +73,8 @@ class Department(models.Model):
 
     name = models.CharField(max_length=255, unique=True)
     desc = models.TextField()
-    logo_img = models.ImageField(upload_to='images', validators=[check_image])
-    img = models.ImageField(upload_to='images', validators=[check_image])
+    logo_img = models.ImageField(upload_to='images', validators=[check_image],blank=True)
+    img = models.ImageField(upload_to='images', validators=[check_image],blank=True)
     startDay = models.CharField(
         max_length=10, choices=week_days, default='monday')
     endDay = models.CharField(
@@ -97,7 +97,7 @@ class Doctor(Person):
 
     department = models.ForeignKey(
         Department, on_delete=models.SET_DEFAULT, default="Doctor")
-    img = models.ImageField(upload_to='images', validators=[check_image])
+    img = models.ImageField(upload_to='images', validators=[check_image],blank=True)
 
 
 class office_admin(Person):

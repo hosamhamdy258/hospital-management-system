@@ -17,6 +17,9 @@ from .jasmin import JAZZMIN_SETTINGS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# deploy
+import django_heroku
+import dj_database_url
 
 # Khalid Base Dire For Run Build Command
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,11 +59,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
 
-
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # deploy try
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,7 +78,6 @@ ROOT_URLCONF = 'core.urls'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'hms_back')
-
 
 TEMPLATES = [
     {
@@ -130,6 +132,10 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
+# deploy
+DATABASES = {'default': dj_database_url.parse(
+    'postgres://egwkpqykapumai:f07d110a35574f9be16ec8d3ad078dac5333791e1a1c8a84631b500bc10ff8ef@ec2-3-224-184-9.compute-1.amazonaws.com:5432/d934hk19nibf0n',
+    conn_max_age=600)}
 DOMAIN = ("localhost:3000")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -155,7 +161,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -241,3 +246,14 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
+
+# deploy
+django_heroku.settings(locals())
+
+# static to amazon s3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_ACCESS_KEY_ID = 'AKIATAMSZZXAI3V2SS7F'
+AWS_S3_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'backendapiimages'
+AWS_QUERYSTRING_AUTH = False
