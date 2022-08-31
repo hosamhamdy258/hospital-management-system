@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import dj_database_url
+import django_heroku
 from datetime import timedelta
 from pathlib import Path
 import os  # new
@@ -18,8 +20,6 @@ from .jasmin import JAZZMIN_SETTINGS
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # deploy
-import django_heroku
-import dj_database_url
 
 # Khalid Base Dire For Run Build Command
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -133,9 +133,9 @@ DATABASES = {
     }
 }
 # deploy
-DATABASES = {'default': dj_database_url.parse(
-    'postgres://egwkpqykapumai:f07d110a35574f9be16ec8d3ad078dac5333791e1a1c8a84631b500bc10ff8ef@ec2-3-224-184-9.compute-1.amazonaws.com:5432/d934hk19nibf0n',
-    conn_max_age=600)}
+# DATABASES = {'default': dj_database_url.parse(
+#     'postgres://egwkpqykapumai:f07d110a35574f9be16ec8d3ad078dac5333791e1a1c8a84631b500bc10ff8ef@ec2-3-224-184-9.compute-1.amazonaws.com:5432/d934hk19nibf0n',
+#     conn_max_age=600)}
 DOMAIN = ("localhost:3000")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

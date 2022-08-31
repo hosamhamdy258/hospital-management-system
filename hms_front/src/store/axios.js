@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseURL = "https://hmsbackapi.herokuapp.com/";
+// const baseURL = "https://hmsbackapi.herokuapp.com/";
+const baseURL = "http://127.0.0.1:8000/";
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
@@ -26,7 +27,7 @@ axiosInstance.interceptors.response.use(
 
     return response;
   },
-  async function(error) {
+  async function (error) {
     const originalRequest = error.config;
 
     if (typeof error.response === "undefined") {
