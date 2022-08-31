@@ -88,11 +88,10 @@ const steps = [
     id: "4",
     options: [
       { value: 1, label: "About Us", trigger: 5 },
-      { value: 2, label: 'Book an appointment',trigger:6 },
-      { value: 3, label: 'Contact Us' ,trigger:4},
-      { value: 4, label: 'create an account',trigger:4 },
-      { value: 5, label: 'having a problem logging in ?',trigger:4 },
-      
+      { value: 2, label: 'Book an appointment',trigger:8 },
+      { value: 3, label: 'Contact Us' ,trigger:9},
+      { value: 4, label: 'create an account',trigger:10 },
+      { value: 5, label: 'having a problem logging in ?',trigger:13 },
     ],
   },
   {
@@ -108,15 +107,70 @@ const steps = [
         Read more
       </Link>
     ),
-    delay:0,
     trigger:7,
   },
   {
     id: "7",
     options: [
       { value: 1, label: "Back to Main Menu", trigger: 4 },
-      { value: 2, label: 'No , thanks',trigger:6 }, 
+      { value: 2, label: "No, thanks I'm Done",trigger:15 }, 
     ],
+  },{
+    id: "8",
+    component:(
+      <Link className="nav_login_button" to="/login">
+        Click To Login in First
+      </Link>
+    ),
+    trigger:7,
+  },
+  {
+    id: "9",
+    component:(
+      <Link className="nav_login_button" to="/contact">
+        Redirect to Contact Us
+      </Link>
+    ),
+    trigger:7,
+  },
+  {
+    id: "10",
+    options: [
+      { value: 1, label: "Create a Doctor account", trigger: 11 },
+      { value: 2, label: 'Create a Patient account',trigger:12 },  
+    ],
+  },
+  {
+    id: "11",
+    message:'Sorry, but only doctors working on HOPE are authorized to login as a doctor , if you are working with us please contact us at "ITIinfo@iti.gov.eg" with your National ID and we will provide you with your account details ',
+    trigger:7
+  },
+  {
+    id: "12",
+    component:(
+      <Link className="nav_login_button" to="/signup">
+        Click to create account
+      </Link>
+    ),trigger:7
+  },
+  {
+    id: "13",
+    message:'submit your problem ,specify your issue in the title and one of our team will contact you soon',
+    trigger:14,
+  },
+  {
+    id: "14",
+    component:(
+      <Link className="nav_login_button" to="/contact">
+        Submit your problem 
+      </Link>
+    ),
+    trigger:7,
+  },
+  {
+    id: "15",
+    message:"Thanks for your interest in HOPE , we hope we could help you",
+    end:true
   },
 
 ];

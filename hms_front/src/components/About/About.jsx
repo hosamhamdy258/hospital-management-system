@@ -35,7 +35,7 @@ const About = () => {
                     <div className="row">
                         <motion.h2 className="about_title"  initial={{ y: 50 }} whileInView={{ y: 0 }} transition={{ duration: .5 }}>Our Services</motion.h2>
 
-                        <motion.div  initial={{ y: 100 }} whileInView={{ y: 0 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div  initial={{ y: 100 }} whileInView={{ y: 0 }} transition={{ duration: 1.1 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/doctors.jpg" />
                                 <Card.Body>
@@ -47,7 +47,7 @@ const About = () => {
                                 </Card.Body>
                             </Card>
                         </motion.div>
-                        <motion.div initial={{ y: 100 }} whileInView={{ y: 0 }}  className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{ y: 100 }} whileInView={{ y: 0 }} transition={{ duration: 1.1 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/donationbox1.jpg" />
                                 <Card.Body>
@@ -59,7 +59,7 @@ const About = () => {
                                 </Card.Body>
                             </Card>
                         </motion.div>
-                        <motion.div initial={{ y: 100 }} whileInView={{ y: 0 }}  className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{ y: 100 }} whileInView={{ y: 0 }} transition={{ duration: 1.1 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/medical-counseling.jpg" />
                                 <Card.Body>
@@ -71,7 +71,7 @@ const About = () => {
                                 </Card.Body>
                             </Card>
                         </motion.div>
-                        <motion.div initial={{ y: 100 }} whileInView={{ y: 0 }}  className="col-lg-3 col-md-6 d-flex justify-content-between">
+                        <motion.div initial={{ y: 100 }} whileInView={{ y: 0 }} transition={{ duration: 1.1 }} className="col-lg-3 col-md-6 d-flex justify-content-between">
                             <Card >
                                 <Card.Img variant="top" src="/features/Children-Healthcare-1920x1080-1.jpg" />
                                 <Card.Body>
