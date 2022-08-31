@@ -1,7 +1,7 @@
 import "react-multi-carousel/lib/styles.css";
 
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Card, Col, Container, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -72,7 +72,7 @@ export default function Doctors() {
           </Col>
         </Row>
       </Container>
-      <img src={Deptsbackg} className="background-image-left" />
+      <img src={Deptsbackg} className="background-image-left" alt="" />
     </section>
     // <div>
     //   Doctors

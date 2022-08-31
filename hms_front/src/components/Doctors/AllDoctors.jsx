@@ -1,22 +1,22 @@
+import ReactPaginate from "react-paginate";
+
 import {
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-  MDBCardSubTitle,
-  MDBCardText,
-  MDBCardTitle,
   MDBCol,
   MDBRow,
 } from "mdb-react-ui-kit";
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Card } from "react-bootstrap";
 import PageHead from "../PagesHeading/PageHead";
 import { getDoctors } from "../../store/Doctors";
-import { useState } from "react";
+
+const items_per_page = 9;
 
 const AllDoctors = () => {
+  const [currentPage, setPage] = useState(0);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.doctorsSlice);
   const [name, setName] = useState("");
@@ -25,12 +25,20 @@ const AllDoctors = () => {
   useEffect(() => {
     dispatch(getDoctors());
   }, [dispatch]);
+
+  function handleClick({ selected: selectedPage }) {
+    setPage(selectedPage);
+  }
+  const offset = currentPage * items_per_page;
+  const currentPageData = state.doctors.slice(offset, offset + items_per_page);
+  const pageCount = Math.ceil(state.doctors.length / items_per_page);
+
   return (
     <>
       <PageHead title="Qualified Doctors" />
 
       <section className="section service">
-        <div className="container">
+        <div className="container mb-5">
           <div className="row justify-content-center">
             <div className="col-lg-7 text-center">
               <div className="section-title">
@@ -53,11 +61,9 @@ const AllDoctors = () => {
                   placeholder="Enter Doctor name"
                   aria-label="Search Doctor"
                   aria-describedby="basic-addon2"
-                  // onChange={(e) =>
-                  //   e.target.value.trim().toLowerCase()
-                  //     ? setName(e.target.value.trim().toLowerCase())
-                  //     : setName("")
-                  // }
+                  onChange={(e) =>
+                    e.target.value ? setName(e.target.value) : setName("")
+                  }
                 />
                 <button
                   onClick={(e) =>
@@ -75,9 +81,13 @@ const AllDoctors = () => {
           </div>
           <div className="Container">
             <MDBRow>
-              {state.doctors
+              {// state.doctors
+              currentPageData
                 .filter((item) =>
-                  item.full_name.trim().toLowerCase().includes(name)
+                  item.full_name
+                    .trim()
+                    .toLowerCase()
+                    .includes(name)
                 )
                 .map((item) => (
                   <MDBCol lg="4" md="5" sm="6" key={item.id}>
@@ -101,6 +111,17 @@ const AllDoctors = () => {
             </MDBRow>
           </div>
         </div>
+        <ReactPaginate
+          previousLabel={"< Previous"}
+          nextLabel={"Next >"}
+          pageCount={pageCount}
+          onPageChange={handleClick}
+          containerClassName={"pagintion"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link__disabled"}
+          activeClassName={"pagination__link__active"}
+        />
       </section>
     </>
   );

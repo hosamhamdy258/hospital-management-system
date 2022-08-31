@@ -116,7 +116,7 @@ p.danger {
   transition:  0.32s ease-in-out;
 }
 #MyNAv.scrolled {
-  padding: 0px 0 !important;
+  padding: 0px 0 10px !important;
   background-color: #edecea;
 }
  .logo.nav-link {
@@ -425,7 +425,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Hospital Departments Css ************/
 .hDepts {
-  padding: 80px 0;
+  padding: 80px 0 ;
   position: relative;
   background-color: #dbe0e1;
 }
@@ -1410,5 +1410,71 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
     color: rgb(230, 224, 224) !important;
 }
 .doctorsCards:hover h5 .doctorDepName{
+  color: #ffffff !important;
+}
+
+.hhh{
+  height: 100px;
+}
+@media screen and (max-width: 568px)
+{
+  .sc-iwsKbI.cDxnev.rsc-container {
+    border-radius: 0;
+    bottom: 0 !important;
+    left: initial !important;
+    height: 80%;
+    right: 0 !important;
+    top: initial !important;
+    width: 100%;
+  }
+}
+
+.pagintion{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  cursor: pointer;
+}
+.pagintion a{
+  padding: 10px;
+  border: 1px solid #299ADC;
+  color: #299ADC;
+}
+.pagination__link{
+  font-weight: bold;
+}
+.pagination__link__active a{
   color: #fff !important;
+  background-color: #299ADC;
+}
+.pagination__link__disabled a{
+  color: #BFBEC0;
+  border: 1px solid #BFBEC0 ;
+}
+
+.section.about-page{
+  padding: 80px 0 0;
+
+}
+@media (max-width:768px){
+  .c-paragraph {
+    display: none;
+}
+.banner .intro {
+  width: 300px;
+  position: absolute;
+  top: 20%;
+  right: 12%;
+  background: #f4f4f48f;
+  padding: 15px;
+  border-radius: 17px;
+}
+.home_we_make{
+  margin-bottom: 10px;
+}
+
+}
+.sc-bwzfXH.jKLQUD.rsc-cs{
+  background-color: transparent;
+  box-shadow: none;
 }

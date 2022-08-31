@@ -29,17 +29,16 @@ urlpatterns = [
     path('reserve/', ReservationSerializerList.as_view(), name='reserve_list'),
     path('reserve/<int:pk>', ReservationSerializerDetails.as_view(), name='reserve_details'),
     path('record/', MedicalRecordSerializerList.as_view(), name='record'),
-    path('receipt/', ReceiptSerializerList.as_view(), name='receipt'),
-    # path('<int:pk>/', PostDetails.as_view(), name='detailcreate'),
+    # path('receipt/', ReceiptSerializerList.as_view(), name='receipt'),
     path('record/<int:pk>', MedicalRecordSerializerDetails.as_view(), name='record'),
     path('list/patient/', ReservationSerializerPatientList.as_view(), name='list_patient'),
-    path('list/patientReservation/', ReservationSerializerPatientList.as_view(), name='list_patient_reservation'),
+    # path('list/patientReservation/', ReservationSerializerPatientList.as_view(), name='list_patient_reservation'),
 
     path('list/doctor/', ReservationSerializerDoctorList.as_view(), name='list_doctor'),
     path('list/upcomingreservations/', UpcomingReservationSerializerList.as_view(), name='list_reserve'),
-    path('list/pastreservations/<int:doctor>', PastReservationSerializerList.as_view(), name='list_past_reserve'),
+    # path('list/pastreservations/<int:doctor>', PastReservationSerializerList.as_view(), name='list_past_reserve'),
 
     path('patient/<int:pk>', PatientSerializerDetails.as_view(), name='patientdetails'),
-    path('person/<int:pk>', PersonSerializerDetails.as_view(), name='persondetails'),
+    # path('person/<int:pk>', PersonSerializerDetails.as_view(), name='persondetails'),
 
 ]

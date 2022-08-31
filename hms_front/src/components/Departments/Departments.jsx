@@ -1,9 +1,8 @@
-import { Button, Card, Col, Container, Row, Tab } from "react-bootstrap";
+import { Col, Container, Row, Tab } from "react-bootstrap";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import DepartmentCard from "./DepartmentCard";
-import { Depts } from "../../myData";
 import Nav from "react-bootstrap/Nav";
 import colorSh2 from "../../assets/img/color-sharp2.png";
 import { getDepartments } from "../../store/Departments";
@@ -16,7 +15,7 @@ const Departments = () => {
     dispatch(getDepartments());
   }, [dispatch]);
   const firstSlicedArray = state.departments.slice(0, 3);
-  const secondSlicedArray = state.departments.slice(3,6);;
+  const secondSlicedArray = state.departments.slice(3, 6);
 
   //   console.log(state.departments)
 

@@ -1,19 +1,14 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 
-import {
-  addMedicalRecord,
-  getMedicalRecordDetails,
-  updateMedicalRecord,
-} from "../../store/medicalRecord";
+import { updateMedicalRecord } from "../../store/medicalRecord";
 import Sidebar from "./Sidebar";
 const Doctoredit = () => {
   let location = useLocation();
   console.log(location.state);
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.doctorsSlice);
-  const stateMedical = useSelector((state) => state.medicalRecordSlice);
+
   const diagnosis = useRef(null);
   const recommended_medications = useRef(null);
 

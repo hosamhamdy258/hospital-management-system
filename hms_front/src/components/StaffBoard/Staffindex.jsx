@@ -1,5 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { getPatientDetails } from "./../../store/patient";
+import { useNavigate } from "react-router-dom";
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect } from "react";
 import Select from "react-select";
@@ -12,14 +11,12 @@ import {
   restReservationData,
   updateReservationLists,
 } from "./../../store/reserve";
-import Button from "react-bootstrap/Button";
 import moment from "moment";
 import Sidebar from "./Sidebar";
 
-const Staffindex = ({ doctor, patient }) => {
+const Staffindex = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reservationSlice);
-  const stateUser = useSelector((state) => state.users.user);
 
   let timelist2 = [];
 

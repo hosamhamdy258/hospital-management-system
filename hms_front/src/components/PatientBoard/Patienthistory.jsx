@@ -1,6 +1,5 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { getReservationList } from "../../store/reserve";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -67,9 +66,11 @@ const Patienthistory = () => {
                               {element.reservation_medical_records.length >
                               0 ? (
                                 <Link
-                                
                                   to={"/medicalRecord/"}
-                                  state={[element.reservation_medical_records,"/patienthistory"]}
+                                  state={[
+                                    element.reservation_medical_records,
+                                    "/patienthistory",
+                                  ]}
                                   className="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"
                                 >
                                   <i className="fas fa-download fa-sm text-white-50"></i>{" "}

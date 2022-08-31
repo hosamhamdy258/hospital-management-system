@@ -8,8 +8,8 @@ const axiosInstance = axios.create({
   responseType: "json",
   responseEncoding: "utf8",
   headers: {
-    Authorization: localStorage.getItem("access_token")
-      ? "Bearer " + localStorage.getItem("access_token")
+    Authorization: localStorage.getItem("access")
+      ? "Bearer " + localStorage.getItem("access")
       : null,
     "Content-Type": "application/json",
     accept: "application/json",
@@ -18,9 +18,15 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
   (response) => {
+    const access = localStorage.getItem("access");
+
+    if (access) {
+      response.headers.Authorization = `Bearer ${access}`;
+    }
+
     return response;
   },
-  async function (error) {
+  async function(error) {
     const originalRequest = error.config;
 
     if (typeof error.response === "undefined") {
@@ -45,7 +51,7 @@ axiosInstance.interceptors.response.use(
       error.response.status === 401 &&
       error.response.statusText === "Unauthorized"
     ) {
-      const refreshToken = localStorage.getItem("refresh_token");
+      const refreshToken = localStorage.getItem("refresh");
 
       if (refreshToken) {
         const tokenParts = JSON.parse(atob(refreshToken.split(".")[1]));
@@ -58,7 +64,7 @@ axiosInstance.interceptors.response.use(
           return axiosInstance
             .post("api/token/refresh/", { refresh: refreshToken })
             .then((response) => {
-              localStorage.setItem("access_token", response.data.access);
+              localStorage.setItem("access", response.data.access);
               // localStorage.setItem("refresh_token", response.data.refresh);
 
               axiosInstance.defaults.headers["Authorization"] =

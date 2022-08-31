@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import axiosInstance from "./axios";
 import {
   ACTIVATION_FAIL,
   ACTIVATION_SUCCESS,
@@ -19,7 +19,10 @@ const initialState = {
   refresh: localStorage.getItem("refresh"),
   isAuthenticated: false,
   user: {},
+  signuperr: null,
   err: null,
+  loaderror: null,
+  signerr: null,
   registered: null,
   requestSent: null,
 };
@@ -34,7 +37,7 @@ export const load_user = createAsyncThunk(
       const config = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `JWT ${localStorage.getItem("access")}`,
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
           Accept: "application/json",
         },
       };
@@ -213,32 +216,36 @@ export const reset_password = createAsyncThunk(
   }
 );
 
-export const reset_password_confirm =
-  (uid, token, new_password, re_new_password) => async (dispatch) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const body = JSON.stringify({ uid, token, new_password, re_new_password });
-
-    try {
-      await axios.post(
-        `${Local}/auth/users/reset_password_confirm/`,
-        body,
-        config
-      );
-
-      dispatch({
-        type: PASSWORD_RESET_CONFIRM_SUCCESS,
-      });
-    } catch (err) {
-      dispatch({
-        type: PASSWORD_RESET_CONFIRM_FAIL,
-      });
-    }
+export const reset_password_confirm = (
+  uid,
+  token,
+  new_password,
+  re_new_password
+) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
+
+  const body = JSON.stringify({ uid, token, new_password, re_new_password });
+
+  try {
+    await axios.post(
+      `${Local}/auth/users/reset_password_confirm/`,
+      body,
+      config
+    );
+
+    dispatch({
+      type: PASSWORD_RESET_CONFIRM_SUCCESS,
+    });
+  } catch (err) {
+    dispatch({
+      type: PASSWORD_RESET_CONFIRM_FAIL,
+    });
+  }
+};
 
 export const verify = (uid, token) => async (dispatch) => {
   const config = {
@@ -268,17 +275,17 @@ const users = createSlice({
   extraReducers: {
     // Signup Actions
     [Signup.pending]: (state, action) => {
-      state.err = null;
+      state.signuperr = null;
     },
     [Signup.fulfilled]: (state, action) => {
       state.registered = true;
     },
     [Signup.rejected]: (state, action) => {
-      state.err = action.payload;
+      state.signuperr = action.payload;
     },
     // Signin Actions
     [Signin.pending]: (state, action) => {
-      state.err = null;
+      state.signerr = null;
     },
     [Signin.fulfilled]: (state, action) => {
       state.isAuthenticated = true;
@@ -286,14 +293,18 @@ const users = createSlice({
       console.log(action.payload);
       localStorage.setItem("access", action.payload.access);
       localStorage.setItem("refresh", action.payload.refresh);
-      window.location.reload(false);
+      axiosInstance.defaults.headers["Authorization"] =
+        "Bearer " + action.payload.access;
+      // window.location.reload(false);
     },
     [Signin.rejected]: (state, action) => {
-      state.err = "Email or Password is incorrect";
+      state.signerr = "Email or Password is incorrect";
     },
     // logout Actions
     [logout.pending]: (state, action) => {
-      state.err = null;
+      state.signerr = null;
+      state.isAuthenticated = false;
+      state.user = {};
     },
     [logout.fulfilled]: (state, action) => {
       state.isAuthenticated = false;
@@ -317,14 +328,14 @@ const users = createSlice({
     },
     // load_user Actions
     [load_user.pending]: (state, action) => {
-      state.err = null;
+      state.loaderror = null;
     },
     [load_user.fulfilled]: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
     },
     [load_user.rejected]: (state, action) => {
-      state.error = action.payload;
+      state.loaderror = action.payload;
     },
     // checkAuthenticated Actions
     [checkAuthenticated.pending]: (state, action) => {

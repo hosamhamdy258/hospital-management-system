@@ -1,9 +1,6 @@
-import { Link, useParams } from "react-router-dom";
-import Sidebar from './Sidebar';
+import Sidebar from "./Sidebar";
 
 const Patientcheckout = () => {
-  const { id } = useParams();
-
   return (
     <section id="page-top">
       <link
@@ -15,7 +12,7 @@ const Patientcheckout = () => {
       />
       {/* <!-- Page Wrapper --> */}
       <div id="wrapper">
-      <Sidebar />
+        <Sidebar />
 
         {/* <!-- Content Wrapper --> */}
         <div id="content-wrapper" className="d-flex flex-column">

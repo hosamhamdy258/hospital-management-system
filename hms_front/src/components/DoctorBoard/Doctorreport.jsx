@@ -1,11 +1,8 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  addMedicalRecord,
-  getMedicalRecordDetails,
-} from "../../store/medicalRecord";
+import { addMedicalRecord } from "../../store/medicalRecord";
 import Sidebar from "./Sidebar";
 const Doctorreport = () => {
   let location = useLocation();

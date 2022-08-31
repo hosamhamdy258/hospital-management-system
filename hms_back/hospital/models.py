@@ -18,12 +18,17 @@ from accounts.models import UserAccount
 ID_NUMBER_REGEX = RegexValidator(
     r"^[0-9]{14}$", 'Id Number must be 14 numbers')
 
+PHONE_NUMBER_REGEX = RegexValidator(
+    r"^01[0125][0-9]{8}$", "Please Enter Valid Phone Number")
+
 
 class Person(models.Model):
     id_number = models.CharField(max_length=14, unique=True, validators=[
                                  ID_NUMBER_REGEX])
+    phone_number = models.CharField(max_length=11, unique=True, validators=[
+        PHONE_NUMBER_REGEX])
+
     first_name = models.CharField(max_length=255)
-    middle_name = models.CharField(max_length=255, default='', blank=True)
     last_name = models.CharField(max_length=255)
     address = models.TextField(max_length=255)
     birth_date = models.DateField()
@@ -114,8 +119,11 @@ class reservation(models.Model):
     # validate use only date or date_now
     date = models.DateTimeField()
     date_now = models.DateTimeField(auto_now_add=True)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE,related_name='patient_reserves')
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE,related_name='doctor_reserves')
+    patient = models.ForeignKey(
+        Patient, on_delete=models.CASCADE, related_name='patient_reserves')
+    doctor = models.ForeignKey(
+        Doctor, on_delete=models.CASCADE, related_name='doctor_reserves')
+
     def __str__(self):
         return f"Patent : {self.patient.full_name} // Doctor : {self.doctor.full_name} // Date : {self.date} "
 

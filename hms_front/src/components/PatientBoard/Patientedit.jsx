@@ -1,12 +1,8 @@
-import React, { useCallback, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteReservation,
-  getUpcomingReservationList,
-  restReservationData,
-} from "../../store/reserve";
+import { deleteReservation, restReservationData } from "../../store/reserve";
 import moment from "moment";
 import { getPatientDetails } from "../../store/patient";
 

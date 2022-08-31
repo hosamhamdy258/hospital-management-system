@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -8,8 +8,6 @@ import {
   getUpcomingReservationList,
   restReservationData,
 } from "../../store/reserve";
-import { getPatientDetails } from "../../store/patient";
-import moment from "moment";
 
 const Staffedit = () => {
   const [search, setSearch] = useState("");
@@ -64,7 +62,7 @@ const Staffedit = () => {
                 className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
               >
                 <label htmlFor="search">
-                  Enter Patient ID Number / Name / Date
+                  Enter Patient Phone Number / Name / Date
                 </label>
                 <div className="input-group">
                   <input
@@ -73,7 +71,7 @@ const Staffedit = () => {
                     type="text"
                     className="form-control bg-gradient-light border-0 small"
                     placeholder="Search"
-                    aria-label="Patient ID Number/name/date"
+                    aria-label="Patient Phone Number/name/date"
                     aria-describedby="basic-addon2"
                     onChange={(e) =>
                       e.target.value
@@ -102,7 +100,7 @@ const Staffedit = () => {
                   <th scope="col">Date</th>
                   <th scope="col">time</th>
                   <th scope="col">Patient</th>
-                  <th scope="col">ID Number</th>
+                  <th scope="col">Phone Number</th>
                   <th scope="col">Department</th>
                   <th scope="col">Doctor</th>
                   <th scope="col">Action</th>
@@ -113,7 +111,7 @@ const Staffedit = () => {
                   state.upComingReservation
                     .filter(
                       (element) =>
-                        element.patient_id_number.includes(search) ||
+                        element.patient_phone_number.includes(search) ||
                         element.patient_name
                           .trim()
                           .toLowerCase()
@@ -130,7 +128,7 @@ const Staffedit = () => {
                           <td>
                             {" "}
                             <div className="col-1 col-sm-3 col-md-6 text-truncate">
-                              {element.patient_id_number}
+                              {element.patient_phone_number}
                             </div>
                           </td>
 

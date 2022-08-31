@@ -11,7 +11,7 @@ import logo from "../assets/img/logo.jpg";
 import { logout } from "../store/usersSlice";
 
 const MyNav = () => {
-  const [activeLink, setActiveLink] = useState("home");
+  const [activeLink, setActiveLink] = useState("");
   const { isAuthenticated, user } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [scrolled, setScrolled] = useState(false);
@@ -28,6 +28,8 @@ const MyNav = () => {
   }, []);
 
   const onUpdateActiveLink = (value) => {
+    console.log(activeLink)
+    var elements=document.getElementsByClassName('active')
     setActiveLink(value);
   };
 
@@ -48,7 +50,7 @@ const MyNav = () => {
           <Nav className="me-auto">
             <NavLink
               className={
-                activeLink === "home"
+                activeLink == "home"
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -59,7 +61,7 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink === "doctors"
+                activeLink == "doctors"
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -71,7 +73,7 @@ const MyNav = () => {
 
             <NavLink
               className={
-                activeLink === "departments"
+                activeLink == "departments"
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -82,7 +84,7 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink === "about"
+                activeLink == "about"
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -93,7 +95,7 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink === "contact"
+                activeLink == "contact"
                   ? "active navbar-link nav-link mb-3"
                   : "navbar-link nav-link mb-3"
               }
@@ -136,14 +138,14 @@ const MyNav = () => {
                 Dashboard
               </Link>
             ) : null}
-               {user.profile_complete && user.is_staff ? (
+            {user.profile_complete && user.is_staff ? (
               <Link className="nav_login_button" to="/staff" role="button">
                 Dashboard
               </Link>
             ) : null}
 
             {isAuthenticated && (
-              <button className=" btn btn-info" onClick={logoutButton}>
+              <button className=" btn btn-info" onClick={() => logoutButton()}>
                 <Link className="" to="/" role="button">
                   Logout
                 </Link>

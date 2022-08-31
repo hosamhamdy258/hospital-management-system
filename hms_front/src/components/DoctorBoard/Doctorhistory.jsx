@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

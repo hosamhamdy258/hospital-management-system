@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form } from "react-bootstrap";
-import { useRef } from "react";
-import { Signin } from "../../store/usersSlice";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { useEffect, useRef } from "react";
+import { checkAuthenticated, load_user, Signin } from "../../store/usersSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UserLog() {
-  const { err, isAuthenticated } = useSelector((state) => state.users);
+  const { signerr, isAuthenticated } = useSelector((state) => state.users);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -20,9 +20,27 @@ export default function UserLog() {
     dispatch(Signin(data));
   };
 
-  if (isAuthenticated) {
-    return <Navigate to="/" />;
-  }
+  // if (isAuthenticated) {
+  //   return <Navigate to="/" />;
+  // }
+  useEffect(() => {
+    // dispatch(checkAuthenticated());
+    // dispatch(load_user());
+    if (isAuthenticated) {
+      console.log("in if login");
+      dispatch(checkAuthenticated());
+      dispatch(load_user());
+      navigateMSG();
+    }
+  }, [isAuthenticated]);
+
+  const navigate = useNavigate();
+
+  const navigateMSG = () => {
+    try {
+      navigate("/home");
+    } catch (error) {}
+  };
 
   return (
     <>
@@ -39,10 +57,10 @@ export default function UserLog() {
                         <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                       </div>
                       <form className="user" onSubmit={handleSubmit}>
-                        {err && (
+                        {signerr && (
                           <div>
-                            <p className="text-danger">{err.detail}</p>
-                            <p className="text-danger">{err}</p>
+                            <p className="text-danger">{signerr.detail}</p>
+                            <p className="text-danger">{signerr}</p>
                           </div>
                         )}
                         <div className="form-group">

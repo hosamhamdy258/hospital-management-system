@@ -45,12 +45,12 @@ export default function Sidebar() {
           </Link>
         </li>
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link" to="/checkout">
             <i className="fas fa-fw fa-table"></i>
             <span>CheckOut</span>
           </Link>
-        </li>
+        </li> */}
 
         <hr className="sidebar-divider d-none d-md-block" />
       </ul>
