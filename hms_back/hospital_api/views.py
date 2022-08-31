@@ -19,7 +19,7 @@ class DepartmentSerializerDetails(generics.RetrieveAPIView):
     serializer_class = DepartmentSerializer
 
 
-class PatientSerializerList(generics.ListAPIView):
+class PatientSerializerList(generics.ListCreateAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
     permission_classes = [IsAuthenticated]

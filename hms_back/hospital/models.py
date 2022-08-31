@@ -23,8 +23,6 @@ PHONE_NUMBER_REGEX = RegexValidator(
 
 
 class Person(models.Model):
-    id_number = models.CharField(max_length=14, unique=True, validators=[
-                                 ID_NUMBER_REGEX])
     phone_number = models.CharField(max_length=11, unique=True, validators=[
         PHONE_NUMBER_REGEX])
 
