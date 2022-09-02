@@ -9,6 +9,7 @@ import {
   getPatientDoctors,
   makeReservation,
   restReservationData,
+  restReservationDoctor,
   updateReservationLists,
 } from "./../../store/reserve";
 // import Button from "react-bootstrap/Button";
@@ -153,6 +154,7 @@ const Patientindex = () => {
       navigateMSG();
     }
   }, [state.details]);
+  useEffect(() => {}, [state.reservationData.doctorOptions]);
 
   const navigate = useNavigate();
 
@@ -195,22 +197,25 @@ const Patientindex = () => {
                         placeholder="select a department"
                         className="col-md-6"
                         options={departmentOptions}
-                        onChange={(e) =>
-                          dispatch(addReservationData(["department", e]))
-                        }
+                        onChange={(e) => {
+                          dispatch(addReservationData(["department", e]));
+                          dispatch(restReservationDoctor());
+                        }}
                       />
                     </div>
-                    <div className="row mx-1 mb-2">
-                      <label className="col-md-6">Select Doctor</label>
-                      <Select
-                        placeholder="select a doctor"
-                        className="col-md-6"
-                        options={state.reservationData.doctorOptions}
-                        onChange={(e) =>
-                          dispatch(addReservationData(["doctor", e]))
-                        }
-                      />
-                    </div>
+                    {state.reservationData.doctorOptions && (
+                      <div className="row mx-1 mb-2">
+                        <label className="col-md-6">Select Doctor</label>
+                        <Select
+                          placeholder="select a doctor"
+                          className="col-md-6"
+                          options={state.reservationData.doctorOptions}
+                          onChange={(e) =>
+                            dispatch(addReservationData(["doctor", e]))
+                          }
+                        />
+                      </div>
+                    )}
 
                     <div className="row mx-1 mb-2">
                       <label className="col-md-6">Select Date</label>
