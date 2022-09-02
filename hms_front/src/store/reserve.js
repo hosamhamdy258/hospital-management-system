@@ -96,8 +96,18 @@ const reservationSlice = createSlice({
     },
     restReservationDoctor: (state, action) => {
       // state.reservationData = { date: "", isDisabled: true };
-      delete state.reservationData.doctorOptions
+      delete state.reservationData.doctorOptions;
+      delete state.reservationData.doctor;
+
       // console.log("clear");
+    },
+    resetReservationDate: (state, action) => {
+      delete state.reservationData.datelist;
+      delete state.reservationData.date1;
+    },
+    resetReservationTime: (state, action) => {
+      delete state.reservationData.timelist2;
+      delete state.reservationData.time;
     },
     addReservationData: (state, action) => {
       state.reservationData[action.payload[0]] = action.payload[1].value;
@@ -159,5 +169,7 @@ export const {
   addReservationData,
   addReservationLists,
   updateReservationLists,
-  restReservationDoctor
+  restReservationDoctor,
+  resetReservationDate,
+  resetReservationTime,
 } = reservationSlice.actions;

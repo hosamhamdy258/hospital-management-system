@@ -1,4 +1,5 @@
 import ReactPaginate from "react-paginate";
+import Table from "react-bootstrap/Table";
 
 import { Link } from "react-router-dom";
 
@@ -52,7 +53,7 @@ const Patienthistory = () => {
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Reports History</h1>
 
-              <table className="table">
+              <Table striped bordered hover>
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -98,7 +99,7 @@ const Patienthistory = () => {
                       }
                     )}
                 </tbody>
-              </table>
+              </Table>
             </div>
           </div>
           <ReactPaginate

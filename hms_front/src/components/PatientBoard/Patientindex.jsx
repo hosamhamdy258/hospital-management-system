@@ -8,6 +8,8 @@ import {
   addReservationLists,
   getPatientDoctors,
   makeReservation,
+  resetReservationDate,
+  resetReservationTime,
   restReservationData,
   restReservationDoctor,
   updateReservationLists,
@@ -70,10 +72,7 @@ const Patientindex = () => {
   const departmentOptions = stateDepartment.departments.map((item) => {
     return { value: item.id, label: item.name };
   });
-  // const doctorOptions = state.doctors.map((item) => {
-  //   return { value: item.id, label: item.full_name };
-  // });
-
+ 
   const patientOptions = state.patients.map((item) => {
     return { value: item.id, label: item.full_name };
   });
@@ -88,10 +87,10 @@ const Patientindex = () => {
       addReservationData(["patient", { value: Number(stateUser.linked_users) }])
     );
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const changemenu = useCallback(() => {
+    generateDateTimeLists();   
     if (state.reservationData.department) {
       doctorOptions = stateDepartment.departments
         .filter((element) => element.id === state.reservationData.department)[0]
@@ -130,7 +129,7 @@ const Patientindex = () => {
         dispatch(updateReservationLists(false));
       }
     }
-  }, [timelist2, doctorOptions]);
+  }, [timelist2, doctorOptions ,]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -155,6 +154,8 @@ const Patientindex = () => {
     }
   }, [state.details]);
   useEffect(() => {}, [state.reservationData.doctorOptions]);
+  useEffect(() => {}, [state.reservationData.datelist]);
+
 
   const navigate = useNavigate();
 
@@ -200,6 +201,9 @@ const Patientindex = () => {
                         onChange={(e) => {
                           dispatch(addReservationData(["department", e]));
                           dispatch(restReservationDoctor());
+                          dispatch(resetReservationDate());
+                          dispatch(resetReservationTime());
+
                         }}
                       />
                     </div>
@@ -210,25 +214,32 @@ const Patientindex = () => {
                           placeholder="select a doctor"
                           className="col-md-6"
                           options={state.reservationData.doctorOptions}
-                          onChange={(e) =>
-                            dispatch(addReservationData(["doctor", e]))
+                          onChange={(e) =>{
+                            dispatch(addReservationData(["doctor", e]));
+                            dispatch(resetReservationDate());
+                            dispatch(resetReservationTime());
+                          }
                           }
                         />
                       </div>
                     )}
-
+                    {state.reservationData.datelist &&
                     <div className="row mx-1 mb-2">
                       <label className="col-md-6">Select Date</label>
                       <Select
                         placeholder="select a date"
                         className=" col-md-6"
                         options={state.reservationData.datelist}
-                        onChange={(e) =>
-                          dispatch(addReservationData(["date1", e]))
+                        onChange={(e) =>{
+                          dispatch(addReservationData(["date1", e]));
+                          dispatch(resetReservationTime());
+                        }
                         }
                       />
                     </div>
-                    <div className="row mx-1 mb-2">
+                    }
+                    {state.reservationData.timelist2 &&
+                      <div className="row mx-1 mb-2">
                       <label className="col-md-6">Select time</label>
                       <Select
                         placeholder="select a time"
@@ -239,6 +250,8 @@ const Patientindex = () => {
                         }
                       />
                     </div>
+                    }
+                  
                     <br />
                     {/* {state.details && navigateMSG()} */}
 

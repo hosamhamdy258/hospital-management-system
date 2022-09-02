@@ -8,8 +8,8 @@ import { getDoctorDetails } from "../../store/Doctors";
 import moment from "moment";
 import Sidebar from "./Sidebar";
 const Doctorhistory = () => {
-  const items_per_page = 9;
-  const [currentPage, setPage] = useState(0);
+const items_per_page = 9;
+const [currentPage, setPage] = useState(0);
   
   const [search, setSearch] = useState("");
   const inputRef = useRef(null);
