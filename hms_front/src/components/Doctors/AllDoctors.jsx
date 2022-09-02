@@ -13,9 +13,9 @@ import { useDispatch, useSelector } from "react-redux";
 import PageHead from "../PagesHeading/PageHead";
 import { getDoctors } from "../../store/Doctors";
 
-const items_per_page = 9;
 
 const AllDoctors = () => {
+  const items_per_page = 9;
   const [currentPage, setPage] = useState(0);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.doctorsSlice);

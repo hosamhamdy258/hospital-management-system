@@ -67,7 +67,6 @@ export default function BottomFooter() {
 						<div className="widget widget-contact mb-5 mb-lg-0">
 							<h4 className="text-capitalize mb-3">Get in Touch</h4>
 							<div className="divider mb-4"></div>
-
 							<div className="footer-contact-block mb-4">
 								<div className="icon d-flex align-items-center">
 									<i className="icofont-email mr-3"></i>

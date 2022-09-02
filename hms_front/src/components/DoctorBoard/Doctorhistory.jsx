@@ -1,3 +1,5 @@
+import ReactPaginate from "react-paginate";
+
 import { Link } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,15 +8,25 @@ import { getDoctorDetails } from "../../store/Doctors";
 import moment from "moment";
 import Sidebar from "./Sidebar";
 const Doctorhistory = () => {
+  const items_per_page = 9;
+  const [currentPage, setPage] = useState(0);
+  
   const [search, setSearch] = useState("");
   const inputRef = useRef(null);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.doctorsSlice);
   const userstate = useSelector((state) => state.users.user);
-
+console.log(state);
   useEffect(() => {
     dispatch(getDoctorDetails(userstate.linked_users));
   }, [dispatch]);
+  
+  function handleClick({ selected: selectedPage }) {
+    setPage(selectedPage);
+  }
+  const offset = currentPage * items_per_page;
+  const currentPageData =(state.doctorDetails.doctor_reserves)?.slice(offset, offset + items_per_page);
+  const pageCount = Math.ceil(state.doctorDetails.doctor_reserves?.length / items_per_page);
 
   return (
     <section id="page-top">
@@ -96,8 +108,8 @@ const Doctorhistory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.doctorDetails.doctor_reserves &&
-                    state.doctorDetails.doctor_reserves
+                  {currentPageData &&
+                    currentPageData
                       .filter(
                         (element) =>
                           element.patient_name
@@ -141,10 +153,25 @@ const Doctorhistory = () => {
                       )}
                 </tbody>
               </table>
+      
             </div>
+            
           </div>
+          <ReactPaginate
+          previousLabel={"< Previous"}
+          nextLabel={"Next >"}
+          pageCount={pageCount}
+          onPageChange={handleClick}
+          containerClassName={"pagintion"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link__disabled"}
+          activeClassName={"pagination__link__active"}
+        />
         </div>
+        
       </div>
+      
     </section>
   );
 };
