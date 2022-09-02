@@ -1,4 +1,5 @@
 import ReactPaginate from "react-paginate";
+import Table from "react-bootstrap/Table";
 
 import { Link } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
@@ -96,7 +97,7 @@ console.log(state);
                   </div>
                 </form>
               </div>
-              <table className="table">
+              <Table striped bordered hover>
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -152,7 +153,7 @@ console.log(state);
                           )
                       )}
                 </tbody>
-              </table>
+              </Table>
       
             </div>
             
