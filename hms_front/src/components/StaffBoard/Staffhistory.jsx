@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
+
 import Sidebar from "./Sidebar";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -16,6 +18,19 @@ const Staffhistory = () => {
 
     dispatch(getReservationList());
   }, [dispatch]);
+
+  const items_per_page = 9;
+  const [currentPage, setPage] = useState(0);
+  function handleClick({ selected: selectedPage }) {
+    setPage(selectedPage);
+  }
+  const offset = currentPage * items_per_page;
+  const currentPageData = state.reservation?.slice(offset, offset + items_per_page);
+  const pageCount = Math.ceil(state.reservation?.length / items_per_page);
+
+
+
+
 
   return (
     <section id="page-top">
@@ -44,7 +59,7 @@ const Staffhistory = () => {
             <div className="container-fluid p-2">
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800 text-center">
-                Reports Hitory
+                Reports History
               </h1>
               <div className="container mb-4 text-center">
                 <form
@@ -99,8 +114,8 @@ const Staffhistory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.reservation &&
-                    state.reservation
+                  {currentPageData &&
+                    currentPageData
                       .filter(
                         (element) =>
                           element.patient_phone_number.includes(search) ||
@@ -147,6 +162,17 @@ const Staffhistory = () => {
               </Table>
             </div>
           </div>
+          <ReactPaginate
+          previousLabel={"< Previous"}
+          nextLabel={"Next >"}
+          pageCount={pageCount}
+          onPageChange={handleClick}
+          containerClassName={"pagintion"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link__disabled"}
+          activeClassName={"pagination__link__active"}
+        />
         </div>
       </div>
     </section>

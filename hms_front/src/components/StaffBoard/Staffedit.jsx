@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
+import Table from "react-bootstrap/Table";
+import ReactPaginate from "react-paginate";
+
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useDispatch } from "react-redux";
@@ -35,6 +38,16 @@ const Staffedit = () => {
     } catch (error) {}
   };
 
+  const items_per_page = 9;
+  const [currentPage, setPage] = useState(0);
+  
+  function handleClick({ selected: selectedPage }) {
+    setPage(selectedPage);
+  }
+  const offset = currentPage * items_per_page;
+  const currentPageData = state.upComingReservation?.slice(offset, offset + items_per_page);
+  const pageCount = Math.ceil(state.upComingReservation?.length / items_per_page);
+
   return (
     <section id="page-top">
       <link
@@ -55,7 +68,7 @@ const Staffedit = () => {
           {/* <!-- Main Content --> */}
           <div className="container-fluid p-3">
             {/* <!-- Page Heading --> */}
-            <h1 className="h3 mb-4 text-gray-800">Current reservations</h1>
+            <h1 className="h3 mb-4 text-center text-gray-800">Current reservations</h1>
             <div className="container mb-4 text-center">
               <form
                 onSubmit={(e) => e.preventDefault()}
@@ -93,7 +106,7 @@ const Staffedit = () => {
                 </div>
               </form>
             </div>
-            <table className="table">
+            <Table striped bordered hover>
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -107,8 +120,8 @@ const Staffedit = () => {
                 </tr>
               </thead>
               <tbody>
-                {state.upComingReservation &&
-                  state.upComingReservation
+                {currentPageData &&
+                  currentPageData
                     .filter(
                       (element) =>
                         element.patient_phone_number.includes(search) ||
@@ -149,8 +162,19 @@ const Staffedit = () => {
                       );
                     })}
               </tbody>
-            </table>
+            </Table>
           </div>
+          <ReactPaginate
+          previousLabel={"< Previous"}
+          nextLabel={"Next >"}
+          pageCount={pageCount}
+          onPageChange={handleClick}
+          containerClassName={"pagintion"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link__disabled"}
+          activeClassName={"pagination__link__active"}
+        />
         </div>
       </div>
     </section>
