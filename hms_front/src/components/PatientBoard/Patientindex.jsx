@@ -92,11 +92,12 @@ const Patientindex = () => {
 
   const changemenu = useCallback(() => {
     if (state.reservationData.department) {
-       doctorOptions = stateDepartment.departments
-        .filter((element) => element.id == state.reservationData.department)
-        .map((item) => {
+      doctorOptions = stateDepartment.departments
+        .filter((element) => element.id === state.reservationData.department)[0]
+        .doctor_department.map((item) => {
           return { value: item.id, label: item.full_name };
         });
+      dispatch(addReservationLists(["doctorOptions", doctorOptions]));
     }
 
     if (
@@ -128,7 +129,7 @@ const Patientindex = () => {
         dispatch(updateReservationLists(false));
       }
     }
-  }, [timelist2,doctorOptions]);
+  }, [timelist2, doctorOptions]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -204,7 +205,7 @@ const Patientindex = () => {
                       <Select
                         placeholder="select a doctor"
                         className="col-md-6"
-                        options={doctorOptions}
+                        options={state.reservationData.doctorOptions}
                         onChange={(e) =>
                           dispatch(addReservationData(["doctor", e]))
                         }
