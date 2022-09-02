@@ -5,7 +5,7 @@ import React from 'react'
 
 const DepartmentCard = ({name , logo_img ,id}) => {
   return (
-    <Col  lg='4' sm="6" md="6">
+    <Col  lg='4' sm="6" md="6" className='d-flex justify-content-center'>
         <div className="hDepts-imgbx">
           <img src={logo_img} alt=""  />
           <div className="hDepts-txtx">

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getDepartments } from '../store/Departments';
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
@@ -43,7 +43,7 @@ export default function BottomFooter() {
 
 							<ul className="list-unstyled footer-menu lh-35">
 								{state.departments.map((item) => (
-									<li key={item.id}><NavLink to={`/departments/${item.id}`}>{item.name} </NavLink></li>
+									<li key={item.id}><Link to={`/departments/${item.id}`}>{item.name} </Link></li>
 								))
 								}
 							</ul>

@@ -94,7 +94,7 @@ const Completedata = () => {
                     required
                     type="text"
                     placeholder="Enter last name"
-                    className=" form_control form_group-2 col-md-5 mb-3"
+                    className=" form_control form_group-2 col-sm-12 col-md-5 mb-3"
                     ref={last_name}
                   />
                 </div>
