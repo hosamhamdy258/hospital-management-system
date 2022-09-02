@@ -54,13 +54,13 @@ class Person(models.Model):
 
 
 week_days = (
-    ('monday', 'Monday'),
-    ('tuesday', 'Tuesday'),
-    ('wednesday', 'Wednesday'),
-    ('thursday', 'Thursday'),
-    ('friday', 'Friday'),
-    ('saturday', 'Saturday'),
-    ('sunday', 'Sunday'),
+    ('Monday', 'Monday'),
+    ('Tuesday', 'Tuesday'),
+    ('Wednesday', 'Wednesday'),
+    ('Thursday', 'Thursday'),
+    ('Friday', 'Friday'),
+    ('Saturday', 'Saturday'),
+    ('Sunday', 'Sunday'),
 )
 
 
@@ -76,8 +76,10 @@ class Department(models.Model):
 
     name = models.CharField(max_length=255, unique=True)
     desc = models.TextField()
-    logo_img = models.ImageField(upload_to='images', validators=[check_image],blank=True)
-    img = models.ImageField(upload_to='images', validators=[check_image],blank=True)
+    logo_img = models.ImageField(upload_to='images', validators=[
+                                 check_image], blank=True)
+    img = models.ImageField(upload_to='images', validators=[
+                            check_image], blank=True)
     startDay = models.CharField(
         max_length=10, choices=week_days, default='monday')
     endDay = models.CharField(
@@ -99,8 +101,9 @@ class Patient(Person):
 class Doctor(Person):
 
     department = models.ForeignKey(
-        Department, on_delete=models.SET_DEFAULT, default="Doctor")
-    img = models.ImageField(upload_to='images', validators=[check_image],blank=True)
+        Department, on_delete=models.SET_DEFAULT, default="Doctor",related_name="doctor_department")
+    img = models.ImageField(upload_to='images', validators=[
+                            check_image], blank=True)
 
 
 class office_admin(Person):

@@ -14,15 +14,20 @@ import {
 // import Button from "react-bootstrap/Button";
 import moment from "moment";
 import Sidebar from "./Sidebar";
+import { startTransition } from "react";
 
-const Patientindex = ({ doctor }) => {
+const Patientindex = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reservationSlice);
   const stateUser = useSelector((state) => state.users.user);
+  const stateDoctor = useSelector((state) => state.doctorsSlice);
+  const stateDepartment = useSelector((state) => state.departmentsSlice);
 
   let timelist2 = [];
+  let doctorOptions = [];
 
   function generateDateTimeLists() {
+    // console.log(state.doctors.department.startTime_Schedule);
     let hour;
     let day;
     const timelist = [];
@@ -45,6 +50,14 @@ const Patientindex = ({ doctor }) => {
     }
     for (let days = 0; days < 14; days++) {
       day = moment().add({ days });
+      // console.log(day.format("E"));
+      // console.log(moment().isoWeekday("Sunday"));
+      // const start = moment("Sunday", "E").format("E");
+      // const end = moment("Monday", "E").format("E");
+      // console.log(start);
+      // console.log(end);
+      // big < day , day<small
+      // console.log(day.isBetween(start, end));
       datelist.push({
         value: day.format("YYYY-MM-DD"),
         label: day.format("dddd YYYY-MM-DD"),
@@ -53,9 +66,12 @@ const Patientindex = ({ doctor }) => {
     dispatch(addReservationLists(["timelist", timelist]));
     dispatch(addReservationLists(["datelist", datelist]));
   }
-  const doctorOptions = state.doctors.map((item) => {
-    return { value: item.id, label: item.full_name };
+  const departmentOptions = stateDepartment.departments.map((item) => {
+    return { value: item.id, label: item.name };
   });
+  // const doctorOptions = state.doctors.map((item) => {
+  //   return { value: item.id, label: item.full_name };
+  // });
 
   const patientOptions = state.patients.map((item) => {
     return { value: item.id, label: item.full_name };
@@ -75,7 +91,19 @@ const Patientindex = ({ doctor }) => {
   }, [dispatch]);
 
   const changemenu = useCallback(() => {
-    if (state.reservationData.doctor && state.reservationData.date1) {
+    if (state.reservationData.department) {
+       doctorOptions = stateDepartment.departments
+        .filter((element) => element.id == state.reservationData.department)
+        .map((item) => {
+          return { value: item.id, label: item.full_name };
+        });
+    }
+
+    if (
+      state.reservationData.doctor &&
+      state.reservationData.date1 &&
+      state.reservationData.department
+    ) {
       const selectedDoctor = state.reservation.filter((element) =>
         element.doctor === state.reservationData.doctor ? element : null
       );
@@ -100,7 +128,7 @@ const Patientindex = ({ doctor }) => {
         dispatch(updateReservationLists(false));
       }
     }
-  }, [timelist2]);
+  }, [timelist2,doctorOptions]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -116,6 +144,7 @@ const Patientindex = ({ doctor }) => {
     state.reservationData.date1,
     state.reservationData.time,
     state.reservationData.patient,
+    state.reservationData.department,
   ]);
 
   useEffect(() => {
@@ -159,6 +188,17 @@ const Patientindex = ({ doctor }) => {
                     <hr />
                   </div>
                   <form action="" method="post" onSubmit={handleSubmit}>
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select Department</label>
+                      <Select
+                        placeholder="select a department"
+                        className="col-md-6"
+                        options={departmentOptions}
+                        onChange={(e) =>
+                          dispatch(addReservationData(["department", e]))
+                        }
+                      />
+                    </div>
                     <div className="row mx-1 mb-2">
                       <label className="col-md-6">Select Doctor</label>
                       <Select
