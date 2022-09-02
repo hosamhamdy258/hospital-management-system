@@ -3,7 +3,17 @@ from rest_framework import serializers
 from hospital.models import *
 
 
+class DoctorSerializerReserve2(serializers.ModelSerializer):
+
+    class Meta:
+        model = Doctor
+        fields = ['id', 'full_name']
+        # fields = "__all__"
+
+
 class DepartmentSerializer(serializers.ModelSerializer):
+    doctor_department = DoctorSerializerReserve2(many=True, read_only=True)
+
     class Meta:
         model = Department
         fields = "__all__"
@@ -116,10 +126,11 @@ class DoctorSerializerReserve(serializers.ModelSerializer):
         source='department.name',
         read_only=True
     )
+    department = DepartmentSerializer(read_only=True)
 
     class Meta:
         model = Doctor
-        fields = ['id', 'full_name', "img", "department_name"]
+        fields = ['id', 'full_name', "img", "department_name", "department"]
         # fields = "__all__"
 
 
