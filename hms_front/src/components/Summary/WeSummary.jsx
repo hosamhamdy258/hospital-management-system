@@ -1,7 +1,12 @@
 import React from 'react'
 import { motion } from "framer-motion"
+import { NavLink } from 'react-router-dom'
+import { useSelector } from "react-redux";
+
 
 const WeSummary = () => {
+    const { isAuthenticated, user } = useSelector((state) => state.users);
+
     return (
         <>
             <motion.section className="we_summary p-5" id="about-section">
@@ -17,7 +22,17 @@ const WeSummary = () => {
                                     <motion.div initial={{y:100}} whileInView={{y:0 }} transition={{duration:1.5}} className="col-md-12 heading-section">
                                         <h2 className="mb-4">We Are <span className='we_summ_span'>HOPE</span> A Healthcare Provider</h2>
                                         <p>Our mission is to inspire hope and contribute to health and well-being by providing the best care to every patient through integrated clinical practice, education and research. Our primary value is "The needs of the patient come first."</p>
-                                        <p><a href="#" className="home_we_make btn btn-primary py-3 px-4">Make an appointment</a> <a href="#" className="home_we_make btn btn-success py-3 px-4">Contact us</a></p>
+                                        <p>
+                                        {isAuthenticated && !user.profile_complete && (
+                                        <a href="#" className="home_we_make btn btn-primary m-1 py-3 px-4">Make an appointment</a>  
+                                        )}
+                                        {/* Modify redirect */}
+                                        <NavLink to="/contact" 
+                                         className="home_we_make btn btn-success m-1 py-3 px-4"
+                                        >
+                                                Contact Us
+                                        </NavLink>
+                                        </p>
                                     </motion.div>
                                 </div>
                             </div>

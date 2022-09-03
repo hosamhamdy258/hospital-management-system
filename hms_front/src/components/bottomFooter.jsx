@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getDepartments } from '../store/Departments';
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
@@ -43,7 +43,7 @@ export default function BottomFooter() {
 
 							<ul className="list-unstyled footer-menu lh-35">
 								{state.departments.map((item) => (
-									<li key={item.id}><NavLink to={`/departments/${item.id}`}>{item.name} </NavLink></li>
+									<li key={item.id}><Link to={`/departments/${item.id}`}>{item.name} </Link></li>
 								))
 								}
 							</ul>
@@ -67,7 +67,6 @@ export default function BottomFooter() {
 						<div className="widget widget-contact mb-5 mb-lg-0">
 							<h4 className="text-capitalize mb-3">Get in Touch</h4>
 							<div className="divider mb-4"></div>
-
 							<div className="footer-contact-block mb-4">
 								<div className="icon d-flex align-items-center">
 									<i className="icofont-email mr-3"></i>

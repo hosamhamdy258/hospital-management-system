@@ -148,7 +148,7 @@ const Staffindex = () => {
             {/* Body  */}
             <div className="container-fluid">
               <div className="d-sm-flex align-items-center justify-content-center p-3">
-                <h1 className="h3  text-gray-800">Dashboard</h1>
+                <h1 className="h3 text-gray-800">Dashboard</h1>
               </div>
 
               <div className="row mb-4 justify-content-center">

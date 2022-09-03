@@ -74,7 +74,7 @@ a:hover {
 }
 
 img {
-  width: 100%;
+  width: 90%;
   height: auto;
 }
 
@@ -125,17 +125,21 @@ p.danger {
 .logo_pdf{
   width: 8%;
 }
+.nameOnNavSpan:hover{
+  cursor: default;
+
+}
 nav.navbar .nav-link.navbar-link {
   font-weight: 400;
   color: #000 !important;
   letter-spacing: 0.8px;
-  padding: 0 20px;
+  padding: 15px 10px 5px;
   font-size: 18px;
   opacity: 0.7;
 }
 nav.navbar a.nav-link.navbar-link:hover,
 nav.navbar a.nav-link.navbar-link.active {
-    opacity: 3;
+    opacity: 2;
     font-weight: 700;
     color: #299ADC !important;
     
@@ -149,6 +153,13 @@ span.navbar-text {
 .social-icon {
     display: flex;
     margin-left: 14px;
+}
+.nav_login_button.logOut{
+  background-color: red !important;
+}
+.nav_login_button.logOut:hover{
+  background-color: rgb(150, 2, 2) !important;
+
 }
 .social-icon a {
     width: 35px;
@@ -1003,7 +1014,7 @@ a {
 
 }
 .service{
-  background-color:#f0f2f4 ;
+  background-color: rgba(240, 240, 240, 0.655);
 }
 .staff .text {
   position: relative;
@@ -1344,8 +1355,10 @@ input[type="email"], input[type="password"], input[type="text"], input[type="tel
     line-height: 50px;
   }
   .img_cData{
-    width: 220px;
-    height: 220px;
+    /* width: 220px;
+    height: 220px; */
+    width: 22%;
+    height: 22%;
     background-image: url(../public/features/Fillout.svg);
     position: absolute;
     top:0px;

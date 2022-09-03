@@ -255,9 +255,9 @@ JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
 django_heroku.settings(locals())
 
 # static to amazon s3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_S3_ACCESS_KEY_ID = 'AKIATAMSZZXAI3V2SS7F'
-AWS_S3_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'backendapiimages'
-AWS_QUERYSTRING_AUTH = False
+# AWS_S3_ACCESS_KEY_ID = 'AKIATAMSZZXAI3V2SS7F'
+# AWS_S3_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'backendapiimages'
+# AWS_QUERYSTRING_AUTH = False

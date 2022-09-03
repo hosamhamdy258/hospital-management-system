@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import Table from "react-bootstrap/Table";
+
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,7 +54,7 @@ const Patientedit = () => {
             {/* <!-- Page Heading --> */}
             <h1 className="h3 mb-4 text-gray-800">Current reservations</h1>
 
-            <table className="table">
+            <Table striped bordered hover>
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -98,7 +100,7 @@ const Patientedit = () => {
                     }
                   )}
               </tbody>
-            </table>
+            </Table>
           </div>
         </div>
       </div>

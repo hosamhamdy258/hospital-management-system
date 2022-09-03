@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { postProfile } from "./../store/Profile";
-import { useRef } from "react";
+import { useRef ,useEffect} from "react";
 
 const Completedata = () => {
   const dispatch = useDispatch();
@@ -20,6 +20,10 @@ const Completedata = () => {
   const comment = useRef(null);
   const department = useRef(null);
   const img = useRef(null);
+  useEffect(() => {
+    first_name.current.value=userState.first_name;
+    last_name.current.value=userState.last_name;
+   },[])
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -84,12 +88,13 @@ const Completedata = () => {
                     placeholder="Enter first name"
                     className="form_control col-md-5 mb-3"
                     ref={first_name}
+                    
                   />
                   <input
                     required
                     type="text"
                     placeholder="Enter last name"
-                    className=" form_control form_group-2 col-md-5 mb-3"
+                    className=" form_control form_group-2 col-sm-12 col-md-5 mb-3"
                     ref={last_name}
                   />
                 </div>
@@ -114,7 +119,7 @@ const Completedata = () => {
 
                 <div className="bDate_cData row d-flex justify-content-around">
                   <label className=" col-md-3 mx-1 ">
-                    Enter your Date of Birth :{" "}
+                    Enter your Date of Birth 
                   </label>
                   <input
                     ref={birth_date}

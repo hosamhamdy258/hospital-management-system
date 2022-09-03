@@ -1,22 +1,33 @@
+import ReactPaginate from "react-paginate";
+import Table from "react-bootstrap/Table";
+
 import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
 import { getPatientDetails } from "../../store/patient";
 
 const Patienthistory = () => {
+  const items_per_page = 9;
+  const [currentPage, setPage] = useState(0);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.patientsSlice);
   const userstate = useSelector((state) => state.users.user);
   console.log(userstate.linked_users);
 
   useEffect(() => {
-    // dispatch(getReservationList());
-
     dispatch(getPatientDetails(userstate.linked_users));
   }, [dispatch]);
+  
+  function handleClick({ selected: selectedPage }) {
+    setPage(selectedPage);
+  }
+  const offset = currentPage * items_per_page;
+  const currentPageData = state.patientDetails.patient_reserves?.slice(offset, offset + items_per_page);
+  const pageCount = Math.ceil(state.patientDetails.patient_reserves?.length / items_per_page);
+
 
   return (
     <section id="page-top">
@@ -40,7 +51,7 @@ const Patienthistory = () => {
               {/* <!-- Page Heading --> */}
               <h1 className="h3 mb-4 text-gray-800">Reports History</h1>
 
-              <table className="table">
+              <Table striped bordered hover>
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -52,8 +63,11 @@ const Patienthistory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.patientDetails.patient_reserves &&
-                    state.patientDetails.patient_reserves.map(
+                  {
+                  // state.patientDetails.patient_reserves &&
+                  //   state.patientDetails.patient_reserves
+                  currentPageData &&
+                  currentPageData.map(
                       (element, index) => {
                         return (
                           <tr key={index}>
@@ -83,11 +97,24 @@ const Patienthistory = () => {
                       }
                     )}
                 </tbody>
-              </table>
+              </Table>
             </div>
           </div>
+          <ReactPaginate
+          previousLabel={"< Previous"}
+          nextLabel={"Next >"}
+          pageCount={pageCount}
+          onPageChange={handleClick}
+          containerClassName={"pagintion"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link__disabled"}
+          activeClassName={"pagination__link__active"}
+        />
         </div>
+        
       </div>
+     
       <a className="scroll-to-top rounded" href="#page-top">
         <i className="fas fa-angle-up"></i>
       </a>

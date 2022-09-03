@@ -213,9 +213,9 @@ function App() {
             />
             <Route path="/staffhistory/" element={<Staffhistory />} />
             <Route path="/staffedit/" element={<Staffedit />} />
-            {!stateUser.user.profile_complete ? (
+           {!stateUser.user.profile_complete ? ( 
               <Route path="/completedata" element={<Completedata />} />
-            ) : null}
+            ) : null} 
             <Route path="/medicalRecord" element={<PatientMedicalRecord />} />
           </Route>
           <Route path="/" element={<Home />} />

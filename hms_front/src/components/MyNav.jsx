@@ -15,6 +15,9 @@ const MyNav = () => {
   const { isAuthenticated, user } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [scrolled, setScrolled] = useState(false);
+ 
+
+
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 50) {
@@ -26,10 +29,11 @@ const MyNav = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  let currentPage=(window.location.pathname).split('/')[1];
 
   const onUpdateActiveLink = (value) => {
-    console.log(activeLink)
-    var elements=document.getElementsByClassName('active')
+    var elements=document.getElementsByClassName('active');
+    console.log(currentPage);
     setActiveLink(value);
   };
 
@@ -50,7 +54,7 @@ const MyNav = () => {
           <Nav className="me-auto">
             <NavLink
               className={
-                activeLink == "home"
+                activeLink == "home" && currentPage !=="departments" && currentPage !=="about"  && currentPage !=="contact" 
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -61,7 +65,7 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink == "doctors"
+                activeLink === "doctors" && currentPage !=="departments" && currentPage !=="about"
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -73,7 +77,7 @@ const MyNav = () => {
 
             <NavLink
               className={
-                activeLink == "departments"
+                activeLink == "departments" && currentPage !=="departments" && currentPage !=="about"
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -84,7 +88,7 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink == "about"
+                activeLink == "about" && currentPage !=="departments" && currentPage !=="about"
                   ? "active navbar-link nav-link"
                   : "navbar-link nav-link"
               }
@@ -95,7 +99,7 @@ const MyNav = () => {
             </NavLink>
             <NavLink
               className={
-                activeLink == "contact"
+                activeLink == "contact" && currentPage !=="departments" && currentPage !=="about"
                   ? "active navbar-link nav-link mb-3"
                   : "navbar-link nav-link mb-3"
               }
@@ -107,7 +111,8 @@ const MyNav = () => {
           </Nav>
           <span className="navbar-text">
             {user && user.first_name && (
-              <div className="mx-3">Welcome {user.first_name}</div>
+              <div className="nameOnNavSpan mx-1" onCopy={(e)=>{e.preventDefault();return false;
+              }}>Welcome {user.first_name}</div>
             )}
             {!isAuthenticated && (
               <div>
@@ -145,11 +150,9 @@ const MyNav = () => {
             ) : null}
 
             {isAuthenticated && (
-              <button className=" btn btn-info" onClick={() => logoutButton()}>
-                <Link className="" to="/" role="button">
+                <Link className="nav_login_button logOut" onClick={() => logoutButton()} to="/" role="button" >
                   Logout
                 </Link>
-              </button>
             )}
           </span>
         </Navbar.Collapse>

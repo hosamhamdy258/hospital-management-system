@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getDoctorDetails } from "../../store/Doctors";
 import moment from "moment";
+import Table from "react-bootstrap/Table";
 
 const Doctorindex = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const Doctorindex = () => {
                 Todays appointements
               </h3> */}
 
-              <table className="table">
+              <Table striped bordered hover>
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -98,7 +99,7 @@ const Doctorindex = () => {
                       }
                     )}
                 </tbody>
-              </table>
+              </Table>
             </div>
           </div>
         </div>
