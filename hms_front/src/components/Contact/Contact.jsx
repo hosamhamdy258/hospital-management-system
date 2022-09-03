@@ -22,7 +22,7 @@ const Contact = () => {
         <>
             <PageHead title='Contact Us' />
             <section className="section contact-info pb-0">
-                <div className="container">
+                <div className="ccontainer">
                     <div className="row">
                         <div className="col-lg-4 col-md-6">
                             <div className="contact-block mb-4 mb-lg-0">

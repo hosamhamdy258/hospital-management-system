@@ -9,14 +9,12 @@ const DepartmentPage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.departmentsSlice);
   const { id } = useParams();
+  console.log(id)
   useEffect(() => {
     dispatch(getDepartmentDetails(id));
-  }, [dispatch]);
-  // console.log(state.departmentDetails);
+  }, [id]);
+  console.log(state.departmentDetails);
   const myDep = state.departmentDetails;
-  // const startDay=myDep.startDay.toUpperCase();
-  // const endDay=myDep.endDay.toUpperCase();
-
   return (
     <div>
       <PageHead title={myDep.name} />
