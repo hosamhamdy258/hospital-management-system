@@ -72,7 +72,6 @@ export const checkAuthenticated = createAsyncThunk(
       };
 
       const body = JSON.stringify({ token: localStorage.getItem("access") });
-
       try {
         const res = await axios.post(`${Local}/auth/jwt/verify/`, body, config);
 
@@ -107,7 +106,6 @@ export const Signup = createAsyncThunk(
       if (!err.response) {
         throw err;
       }
-
       return rejectWithValue(err.response.data);
     }
   }

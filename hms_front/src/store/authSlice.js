@@ -56,7 +56,7 @@ const authSlice = createSlice({
       console.log(action.payload);
       state.refresh = action.payload.data.refresh;
       state.access = action.payload.data.access;
-
+      
       state.isLogged = true;
     },
     [loginUser.rejected]: (state, action) => {

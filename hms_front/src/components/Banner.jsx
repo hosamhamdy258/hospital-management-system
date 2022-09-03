@@ -21,7 +21,7 @@ const Banner = () => {
   const period = 2000;
   const [delta,setDelta] = useState(300 - Math.random() * 100);
 
-  useEffect(() => {
+   useEffect(() => {
     let ticker = setInterval(() => tick(), delta);
     return () => {clearInterval(ticker);};
   }, [text]);
