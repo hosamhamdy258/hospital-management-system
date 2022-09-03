@@ -81,11 +81,11 @@ class Department(models.Model):
     img = models.ImageField(upload_to='images', validators=[
                             check_image], blank=True)
     startDay = models.CharField(
-        max_length=10, choices=week_days, default='monday')
+        max_length=10, choices=week_days, default='sunday', editable=False)
     endDay = models.CharField(
-        max_length=10, choices=week_days, default='friday')
-    startTime_Schedule = models.TimeField(default=datetime.now, blank=True)
-    endTime_Schedule = models.TimeField(default=datetime.now, blank=True)
+        max_length=10, choices=week_days, default='thursday', editable=False)
+    startTime_Schedule = models.TimeField(default="09:00", editable=False)
+    endTime_Schedule = models.TimeField(default="17:00", editable=False)
 
     def __str__(self):
         return self.name
@@ -101,7 +101,7 @@ class Patient(Person):
 class Doctor(Person):
 
     department = models.ForeignKey(
-        Department, on_delete=models.SET_DEFAULT, default="Doctor",related_name="doctor_department")
+        Department, on_delete=models.SET_DEFAULT, default="Doctor", related_name="doctor_department")
     img = models.ImageField(upload_to='images', validators=[
                             check_image], blank=True)
 

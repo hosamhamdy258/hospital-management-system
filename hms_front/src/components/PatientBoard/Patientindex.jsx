@@ -27,11 +27,6 @@ const Patientindex = () => {
   let doctorOptions = [];
 
   function generateDateTimeLists() {
-    let startTime = stateDepartment.departments[0].startTime_Schedule.slice(0,2)
-    let endTime = stateDepartment.departments[0].endTime_Schedule.slice(0,2)
-
-    console.log(startTime);
-    console.log(endTime);
     let hour;
     let day;
     const timelist = [];
@@ -54,14 +49,7 @@ const Patientindex = () => {
     }
     for (let days = 0; days < 14; days++) {
       day = moment().add({ days });
-      // console.log(day.format("E"));
-      // console.log(moment().isoWeekday("Sunday"));
-      // const start = moment("Sunday", "E").format("E");
-      // const end = moment("Monday", "E").format("E");
-      // console.log(start);
-      // console.log(end);
-      // big < day , day<small
-      // console.log(day.isBetween(start, end));
+
       datelist.push({
         value: day.format("YYYY-MM-DD"),
         label: day.format("dddd YYYY-MM-DD"),
