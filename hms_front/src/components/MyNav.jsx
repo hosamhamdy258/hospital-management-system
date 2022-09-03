@@ -124,7 +124,7 @@ const MyNav = () => {
           <span className="navbar-text">
             {user && user.first_name && (
               <div
-                className="nameOnNavSpan mx-1"
+                className="nameOnNavSpan mx-1 me-2 p-1"
                 onCopy={(e) => {
                   e.preventDefault();
                   return false;

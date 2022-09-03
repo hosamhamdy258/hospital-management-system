@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { postProfile } from "./../store/Profile";
-import { useRef ,useEffect} from "react";
+import { postProfile, restData } from "./../store/Profile";
+import { useRef, useEffect } from "react";
+import { Alert } from "react-bootstrap";
 
 const Completedata = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,10 @@ const Completedata = () => {
   const department = useRef(null);
   const img = useRef(null);
   useEffect(() => {
-    first_name.current.value=userState.first_name;
-    last_name.current.value=userState.last_name;
-   },[])
+    first_name.current.value = userState.first_name;
+    last_name.current.value = userState.last_name;
+    dispatch(restData());
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -88,7 +90,6 @@ const Completedata = () => {
                     placeholder="Enter first name"
                     className="form_control col-md-5 mb-3"
                     ref={first_name}
-                    
                   />
                   <input
                     required
@@ -99,6 +100,11 @@ const Completedata = () => {
                   />
                 </div>
                 <hr className="cData_hr" />
+                {profileState.error.length !== 0 && (
+                  <Alert className="col-6" variant="danger">
+                    {profileState.error.phone_number[0]}
+                  </Alert>
+                )}
                 <div className="row d-flex justify-content-around">
                   <input
                     ref={phone_number}
@@ -107,6 +113,7 @@ const Completedata = () => {
                     placeholder="Enter Phone Number"
                     className="form_control col-md-5 mx-2 mb-3"
                   />
+
                   <input
                     required
                     type="text"
@@ -119,7 +126,7 @@ const Completedata = () => {
 
                 <div className="bDate_cData row d-flex justify-content-around">
                   <label className=" col-md-3 mx-1 ">
-                    Enter your Date of Birth 
+                    Enter your Date of Birth
                   </label>
                   <input
                     ref={birth_date}

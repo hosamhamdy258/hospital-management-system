@@ -41,24 +41,28 @@ export const postProfile = createAsyncThunk(
   }
 );
 
-const initialState = {data: {}};
+const initialState = { data: {}, error: [] };
 const profileSlice = createSlice({
   name: "Profile",
   initialState,
-  reducers: {},
+  reducers: {
+    restData: (state, action) => {
+      state.error = [];
+    },
+  },
 
   extraReducers: {
     [postProfile.pending]: (state, action) => {},
     [postProfile.fulfilled]: (state, action) => {
       console.log(action.payload);
       state.data = action.payload.data;
-      
-
     },
     [postProfile.rejected]: (state, action) => {
       // show erorr tooltip at top of screen
-      // state.isLoading = true;
+      console.log(action.payload.response.data);
+      state["error"] = action.payload.response.data;
     },
   },
 });
 export default profileSlice.reducer;
+export const { restData } = profileSlice.actions;

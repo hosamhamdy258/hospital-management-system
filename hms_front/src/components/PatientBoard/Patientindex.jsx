@@ -27,7 +27,11 @@ const Patientindex = () => {
   let doctorOptions = [];
 
   function generateDateTimeLists() {
-    // console.log(state.doctors.department.startTime_Schedule);
+    let startTime = stateDepartment.departments[0].startTime_Schedule.slice(0,2)
+    let endTime = stateDepartment.departments[0].endTime_Schedule.slice(0,2)
+
+    console.log(startTime);
+    console.log(endTime);
     let hour;
     let day;
     const timelist = [];
