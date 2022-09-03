@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { registerUser } from "./../store/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector } from "react-redux";
 
 export default function Register() {
   const username = useRef(null);

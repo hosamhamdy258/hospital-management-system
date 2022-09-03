@@ -12,6 +12,7 @@ import { getDoctors } from "../store/Doctors";
 export default function Doctors() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.doctorsSlice);
+  const { isAuthenticated, user } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(getDoctors());
@@ -58,12 +59,30 @@ export default function Doctors() {
                     <Card.Img variant="top" src={item.img} />
                     <Card.Body>
                       <Card.Title>{item.full_name}</Card.Title>
-                      <NavLink
-                        to={`/doctor/${item.id}`}
-                        className="btn btn-main-2 btn-round-full btn-primary"
-                      >
-                        Make an Appointment
-                      </NavLink>
+                      {isAuthenticated && !user.profile_complete && (
+                        <NavLink
+                         to="/completedata"
+                          className="btn btn-main-2 btn-round-full btn-primary"
+                        >
+                          Make an Appointment
+                        </NavLink>
+                      )}
+                      {isAuthenticated && user.profile_complete && (
+                        <NavLink
+                          to="/patient"
+                          className="btn btn-main-2 btn-round-full btn-primary"
+                        >
+                          Make an Appointment
+                        </NavLink>
+                      )}
+                      {!isAuthenticated && (
+                        <NavLink
+                          to="/login"
+                          className="btn btn-main-2 btn-round-full btn-primary"
+                        >
+                          Make an Appointment
+                        </NavLink>
+                      )}
                     </Card.Body>
                   </Card>
                 ))}

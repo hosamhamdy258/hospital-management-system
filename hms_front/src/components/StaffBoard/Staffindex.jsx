@@ -150,7 +150,6 @@ const Staffindex = () => {
               <div className="d-sm-flex align-items-center justify-content-center p-3">
                 <h1 className="h3 text-gray-800">Dashboard</h1>
               </div>
-
               <div className="row mb-4 justify-content-center">
                 <div className="col-lg-8 col-md-6 border p-4 shadow bg-light">
                   <div className="col-12">
