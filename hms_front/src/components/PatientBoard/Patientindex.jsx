@@ -8,16 +8,13 @@ import {
   addReservationLists,
   getPatientDoctors,
   makeReservation,
-  resetReservationDate,
   resetReservationTime,
   restReservationData,
-  restReservationDoctor,
   updateReservationLists,
 } from "./../../store/reserve";
 // import Button from "react-bootstrap/Button";
 import moment from "moment";
 import Sidebar from "./Sidebar";
-import { startTransition } from "react";
 
 const Patientindex = () => {
   const dispatch = useDispatch();
@@ -72,7 +69,7 @@ const Patientindex = () => {
   const departmentOptions = stateDepartment.departments.map((item) => {
     return { value: item.id, label: item.name };
   });
- 
+
   const patientOptions = state.patients.map((item) => {
     return { value: item.id, label: item.full_name };
   });
@@ -86,11 +83,11 @@ const Patientindex = () => {
     dispatch(
       addReservationData(["patient", { value: Number(stateUser.linked_users) }])
     );
-
   }, [dispatch]);
 
   const changemenu = useCallback(() => {
-    generateDateTimeLists();   
+    console.log("top");
+    generateDateTimeLists();
     if (state.reservationData.department) {
       doctorOptions = stateDepartment.departments
         .filter((element) => element.id === state.reservationData.department)[0]
@@ -98,38 +95,46 @@ const Patientindex = () => {
           return { value: item.id, label: item.full_name };
         });
       dispatch(addReservationLists(["doctorOptions", doctorOptions]));
-    }
 
-    if (
-      state.reservationData.doctor &&
-      state.reservationData.date1 &&
-      state.reservationData.department
-    ) {
-      const selectedDoctor = state.reservation.filter((element) =>
-        element.doctor === state.reservationData.doctor ? element : null
-      );
+      if (
+        state.reservationData.doctor &&
+        state.reservationData.date1 &&
+        state.reservationData.department
+      ) {
+        console.log("mid");
+        const selectedDoctor = state.reservation.filter((element) =>
+          element.doctor === state.reservationData.doctor ? element : null
+        );
 
-      const selectedDate = selectedDoctor.filter((element) =>
-        element.date.slice(0, 10) === state.reservationData.date1
-          ? element
-          : null
-      );
+        const selectedDate = selectedDoctor.filter((element) =>
+          element.date.slice(0, 10) === state.reservationData.date1
+            ? element
+            : null
+        );
 
-      const reservedTime = [];
-      selectedDate.forEach((element) => {
-        reservedTime.push(element.date.slice(11, 16));
-      });
+        const reservedTime = [];
+        selectedDate.forEach((element) => {
+          reservedTime.push(element.date.slice(11, 16));
+        });
 
-      timelist2 = state.reservationData.timelist.filter((element) => {
-        return !reservedTime.includes(element.label);
-      });
+        timelist2 = state.reservationData.timelist.filter((element) => {
+          return !reservedTime.includes(element.label);
+        });
 
-      dispatch(addReservationLists(["timelist2", timelist2]));
-      if (Object.values(state.reservationData).every((element) => element)) {
-        dispatch(updateReservationLists(false));
+        dispatch(addReservationLists(["timelist2", timelist2]));
+
+        if (Object.values(state.reservationData).every((element) => element)) {
+          console.log("in if true");
+          dispatch(updateReservationLists(false));
+        } else {
+          // dispatch(updateReservationLists(true));
+
+          console.log("in if false");
+        }
       }
     }
-  }, [timelist2, doctorOptions ,]);
+    console.log("bot");
+  }, [timelist2, doctorOptions]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -153,9 +158,13 @@ const Patientindex = () => {
       navigateMSG();
     }
   }, [state.details]);
-  useEffect(() => {}, [state.reservationData.doctorOptions]);
-  useEffect(() => {}, [state.reservationData.datelist]);
-
+  useEffect(() => {}, [
+    state.reservationData.doctorOptions,
+    state.reservationData.datelist,
+    state.reservationData.timelist,
+    state.reservationData.timelist2,
+    state.reservationData.isDisabled,
+  ]);
 
   const navigate = useNavigate();
 
@@ -164,6 +173,7 @@ const Patientindex = () => {
       navigate("/reserverstatus");
     } catch (error) {}
   };
+
   return (
     <section id="page-top">
       <link
@@ -199,49 +209,47 @@ const Patientindex = () => {
                         className="col-md-6"
                         options={departmentOptions}
                         onChange={(e) => {
-                          dispatch(addReservationData(["department", e]));
-                          dispatch(restReservationDoctor());
-                          dispatch(resetReservationDate());
                           dispatch(resetReservationTime());
-
+                          dispatch(updateReservationLists(true));
+                          dispatch(addReservationData(["department", e]));
                         }}
                       />
                     </div>
-                    {state.reservationData.doctorOptions && (
-                      <div className="row mx-1 mb-2">
-                        <label className="col-md-6">Select Doctor</label>
-                        <Select
-                          placeholder="select a doctor"
-                          className="col-md-6"
-                          options={state.reservationData.doctorOptions}
-                          onChange={(e) =>{
-                            dispatch(addReservationData(["doctor", e]));
-                            dispatch(resetReservationDate());
-                            dispatch(resetReservationTime());
-                          }
-                          }
-                        />
-                      </div>
-                    )}
-                    {state.reservationData.datelist &&
+
+                    <div className="row mx-1 mb-2">
+                      <label className="col-md-6">Select Doctor</label>
+                      <Select
+                        key={state.reservationData.department}
+                        placeholder="select a doctor"
+                        className="col-md-6"
+                        options={state.reservationData.doctorOptions}
+                        onChange={(e) => {
+                          dispatch(resetReservationTime());
+                          dispatch(updateReservationLists(true));
+                          dispatch(addReservationData(["doctor", e]));
+                        }}
+                      />
+                    </div>
+
                     <div className="row mx-1 mb-2">
                       <label className="col-md-6">Select Date</label>
                       <Select
+                        key={`${state.reservationData.department}${state.reservationData.doctor}`}
                         placeholder="select a date"
                         className=" col-md-6"
                         options={state.reservationData.datelist}
-                        onChange={(e) =>{
-                          dispatch(addReservationData(["date1", e]));
+                        onChange={(e) => {
                           dispatch(resetReservationTime());
-                        }
-                        }
+                          dispatch(updateReservationLists(true));
+                          dispatch(addReservationData(["date1", e]));
+                        }}
                       />
                     </div>
-                    }
-                    {state.reservationData.timelist2 &&
-                      <div className="row mx-1 mb-2">
+
+                    <div className="row mx-1 mb-2">
                       <label className="col-md-6">Select time</label>
                       <Select
+                        key={`${state.reservationData.department}${state.reservationData.doctor}${state.reservationData.date1}`}
                         placeholder="select a time"
                         className="col-md-6"
                         options={state.reservationData.timelist2}
@@ -250,8 +258,7 @@ const Patientindex = () => {
                         }
                       />
                     </div>
-                    }
-                  
+
                     <br />
                     {/* {state.details && navigateMSG()} */}
 
@@ -265,13 +272,13 @@ const Patientindex = () => {
                         >
                           Book Appointment
                         </button>
-                        <button
+                        {/* <button
                           type="button"
                           className="btn btn-outline-secondary  m-3"
                           onClick={() => window.history.go(-1)}
                         >
                           Cancel
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </form>

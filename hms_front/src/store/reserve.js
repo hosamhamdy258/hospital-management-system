@@ -94,23 +94,18 @@ const reservationSlice = createSlice({
       state.details = "";
       console.log("clear");
     },
-    restReservationDoctor: (state, action) => {
-      delete state.reservationData.doctorOptions;
-      delete state.reservationData.doctor;
-    },
-    resetReservationDate: (state, action) => {
-      delete state.reservationData.datelist;
-      delete state.reservationData.date1;
-    },
+
     resetReservationTime: (state, action) => {
-      delete state.reservationData.timelist2;
-      delete state.reservationData.time;
+      // reset time string disable submit button as there's missing data
+      state.reservationData["time"] = "";
     },
     addReservationData: (state, action) => {
       state.reservationData[action.payload[0]] = action.payload[1].value;
       if (state.reservationData["date1"] && state.reservationData["time"]) {
         state.reservationData["date"] =
           state.reservationData["date1"] + " " + state.reservationData["time"];
+      } else {
+        state.reservationData["date"] = "";
       }
     },
     addReservationLists: (state, action) => {
@@ -123,7 +118,7 @@ const reservationSlice = createSlice({
 
   extraReducers: {
     [getPatientDoctors.pending]: (state, action) => {
-      console.log(action);
+      // console.log(action);
     },
     [getPatientDoctors.fulfilled]: (state, action) => {
       state.doctors = action.payload[0].data;
@@ -166,6 +161,7 @@ export const {
   addReservationData,
   addReservationLists,
   updateReservationLists,
+  restReservationDepartment,
   restReservationDoctor,
   resetReservationDate,
   resetReservationTime,

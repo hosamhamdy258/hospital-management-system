@@ -44,6 +44,9 @@ import Completedata from "./components/Completedata";
 
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
+import PrivateRoutesDoctor from "./store/PrivateRoutesDoctor";
+import PrivateRoutesStaff from "./store/PrivateRoutesStaff";
+import PrivateRoutesPatient from "./store/PrivateRoutesPatient";
 
 const theme = {
   height: "100px",
@@ -88,10 +91,10 @@ const steps = [
     id: "4",
     options: [
       { value: 1, label: "About Us", trigger: 5 },
-      { value: 2, label: 'Book an appointment',trigger:8 },
-      { value: 3, label: 'Contact Us' ,trigger:9},
-      { value: 4, label: 'create an account',trigger:10 },
-      { value: 5, label: 'having a problem logging in ?',trigger:13 },
+      { value: 2, label: "Book an appointment", trigger: 8 },
+      { value: 3, label: "Contact Us", trigger: 9 },
+      { value: 4, label: "create an account", trigger: 10 },
+      { value: 5, label: "having a problem logging in ?", trigger: 13 },
     ],
   },
   {
@@ -107,72 +110,75 @@ const steps = [
         Read more
       </Link>
     ),
-    trigger:7,
+    trigger: 7,
   },
   {
     id: "7",
     options: [
       { value: 1, label: "Back to Main Menu", trigger: 4 },
-      { value: 2, label: "No, thanks I'm Done",trigger:15 }, 
+      { value: 2, label: "No, thanks I'm Done", trigger: 15 },
     ],
-  },{
+  },
+  {
     id: "8",
-    component:(
+    component: (
       <Link className="nav_login_button" to="/login">
         Click To Login in First
       </Link>
     ),
-    trigger:7,
+    trigger: 7,
   },
   {
     id: "9",
-    component:(
+    component: (
       <Link className="nav_login_button" to="/contact">
         Redirect to Contact Us
       </Link>
     ),
-    trigger:7,
+    trigger: 7,
   },
   {
     id: "10",
     options: [
       { value: 1, label: "Create a Doctor account", trigger: 11 },
-      { value: 2, label: 'Create a Patient account',trigger:12 },  
+      { value: 2, label: "Create a Patient account", trigger: 12 },
     ],
   },
   {
     id: "11",
-    message:'Sorry, but only doctors working on HOPE are authorized to login as a doctor , if you are working with us please contact us at "ITIinfo@iti.gov.eg" with your National ID and we will provide you with your account details ',
-    trigger:7
+    message:
+      'Sorry, but only doctors working on HOPE are authorized to login as a doctor , if you are working with us please contact us at "ITIinfo@iti.gov.eg" with your National ID and we will provide you with your account details ',
+    trigger: 7,
   },
   {
     id: "12",
-    component:(
+    component: (
       <Link className="nav_login_button" to="/signup">
         Click to create account
       </Link>
-    ),trigger:7
+    ),
+    trigger: 7,
   },
   {
     id: "13",
-    message:'submit your problem ,specify your issue in the title and one of our team will contact you soon',
-    trigger:14,
+    message:
+      "submit your problem ,specify your issue in the title and one of our team will contact you soon",
+    trigger: 14,
   },
   {
     id: "14",
-    component:(
+    component: (
       <Link className="nav_login_button" to="/contact">
-        Submit your problem 
+        Submit your problem
       </Link>
     ),
-    trigger:7,
+    trigger: 7,
   },
   {
     id: "15",
-    message:"Thanks for your interest in HOPE , we hope we could help you",
-    end:true
+    message: "Thanks for your interest in HOPE , we hope we could help you",
+    end: true,
   },
-
 ];
 
 function App() {
@@ -190,32 +196,38 @@ function App() {
       <Layout>
         <Routes>
           <Route element={<PrivateRoutes />}>
-            <Route
-              path="/patient/"
-              element={<Patientindex doctor={stateDoctor} />}
-            />
-            <Route path="/patienthistory/" element={<Patienthistory />} />
-            <Route path="/patientedit/" element={<Patientedit />} />
-            {/* <Route path="/checkout/" element={<Patientcheckout />} /> */}
-            <Route path="/reserverstatus/" element={<ReserveReply />} />
+            <Route element={<PrivateRoutesPatient />}>
+              <Route
+                path="/patient/"
+                element={<Patientindex doctor={stateDoctor} />}
+              />
+              <Route path="/patienthistory/" element={<Patienthistory />} />
+              <Route path="/patientedit/" element={<Patientedit />} />
+              {/* <Route path="/checkout/" element={<Patientcheckout />} /> */}
+              <Route path="/reserverstatus/" element={<ReserveReply />} />
+            </Route>
 
-            <Route path="/doctor/" element={<Doctorindex />} />
-            <Route path="/doctorreport/" element={<Doctorreport />} />
-            <Route path="/doctoredit/" element={<Doctoredit />} />
-            <Route path="/doctorhistory/" element={<Doctorhistory />} />
-            <Route path="/reportstatus/" element={<ReportStatus />} />
+            <Route element={<PrivateRoutesDoctor />}>
+              <Route path="/doctor/" element={<Doctorindex />} />
+              <Route path="/doctorreport/" element={<Doctorreport />} />
+              <Route path="/doctoredit/" element={<Doctoredit />} />
+              <Route path="/doctorhistory/" element={<Doctorhistory />} />
+              <Route path="/reportstatus/" element={<ReportStatus />} />
+            </Route>
+            <Route element={<PrivateRoutesStaff />}>
+              <Route
+                path="/staff/"
+                element={
+                  <Staffindex patient={statePatient} doctor={stateDoctor} />
+                }
+              />
+              <Route path="/staffhistory/" element={<Staffhistory />} />
+              <Route path="/staffedit/" element={<Staffedit />} />
+            </Route>
 
-            <Route
-              path="/staff/"
-              element={
-                <Staffindex patient={statePatient} doctor={stateDoctor} />
-              }
-            />
-            <Route path="/staffhistory/" element={<Staffhistory />} />
-            <Route path="/staffedit/" element={<Staffedit />} />
-           {!stateUser.user.profile_complete ? ( 
+            {!stateUser.user.profile_complete ? (
               <Route path="/completedata" element={<Completedata />} />
-            ) : null} 
+            ) : null}
             <Route path="/medicalRecord" element={<PatientMedicalRecord />} />
           </Route>
           <Route path="/" element={<Home />} />
@@ -238,6 +250,7 @@ function App() {
             path="/password/reset/confirm/:uid/:token"
             element={<ResetPasswordConfirm />}
           />
+          <Route path="/unauthorized" element={<Page404 />} />
 
           <Route path="*" element={<Page404 />} />
         </Routes>
