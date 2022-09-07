@@ -100,11 +100,11 @@ const Completedata = () => {
                   />
                 </div>
                 <hr className="cData_hr" />
-                {profileState.error.length !== 0 && (
+                {/* {profileState.error.length !== 0 && (
                   <Alert className="col-6" variant="danger">
                     {profileState.error.phone_number[0]}
                   </Alert>
-                )}
+                )} */}
                 <div className="row d-flex justify-content-around">
                   <input
                     ref={phone_number}

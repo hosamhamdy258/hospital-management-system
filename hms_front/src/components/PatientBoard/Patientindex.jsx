@@ -31,7 +31,7 @@ const Patientindex = () => {
     let day;
     const timelist = [];
     const datelist = [];
-    for (let hours = 10; hours < 18; hours++) {
+    for (let hours = 9; hours < 17; hours++) {
       hour = moment({ hours });
       timelist.push({
         value: hour.format("H:mm"),
@@ -47,8 +47,14 @@ const Patientindex = () => {
         label: hour.format("H:mm"),
       });
     }
-    for (let days = 0; days < 14; days++) {
+    for (let days = 1; days < 14; days++) {
       day = moment().add({ days });
+      if (
+        day.format("dddd") === "Friday" ||
+        day.format("dddd") === "Saturday"
+      ) {
+        continue;
+      }
 
       datelist.push({
         value: day.format("YYYY-MM-DD"),
@@ -78,7 +84,6 @@ const Patientindex = () => {
   }, [dispatch]);
 
   const changemenu = useCallback(() => {
-    console.log("top");
     generateDateTimeLists();
     if (state.reservationData.department) {
       doctorOptions = stateDepartment.departments
@@ -93,7 +98,6 @@ const Patientindex = () => {
         state.reservationData.date1 &&
         state.reservationData.department
       ) {
-        console.log("mid");
         const selectedDoctor = state.reservation.filter((element) =>
           element.doctor === state.reservationData.doctor ? element : null
         );
@@ -116,16 +120,13 @@ const Patientindex = () => {
         dispatch(addReservationLists(["timelist2", timelist2]));
 
         if (Object.values(state.reservationData).every((element) => element)) {
-          console.log("in if true");
           dispatch(updateReservationLists(false));
         } else {
           // dispatch(updateReservationLists(true));
 
-          console.log("in if false");
         }
       }
     }
-    console.log("bot");
   }, [timelist2, doctorOptions]);
 
   const handleSubmit = (e) => {

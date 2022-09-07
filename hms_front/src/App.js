@@ -147,7 +147,7 @@ const steps = [
   {
     id: "11",
     message:
-      'Sorry, but only doctors working on HOPE are authorized to login as a doctor , if you are working with us please contact us at "ITIinfo@iti.gov.eg" with your National ID and we will provide you with your account details ',
+      " Sorry, but only doctors working on HOPE are authorized to login as a doctor , if you are working with us sign up as a normal user and please contact us at ITIinfo@iti.gov.eg and we will activate your doctor account ",
     trigger: 7,
   },
   {
@@ -196,6 +196,9 @@ function App() {
       <Layout>
         <Routes>
           <Route element={<PrivateRoutes />}>
+          <Route path="/reserverstatus/" element={<ReserveReply />} />
+          <Route path="/reportstatus/" element={<ReportStatus />} />
+
             <Route element={<PrivateRoutesPatient />}>
               <Route
                 path="/patient/"
@@ -204,7 +207,7 @@ function App() {
               <Route path="/patienthistory/" element={<Patienthistory />} />
               <Route path="/patientedit/" element={<Patientedit />} />
               {/* <Route path="/checkout/" element={<Patientcheckout />} /> */}
-              <Route path="/reserverstatus/" element={<ReserveReply />} />
+             
             </Route>
 
             <Route element={<PrivateRoutesDoctor />}>
@@ -212,7 +215,6 @@ function App() {
               <Route path="/doctorreport/" element={<Doctorreport />} />
               <Route path="/doctoredit/" element={<Doctoredit />} />
               <Route path="/doctorhistory/" element={<Doctorhistory />} />
-              <Route path="/reportstatus/" element={<ReportStatus />} />
             </Route>
             <Route element={<PrivateRoutesStaff />}>
               <Route

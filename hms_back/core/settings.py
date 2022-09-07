@@ -140,8 +140,8 @@ DOMAIN = ("localhost:3000")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'hope.hospital.team@gmail.com'
-EMAIL_HOST_PASSWORD = 'dcyvpvxoiisrzpzi'
+EMAIL_HOST_USER = 'hope.hospital50@gmail.com'
+EMAIL_HOST_PASSWORD = 'mozamnaktmxmrnmg'
 EMAIL_USE_TLS = True
 
 # Password validation

@@ -25,7 +25,7 @@ class PatientSerializerList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
 
-class DoctorSerializerList(generics.ListAPIView):
+class DoctorSerializerList(generics.ListCreateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]

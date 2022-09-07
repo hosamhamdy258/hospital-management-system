@@ -36,7 +36,7 @@ const AllDepartmentsPage = () => {
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
                     <Card.Text>
-                      {item.desc.split(".")[0].replace(/[^a-zA-Z0-9]/g, "")}
+                      {/* {item.desc.split(".")[0].replace(/[^a-zA-Z0-9]/g, "")} */}
                     </Card.Text>
                     <button>
                       <Link

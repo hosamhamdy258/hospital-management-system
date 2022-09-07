@@ -31,7 +31,7 @@ const Staffindex = () => {
     let day;
     const timelist = [];
     const datelist = [];
-    for (let hours = 10; hours < 18; hours++) {
+    for (let hours = 9; hours < 17; hours++) {
       hour = moment({ hours });
       timelist.push({
         value: hour.format("H:mm"),
@@ -47,8 +47,15 @@ const Staffindex = () => {
         label: hour.format("H:mm"),
       });
     }
-    for (let days = 0; days < 14; days++) {
+    for (let days = 1; days < 14; days++) {
       day = moment().add({ days });
+      if (
+        day.format("dddd") === "Friday" ||
+        day.format("dddd") === "Saturday"
+      ) {
+        continue;
+      }
+
       datelist.push({
         value: day.format("YYYY-MM-DD"),
         label: day.format("dddd YYYY-MM-DD"),
